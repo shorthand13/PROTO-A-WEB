@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Clock, MessageCircle } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
+import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC } from "@/lib/social-links";
 
 export default async function ContactPage({
   params,
@@ -48,12 +50,29 @@ function ContactContent() {
                 <p className="text-muted-foreground mb-4">
                   {t("line.description")}
                 </p>
-                <div className="h-40 w-40 mx-auto rounded-lg bg-muted flex items-center justify-center text-sm text-muted-foreground">
-                  LINE QR Code
-                </div>
-                <button className="mt-4 w-full rounded-full bg-[#06C755] px-6 py-3 text-sm font-bold text-white hover:bg-[#05b34d] transition-colors">
+                <a
+                  href={LINE_ADD_FRIEND_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-auto block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-[#06C755] focus-visible:ring-offset-2"
+                >
+                  <Image
+                    src={LINE_QR_IMAGE_SRC}
+                    alt={t("line.qrAlt")}
+                    width={160}
+                    height={160}
+                    unoptimized
+                    className="h-40 w-40 rounded-lg border border-border bg-white object-contain shadow-sm transition hover:opacity-90"
+                  />
+                </a>
+                <a
+                  href={LINE_ADD_FRIEND_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex w-full items-center justify-center rounded-full bg-[#06C755] px-6 py-3 text-sm font-bold text-white hover:bg-[#05b34d] transition-colors"
+                >
                   {t("line.addFriend")}
-                </button>
+                </a>
               </div>
 
               {/* Business Hours */}

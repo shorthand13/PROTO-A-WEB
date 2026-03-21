@@ -1,0 +1,90 @@
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { getCaseStudy, getCaseStudies } from "@/lib/case-studies";
+import { Link } from "@/i18n/routing";
+import { ArrowLeft } from "lucide-react";
+
+export async function generateStaticParams() {
+  const locales = ["ja", "en"];
+  const params: { locale: string; slug: string }[] = [];
+
+  for (const locale of locales) {
+    const studies = getCaseStudies(locale);
+    studies.forEach((study) => {
+      params.push({ locale, slug: study.slug });
+    });
+  }
+
+  return params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  const study = getCaseStudy(locale, slug);
+  if (!study) return {};
+
+  return {
+    title: study.frontmatter.title,
+    description: study.frontmatter.excerpt,
+  };
+}
+
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+
+  const study = getCaseStudy(locale, slug);
+  if (!study) notFound();
+
+  return <CaseStudyContent study={study} />;
+}
+
+function CaseStudyContent({
+  study,
+}: {
+  study: NonNullable<ReturnType<typeof getCaseStudy>>;
+}) {
+  const t = useTranslations("CaseStudies");
+
+  return (
+    <div>
+      {/* Header */}
+      <section className="bg-gradient-to-br from-primary to-primary-dark px-4 py-16 sm:py-20 text-white">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white mb-6 transition-colors"
+          >
+            <ArrowLeft size={16} />
+            {t("title")}
+          </Link>
+          <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-medium mb-4">
+            {study.frontmatter.industry}
+          </span>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+            {study.frontmatter.title}
+          </h1>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-12 px-4">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary">
+            <MDXRemote source={study.content} />
+          </article>
+        </div>
+      </section>
+    </div>
+  );
+}

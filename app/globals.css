@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
+  /* Miyako Island Color Palette */
+  --color-ocean: #0077b6;
+  --color-ocean-light: #90e0ef;
+  --color-ocean-dark: #023e8a;
+  --color-coral: #ff6b6b;
+  --color-coral-light: #ffa5a5;
+  --color-sunset: #ff8c42;
+  --color-sunset-light: #ffb380;
+  --color-sand: #f4e4c1;
+  --color-sand-dark: #d4c4a1;
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111827;
+  --primary: var(--color-ocean);
+  --primary-light: var(--color-ocean-light);
+  --primary-dark: var(--color-ocean-dark);
+  --accent: var(--color-coral);
+  --accent-light: var(--color-coral-light);
+  --cta: var(--color-sunset);
+  --cta-light: var(--color-sunset-light);
+  --surface: var(--color-sand);
+  --surface-dark: var(--color-sand-dark);
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: #334155;
+    --surface: #1e293b;
+    --surface-dark: #0f172a;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-cta: var(--cta);
+  --color-cta-light: var(--cta-light);
+  --color-surface: var(--surface);
+  --color-surface-dark: var(--surface-dark);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ocean: var(--color-ocean);
+  --color-ocean-light: var(--color-ocean-light);
+  --color-ocean-dark: var(--color-ocean-dark);
+  --color-coral: var(--color-coral);
+  --color-coral-light: var(--color-coral-light);
+  --color-sunset: var(--color-sunset);
+  --color-sunset-light: var(--color-sunset-light);
+  --color-sand: var(--color-sand);
+  --color-sand-dark: var(--color-sand-dark);
+  --font-sans: var(--font-noto-sans-jp);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
 }

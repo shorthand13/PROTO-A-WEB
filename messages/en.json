@@ -1,0 +1,242 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "caseStudies": "Case Studies",
+    "membership": "Membership",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "memberVideos": "Video Library"
+  },
+  "Home": {
+    "hero": {
+      "title": "Accelerate Your Business\nwith Digital Transformation",
+      "subtitle": "Friendly, locally-rooted DX consulting to unlock your business potential in Miyako Island.",
+      "cta": "Free Consultation",
+      "secondaryCta": "View Services"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "Optimal DX solutions tailored for Miyako Island businesses",
+      "consulting": {
+        "title": "One-on-One DX Consulting",
+        "description": "We work with you to develop a personalized DX strategy for your business."
+      },
+      "onlineSupport": {
+        "title": "Online Business Improvement",
+        "description": "We support your business process improvements remotely."
+      },
+      "toolSelection": {
+        "title": "IT Tool Selection Support",
+        "description": "We help you choose and implement the best IT tools for your needs."
+      },
+      "workflow": {
+        "title": "Workflow Digitization",
+        "description": "Transform paper-based workflows into efficient digital processes."
+      }
+    },
+    "blog": {
+      "title": "Latest Blog Posts",
+      "subtitle": "Stay updated with DX tips and insights",
+      "viewAll": "View all posts"
+    },
+    "testimonials": {
+      "title": "Client Testimonials",
+      "subtitle": "What our clients say about Proto-A",
+      "items": [
+        {
+          "name": "Taro Yamada",
+          "business": "Diving Shop Owner",
+          "quote": "Setting up a LINE Official Account made booking management so much easier. Thank you for the patient guidance."
+        },
+        {
+          "name": "Hanako Sato",
+          "business": "Guesthouse Owner",
+          "quote": "After optimizing our Google Business Profile, international bookings tripled."
+        },
+        {
+          "name": "Ichiro Tanaka",
+          "business": "Souvenir Shop Owner",
+          "quote": "The POS system dramatically reduced inventory management time, letting us focus on customer service."
+        }
+      ]
+    }
+  },
+  "About": {
+    "title": "About Us",
+    "mission": {
+      "title": "Our Mission",
+      "description": "We solve the digital challenges faced by entrepreneurs and business owners in Miyako Island with a friendly, locally-rooted approach."
+    },
+    "whyMiyako": {
+      "title": "Why Miyako Island",
+      "description": "Miyako Island is rapidly growing, especially in tourism, but many small businesses are falling behind in digitization. Major consulting firms offer one-size-fits-all solutions that don't fit the island's unique business environment. We deeply understand local conditions and provide support tailored to each individual business."
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "A team passionate about Miyako Island and dedicated to supporting local business growth."
+    }
+  },
+  "Services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive digital transformation support",
+    "consulting": {
+      "title": "One-on-One DX Consulting",
+      "description": "We carefully listen to your business challenges and develop the optimal digitization plan together.",
+      "features": [
+        "Current situation analysis and challenge identification",
+        "Custom DX roadmap creation",
+        "Monthly progress reviews and follow-ups",
+        "Available in-person or online"
+      ]
+    },
+    "onlineSupport": {
+      "title": "Online Business Improvement Support",
+      "description": "We review your daily business processes and propose specific improvements for efficiency.",
+      "features": [
+        "Business flow analysis",
+        "Bottleneck identification and improvement proposals",
+        "Post-implementation operational support",
+        "Flexible remote assistance"
+      ]
+    },
+    "toolSelection": {
+      "title": "IT Tool Selection Support",
+      "description": "We select IT tools that match your budget and needs, supporting smooth implementation.",
+      "features": [
+        "Needs-based tool comparison",
+        "Free tool utilization proposals",
+        "Implementation and initial setup support",
+        "Staff training"
+      ]
+    },
+    "workflow": {
+      "title": "Workflow Digitization",
+      "description": "Digitize paper-based operations to reduce errors and improve business speed.",
+      "features": [
+        "Paper document digitization",
+        "Cloud-based management system setup",
+        "Automation tool implementation",
+        "Data-driven decision support"
+      ]
+    },
+    "cta": "Contact Us"
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Latest insights on DX and IT utilization",
+    "allTags": "All",
+    "readMore": "Read more",
+    "publishedAt": "Published",
+    "author": "Author",
+    "tags": "Tags",
+    "relatedPosts": "Related Posts",
+    "noPosts": "No posts found.",
+    "previousPage": "Previous",
+    "nextPage": "Next"
+  },
+  "CaseStudies": {
+    "title": "Case Studies",
+    "subtitle": "DX success stories from Miyako Island businesses",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "result": "Result",
+    "clientVoice": "Client Testimonial",
+    "industry": "Industry",
+    "readMore": "Read more",
+    "noCases": "No case studies yet."
+  },
+  "Membership": {
+    "title": "Membership",
+    "subtitle": "Exclusive DX learning content for members",
+    "benefits": {
+      "title": "Member Benefits",
+      "items": [
+        "Unlimited access to DX and IT video library",
+        "Content ranging from beginner to advanced levels",
+        "Priority access to new videos",
+        "Member-only Q&A support"
+      ]
+    },
+    "cta": "Login to watch videos",
+    "videos": {
+      "title": "Video Library",
+      "subtitle": "DX learning videos for your business",
+      "filterCategory": "Category",
+      "filterDifficulty": "Difficulty",
+      "filterLanguage": "Language",
+      "allCategories": "All",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "japanese": "Japanese",
+      "english": "English",
+      "duration": "Duration",
+      "loginToWatch": "Login to watch",
+      "relatedVideos": "Related Videos",
+      "noVideos": "No videos found."
+    }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "Feel free to reach out",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "John Smith",
+      "company": "Company",
+      "companyPlaceholder": "Company Inc.",
+      "phone": "Phone",
+      "phonePlaceholder": "090-1234-5678",
+      "email": "Email",
+      "emailPlaceholder": "example@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your needs...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you for your inquiry. We will get back to you shortly.",
+      "error": "Failed to send. Please try again."
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "messageRequired": "Message is required",
+      "messageMinLength": "Message must be at least 10 characters"
+    },
+    "line": {
+      "title": "Contact via LINE",
+      "description": "You can also reach us through LINE. Scan the QR code or tap the button below.",
+      "addFriend": "Add Friend"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "weekdays": "Mon-Fri: 9:00 AM - 6:00 PM",
+      "weekend": "Sat, Sun & Holidays: Closed",
+      "note": "* Online consultations available outside business hours by appointment"
+    }
+  },
+  "Login": {
+    "title": "Login",
+    "subtitle": "Access member-only content",
+    "googleLogin": "Sign in with Google",
+    "lineLogin": "Sign in with LINE",
+    "description": "Sign in to access the video library and other exclusive member content."
+  },
+  "Footer": {
+    "description": "DX consulting for small businesses in Miyako Island",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "copyright": "© 2026 Proto-A. All rights reserved.",
+    "lineOfficial": "LINE Official Account"
+  },
+  "Common": {
+    "language": "Language",
+    "backToTop": "Back to top",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "learnMore": "Learn more"
+  }
+}

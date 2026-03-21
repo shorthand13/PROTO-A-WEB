@@ -1,0 +1,242 @@
+{
+  "Navigation": {
+    "home": "ホーム",
+    "about": "会社概要",
+    "services": "サービス",
+    "blog": "ブログ",
+    "caseStudies": "導入事例",
+    "membership": "会員ページ",
+    "contact": "お問い合わせ",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "memberVideos": "動画ライブラリ"
+  },
+  "Home": {
+    "hero": {
+      "title": "宮古島のビジネスを\nデジタルで加速する",
+      "subtitle": "地元に根ざした親しみやすいDXコンサルティングで、あなたのビジネスの可能性を広げます。",
+      "cta": "無料相談はこちら",
+      "secondaryCta": "サービスを見る"
+    },
+    "services": {
+      "title": "サービス",
+      "subtitle": "宮古島のビジネスに最適なDXソリューションをご提供します",
+      "consulting": {
+        "title": "マンツーマンDXコンサルティング",
+        "description": "お客様のビジネスに合わせた個別のDX戦略を一緒に考えます。"
+      },
+      "onlineSupport": {
+        "title": "オンライン業務改善サポート",
+        "description": "オンラインで業務プロセスの改善をサポートします。"
+      },
+      "toolSelection": {
+        "title": "ITツール選定支援",
+        "description": "ビジネスに最適なITツールの選定と導入をお手伝いします。"
+      },
+      "workflow": {
+        "title": "ワークフローデジタル化",
+        "description": "紙ベースの業務をデジタル化し、効率を劇的に向上させます。"
+      }
+    },
+    "blog": {
+      "title": "最新ブログ記事",
+      "subtitle": "DXに関する最新情報やヒントをお届けします",
+      "viewAll": "すべての記事を見る"
+    },
+    "testimonials": {
+      "title": "お客様の声",
+      "subtitle": "Proto-Aをご利用いただいたお客様の感想",
+      "items": [
+        {
+          "name": "山田太郎",
+          "business": "ダイビングショップオーナー",
+          "quote": "LINE公式アカウントの導入で予約管理が劇的に楽になりました。丁寧に教えていただき感謝しています。"
+        },
+        {
+          "name": "佐藤花子",
+          "business": "民宿経営者",
+          "quote": "Googleビジネスプロフィールの最適化で、海外からの予約が3倍に増えました。"
+        },
+        {
+          "name": "田中一郎",
+          "business": "お土産店オーナー",
+          "quote": "POSシステムの導入で在庫管理の手間が大幅に減り、接客に集中できるようになりました。"
+        }
+      ]
+    }
+  },
+  "About": {
+    "title": "会社概要",
+    "mission": {
+      "title": "ミッション",
+      "description": "宮古島の起業家やビジネスオーナーが直面するデジタル課題を、地元に根ざした親しみやすいアプローチで解決します。"
+    },
+    "whyMiyako": {
+      "title": "なぜ宮古島なのか",
+      "description": "宮古島は観光業を中心に急速に発展していますが、多くの中小企業はデジタル化の波に乗り遅れています。大手コンサルティング会社のサービスは画一的で、島のビジネス環境に合わないことが多いのが現状です。私たちは地元の事情を深く理解し、一つひとつのビジネスに寄り添ったサポートを提供します。"
+    },
+    "team": {
+      "title": "チーム紹介",
+      "description": "宮古島を愛し、地元ビジネスの成長を支援する情熱を持ったメンバーが揃っています。"
+    }
+  },
+  "Services": {
+    "title": "サービス一覧",
+    "subtitle": "ビジネスのデジタル化をトータルサポート",
+    "consulting": {
+      "title": "マンツーマンDXコンサルティング",
+      "description": "お客様のビジネス課題を丁寧にヒアリングし、最適なデジタル化プランを一緒に策定します。",
+      "features": [
+        "現状分析と課題の明確化",
+        "カスタムDXロードマップの作成",
+        "月次進捗レビューとフォローアップ",
+        "対面またはオンラインで対応"
+      ]
+    },
+    "onlineSupport": {
+      "title": "オンライン業務改善サポート",
+      "description": "日々の業務プロセスを見直し、効率化のための具体的な改善策をご提案します。",
+      "features": [
+        "業務フロー分析",
+        "ボトルネックの特定と改善提案",
+        "ツール導入後の運用サポート",
+        "リモートでの柔軟な対応"
+      ]
+    },
+    "toolSelection": {
+      "title": "ITツール選定支援",
+      "description": "予算とニーズに合ったITツールを選定し、スムーズな導入をサポートします。",
+      "features": [
+        "ニーズに基づくツール比較",
+        "無料ツールの活用提案",
+        "導入・初期設定サポート",
+        "スタッフ向けトレーニング"
+      ]
+    },
+    "workflow": {
+      "title": "ワークフローデジタル化",
+      "description": "紙ベースの業務をデジタル化し、ミスの削減と業務スピードの向上を実現します。",
+      "features": [
+        "紙書類のデジタル化",
+        "クラウドベースの管理システム構築",
+        "自動化ツールの導入",
+        "データ分析による意思決定支援"
+      ]
+    },
+    "cta": "お問い合わせ"
+  },
+  "Blog": {
+    "title": "ブログ",
+    "subtitle": "DX・IT活用に関する最新情報",
+    "allTags": "すべて",
+    "readMore": "続きを読む",
+    "publishedAt": "公開日",
+    "author": "著者",
+    "tags": "タグ",
+    "relatedPosts": "関連記事",
+    "noPosts": "記事がありません。",
+    "previousPage": "前のページ",
+    "nextPage": "次のページ"
+  },
+  "CaseStudies": {
+    "title": "導入事例",
+    "subtitle": "宮古島のビジネスにおけるDX成功事例",
+    "challenge": "課題",
+    "solution": "解決策",
+    "result": "成果",
+    "clientVoice": "お客様の声",
+    "industry": "業種",
+    "readMore": "詳細を見る",
+    "noCases": "導入事例はまだありません。"
+  },
+  "Membership": {
+    "title": "会員ページ",
+    "subtitle": "会員限定のDX学習コンテンツ",
+    "benefits": {
+      "title": "会員特典",
+      "items": [
+        "DX・IT活用の動画ライブラリが見放題",
+        "初心者向けから上級者向けまで幅広いコンテンツ",
+        "新着動画の優先アクセス",
+        "会員限定のQ&Aサポート"
+      ]
+    },
+    "cta": "ログインして動画を見る",
+    "videos": {
+      "title": "動画ライブラリ",
+      "subtitle": "ビジネスに役立つDX学習動画",
+      "filterCategory": "カテゴリ",
+      "filterDifficulty": "難易度",
+      "filterLanguage": "言語",
+      "allCategories": "すべて",
+      "beginner": "初級",
+      "intermediate": "中級",
+      "advanced": "上級",
+      "japanese": "日本語",
+      "english": "英語",
+      "duration": "再生時間",
+      "loginToWatch": "ログインして視聴する",
+      "relatedVideos": "関連動画",
+      "noVideos": "動画がありません。"
+    }
+  },
+  "Contact": {
+    "title": "お問い合わせ",
+    "subtitle": "お気軽にご連絡ください",
+    "form": {
+      "name": "お名前",
+      "namePlaceholder": "山田太郎",
+      "company": "会社名",
+      "companyPlaceholder": "株式会社○○",
+      "phone": "電話番号",
+      "phonePlaceholder": "090-1234-5678",
+      "email": "メールアドレス",
+      "emailPlaceholder": "example@email.com",
+      "message": "メッセージ",
+      "messagePlaceholder": "ご相談内容をご記入ください...",
+      "submit": "送信する",
+      "sending": "送信中...",
+      "success": "お問い合わせありがとうございます。折り返しご連絡いたします。",
+      "error": "送信に失敗しました。もう一度お試しください。"
+    },
+    "validation": {
+      "nameRequired": "お名前を入力してください",
+      "emailRequired": "メールアドレスを入力してください",
+      "emailInvalid": "正しいメールアドレスを入力してください",
+      "messageRequired": "メッセージを入力してください",
+      "messageMinLength": "メッセージは10文字以上で入力してください"
+    },
+    "line": {
+      "title": "LINEでのお問い合わせ",
+      "description": "LINEからもお気軽にお問い合わせいただけます。QRコードを読み取るか、下のボタンをタップしてください。",
+      "addFriend": "友だち追加"
+    },
+    "hours": {
+      "title": "営業時間",
+      "weekdays": "月〜金: 9:00 - 18:00",
+      "weekend": "土日祝: 休業",
+      "note": "※オンライン相談は事前予約で時間外も対応可能"
+    }
+  },
+  "Login": {
+    "title": "ログイン",
+    "subtitle": "会員限定コンテンツにアクセス",
+    "googleLogin": "Googleでログイン",
+    "lineLogin": "LINEでログイン",
+    "description": "ログインすると、動画ライブラリなどの会員限定コンテンツをご利用いただけます。"
+  },
+  "Footer": {
+    "description": "宮古島の中小企業向けDXコンサルティング",
+    "quickLinks": "クイックリンク",
+    "followUs": "フォローする",
+    "copyright": "© 2026 Proto-A. All rights reserved.",
+    "lineOfficial": "LINE公式アカウント"
+  },
+  "Common": {
+    "language": "言語",
+    "backToTop": "トップに戻る",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "learnMore": "詳しく見る"
+  }
+}

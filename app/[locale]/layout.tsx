@@ -41,13 +41,16 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${mPlus1p.variable} h-full antialiased`}>
+    <html
+      lang={locale}
+      className={`${mPlus1p.variable} h-full bg-white antialiased`}
+    >
       <head>
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={localBusinessJsonLd()} />
       </head>
       <body
-        className={`min-h-full flex flex-col bg-background text-foreground ${mPlus1p.className}`}
+        className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
       >
         <NextIntlClientProvider>
           <Header />

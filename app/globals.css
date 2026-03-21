@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* ライトのみ（ダークモード対応なし）。最背面は常に白 */
+html {
+  background-color: #ffffff;
+  color-scheme: only light;
+}
+
 :root {
   /* ProtoA — 白ベース + ロゴのティールをアクセント */
   --teal: #00b09b;
@@ -60,7 +66,7 @@
 }
 
 body {
-  background: var(--background);
+  background-color: #ffffff;
   color: var(--foreground);
   font-size: 16px;
   line-height: 1.75;

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
+import { HERO_IMAGE_SRC } from "@/lib/hero-asset";
 
 export default async function HomePage({
   params,
@@ -19,17 +20,18 @@ function HomeContent() {
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Hero — Adobe Stock イラスト（public/hero-adobe.jpg） */}
+      {/* Hero — イラスト（public/protoa-hero.jpeg） */}
       <section className="relative min-h-[min(68vh,560px)] overflow-hidden border-b border-border bg-white text-foreground">
         <div className="absolute inset-0 z-0">
           {/* next/image の fill は親に relative + 高さが必要 */}
           <div className="relative h-full min-h-[min(68vh,560px)] w-full">
             <Image
-              src="/hero-adobe.jpg"
+              src={HERO_IMAGE_SRC}
               alt=""
               fill
               priority
               sizes="100vw"
+              unoptimized
               className="object-cover object-[center_45%] sm:object-center"
             />
           </div>

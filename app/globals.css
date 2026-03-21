@@ -56,7 +56,7 @@
   --color-sunset-light: var(--color-sunset-light);
   --color-sand: var(--color-sand);
   --color-sand-dark: var(--color-sand-dark);
-  --font-sans: var(--font-noto-sans-jp);
+  --font-sans: var(--font-sans-jp);
 }
 
 body {
@@ -64,4 +64,14 @@ body {
   color: var(--foreground);
   font-size: 16px;
   line-height: 1.75;
+  letter-spacing: 0.02em;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }

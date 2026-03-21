@@ -5,6 +5,7 @@ import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import LogoLink from "./LogoLink";
 
 const navItems = [
   { key: "home", href: "/" },
@@ -21,13 +22,10 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-primary">
-            Proto-A
-          </Link>
+          <LogoLink priority />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">

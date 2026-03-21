@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -15,29 +16,47 @@ export default async function HomePage({
 
 function HomeContent() {
   const t = useTranslations("Home");
-  const tNav = useTranslations("Navigation");
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-primary via-primary-dark to-ocean-dark px-4 py-24 sm:py-32 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight whitespace-pre-line">
+      {/* Hero — Adobe Stock イラスト（public/hero-adobe.jpg） */}
+      <section className="relative min-h-[min(68vh,560px)] overflow-hidden border-b border-border bg-white text-foreground">
+        <div className="absolute inset-0 z-0">
+          {/* next/image の fill は親に relative + 高さが必要 */}
+          <div className="relative h-full min-h-[min(68vh,560px)] w-full">
+            <Image
+              src="/hero-adobe.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[center_45%] sm:object-center"
+            />
+          </div>
+        </div>
+        {/* 左の文字だけ読みやすく／右はイラストが見えるよう薄め */}
+        <div
+          className="absolute inset-0 z-[1] bg-gradient-to-r from-white/90 via-white/35 to-transparent sm:from-white/85 sm:via-white/20"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+          <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
+          <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight whitespace-pre-line text-foreground drop-shadow-sm">
             {t("hero.title")}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-white/90">
+          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground">
             {t("hero.subtitle")}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-cta px-8 py-4 text-lg font-bold text-white shadow-lg hover:bg-cta-light transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
             >
               {t("hero.cta")}
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center rounded-full border-2 border-primary bg-white/80 px-8 py-4 text-lg font-bold text-primary shadow-sm backdrop-blur-sm hover:bg-white transition-colors"
             >
               {t("hero.secondaryCta")}
             </Link>

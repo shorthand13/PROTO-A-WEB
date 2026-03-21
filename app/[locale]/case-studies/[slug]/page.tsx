@@ -59,16 +59,16 @@ function CaseStudyContent({
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-br from-primary to-primary-dark px-4 py-16 sm:py-20 text-white">
+      <section className="border-b border-border bg-background px-4 py-16 sm:py-20 text-foreground">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
           >
             <ArrowLeft size={16} />
             {t("title")}
           </Link>
-          <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-medium mb-4">
+          <span className="inline-block rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-4">
             {study.frontmatter.industry}
           </span>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">

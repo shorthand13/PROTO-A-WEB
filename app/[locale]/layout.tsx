@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { M_PLUS_1p } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -9,17 +9,18 @@ import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
 import "../globals.css";
 
-const notoSansJP = Noto_Sans_JP({
-  variable: "--font-noto-sans-jp",
-  subsets: ["latin"],
+const mPlus1p = M_PLUS_1p({
+  variable: "--font-sans-jp",
   weight: ["400", "500", "700"],
   display: "swap",
+  adjustFontFallback: true,
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Proto-A",
-    default: "Proto-A — 宮古島DXコンサルティング",
+    template: "%s | ProtoA",
+    default: "ProtoA — 宮古島DXコンサルティング",
   },
   description:
     "宮古島の中小企業向けDXコンサルティング。地元に根ざした親しみやすいアプローチでデジタル化を支援します。",
@@ -40,12 +41,14 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${notoSansJP.variable} h-full antialiased`}>
+    <html lang={locale} className={`${mPlus1p.variable} h-full antialiased`}>
       <head>
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={localBusinessJsonLd()} />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
+      <body
+        className={`min-h-full flex flex-col bg-background text-foreground ${mPlus1p.className}`}
+      >
         <NextIntlClientProvider>
           <Header />
           <main className="flex-1">{children}</main>

@@ -209,7 +209,8 @@
     "line": {
       "title": "Contact via LINE",
       "description": "You can also reach us through LINE. Scan the QR code or tap the button below.",
-      "addFriend": "Add Friend"
+      "addFriend": "Add Friend",
+      "qrAlt": "LINE Official Account QR code"
     },
     "hours": {
       "title": "Business Hours",
@@ -229,8 +230,11 @@
     "description": "DX consulting for small businesses in Miyako Island",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
-    "copyright": "© 2026 Proto-A. All rights reserved.",
-    "lineOfficial": "LINE Official Account"
+    "copyright": "© 2026 ProtoA. All rights reserved.",
+    "lineOfficial": "LINE Official Account",
+    "instagram": "Instagram",
+    "lineQrAlt": "LINE Official Account QR code",
+    "instagramQrAlt": "Instagram QR code"
   },
   "Common": {
     "language": "Language",

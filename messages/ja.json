@@ -209,7 +209,8 @@
     "line": {
       "title": "LINEでのお問い合わせ",
       "description": "LINEからもお気軽にお問い合わせいただけます。QRコードを読み取るか、下のボタンをタップしてください。",
-      "addFriend": "友だち追加"
+      "addFriend": "友だち追加",
+      "qrAlt": "LINE公式アカウントのQRコード"
     },
     "hours": {
       "title": "営業時間",
@@ -229,8 +230,11 @@
     "description": "宮古島の中小企業向けDXコンサルティング",
     "quickLinks": "クイックリンク",
     "followUs": "フォローする",
-    "copyright": "© 2026 Proto-A. All rights reserved.",
-    "lineOfficial": "LINE公式アカウント"
+    "copyright": "© 2026 ProtoA. All rights reserved.",
+    "lineOfficial": "LINE公式アカウント",
+    "instagram": "Instagram",
+    "lineQrAlt": "LINE公式アカウントのQRコード",
+    "instagramQrAlt": "InstagramのQRコード"
   },
   "Common": {
     "language": "言語",

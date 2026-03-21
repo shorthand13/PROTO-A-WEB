@@ -31,7 +31,7 @@ export function generatePageMetadata({
       title,
       description,
       url,
-      siteName: "Proto-A",
+      siteName: "ProtoA",
       locale: locale === "ja" ? "ja_JP" : "en_US",
       type: "website",
     },

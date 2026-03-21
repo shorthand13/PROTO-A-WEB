@@ -18,8 +18,8 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Proto-A",
-    default: "Proto-A — 宮古島DXコンサルティング",
+    template: "%s | ProtoA",
+    default: "ProtoA — 宮古島DXコンサルティング",
   },
   description:
     "宮古島の中小企業向けDXコンサルティング。地元に根ざした親しみやすいアプローチでデジタル化を支援します。",

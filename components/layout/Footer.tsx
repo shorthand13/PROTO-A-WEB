@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import LogoLink from "./LogoLink";
 
 export default function Footer() {
   const t = useTranslations("Footer");
@@ -11,9 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="text-xl font-bold text-primary">
-              Proto-A
-            </Link>
+            <LogoLink />
             <p className="mt-3 text-sm text-muted-foreground">
               {t("description")}
             </p>

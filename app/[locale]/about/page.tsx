@@ -19,7 +19,7 @@ function AboutContent() {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-primary to-primary-dark px-4 py-16 sm:py-20 text-white">
+      <section className="border-b border-border bg-background px-4 py-16 sm:py-20 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold">{t("title")}</h1>
         </div>

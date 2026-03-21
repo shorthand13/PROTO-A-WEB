@@ -1,43 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Miyako Island Color Palette */
-  --color-ocean: #0077b6;
-  --color-ocean-light: #90e0ef;
-  --color-ocean-dark: #023e8a;
-  --color-coral: #ff6b6b;
-  --color-coral-light: #ffa5a5;
-  --color-sunset: #ff8c42;
-  --color-sunset-light: #ffb380;
-  --color-sand: #f4e4c1;
-  --color-sand-dark: #d4c4a1;
+  /* ProtoA — 白ベース + ロゴのティールをアクセント */
+  --teal: #00b09b;
+  --teal-bright: #00c9ae;
+  --teal-glow: #33ccb8;
+
+  --color-ocean: var(--teal);
+  --color-ocean-light: #e8f8f5;
+  --color-ocean-dark: #006b5c;
+  --color-coral: var(--teal-bright);
+  --color-coral-light: #b3f0e6;
+  --color-sunset: var(--teal);
+  --color-sunset-light: var(--teal-bright);
+  --color-sand: #f4f4f5;
+  --color-sand-dark: #e8e8ea;
 
   --background: #ffffff;
   --foreground: #111827;
-  --primary: var(--color-ocean);
-  --primary-light: var(--color-ocean-light);
-  --primary-dark: var(--color-ocean-dark);
-  --accent: var(--color-coral);
-  --accent-light: var(--color-coral-light);
-  --cta: var(--color-sunset);
-  --cta-light: var(--color-sunset-light);
-  --surface: var(--color-sand);
-  --surface-dark: var(--color-sand-dark);
-  --muted: #f3f4f6;
+  --primary: var(--teal);
+  --primary-light: var(--teal-glow);
+  --primary-dark: #008f7d;
+  --accent: var(--teal-bright);
+  --accent-light: #b3f0e6;
+  --cta: var(--teal);
+  --cta-light: var(--teal-bright);
+  --surface: #f7f7f8;
+  --surface-dark: #f0f0f2;
+  --muted: #f4f4f5;
   --muted-foreground: #6b7280;
-  --border: #e5e7eb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f1f5f9;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --border: #334155;
-    --surface: #1e293b;
-    --surface-dark: #0f172a;
-  }
+  --border: #e8e8ea;
 }
 
 @theme inline {

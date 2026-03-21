@@ -2,7 +2,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Proto-A",
+    name: "ProtoA",
     description:
       "宮古島の中小企業向けDXコンサルティング。地元に根ざした親しみやすいアプローチでデジタル化を支援します。",
     url: "https://proto-a.com",
@@ -13,7 +13,7 @@ export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Proto-A",
+    name: "ProtoA",
     description: "DXコンサルティング - 宮古島",
     address: {
       "@type": "PostalAddress",
@@ -49,7 +49,7 @@ export function blogPostingJsonLd({
     },
     publisher: {
       "@type": "Organization",
-      name: "Proto-A",
+      name: "ProtoA",
     },
     url,
   };

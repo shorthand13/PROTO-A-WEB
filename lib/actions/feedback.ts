@@ -32,33 +32,7 @@ export async function submitFeedback(
     return { success: false, error: true };
   }
 
-  const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
-
-  if (webhookUrl) {
-    try {
-      const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "feedback",
-          rating: result.data.rating,
-          category: result.data.category,
-          message: result.data.message,
-          page: result.data.page ?? "",
-          screenshot: screenshot || "",
-          submittedAt: new Date().toISOString(),
-        }),
-      });
-
-      if (!res.ok) {
-        console.error("Feedback webhook failed:", res.status, await res.text());
-      }
-    } catch (err) {
-      console.error("Feedback webhook error:", err);
-    }
-  }
-
-  // Also send LINE notification
+  // Send LINE notification first (small payload, fast)
   const lineToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
   const lineUserIds =
     process.env.LINE_ADMIN_USER_IDS?.split(",")
@@ -97,6 +71,33 @@ export async function submitFeedback(
         }
       })
     );
+  }
+
+  // Send to webhook (includes large screenshot payload)
+  const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
+
+  if (webhookUrl) {
+    try {
+      const res = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "feedback",
+          rating: result.data.rating,
+          category: result.data.category,
+          message: result.data.message,
+          page: result.data.page ?? "",
+          screenshot: screenshot || "",
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      if (!res.ok) {
+        console.error("Feedback webhook failed:", res.status, await res.text());
+      }
+    } catch (err) {
+      console.error("Feedback webhook error:", err);
+    }
   }
 
   return { success: true, error: false };

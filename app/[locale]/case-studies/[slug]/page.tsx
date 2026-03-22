@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getCaseStudy, getCaseStudies } from "@/lib/case-studies";
+import { getCMSCaseStudy } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 
@@ -26,7 +27,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const study = getCaseStudy(locale, slug);
+  const study = getCaseStudy(locale, slug) ?? (await getCMSCaseStudy(slug));
   if (!study) return {};
 
   return {
@@ -43,7 +44,7 @@ export default async function CaseStudyPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const study = getCaseStudy(locale, slug);
+  const study = getCaseStudy(locale, slug) ?? (await getCMSCaseStudy(slug));
   if (!study) notFound();
 
   return <CaseStudyContent study={study} />;
@@ -81,7 +82,11 @@ function CaseStudyContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary">
-            <MDXRemote source={study.content} />
+            {study.content.startsWith("<") ? (
+              <div dangerouslySetInnerHTML={{ __html: study.content }} />
+            ) : (
+              <MDXRemote source={study.content} />
+            )}
           </article>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 
@@ -26,7 +27,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = getBlogPost(locale, slug);
+  // Try local first, then CMS
+  const post = getBlogPost(locale, slug) ?? (await getCMSBlogPost(slug));
   if (!post) return {};
 
   return {
@@ -43,7 +45,8 @@ export default async function BlogPostPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = getBlogPost(locale, slug);
+  // Try local first, then CMS
+  const post = getBlogPost(locale, slug) ?? (await getCMSBlogPost(slug));
   if (!post) notFound();
 
   return <BlogPostContent post={post} />;
@@ -96,7 +99,11 @@ function BlogPostContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
-            <MDXRemote source={post.content} />
+            {post.content.startsWith("<") ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            ) : (
+              <MDXRemote source={post.content} />
+            )}
           </article>
         </div>
       </section>

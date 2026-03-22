@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getBlogPosts, getAllTags, getPaginatedPosts } from "@/lib/blog";
+import { getCMSBlogPosts, getCMSAllTags } from "@/lib/microcms";
 import BlogCard from "@/components/blog/BlogCard";
 import TagFilter from "@/components/blog/TagFilter";
 import { Link } from "@/i18n/routing";
@@ -16,8 +17,17 @@ export default async function BlogPage({
   const { tag, page } = await searchParams;
   setRequestLocale(locale);
 
-  const allPosts = getBlogPosts(locale);
-  const tags = getAllTags(locale);
+  // Merge local Markdown posts with microCMS posts
+  const localPosts = getBlogPosts(locale);
+  const cmsPosts = await getCMSBlogPosts(locale);
+  const allPosts = [...cmsPosts, ...localPosts].sort(
+    (a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date)
+  );
+
+  const localTags = getAllTags(locale);
+  const cmsTags = await getCMSAllTags(locale);
+  const tags = Array.from(new Set([...localTags, ...cmsTags])).sort();
+
   const filtered = tag
     ? allPosts.filter((p) => p.frontmatter.tags?.includes(tag))
     : allPosts;

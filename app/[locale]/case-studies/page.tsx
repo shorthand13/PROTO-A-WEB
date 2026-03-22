@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getCaseStudies } from "@/lib/case-studies";
+import { getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 
 export default async function CaseStudiesPage({
@@ -11,7 +12,9 @@ export default async function CaseStudiesPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const studies = getCaseStudies(locale);
+  const localStudies = getCaseStudies(locale);
+  const cmsStudies = await getCMSCaseStudies(locale);
+  const studies = [...cmsStudies, ...localStudies];
 
   return <CaseStudiesContent studies={studies} />;
 }

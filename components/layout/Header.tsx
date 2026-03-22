@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import LogoLink from "./LogoLink";
 
@@ -20,6 +21,7 @@ export default function Header() {
   const t = useTranslations("Navigation");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
@@ -53,12 +55,21 @@ export default function Header() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <Link
-              href="/login"
-              className="hidden md:inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
-            >
-              {t("login")}
-            </Link>
+            {session ? (
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="hidden md:inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              >
+                {t("logout")}
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="hidden md:inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
+              >
+                {t("login")}
+              </Link>
+            )}
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -95,13 +106,22 @@ export default function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/login"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-base font-medium text-white hover:bg-primary-dark transition-colors"
-            >
-              {t("login")}
-            </Link>
+            {session ? (
+              <button
+                onClick={() => { setMobileOpen(false); signOut({ callbackUrl: "/" }); }}
+                className="mt-2 rounded-full border border-border px-4 py-3 text-center text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              >
+                {t("logout")}
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setMobileOpen(false)}
+                className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-base font-medium text-white hover:bg-primary-dark transition-colors"
+              >
+                {t("login")}
+              </Link>
+            )}
           </nav>
         </div>
       )}

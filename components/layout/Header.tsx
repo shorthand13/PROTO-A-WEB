@@ -56,12 +56,20 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
             {session ? (
-              <button
-                onClick={() => signOut({ callbackUrl: "/" })}
-                className="hidden md:inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              >
-                {t("logout")}
-              </button>
+              <div className="hidden md:flex items-center gap-2">
+                <Link
+                  href="/membership"
+                  className="inline-flex items-center justify-center rounded-full bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-cta-light transition-colors"
+                >
+                  {t("membership")}
+                </Link>
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  {t("logout")}
+                </button>
+              </div>
             ) : (
               <Link
                 href="/login"
@@ -107,12 +115,21 @@ export default function Header() {
               );
             })}
             {session ? (
-              <button
-                onClick={() => { setMobileOpen(false); signOut({ callbackUrl: "/" }); }}
-                className="mt-2 rounded-full border border-border px-4 py-3 text-center text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              >
-                {t("logout")}
-              </button>
+              <>
+                <Link
+                  href="/membership"
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-2 rounded-full bg-cta px-4 py-3 text-center text-base font-bold text-white hover:bg-cta-light transition-colors"
+                >
+                  {t("membership")}
+                </Link>
+                <button
+                  onClick={() => { setMobileOpen(false); signOut({ callbackUrl: "/" }); }}
+                  className="mt-2 rounded-full border border-border px-4 py-3 text-center text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  {t("logout")}
+                </button>
+              </>
             ) : (
               <Link
                 href="/login"

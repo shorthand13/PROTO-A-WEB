@@ -261,6 +261,7 @@
     "error": "Failed to send. Please try again.",
     "screenshot": "Screenshot (optional)",
     "captureScreenshot": "Capture screen",
+    "uploadImage": "Upload image",
     "capturing": "Capturing...",
     "thankYou": "Thank you!",
     "thankYouMessage": "Your feedback helps us make this site better."

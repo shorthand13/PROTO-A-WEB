@@ -260,7 +260,8 @@
     "sending": "送信中...",
     "error": "送信に失敗しました。もう一度お試しください。",
     "screenshot": "スクリーンショット（任意）",
-    "captureScreenshot": "画面をキャプチャする",
+    "captureScreenshot": "画面をキャプチャ",
+    "uploadImage": "画像を選択",
     "capturing": "キャプチャ中...",
     "thankYou": "ありがとうございます！",
     "thankYouMessage": "いただいたフィードバックを参考に、サイトの改善に取り組みます。"

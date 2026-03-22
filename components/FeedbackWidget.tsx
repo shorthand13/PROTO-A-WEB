@@ -3,7 +3,7 @@
 import { useState, useActionState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { MessageSquare, X, Send, Camera, Trash2 } from "lucide-react";
+import { MessageSquare, X, Send, Camera, ImagePlus, Trash2 } from "lucide-react";
 import { submitFeedback, type FeedbackState } from "@/lib/actions/feedback";
 
 const initialState: FeedbackState = { success: false, error: false };
@@ -18,19 +18,24 @@ export default function FeedbackWidget() {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [capturing, setCapturing] = useState(false);
   const screenshotInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [state, formAction, isPending] = useActionState(
     submitFeedback,
     initialState
   );
 
+  function canScreenCapture() {
+    return typeof navigator !== "undefined" &&
+      navigator.mediaDevices &&
+      "getDisplayMedia" in navigator.mediaDevices;
+  }
+
   async function captureScreenshot() {
     setCapturing(true);
-    // Temporarily hide the feedback panel for a clean capture
     const panel = document.getElementById("feedback-overlay");
     if (panel) panel.style.display = "none";
 
     try {
-      // Use browser-native Screen Capture API
       const stream = await navigator.mediaDevices.getDisplayMedia({
         video: { displaySurface: "browser" },
         preferCurrentTab: true,
@@ -55,6 +60,28 @@ export default function FeedbackWidget() {
       if (panel) panel.style.display = "";
       setCapturing(false);
     }
+  }
+
+  function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Resize to keep payload small
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxWidth = 800;
+        const scale = Math.min(1, maxWidth / img.width);
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
+        setScreenshot(canvas.toDataURL("image/jpeg", 0.6));
+      };
+      img.src = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   function handleClose() {
@@ -212,15 +239,34 @@ export default function FeedbackWidget() {
                         </button>
                       </div>
                     ) : (
-                      <button
-                        type="button"
-                        onClick={captureScreenshot}
-                        disabled={capturing}
-                        className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-50"
-                      >
-                        <Camera size={16} />
-                        {capturing ? t("capturing") : t("captureScreenshot")}
-                      </button>
+                      <div className="flex gap-2">
+                        {canScreenCapture() && (
+                          <button
+                            type="button"
+                            onClick={captureScreenshot}
+                            disabled={capturing}
+                            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-50"
+                          >
+                            <Camera size={16} />
+                            {capturing ? t("capturing") : t("captureScreenshot")}
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-dashed border-border py-3 text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                        >
+                          <ImagePlus size={16} />
+                          {t("uploadImage")}
+                        </button>
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileSelect}
+                          className="hidden"
+                        />
+                      </div>
                     )}
                   </div>
 

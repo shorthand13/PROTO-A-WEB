@@ -9,6 +9,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
 import { Analytics } from "@vercel/analytics/next";
 import AuthProvider from "@/components/auth/AuthProvider";
+import DisclaimerPopup from "@/components/DisclaimerPopup";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -59,6 +60,7 @@ export default async function LocaleLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <DisclaimerPopup />
           </NextIntlClientProvider>
         </AuthProvider>
         <Analytics />

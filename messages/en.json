@@ -242,6 +242,13 @@
     "lineQrAlt": "LINE Official Account QR code",
     "instagramQrAlt": "Instagram QR code"
   },
+  "Disclaimer": {
+    "badge": "In Development",
+    "title": "Please Note",
+    "unstable": "This website is currently under development and may be unstable.",
+    "wip": "The services listed are a work in progress and subject to change.",
+    "accept": "Got it"
+  },
   "Common": {
     "language": "Language",
     "backToTop": "Back to top",

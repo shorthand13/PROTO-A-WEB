@@ -242,6 +242,13 @@
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード"
   },
+  "Disclaimer": {
+    "badge": "開発中",
+    "title": "ご利用にあたって",
+    "unstable": "本サイトは現在開発段階のため、動作が不安定な場合があります。",
+    "wip": "掲載されているサービス内容は準備中であり、変更される可能性があります。",
+    "accept": "了解しました"
+  },
   "Common": {
     "language": "言語",
     "backToTop": "トップに戻る",

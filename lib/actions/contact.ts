@@ -32,42 +32,46 @@ export async function submitContact(
 
   const { name, company, phone, email, message } = result.data;
 
-  // Send LINE push message notification
+  // Send LINE push message notification to all admins
   const lineToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-  const lineUserId = process.env.LINE_ADMIN_USER_ID;
+  const lineUserIds = process.env.LINE_ADMIN_USER_IDS?.split(",").map((id) => id.trim()).filter(Boolean) ?? [];
 
-  if (lineToken && lineUserId) {
-    try {
-      const lineMessage = [
-        "📩 新しいお問い合わせ",
-        `名前: ${name}`,
-        company ? `会社: ${company}` : null,
-        phone ? `電話: ${phone}` : null,
-        `メール: ${email}`,
-        `内容: ${message}`,
-        `送信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
-      ]
-        .filter(Boolean)
-        .join("\n");
+  if (lineToken && lineUserIds.length > 0) {
+    const lineMessage = [
+      "📩 新しいお問い合わせ",
+      `名前: ${name}`,
+      company ? `会社: ${company}` : null,
+      phone ? `電話: ${phone}` : null,
+      `メール: ${email}`,
+      `内容: ${message}`,
+      `送信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-      const res = await fetch("https://api.line.me/v2/bot/message/push", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${lineToken}`,
-        },
-        body: JSON.stringify({
-          to: lineUserId,
-          messages: [{ type: "text", text: lineMessage }],
-        }),
-      });
+    await Promise.all(
+      lineUserIds.map(async (userId) => {
+        try {
+          const res = await fetch("https://api.line.me/v2/bot/message/push", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${lineToken}`,
+            },
+            body: JSON.stringify({
+              to: userId,
+              messages: [{ type: "text", text: lineMessage }],
+            }),
+          });
 
-      if (!res.ok) {
-        console.error("LINE push failed:", res.status, await res.text());
-      }
-    } catch (err) {
-      console.error("LINE push error:", err);
-    }
+          if (!res.ok) {
+            console.error(`LINE push failed for ${userId}:`, res.status, await res.text());
+          }
+        } catch (err) {
+          console.error(`LINE push error for ${userId}:`, err);
+        }
+      })
+    );
   }
 
   // Send to webhook (Google Sheets, etc.)
@@ -92,7 +96,7 @@ export async function submitContact(
     }
   }
 
-  if (!lineToken && !webhookUrl) {
+  if (!lineToken && !lineUserIds.length && !webhookUrl) {
     console.log("Contact form submission (no notification configured):", result.data);
   }
 

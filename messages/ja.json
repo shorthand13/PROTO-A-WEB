@@ -242,6 +242,29 @@
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード"
   },
+  "Feedback": {
+    "button": "フィードバック",
+    "title": "ご意見をお聞かせください",
+    "subtitle": "サイトの改善に役立てさせていただきます",
+    "rating": "サイトの評価",
+    "category": "カテゴリ",
+    "categories": {
+      "usability": "サイトの使いやすさ",
+      "services": "サービス内容",
+      "content": "コンテンツ・記事",
+      "other": "その他"
+    },
+    "message": "ご意見・ご感想",
+    "messagePlaceholder": "気になった点や改善のご提案などをお書きください...",
+    "submit": "送信する",
+    "sending": "送信中...",
+    "error": "送信に失敗しました。もう一度お試しください。",
+    "screenshot": "スクリーンショット（任意）",
+    "captureScreenshot": "画面をキャプチャする",
+    "capturing": "キャプチャ中...",
+    "thankYou": "ありがとうございます！",
+    "thankYouMessage": "いただいたフィードバックを参考に、サイトの改善に取り組みます。"
+  },
   "Disclaimer": {
     "badge": "開発中",
     "title": "ご利用にあたって",

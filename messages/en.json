@@ -242,6 +242,29 @@
     "lineQrAlt": "LINE Official Account QR code",
     "instagramQrAlt": "Instagram QR code"
   },
+  "Feedback": {
+    "button": "Feedback",
+    "title": "Share Your Feedback",
+    "subtitle": "Help us improve this website",
+    "rating": "Rate this site",
+    "category": "Category",
+    "categories": {
+      "usability": "Website usability",
+      "services": "Services offered",
+      "content": "Content & articles",
+      "other": "Other"
+    },
+    "message": "Your feedback",
+    "messagePlaceholder": "Tell us what you think or suggest improvements...",
+    "submit": "Send Feedback",
+    "sending": "Sending...",
+    "error": "Failed to send. Please try again.",
+    "screenshot": "Screenshot (optional)",
+    "captureScreenshot": "Capture screen",
+    "capturing": "Capturing...",
+    "thankYou": "Thank you!",
+    "thankYouMessage": "Your feedback helps us make this site better."
+  },
   "Disclaimer": {
     "badge": "In Development",
     "title": "Please Note",

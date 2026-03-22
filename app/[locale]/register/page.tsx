@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
-import { SignIn } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 
-export default async function LoginPage({
+export default async function RegisterPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -11,9 +11,9 @@ export default async function LoginPage({
 
   return (
     <div className="flex flex-1 items-center justify-center py-20 px-4">
-      <SignIn
+      <SignUp
         routing="hash"
-        fallbackRedirectUrl={`/${locale}/membership`}
+        fallbackRedirectUrl={`/${locale}/onboarding`}
       />
     </div>
   );

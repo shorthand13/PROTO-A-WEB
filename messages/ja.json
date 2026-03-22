@@ -8,6 +8,7 @@
     "membership": "会員ページ",
     "contact": "お問い合わせ",
     "login": "ログイン",
+    "register": "新規登録",
     "logout": "ログアウト",
     "memberVideos": "動画ライブラリ"
   },
@@ -241,6 +242,80 @@
     "instagram": "Instagram",
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード"
+  },
+  "Onboarding": {
+    "title": "ビジネス情報の登録",
+    "subtitle": "より良いサービスを提供するため、ビジネスについて教えてください",
+    "company": "会社名・事業名",
+    "companyPlaceholder": "株式会社○○ / ○○商店",
+    "industry": "業種",
+    "selectPlaceholder": "選択してください",
+    "industries": {
+      "construction": "建設",
+      "manufacturing": "製造",
+      "tourism": "観光・宿泊",
+      "food": "飲食",
+      "retail": "小売",
+      "transport": "運輸",
+      "it": "IT",
+      "agriculture": "農業・漁業",
+      "salon": "サロン・美容室",
+      "other": "その他"
+    },
+    "companySize": "従業員規模",
+    "sizes": {
+      "xs": "1〜5人",
+      "small": "6〜20人",
+      "medium": "21〜50人",
+      "large": "51人以上"
+    },
+    "challengesLabel": "現在の経営課題",
+    "upTo3": "最大3つまで選択できます",
+    "top3": "上位3つを選択してください",
+    "challenges": {
+      "labor": "人手不足",
+      "sales": "売上拡大",
+      "marketing": "集客",
+      "efficiency": "業務効率化（IT・デジタル活用）",
+      "training": "人材育成",
+      "funding": "資金繰り",
+      "other": "その他"
+    },
+    "dxStatusLabel": "現在、デジタル化やDXにどの程度取り組んでいますか？",
+    "dxStatus": {
+      "none": "まだ何もしていない",
+      "considering": "必要性は感じているが、まだ検討段階",
+      "partial": "一部のツールや業務で導入済み",
+      "active": "積極的に取り組んでいる"
+    },
+    "dxBarriersLabel": "DXや業務のデジタル化を進める上で、壁になっていることを選んでください",
+    "dxBarriers": {
+      "budget": "導入・運用の予算がない",
+      "resources": "担当できる人材・時間がない",
+      "direction": "何から始めればいいかわからない",
+      "adoption": "導入後に使いこなせるか不安",
+      "experts": "相談できる業者や専門家が身近にいない",
+      "staff": "従業員やスタッフの理解・協力が得にくい",
+      "noNeed": "必要性をあまり感じていない",
+      "noBarrier": "すでに取り組んでいるので特に壁はない",
+      "other": "その他"
+    },
+    "supportLabel": "デジタル活用や業務改善について、あったら嬉しい支援はどれですか？",
+    "support": {
+      "consultation": "気軽に相談できる窓口（専門家への相談）",
+      "seminar": "自社の課題を整理するセミナー・ワークショップ",
+      "handson": "ツール導入や業務改善を一緒に進める伴走支援",
+      "subsidy": "補助金・助成金の情報や申請サポート",
+      "training": "社員向けのデジタル研修・講座",
+      "cases": "他の企業の事例を学べる機会",
+      "noNeed": "特に必要は感じていない",
+      "other": "その他"
+    },
+    "submit": "登録して始める",
+    "saving": "保存中...",
+    "error": "保存に失敗しました。もう一度お試しください。",
+    "skipNote": "後から設定することもできます。",
+    "skip": "スキップ"
   },
   "Feedback": {
     "button": "フィードバック",

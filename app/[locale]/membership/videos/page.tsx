@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { auth } from "@/lib/auth";
+import { auth } from "@clerk/nextjs/server";
 import { getVideos, getVideoCategories } from "@/lib/videos";
 import VideoFilter from "@/components/video/VideoFilter";
 
@@ -12,7 +12,7 @@ export default async function VideosPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const session = await auth();
+  const { userId } = await auth();
   const videos = getVideos();
   const categories = getVideoCategories();
 
@@ -20,7 +20,7 @@ export default async function VideosPage({
     <VideosContent
       videos={JSON.parse(JSON.stringify(videos))}
       categories={categories}
-      isAuthenticated={!!session?.user}
+      isAuthenticated={!!userId}
     />
   );
 }

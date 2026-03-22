@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import { auth } from "@/lib/auth";
+import { auth } from "@clerk/nextjs/server";
 import { getVideo, getVideos } from "@/lib/videos";
 import VideoPlayer from "@/components/video/VideoPlayer";
 import { Clock } from "lucide-react";
@@ -29,12 +29,12 @@ export default async function VideoDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const session = await auth();
+  const { userId } = await auth();
   const video = getVideo(slug);
 
   if (!video) notFound();
 
-  if (video.frontmatter.memberOnly && !session?.user) {
+  if (video.frontmatter.memberOnly && !userId) {
     redirect(`/${locale}/login`);
   }
 

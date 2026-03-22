@@ -83,6 +83,7 @@ export async function submitContact(
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          type: "contact",
           ...result.data,
           submittedAt: new Date().toISOString(),
         }),

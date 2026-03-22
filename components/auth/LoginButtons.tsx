@@ -9,7 +9,7 @@ export default function LoginButtons() {
   return (
     <div className="space-y-3">
       <button
-        onClick={() => signIn("google", { callbackUrl: "/" })}
+        onClick={() => signIn("google", { callbackUrl: "/login/success" })}
         className="flex w-full items-center justify-center gap-3 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground hover:bg-muted transition-colors"
       >
         <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@ export default function LoginButtons() {
       </button>
 
       <button
-        onClick={() => signIn("line", { callbackUrl: "/" })}
+        onClick={() => signIn("line", { callbackUrl: "/login/success" })}
         className="flex w-full items-center justify-center gap-3 rounded-full bg-[#06C755] px-6 py-3 text-sm font-bold text-white hover:bg-[#05b34d] transition-colors"
       >
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="white">

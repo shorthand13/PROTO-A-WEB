@@ -226,6 +226,12 @@
     "lineLogin": "LINEでログイン",
     "description": "ログインすると、動画ライブラリなどの会員限定コンテンツをご利用いただけます。"
   },
+  "LoginSuccess": {
+    "title": "ログインしました",
+    "subtitle": "ようこそ！会員限定コンテンツをお楽しみください。",
+    "redirecting": "3秒後に会員ページへ移動します...",
+    "cta": "会員ページへ"
+  },
   "Footer": {
     "description": "宮古島の中小企業向けDXコンサルティング",
     "quickLinks": "クイックリンク",

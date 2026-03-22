@@ -226,6 +226,12 @@
     "lineLogin": "Sign in with LINE",
     "description": "Sign in to access the video library and other exclusive member content."
   },
+  "LoginSuccess": {
+    "title": "Login Successful",
+    "subtitle": "Welcome! Enjoy your access to exclusive member content.",
+    "redirecting": "Redirecting to membership page in 3 seconds...",
+    "cta": "Go to Membership"
+  },
   "Footer": {
     "description": "DX consulting for small businesses in Miyako Island",
     "quickLinks": "Quick Links",

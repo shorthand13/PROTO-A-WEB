@@ -17,10 +17,15 @@ export default function FeedbackWidget() {
   const [rating, setRating] = useState<number | null>(null);
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [capturing, setCapturing] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const screenshotInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [state, formAction, isPending] = useActionState(
-    submitFeedback,
+    async (prev: FeedbackState, formData: FormData) => {
+      const result = await submitFeedback(prev, formData);
+      if (result.success) setSubmitted(true);
+      return result;
+    },
     initialState
   );
 
@@ -86,10 +91,9 @@ export default function FeedbackWidget() {
 
   function handleClose() {
     setOpen(false);
-    if (state.success) {
-      setRating(null);
-      setScreenshot(null);
-    }
+    setSubmitted(false);
+    setRating(null);
+    setScreenshot(null);
   }
 
   return (
@@ -123,7 +127,7 @@ export default function FeedbackWidget() {
               <X size={20} />
             </button>
 
-            {state.success ? (
+            {submitted ? (
               <div className="py-8 text-center">
                 <div className="mb-3 text-4xl">🎉</div>
                 <h3 className="text-lg font-bold text-foreground mb-2">

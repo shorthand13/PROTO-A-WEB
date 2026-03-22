@@ -101,6 +101,7 @@ export default function SurveyForm() {
 
   useEffect(() => {
     if (state.success) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       const timer = setTimeout(() => router.push("/"), 3000);
       return () => clearTimeout(timer);
     }

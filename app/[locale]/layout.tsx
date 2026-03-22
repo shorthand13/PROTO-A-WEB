@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

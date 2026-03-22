@@ -11,6 +11,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 import FeedbackWidget from "@/components/FeedbackWidget";
+import SurveyCta from "@/components/SurveyCta";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
             <Footer />
             <DisclaimerPopup />
             <FeedbackWidget />
+            <SurveyCta />
           </NextIntlClientProvider>
         </ClerkProvider>
         <Analytics />

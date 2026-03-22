@@ -243,6 +243,25 @@
     "lineQrAlt": "LINE Official Account QR code",
     "instagramQrAlt": "Instagram QR code"
   },
+  "Survey": {
+    "title": "DX Survey",
+    "subtitle": "Help us understand your business needs so we can provide the best DX support",
+    "time": "Takes about 2 minutes",
+    "name": "Your Name",
+    "namePlaceholder": "John Smith",
+    "email": "Email Address",
+    "emailPlaceholder": "example@email.com",
+    "submit": "Submit Survey",
+    "sending": "Sending...",
+    "error": "Failed to send. Please try again.",
+    "thankYou": "Thank you for your response!",
+    "thankYouMessage": "Your answers will help us provide better services.",
+    "redirecting": "Redirecting to home in 3 seconds...",
+    "backToHome": "Back to Home",
+    "homeCta": "Take the Free DX Survey",
+    "homeTitle": "Assess Your Business DX Readiness",
+    "homeSubtitle": "Just 2 minutes! Get insights on your digital transformation journey."
+  },
   "Onboarding": {
     "title": "Tell Us About Your Business",
     "subtitle": "Help us provide better services tailored to your needs",

@@ -243,6 +243,25 @@
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード"
   },
+  "Survey": {
+    "title": "DXに関するアンケート",
+    "subtitle": "宮古島のビジネスに最適なDX支援を提供するため、ぜひご協力ください",
+    "time": "所要時間：約2分",
+    "name": "お名前",
+    "namePlaceholder": "山田太郎",
+    "email": "メールアドレス",
+    "emailPlaceholder": "example@email.com",
+    "submit": "回答を送信する",
+    "sending": "送信中...",
+    "error": "送信に失敗しました。もう一度お試しください。",
+    "thankYou": "ご協力ありがとうございます！",
+    "thankYouMessage": "いただいた回答をもとに、より良いサービスを提供してまいります。",
+    "redirecting": "3秒後にトップページへ移動します...",
+    "backToHome": "トップページへ戻る",
+    "homeCta": "無料DXアンケートに回答する",
+    "homeTitle": "あなたのビジネスのDX度を診断",
+    "homeSubtitle": "2分で完了！回答いただいた方には、DX推進のヒントをお届けします。"
+  },
   "Onboarding": {
     "title": "ビジネス情報の登録",
     "subtitle": "より良いサービスを提供するため、ビジネスについて教えてください",

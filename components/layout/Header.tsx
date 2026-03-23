@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useUser, useClerk } from "@clerk/nextjs";
 import LanguageSwitcher from "./LanguageSwitcher";
 import LogoLink from "./LogoLink";
 
@@ -12,7 +11,6 @@ const navItems = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
-  { key: "blog", href: "/blog" },
   { key: "caseStudies", href: "/case-studies" },
   { key: "contact", href: "/contact" },
 ] as const;
@@ -21,8 +19,6 @@ export default function Header() {
   const t = useTranslations("Navigation");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isSignedIn } = useUser();
-  const { signOut } = useClerk();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
@@ -56,37 +52,6 @@ export default function Header() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            {isSignedIn ? (
-              <div className="hidden md:flex items-center gap-2">
-                <Link
-                  href="/membership"
-                  className="inline-flex items-center justify-center rounded-full bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-cta-light transition-colors"
-                >
-                  {t("membership")}
-                </Link>
-                <button
-                  onClick={() => signOut({ redirectUrl: "/" })}
-                  className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                >
-                  {t("logout")}
-                </button>
-              </div>
-            ) : (
-              <div className="hidden md:flex items-center gap-2">
-                <Link
-                  href="/login"
-                  className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                >
-                  {t("login")}
-                </Link>
-                <Link
-                  href="/register"
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
-                >
-                  {t("register")}
-                </Link>
-              </div>
-            )}
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -123,40 +88,6 @@ export default function Header() {
                 </Link>
               );
             })}
-            {isSignedIn ? (
-              <>
-                <Link
-                  href="/membership"
-                  onClick={() => setMobileOpen(false)}
-                  className="mt-2 rounded-full bg-cta px-4 py-3 text-center text-base font-bold text-white hover:bg-cta-light transition-colors"
-                >
-                  {t("membership")}
-                </Link>
-                <button
-                  onClick={() => { setMobileOpen(false); signOut({ redirectUrl: "/" }); }}
-                  className="mt-2 rounded-full border border-border px-4 py-3 text-center text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                >
-                  {t("logout")}
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  onClick={() => setMobileOpen(false)}
-                  className="mt-2 rounded-full border border-border px-4 py-3 text-center text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                >
-                  {t("login")}
-                </Link>
-                <Link
-                  href="/register"
-                  onClick={() => setMobileOpen(false)}
-                  className="mt-1 rounded-full bg-primary px-4 py-3 text-center text-base font-medium text-white hover:bg-primary-dark transition-colors"
-                >
-                  {t("register")}
-                </Link>
-              </>
-            )}
           </nav>
         </div>
       )}

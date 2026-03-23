@@ -99,47 +99,48 @@
   "Services": {
     "title": "Our Services",
     "subtitle": "Comprehensive digital transformation support",
-    "consulting": {
-      "title": "One-on-One DX Consulting",
-      "description": "We carefully listen to your business challenges and develop the optimal digitization plan together.",
+    "training": {
+      "badge": "Flagship Service",
+      "title": "Training",
+      "description": "We train your team on IT literacy and digital tools, tailored to each employee's skill level. Build practical skills that can be applied immediately, boosting your organization's overall DX capability.",
+      "features": [
+        "Curriculum designed for your team's skill level",
+        "Hands-on training focused on the tools you actually use",
+        "Small group or one-on-one sessions",
+        "Available in-person or online"
+      ]
+    },
+    "accompaniment": {
+      "badge": "Flagship Service",
+      "title": "Hands-on DX Support",
+      "description": "End-to-end support from analysis and strategy to tool implementation and adoption. We walk alongside you at your pace — from the very first step to full integration.",
       "features": [
         "Current situation analysis and challenge identification",
         "Custom DX roadmap creation",
+        "Optimal IT tool selection and implementation support",
         "Monthly progress reviews and follow-ups",
         "Available in-person or online"
       ]
     },
+    "upcoming": {
+      "title": "Upcoming Services",
+      "subtitle": "The following services are currently in preparation. We'll notify you when they launch.",
+      "badge": "Coming Soon"
+    },
     "onlineSupport": {
       "title": "Online Business Improvement Support",
-      "description": "We review your daily business processes and propose specific improvements for efficiency.",
-      "features": [
-        "Business flow analysis",
-        "Bottleneck identification and improvement proposals",
-        "Post-implementation operational support",
-        "Flexible remote assistance"
-      ]
+      "description": "We review your daily business processes and propose specific improvements for efficiency."
     },
     "toolSelection": {
       "title": "IT Tool Selection Support",
-      "description": "We select IT tools that match your budget and needs, supporting smooth implementation.",
-      "features": [
-        "Needs-based tool comparison",
-        "Free tool utilization proposals",
-        "Implementation and initial setup support",
-        "Staff training"
-      ]
+      "description": "We select IT tools that match your budget and needs, supporting smooth implementation."
     },
     "workflow": {
       "title": "Workflow Digitization",
-      "description": "Digitize paper-based operations to reduce errors and improve business speed.",
-      "features": [
-        "Paper document digitization",
-        "Cloud-based management system setup",
-        "Automation tool implementation",
-        "Data-driven decision support"
-      ]
+      "description": "Digitize paper-based operations to reduce errors and improve business speed."
     },
-    "cta": "Contact Us"
+    "cta": "Contact Us",
+    "viewCaseStudies": "View Case Studies"
   },
   "Blog": {
     "title": "Blog",
@@ -157,6 +158,7 @@
   "CaseStudies": {
     "title": "Case Studies",
     "subtitle": "DX success stories from small businesses",
+    "allTags": "All",
     "challenge": "Challenge",
     "solution": "Solution",
     "result": "Result",

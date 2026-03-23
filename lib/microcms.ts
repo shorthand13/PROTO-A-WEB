@@ -25,6 +25,7 @@ type CMSBlog = {
 type CMSCaseStudy = {
   title: string;
   industry: string;
+  tags?: string[];
   challenge: string;
   solution: string;
   result: string;
@@ -64,6 +65,7 @@ function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
       title: cms.title,
       date: cms.publishedAt?.split("T")[0] ?? cms.createdAt.split("T")[0],
       industry: cms.industry,
+      tags: cms.tags ?? [],
       locale: getLocale(cms.locale),
       excerpt: cms.challenge.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
       published: true,

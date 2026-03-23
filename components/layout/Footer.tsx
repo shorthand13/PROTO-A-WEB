@@ -42,12 +42,6 @@ export default function Footer() {
                 {tNav("services")}
               </Link>
               <Link
-                href="/blog"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {tNav("blog")}
-              </Link>
-              <Link
                 href="/contact"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >

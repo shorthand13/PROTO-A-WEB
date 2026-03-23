@@ -19,6 +19,7 @@ export interface CaseStudyFrontmatter {
   title: string;
   date: string;
   industry: string;
+  tags?: string[];
   locale: string;
   excerpt: string;
   coverImage?: string;

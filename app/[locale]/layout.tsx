@@ -12,6 +12,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import SurveyCta from "@/components/SurveyCta";
+import TopBanner from "@/components/TopBanner";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -59,6 +60,7 @@ export default async function LocaleLayout({
       >
         <ClerkProvider>
           <NextIntlClientProvider>
+            <TopBanner />
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

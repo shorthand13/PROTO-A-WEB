@@ -16,40 +16,47 @@
     "memberVideos": "Video Library"
   },
   "Home": {
-    "hero": {
-      "title": "Accelerate Your Business\nwith Digital Transformation",
-      "subtitle": "Friendly, locally-rooted DX consulting to unlock your business potential in Miyako Island.",
-      "cta": "Free Consultation",
-      "secondaryCta": "View Services"
+    "problem": {
+      "label": "The Reality of Miyako Island",
+      "title": "Tourism is booming,\nbut business is still on paper.",
+      "subtitle": "Over 1 million tourists visit Miyako Island every year.\nYet many small businesses are falling behind in the digital wave."
+    },
+    "painPoints": {
+      "title": "Sound familiar?",
+      "items": [
+        { "icon": "📋", "text": "Bookings by phone and notebook. Double-bookings keep you up at night." },
+        { "icon": "🌐", "text": "No website — or one that hasn't been updated in years." },
+        { "icon": "📱", "text": "Want to use social media, but don't know where to start." },
+        { "icon": "💸", "text": "No budget for IT. Hard to see the return on investment." }
+      ]
+    },
+    "solution": {
+      "label": "The Solution",
+      "title": "ProtoA walks with you\nthrough the very first step\nof your digital journey.",
+      "subtitle": "A locally-rooted DX consultant who knows Miyako Island businesses inside out.\nNo jargon. We move at your pace, together."
     },
     "services": {
-      "title": "Services",
-      "subtitle": "Optimal DX solutions tailored for Miyako Island businesses",
+      "title": "What We Can Do",
+      "subtitle": "From small improvements to big transformations.",
       "consulting": {
         "title": "One-on-One DX Consulting",
-        "description": "We work with you to develop a personalized DX strategy for your business."
+        "description": "We work with you to develop a personalized DX strategy. First-timers welcome — patient, hands-on support."
       },
       "onlineSupport": {
         "title": "Online Business Improvement",
-        "description": "We support your business process improvements remotely."
+        "description": "Process improvement support from anywhere. Perfect for busy owners."
       },
       "toolSelection": {
         "title": "IT Tool Selection Support",
-        "description": "We help you choose and implement the best IT tools for your needs."
+        "description": "We find the right tools for your budget and goals. Free tool recommendations included."
       },
       "workflow": {
         "title": "Workflow Digitization",
-        "description": "Transform paper-based workflows into efficient digital processes."
+        "description": "Transform paper-based workflows into digital ones. Start with just one process."
       }
     },
-    "blog": {
-      "title": "Latest Blog Posts",
-      "subtitle": "Stay updated with DX tips and insights",
-      "viewAll": "View all posts"
-    },
     "testimonials": {
-      "title": "Client Testimonials",
-      "subtitle": "What our clients say about Proto-A",
+      "title": "Miyako Island businesses are already changing",
       "items": [
         {
           "name": "Taro Yamada",
@@ -67,6 +74,11 @@
           "quote": "The POS system dramatically reduced inventory management time, letting us focus on customer service."
         }
       ]
+    },
+    "cta": {
+      "title": "Ready to talk?",
+      "subtitle": "Free consultations start at 30 minutes. No pressure.",
+      "button": "Book a Free Consultation"
     }
   },
   "About": {

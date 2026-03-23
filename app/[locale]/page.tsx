@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { HERO_IMAGE_SRC } from "@/lib/hero-asset";
 
 export default async function HomePage({
   params,
@@ -20,83 +18,102 @@ function HomeContent() {
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Hero — イラスト（public/protoa-hero.jpeg） */}
-      <section className="relative min-h-[min(68vh,560px)] overflow-hidden border-b border-border bg-white text-foreground">
-        <div className="absolute inset-0 z-0">
-          {/* next/image の fill は親に relative + 高さが必要 */}
-          <div className="relative h-full min-h-[min(68vh,560px)] w-full">
-            <Image
-              src={HERO_IMAGE_SRC}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              unoptimized
-              className="object-cover object-[center_45%] sm:object-center"
-            />
-          </div>
-        </div>
-        {/* 左の文字だけ読みやすく／右はイラストが見えるよう薄め */}
-        <div
-          className="absolute inset-0 z-[1] bg-gradient-to-r from-white/90 via-white/35 to-transparent sm:from-white/85 sm:via-white/20"
-          aria-hidden
-        />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
-          <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight whitespace-pre-line text-foreground drop-shadow-sm">
-            {t("hero.title")}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground">
-            {t("hero.subtitle")}
+      {/* Section 1: The Problem */}
+      <section className="min-h-screen flex items-center justify-center px-4 bg-foreground text-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-white/50 text-sm tracking-widest uppercase mb-6">
+            {t("problem.label")}
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-bold text-white shadow-md hover:bg-primary-dark transition-colors"
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight whitespace-pre-line">
+            {t("problem.title")}
+          </h1>
+          <p className="mt-8 text-lg text-white/70 leading-relaxed max-w-xl mx-auto whitespace-pre-line">
+            {t("problem.subtitle")}
+          </p>
+          <div className="mt-12 flex justify-center">
+            <svg
+              className="h-8 w-8 text-white/30 animate-bounce"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {t("hero.cta")}
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center rounded-full border-2 border-primary bg-white/80 px-8 py-4 text-lg font-bold text-primary shadow-sm backdrop-blur-sm hover:bg-white transition-colors"
-            >
-              {t("hero.secondaryCta")}
-            </Link>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-20 px-4 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              {t("services.title")}
-            </h2>
-            <p className="mt-4 text-muted-foreground text-lg">
-              {t("services.subtitle")}
-            </p>
+      {/* Section 2: Pain Points */}
+      <section className="min-h-screen flex items-center px-4 py-20 bg-white">
+        <div className="mx-auto max-w-5xl w-full">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16">
+            {t("painPoints.title")}
+          </h2>
+          <div className="space-y-8">
+            {[0, 1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="flex items-center gap-6 rounded-2xl border border-border p-6 sm:p-8"
+              >
+                <span className="text-4xl shrink-0">
+                  {t(`painPoints.items.${i}.icon`)}
+                </span>
+                <p className="text-lg sm:text-xl font-medium text-foreground">
+                  {t(`painPoints.items.${i}.text`)}
+                </p>
+              </div>
+            ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        </div>
+      </section>
+
+      {/* Section 3: The Solution */}
+      <section className="min-h-screen flex items-center px-4 bg-primary text-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-white/50 text-sm tracking-widest uppercase mb-6">
+            {t("solution.label")}
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight whitespace-pre-line">
+            {t("solution.title")}
+          </h2>
+          <p className="mt-8 text-lg text-white/80 leading-relaxed max-w-xl mx-auto whitespace-pre-line">
+            {t("solution.subtitle")}
+          </p>
+        </div>
+      </section>
+
+      {/* Section 4: Services */}
+      <section className="min-h-screen flex items-center px-4 py-20 bg-white">
+        <div className="mx-auto max-w-7xl w-full">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
+            {t("services.title")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16">
+            {t("services.subtitle")}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {(
               ["consulting", "onlineSupport", "toolSelection", "workflow"] as const
             ).map((service) => (
               <div
                 key={service}
-                className="rounded-2xl border border-border bg-background p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-light/30">
-                  <span className="text-2xl text-primary">
-                    {service === "consulting" && "💬"}
-                    {service === "onlineSupport" && "🖥️"}
-                    {service === "toolSelection" && "🔧"}
-                    {service === "workflow" && "⚡"}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-foreground">
+                <span className="text-4xl">
+                  {service === "consulting" && "💬"}
+                  {service === "onlineSupport" && "🖥️"}
+                  {service === "toolSelection" && "🔧"}
+                  {service === "workflow" && "⚡"}
+                </span>
+                <h3 className="mt-4 text-xl font-bold">
                   {t(`services.${service}.title`)}
                 </h3>
-                <p className="mt-2 text-muted-foreground">
+                <p className="mt-3 text-muted-foreground leading-relaxed">
                   {t(`services.${service}.description`)}
                 </p>
               </div>
@@ -105,28 +122,20 @@ function HomeContent() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 px-4 bg-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              {t("testimonials.title")}
-            </h2>
-            <p className="mt-4 text-muted-foreground text-lg">
-              {t("testimonials.subtitle")}
-            </p>
-          </div>
+      {/* Section 5: Testimonials */}
+      <section className="min-h-[80vh] flex items-center px-4 py-20 bg-surface">
+        <div className="mx-auto max-w-5xl w-full">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16">
+            {t("testimonials.title")}
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-background p-6 shadow-sm"
-              >
+              <div key={i} className="rounded-2xl bg-background p-8 shadow-sm">
                 <p className="text-foreground italic leading-relaxed">
                   &ldquo;{t(`testimonials.items.${i}.quote`)}&rdquo;
                 </p>
-                <div className="mt-4 border-t border-border pt-4">
-                  <p className="font-bold text-foreground">
+                <div className="mt-6 border-t border-border pt-4">
+                  <p className="font-bold">
                     {t(`testimonials.items.${i}.name`)}
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -136,6 +145,24 @@ function HomeContent() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Section 6: CTA */}
+      <section className="min-h-[60vh] flex items-center justify-center px-4 bg-foreground text-white">
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold">
+            {t("cta.title")}
+          </h2>
+          <p className="mt-6 text-lg text-white/70 max-w-lg mx-auto">
+            {t("cta.subtitle")}
+          </p>
+          <Link
+            href="/contact"
+            className="mt-10 inline-flex items-center justify-center rounded-full bg-primary px-10 py-5 text-xl font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
+          >
+            {t("cta.button")}
+          </Link>
         </div>
       </section>
     </div>

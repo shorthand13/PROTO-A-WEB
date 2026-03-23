@@ -44,7 +44,7 @@ function AboutContent() {
         </div>
       </section>
 
-      {/* Why Miyako */}
+      {/* Why Us */}
       <section className="py-16 px-4 bg-surface">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-4 mb-6">
@@ -53,10 +53,10 @@ function AboutContent() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-foreground">
-                {t("whyMiyako.title")}
+                {t("whyUs.title")}
               </h2>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                {t("whyMiyako.description")}
+                {t("whyUs.description")}
               </p>
             </div>
           </div>

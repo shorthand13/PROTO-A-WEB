@@ -17,9 +17,9 @@
   },
   "Home": {
     "problem": {
-      "label": "The Reality of Miyako Island",
-      "title": "Tourism is booming,\nbut business is still on paper.",
-      "subtitle": "Over 1 million tourists visit Miyako Island every year.\nYet many small businesses are falling behind in the digital wave."
+      "label": "The Reality of Small Business",
+      "title": "Business is growing,\nbut operations are still on paper.",
+      "subtitle": "As digitization accelerates,\nmany small businesses are falling behind the wave."
     },
     "painPoints": {
       "title": "Sound familiar?",
@@ -33,7 +33,7 @@
     "solution": {
       "label": "The Solution",
       "title": "ProtoA walks with you\nthrough the very first step\nof your digital journey.",
-      "subtitle": "A locally-rooted DX consultant who knows Miyako Island businesses inside out.\nNo jargon. We move at your pace, together."
+      "subtitle": "A DX consultant who truly understands your business.\nNo jargon. We move at your pace, together."
     },
     "services": {
       "title": "What We Can Do",
@@ -56,7 +56,7 @@
       }
     },
     "testimonials": {
-      "title": "Miyako Island businesses are already changing",
+      "title": "Our clients' businesses are already changing",
       "items": [
         {
           "name": "Taro Yamada",
@@ -85,15 +85,15 @@
     "title": "About Us",
     "mission": {
       "title": "Our Mission",
-      "description": "We solve the digital challenges faced by entrepreneurs and business owners in Miyako Island with a friendly, locally-rooted approach."
+      "description": "We solve the digital challenges faced by entrepreneurs and business owners with a friendly, approachable consulting style."
     },
-    "whyMiyako": {
-      "title": "Why Miyako Island",
-      "description": "Miyako Island is rapidly growing, especially in tourism, but many small businesses are falling behind in digitization. Major consulting firms offer one-size-fits-all solutions that don't fit the island's unique business environment. We deeply understand local conditions and provide support tailored to each individual business."
+    "whyUs": {
+      "title": "Why ProtoA",
+      "description": "Many small businesses are falling behind in digitization. Major consulting firms offer one-size-fits-all solutions that don't fit the realities of small business. We deeply understand our clients' needs and provide support tailored to each individual business."
     },
     "team": {
       "title": "Our Team",
-      "description": "A team passionate about Miyako Island and dedicated to supporting local business growth."
+      "description": "A team passionate about and dedicated to supporting business growth."
     }
   },
   "Services": {
@@ -156,7 +156,7 @@
   },
   "CaseStudies": {
     "title": "Case Studies",
-    "subtitle": "DX success stories from Miyako Island businesses",
+    "subtitle": "DX success stories from small businesses",
     "challenge": "Challenge",
     "solution": "Solution",
     "result": "Result",
@@ -249,7 +249,7 @@
     "cta": "Go to Membership"
   },
   "Footer": {
-    "description": "DX consulting for small businesses in Miyako Island",
+    "description": "DX consulting for small businesses",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
     "copyright": "© 2026 ProtoA. All rights reserved.",

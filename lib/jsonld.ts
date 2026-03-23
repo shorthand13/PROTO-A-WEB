@@ -4,7 +4,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: "ProtoA",
     description:
-      "宮古島の中小企業向けDXコンサルティング。地元に根ざした親しみやすいアプローチでデジタル化を支援します。",
+      "中小企業向けDXコンサルティング。親しみやすいアプローチでデジタル化を支援します。",
     url: "https://proto-a.com",
   };
 }
@@ -14,11 +14,9 @@ export function localBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "ProtoA",
-    description: "DXコンサルティング - 宮古島",
+    description: "中小企業向けDXコンサルティング",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "宮古島市",
-      addressRegion: "沖縄県",
       addressCountry: "JP",
     },
   };

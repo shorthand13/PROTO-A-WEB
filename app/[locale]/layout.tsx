@@ -26,10 +26,10 @@ const mPlus1p = M_PLUS_1p({
 export const metadata: Metadata = {
   title: {
     template: "%s | ProtoA",
-    default: "ProtoA — 宮古島DXコンサルティング",
+    default: "ProtoA — DXコンサルティング",
   },
   description:
-    "宮古島の中小企業向けDXコンサルティング。地元に根ざした親しみやすいアプローチでデジタル化を支援します。",
+    "中小企業向けDXコンサルティング。親しみやすいアプローチでデジタル化を支援します。",
 };
 
 export function generateStaticParams() {

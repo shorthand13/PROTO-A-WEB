@@ -1,9 +1,7 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Users, MapPin, Heart } from "lucide-react";
-import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { SiNote } from "react-icons/si";
-import Image from "next/image";
+import TeamSection from "@/components/TeamSection";
 
 export default async function AboutPage({
   params,
@@ -80,68 +78,7 @@ function AboutContent() {
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                 {t("team.description")}
               </p>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl">
-                {[
-                  {
-                    name: "砂川 綾香",
-                    role: "代表 / チーフデザイナー",
-                    photo: "/ayaka.png",
-                    socials: [
-                      { label: "Instagram", href: "https://www.instagram.com/dummy_ayaka", icon: "instagram" },
-                      { label: "note", href: "https://note.com/dummy_ayaka", icon: "note" },
-                    ],
-                  },
-                  {
-                    name: "根間 玄隆",
-                    role: "コンサルタント",
-                    photo: "/nema.png",
-                    socials: [
-                      { label: "Facebook", href: "https://www.facebook.com/dummy_nema", icon: "facebook" },
-                    ],
-                  },
-                  {
-                    name: "栗原 元気",
-                    role: "プロジェクトマネージャー / ビジネスアナリスト / マーケター",
-                    photo: "/genki.png",
-                    socials: [
-                      { label: "LinkedIn", href: "https://www.linkedin.com/in/dummy_genki", icon: "linkedin" },
-                    ],
-                  },
-                ].map((member) => (
-                  <div
-                    key={member.name}
-                    className="rounded-2xl bg-muted p-6 text-center"
-                  >
-                    <div className="mx-auto h-24 w-24 rounded-full overflow-hidden relative">
-                      <Image
-                        src={member.photo}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <p className="mt-4 font-bold text-foreground">{member.name}</p>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
-                    <div className="mt-3 flex items-center justify-center gap-3">
-                      {member.socials.map((s) => (
-                        <a
-                          key={s.label}
-                          href={s.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={s.label}
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {s.icon === "instagram" && <FaInstagram size={18} />}
-                          {s.icon === "facebook" && <FaFacebook size={18} />}
-                          {s.icon === "linkedin" && <FaLinkedin size={18} />}
-                          {s.icon === "note" && <SiNote size={14} />}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <TeamSection />
             </div>
           </div>
         </div>

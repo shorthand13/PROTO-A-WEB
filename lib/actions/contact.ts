@@ -98,7 +98,7 @@ export async function submitContact(
   }
 
   if (!lineToken && !lineUserIds.length && !webhookUrl) {
-    console.log("Contact form submission (no notification configured):", result.data);
+    // No notification channel configured — silently succeed
   }
 
   return { success: true, error: false };

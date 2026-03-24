@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 export default async function CaseStudiesPage({
   params,
@@ -90,30 +91,43 @@ function CaseStudiesContent({
                 <Link
                   key={study.slug}
                   href={`/case-studies/${study.slug}`}
-                  className="group block rounded-2xl border border-border bg-background p-8 shadow-sm hover:shadow-md transition-shadow"
+                  className="group block rounded-2xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                 >
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="inline-block rounded-full bg-cta/10 px-3 py-1 text-xs font-medium text-cta">
-                      {study.frontmatter.industry}
-                    </span>
-                    {study.frontmatter.tags?.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-                      >
-                        {tag}
+                  {study.frontmatter.coverImage && (
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={study.frontmatter.coverImage}
+                        alt={study.frontmatter.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
+                  <div className="p-8">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="inline-block rounded-full bg-cta/10 px-3 py-1 text-xs font-medium text-cta">
+                        {study.frontmatter.industry}
                       </span>
-                    ))}
+                      {study.frontmatter.tags?.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {study.frontmatter.title}
+                    </h3>
+                    <p className="mt-3 text-muted-foreground">
+                      {study.frontmatter.excerpt}
+                    </p>
+                    <span className="mt-4 inline-flex items-center text-sm font-medium text-primary">
+                      {t("readMore")} →
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {study.frontmatter.title}
-                  </h3>
-                  <p className="mt-3 text-muted-foreground">
-                    {study.frontmatter.excerpt}
-                  </p>
-                  <span className="mt-4 inline-flex items-center text-sm font-medium text-primary">
-                    {t("readMore")} →
-                  </span>
                 </Link>
               ))}
             </div>

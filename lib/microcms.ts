@@ -30,6 +30,7 @@ type CMSCaseStudy = {
   solution: string;
   result: string;
   testimonial?: string;
+  thumbnail?: MicroCMSImage;
   locale: string | string[];
 } & MicroCMSListContent;
 
@@ -68,6 +69,7 @@ function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
       tags: cms.tags ?? [],
       locale: getLocale(cms.locale),
       excerpt: cms.challenge.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
+      coverImage: cms.thumbnail?.url,
       published: true,
     },
     content: `<div>

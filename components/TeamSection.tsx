@@ -81,17 +81,6 @@ export default function TeamSection() {
             </div>
             <p className="mt-4 font-bold text-foreground">{member.name}</p>
             <p className="text-sm text-muted-foreground">{member.role}</p>
-            <div className="mt-3 flex items-center justify-center gap-3">
-              {member.socials.map((s) => (
-                <span
-                  key={s.label}
-                  aria-label={s.label}
-                  className="text-muted-foreground"
-                >
-                  <SocialIcon icon={s.icon} size={18} />
-                </span>
-              ))}
-            </div>
           </button>
         ))}
       </div>

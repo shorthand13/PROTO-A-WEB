@@ -6,6 +6,7 @@ import { getCaseStudy, getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudy } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   const locales = ["ja", "en"];
@@ -77,6 +78,20 @@ function CaseStudyContent({
           </h1>
         </div>
       </section>
+
+      {/* Thumbnail */}
+      {study.frontmatter.coverImage && (
+        <div className="relative w-full h-56 sm:h-72 lg:h-80">
+          <Image
+            src={study.frontmatter.coverImage}
+            alt={study.frontmatter.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+          />
+        </div>
+      )}
 
       {/* Content */}
       <section className="py-12 px-4">

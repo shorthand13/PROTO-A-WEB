@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-muted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr] gap-8">
           {/* Brand */}
           <div>
             <LogoLink />
@@ -53,7 +53,7 @@ export default function Footer() {
           {/* Social / LINE & Instagram */}
           <div>
             <h3 className="font-bold text-foreground">{t("followUs")}</h3>
-            <div className="mt-3 flex flex-wrap gap-8 sm:gap-10">
+            <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-10">
               <div className="flex flex-col gap-2">
                 <a
                   href={LINE_ADD_FRIEND_URL}
@@ -67,7 +67,7 @@ export default function Footer() {
                   href={LINE_ADD_FRIEND_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="hidden sm:inline-block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   <Image
                     src={LINE_QR_IMAGE_SRC}
@@ -92,11 +92,35 @@ export default function Footer() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="hidden sm:inline-block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   <Image
                     src={INSTAGRAM_QR_IMAGE_SRC}
                     alt={t("instagramQrAlt")}
+                    width={120}
+                    height={120}
+                    className="h-[120px] w-[120px] rounded-lg border border-border bg-white object-contain shadow-sm transition hover:opacity-90"
+                  />
+                </a>
+              </div>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://note.com/ayakasunakawa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {t("note")}
+                </a>
+                <a
+                  href="https://note.com/ayakasunakawa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-block w-fit rounded-lg border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  <Image
+                    src="/qr-note.png"
+                    alt={t("noteQrAlt")}
                     width={120}
                     height={120}
                     className="h-[120px] w-[120px] rounded-lg border border-border bg-white object-contain shadow-sm transition hover:opacity-90"

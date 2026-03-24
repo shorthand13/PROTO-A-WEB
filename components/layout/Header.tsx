@@ -24,33 +24,31 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <LogoLink priority />
+          <LogoLink priority className={pathname === "/" ? "md:invisible" : ""} />
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    isActive
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
-                >
-                  {t(item.key)}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right side */}
+          {/* Right side: nav + language switcher */}
           <div className="flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-1 mr-2">
+              {navItems.map((item) => {
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {t(item.key)}
+                  </Link>
+                );
+              })}
+            </nav>
             <LanguageSwitcher />
             {/* Mobile menu button */}
             <button

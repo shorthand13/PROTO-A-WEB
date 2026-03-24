@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Users, MapPin, Heart } from "lucide-react";
+import TeamSection from "@/components/TeamSection";
 
 export default async function AboutPage({
   params,
@@ -77,20 +78,7 @@ function AboutContent() {
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                 {t("team.description")}
               </p>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="rounded-2xl bg-muted p-6 text-center"
-                  >
-                    <div className="mx-auto h-24 w-24 rounded-full bg-muted-foreground/20" />
-                    <p className="mt-4 font-bold text-foreground">
-                      Team Member {i}
-                    </p>
-                    <p className="text-sm text-muted-foreground">Role</p>
-                  </div>
-                ))}
-              </div>
+              <TeamSection />
             </div>
           </div>
         </div>

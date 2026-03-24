@@ -75,6 +75,15 @@
         }
       ]
     },
+    "blog": {
+      "moreLabel": "View Blog"
+    },
+    "gallery": {
+      "title": "Behind the Scenes"
+    },
+    "partners": {
+      "title": "Our Partners"
+    },
     "cta": {
       "title": "Ready to talk?",
       "subtitle": "Free consultations start at 30 minutes. No pressure.",
@@ -257,8 +266,10 @@
     "copyright": "© 2026 ProtoA. All rights reserved.",
     "lineOfficial": "LINE Official Account",
     "instagram": "Instagram",
+    "note": "note",
     "lineQrAlt": "LINE Official Account QR code",
-    "instagramQrAlt": "Instagram QR code"
+    "instagramQrAlt": "Instagram QR code",
+    "noteQrAlt": "note QR code"
   },
   "Survey": {
     "title": "DX Survey",

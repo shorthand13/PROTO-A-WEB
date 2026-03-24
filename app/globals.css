@@ -8,9 +8,9 @@ html {
 
 :root {
   /* ProtoA — 白ベース + ロゴのティールをアクセント */
-  --teal: #00b09b;
-  --teal-bright: #00c9ae;
-  --teal-glow: #33ccb8;
+  --teal: #6b9e9e;
+  --teal-bright: #7fb3b3;
+  --teal-glow: #8fc0c0;
 
   --color-ocean: var(--teal);
   --color-ocean-light: #e8f8f5;
@@ -26,7 +26,7 @@ html {
   --foreground: #111827;
   --primary: var(--teal);
   --primary-light: var(--teal-glow);
-  --primary-dark: #008f7d;
+  --primary-dark: #5a8a8a;
   --accent: var(--teal-bright);
   --accent-light: #b3f0e6;
   --cta: var(--teal);
@@ -80,4 +80,13 @@ h2,
 h3 {
   letter-spacing: 0.04em;
   font-weight: 700;
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

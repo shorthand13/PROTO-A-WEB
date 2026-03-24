@@ -136,8 +136,24 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
             <HeroSideTiles>
               {/* #2 — Case Studies */}
               <HeroSideTile eventName="hero-casestudy-show" className="flex-1 flex flex-col">
-                <div className="rounded-3xl bg-[#6b9e9e] text-white p-5 flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-3">
+                <div className="relative rounded-3xl overflow-hidden text-white p-5 flex-1 flex flex-col min-h-[200px]">
+                  {/* Background: thumbnail or solid color */}
+                  {caseStudies[0]?.frontmatter.coverImage ? (
+                    <>
+                      <Image
+                        src={caseStudies[0].frontmatter.coverImage}
+                        alt={caseStudies[0].frontmatter.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1280px) 30vw, 280px"
+                      />
+                      <div className="absolute inset-0 bg-black/50" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-[#6b9e9e]" />
+                  )}
+                  {/* Content */}
+                  <div className="relative z-10 flex items-center justify-between mb-3">
                     <span className="rounded-full bg-white/30 backdrop-blur-sm px-3 py-1.5 text-xs font-bold flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-white" />
                       {tc("title")}
@@ -149,7 +165,7 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
                   {caseStudies[0] && (
                     <Link
                       href={`/case-studies/${caseStudies[0].slug}` as "/case-studies"}
-                      className="flex-1 flex flex-col justify-center rounded-xl bg-white/15 backdrop-blur-sm p-5 hover:bg-white/25 transition-colors"
+                      className="relative z-10 flex-1 flex flex-col justify-center rounded-xl bg-white/10 backdrop-blur-sm p-5 hover:bg-white/20 transition-colors"
                     >
                       <span className="rounded-full bg-white/30 px-3 py-1 text-xs font-bold self-start mb-3">
                         {caseStudies[0].frontmatter.industry}
@@ -157,8 +173,8 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
                       <p className="text-base font-bold text-white leading-snug">
                         {caseStudies[0].frontmatter.title}
                       </p>
-                      <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
-                        {extractSection(caseStudies[0].content, "課題") || extractSection(caseStudies[0].content, "Challenge")}
+                      <p className="mt-2 text-sm text-white/80 leading-relaxed line-clamp-3">
+                        {caseStudies[0].frontmatter.excerpt}
                       </p>
                     </Link>
                   )}

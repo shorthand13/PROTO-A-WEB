@@ -18,8 +18,8 @@
   "Home": {
     "problem": {
       "label": "中小企業の現実",
-      "title": "ビジネスは成長しているのに、\n業務は紙のまま。",
-      "subtitle": "デジタル化の波が加速する今、\n多くの中小企業はその流れに乗り遅れています。"
+      "title": "ビジネスは成長しているのに、\n業務は紙のまま。。。",
+      "subtitle": "デジタル化の波が加速する今、多くの中小企業はその流れに乗り遅れています。"
     },
     "painPoints": {
       "title": "こんな悩み、ありませんか？",
@@ -32,8 +32,8 @@
     },
     "solution": {
       "label": "解決策",
-      "title": "ProtoAは、\nあなたの「最初の一歩」を\n一緒に踏み出します。",
-      "subtitle": "あなたのビジネスに寄り添う、親身なDXコンサルタント。\n難しいIT用語は使いません。あなたのペースで、一緒に進めます。"
+      "title": "ProtoAは、\nあなたの「最初の一歩」を一緒に踏み出します。",
+      "subtitle": "あなたのビジネスに寄り添う、\n親身なDXコンサルタント。\n難しいIT用語は使いません。\nあなたのペースで、一緒に進めます。"
     },
     "services": {
       "title": "私たちにできること",
@@ -74,6 +74,15 @@
           "quote": "POSシステムの導入で在庫管理の手間が大幅に減り、接客に集中できるようになりました。"
         }
       ]
+    },
+    "blog": {
+      "moreLabel": "ブログを見る"
+    },
+    "gallery": {
+      "title": "私たちの活動"
+    },
+    "partners": {
+      "title": "パートナー企業・団体"
     },
     "cta": {
       "title": "まずは、話してみませんか？",
@@ -257,8 +266,10 @@
     "copyright": "© 2026 ProtoA. All rights reserved.",
     "lineOfficial": "LINE公式アカウント",
     "instagram": "Instagram",
+    "note": "note",
     "lineQrAlt": "LINE公式アカウントのQRコード",
-    "instagramQrAlt": "InstagramのQRコード"
+    "instagramQrAlt": "InstagramのQRコード",
+    "noteQrAlt": "noteのQRコード"
   },
   "Survey": {
     "title": "DXに関するアンケート",

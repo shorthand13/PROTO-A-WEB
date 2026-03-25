@@ -24,12 +24,14 @@ type CMSBlog = {
 // microCMS case study type
 type CMSCaseStudy = {
   title: string;
+  slug?: string;
   industry: string;
   tags?: string[];
   challenge: string;
   solution: string;
   result: string;
   testimonial?: string;
+  thumbnail?: MicroCMSImage;
   locale: string | string[];
 } & MicroCMSListContent;
 
@@ -60,7 +62,7 @@ function toBlogPost(cms: CMSBlog): BlogPost {
 // Convert microCMS case study to local CaseStudy format
 function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
   return {
-    slug: cms.id,
+    slug: cms.slug || cms.id,
     frontmatter: {
       title: cms.title,
       date: cms.publishedAt?.split("T")[0] ?? cms.createdAt.split("T")[0],
@@ -68,13 +70,14 @@ function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
       tags: cms.tags ?? [],
       locale: getLocale(cms.locale),
       excerpt: cms.challenge.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
+      coverImage: cms.thumbnail?.url,
       published: true,
     },
     content: [
-      `## 課題\n${cms.challenge}`,
-      `## 解決策\n${cms.solution}`,
-      `## 成果\n${cms.result}`,
-      cms.testimonial ? `> ${cms.testimonial}` : "",
+      `<h2 class="cms-section-heading cms-heading-challenge">課題</h2>${cms.challenge}`,
+      `<h2 class="cms-section-heading cms-heading-solution">解決策</h2>${cms.solution}`,
+      `<h2 class="cms-section-heading cms-heading-solution">成果</h2>${cms.result}`,
+      cms.testimonial ? `<blockquote>${cms.testimonial}</blockquote>` : "",
     ]
       .filter(Boolean)
       .join("\n\n"),
@@ -147,14 +150,30 @@ export async function getCMSCaseStudies(
   }
 }
 
-// Fetch a single case study by ID
+// Fetch a single case study by slug (custom field) or content ID
 export async function getCMSCaseStudy(
-  id: string
+  slugOrId: string
 ): Promise<CaseStudyLocal | null> {
   try {
+    // First try to find by custom slug field
+    const list = await client.getList<CMSCaseStudy>({
+      endpoint: "case-studies",
+      queries: {
+        filters: `slug[equals]${slugOrId}`,
+        limit: 1,
+      },
+      customRequestInit: {
+        next: { revalidate: 60 },
+      },
+    });
+    if (list.contents.length > 0) {
+      return toCaseStudy(list.contents[0]);
+    }
+
+    // Fallback: try by content ID
     const data = await client.get<CMSCaseStudy>({
       endpoint: "case-studies",
-      contentId: id,
+      contentId: slugOrId,
       customRequestInit: {
         next: { revalidate: 60 },
       },

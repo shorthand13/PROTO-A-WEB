@@ -1,0 +1,19 @@
+<svg width="900" height="300" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="300" fill="#f0e6d3"/>
+  <!-- Two paths merging into one -->
+  <path d="M120 230 Q250 230 340 180 Q420 140 460 140" stroke="#eaad63" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M120 70 Q250 70 340 120 Q420 155 460 140" stroke="#6b9e9e" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- Merged path going forward -->
+  <path d="M460 140 Q560 140 660 115 Q730 100 780 85" stroke="#eaad63" stroke-width="3.5" fill="none"/>
+  <!-- Dots along the paths -->
+  <circle cx="120" cy="230" r="7" fill="#eaad63" opacity="0.6"/>
+  <circle cx="120" cy="70" r="7" fill="#6b9e9e" opacity="0.6"/>
+  <circle cx="460" cy="140" r="9" fill="#eaad63"/>
+  <circle cx="460" cy="140" r="5" fill="white"/>
+  <!-- Milestone dots -->
+  <circle cx="560" cy="140" r="3.5" fill="#eaad63" opacity="0.5"/>
+  <circle cx="620" cy="125" r="3.5" fill="#eaad63" opacity="0.6"/>
+  <circle cx="700" cy="105" r="3.5" fill="#eaad63" opacity="0.7"/>
+  <circle cx="780" cy="85" r="4.5" fill="#eaad63"/>
+  <path d="M775 80 L785 75 L780 90" stroke="#eaad63" stroke-width="2" fill="none"/>
+</svg>

@@ -6,6 +6,7 @@ import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
+import SanitizedHtml from "@/components/SanitizedHtml";
 
 export async function generateStaticParams() {
   const locales = ["ja", "en"];
@@ -99,8 +100,8 @@ function BlogPostContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
-            {post.content.startsWith("<") ? (
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/<[a-z][\s\S]*>/i.test(post.content) ? (
+              <SanitizedHtml html={post.content} />
             ) : (
               <MDXRemote source={post.content} />
             )}

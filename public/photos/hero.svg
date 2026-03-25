@@ -1,0 +1,11 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <text x="400" y="240" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#555">Hero Photo</text>
+  <text x="400" y="270" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#444">800 × 500</text>
+</svg>

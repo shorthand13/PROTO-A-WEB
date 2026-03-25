@@ -13,12 +13,29 @@ export default function SurveyCta() {
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem("survey-cta-dismissed");
-    if (!dismissed) {
-      // Show after a short delay so it doesn't compete with the disclaimer
+    if (dismissed) return;
+
+    const isHome = pathname === "/" || /^\/[a-z]{2}\/?$/.test(pathname);
+
+    if (isHome) {
+      // On homepage: show immediately if animation already seen, otherwise wait
+      const alreadySeen = sessionStorage.getItem("hero-animation-seen") === "true";
+      if (alreadySeen) {
+        const timer = setTimeout(() => setVisible(true), 500);
+        return () => clearTimeout(timer);
+      }
+      let timer: ReturnType<typeof setTimeout>;
+      const handler = () => { timer = setTimeout(() => setVisible(true), 1000); };
+      window.addEventListener("hero-blog-show", handler);
+      return () => {
+        window.removeEventListener("hero-blog-show", handler);
+        clearTimeout(timer);
+      };
+    } else {
       const timer = setTimeout(() => setVisible(true), 2000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [pathname]);
 
   function handleDismiss() {
     sessionStorage.setItem("survey-cta-dismissed", "1");

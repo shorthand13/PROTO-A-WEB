@@ -100,7 +100,7 @@ function BlogPostContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
-            {post.content.trim().startsWith("<") ? (
+            {/<[a-z][\s\S]*>/i.test(post.content) ? (
               <SanitizedHtml html={post.content} />
             ) : (
               <MDXRemote source={post.content} />

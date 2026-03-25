@@ -82,6 +82,26 @@ h3 {
   font-weight: 700;
 }
 
+/* CMS section headings */
+.cms-section-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid #6b9e9e;
+  padding-left: 0.75rem;
+}
+.cms-heading-challenge {
+  border-left-color: #eaad63;
+}
+@media (min-width: 640px) {
+  .cms-section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-left-width: 4px;
+  }
+}
+
 /* Hide scrollbar for horizontal scroll sections */
 .scrollbar-hide {
   -ms-overflow-style: none;

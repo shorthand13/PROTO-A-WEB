@@ -192,15 +192,15 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
             </p>
             <div className="grid grid-cols-2 gap-6">
               {([
-                { key: "training", icon: GraduationCap, image: "/photos/service-1.svg" },
-                { key: "accompaniment", icon: Handshake, image: "/photos/service-2.svg" },
+                { key: "training", icon: GraduationCap, image: "/photos/service-training.svg" },
+                { key: "accompaniment", icon: Handshake, image: "/photos/service-accompaniment.svg" },
               ] as const).map(({ key, icon: Icon, image }) => (
                 <Link
                   key={key}
                   href="/services"
                   className="rounded-3xl overflow-hidden bg-white group hover:shadow-md transition-shadow flex flex-col"
                 >
-                  <div className="relative aspect-[16/9]">
+                  <div className="relative aspect-[3/1]">
                     <Image
                       src={image}
                       alt={ts(`${key}.title`)}

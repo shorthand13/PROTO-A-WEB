@@ -31,6 +31,7 @@ type CMSCaseStudy = {
   solution: string;
   result: string;
   testimonial?: string;
+  thumbnail?: MicroCMSImage;
   locale: string | string[];
 } & MicroCMSListContent;
 
@@ -69,13 +70,14 @@ function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
       tags: cms.tags ?? [],
       locale: getLocale(cms.locale),
       excerpt: cms.challenge.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
+      coverImage: cms.thumbnail?.url,
       published: true,
     },
     content: [
-      `## 課題\n${cms.challenge}`,
-      `## 解決策\n${cms.solution}`,
-      `## 成果\n${cms.result}`,
-      cms.testimonial ? `> ${cms.testimonial}` : "",
+      `<h2 class="cms-section-heading cms-heading-challenge">課題</h2>${cms.challenge}`,
+      `<h2 class="cms-section-heading cms-heading-solution">解決策</h2>${cms.solution}`,
+      `<h2 class="cms-section-heading cms-heading-solution">成果</h2>${cms.result}`,
+      cms.testimonial ? `<blockquote>${cms.testimonial}</blockquote>` : "",
     ]
       .filter(Boolean)
       .join("\n\n"),

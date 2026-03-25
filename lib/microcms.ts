@@ -24,6 +24,7 @@ type CMSBlog = {
 // microCMS case study type
 type CMSCaseStudy = {
   title: string;
+  slug?: string;
   industry: string;
   tags?: string[];
   challenge: string;
@@ -60,7 +61,7 @@ function toBlogPost(cms: CMSBlog): BlogPost {
 // Convert microCMS case study to local CaseStudy format
 function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
   return {
-    slug: cms.id,
+    slug: cms.slug || cms.id,
     frontmatter: {
       title: cms.title,
       date: cms.publishedAt?.split("T")[0] ?? cms.createdAt.split("T")[0],

@@ -32,7 +32,7 @@ function ServicesContent(props: { locale: string }) {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-background px-4 py-8 sm:py-12 text-foreground">
+      <section className="bg-background px-4 pt-8 pb-4 sm:pt-12 sm:pb-6 text-foreground">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <h1 className="text-2xl sm:text-3xl font-bold">{t("title")}</h1>
           <p className="mt-1 sm:mt-2 text-sm sm:text-base text-muted-foreground">{t("subtitle")}</p>
@@ -40,7 +40,7 @@ function ServicesContent(props: { locale: string }) {
       </section>
 
       {/* Flagship Services */}
-      <section className="py-6 sm:py-12 px-4">
+      <section className="py-4 sm:py-8 px-4">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {flagshipServices.map(({ key, icon: Icon, tag }) => (

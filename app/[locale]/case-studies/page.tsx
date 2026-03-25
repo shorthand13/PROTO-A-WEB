@@ -46,14 +46,14 @@ function CaseStudiesContent({
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-background px-4 py-8 sm:py-20 text-foreground">
+      <section className="bg-background px-4 pt-8 pb-4 sm:pt-20 sm:pb-6 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl sm:text-4xl font-bold">{t("title")}</h1>
           <p className="mt-1 sm:mt-4 text-sm sm:text-lg text-muted-foreground">{t("subtitle")}</p>
         </div>
       </section>
 
-      <section className="py-6 sm:py-12 px-4">
+      <section className="py-4 sm:py-8 px-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Tag filters */}
           {allTags.length > 0 && (

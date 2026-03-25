@@ -42,22 +42,46 @@ export default function HeroTypewriter({
     window.dispatchEvent(new Event("hero-solution-shown"));
   }, [heroLine1, heroLine2]);
 
-  // Skip animation on scroll
+  // Skip animation on scroll (with threshold to avoid accidental triggers)
   useEffect(() => {
     if (skippedRef.current) return;
-    const handleScroll = () => skipToEnd();
-    window.addEventListener("scroll", handleScroll, { once: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    let active = false;
+    const activateTimer = setTimeout(() => { active = true; }, 500);
+    const handleScroll = () => {
+      if (!active || window.scrollY < 30) return;
+      skipToEnd();
+      window.removeEventListener("scroll", handleScroll);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(activateTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [skipToEnd]);
 
-  // Fire events immediately for returning visitors
+  // Fire events for returning visitors (small delay so listeners are mounted)
   useEffect(() => {
-    if (hasSeenAnimation) {
+    if (!hasSeenAnimation) return;
+    const timer = setTimeout(() => {
       window.dispatchEvent(new Event("hero-casestudy-show"));
       window.dispatchEvent(new Event("hero-blog-show"));
       window.dispatchEvent(new Event("hero-solution-shown"));
-    }
+    }, 100);
+    return () => clearTimeout(timer);
   }, [hasSeenAnimation]);
+
+  // Show case studies & blog ONLY after subtitle is visible + CSS fade completes
+  useEffect(() => {
+    if (!showSolutionSub || skippedRef.current || hasSeenAnimation) return;
+    // Wait for the 700ms CSS fade-in to finish, then add buffer
+    const t1 = setTimeout(() => {
+      window.dispatchEvent(new Event("hero-casestudy-show"));
+    }, 1500);
+    const t2 = setTimeout(() => {
+      window.dispatchEvent(new Event("hero-blog-show"));
+    }, 2000);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [showSolutionSub, hasSeenAnimation]);
 
   useEffect(() => {
     if (skippedRef.current) return;
@@ -74,11 +98,11 @@ export default function HeroTypewriter({
       if (i <= heroLine1.length) {
         setChar1(i);
         i++;
-        const delay = heroLine1[i - 1] === "\n" ? 1500 : 120;
+        const delay = heroLine1[i - 1] === "\n" ? 1200 : 80;
         timers.push(setTimeout(typeLine1, delay));
       } else {
         t(() => setPhase("hold1"), 0);
-        t(() => setPhase("fade1"), 3000);
+        t(() => setPhase("fade1"), 2200);
         t(() => {
           if (skippedRef.current) return;
           setPhase("typing2");
@@ -88,14 +112,14 @@ export default function HeroTypewriter({
             if (j <= heroLine2.length) {
               setChar2(j);
               j++;
-              timers.push(setTimeout(typeLine2, 120));
+              timers.push(setTimeout(typeLine2, 80));
             } else {
               t(() => {
                 if (skippedRef.current) return;
                 setPhase("hold2");
                 window.dispatchEvent(new Event("hero-line2-done"));
               }, 0);
-              t(() => { if (!skippedRef.current) setPhase("fade2"); }, 1500);
+              t(() => { if (!skippedRef.current) setPhase("fade2"); }, 1200);
               t(() => {
                 if (skippedRef.current) return;
                 setPhase("solution");
@@ -103,13 +127,11 @@ export default function HeroTypewriter({
                 sessionStorage.setItem("hero-animation-seen", "true");
                 t(() => { if (!skippedRef.current) setShowSolutionTitle(true); }, 1200);
                 t(() => { if (!skippedRef.current) setShowSolutionSub(true); }, 2550);
-                t(() => { if (!skippedRef.current) window.dispatchEvent(new Event("hero-casestudy-show")); }, 3300);
-                t(() => { if (!skippedRef.current) window.dispatchEvent(new Event("hero-blog-show")); }, 3650);
-              }, 2300);
+              }, 1800);
             }
           };
           typeLine2();
-        }, 3900);
+        }, 3000);
       }
     };
 

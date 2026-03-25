@@ -4,8 +4,7 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { GraduationCap, Handshake } from "lucide-react";
 import HomeFlipGrid from "@/components/HomeFlipGrid";
-import HeroTypewriter from "@/components/HeroTypewriter";
-import HeroSideTiles, { HeroSideTile } from "@/components/HeroSideTiles";
+import HeroSection from "@/components/HeroSection";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
@@ -115,27 +114,18 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
         {/* Row 1: Hero+Solution (4/6) | Testimonials + Blog (2/6) */}
         <section className="px-4 pt-8">
           <div className="mx-auto max-w-7xl grid grid-cols-7 gap-6">
-            {/* #1 — ProtoA Mark + Hero + Solution */}
-            <div className="col-span-5 flex flex-col gap-2">
-              <div className="px-1">
-                <Image src="/logo_protoa.svg" alt="ProtoA" width={180} height={42} className="h-10 w-auto" />
-              </div>
-              <div className="relative rounded-3xl overflow-hidden min-h-[480px] lg:min-h-[540px]">
-              <div className="relative z-10 h-full min-h-[480px] lg:min-h-[540px]">
-                <HeroTypewriter
-                  heroLine1={t("problem.title")}
-                  heroLine2={t("problem.subtitle")}
-                  solutionTitle={t("solution.title")}
-                  solutionSubtitle={t("solution.subtitle")}
-                />
-              </div>
-            </div>
+            {/* ProtoA Mark */}
+            <div className="col-span-5 px-1 -mb-4">
+              <Image src="/logo_protoa.svg" alt="ProtoA" width={180} height={42} className="h-10 w-auto" />
             </div>
 
-            {/* Right column: Case Studies (#2) + Blog (#3) */}
-            <HeroSideTiles>
-              {/* #2 — Case Studies */}
-              <HeroSideTile eventName="hero-casestudy-show" className="flex-1 flex flex-col">
+            {/* Hero + Solution + Side tiles (single animation controller) */}
+            <HeroSection
+              heroLine1={t("problem.title")}
+              heroLine2={t("problem.subtitle")}
+              solutionTitle={t("solution.title")}
+              solutionSubtitle={t("solution.subtitle")}
+              casestudySlot={
                 <div className="rounded-3xl bg-[#6b9e9e] text-white p-5 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
                     <span className="rounded-full bg-white/30 backdrop-blur-sm px-3 py-1.5 text-xs font-bold flex items-center gap-1.5">
@@ -149,24 +139,29 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
                   {caseStudies[0] && (
                     <Link
                       href={`/case-studies/${caseStudies[0].slug}` as "/case-studies"}
-                      className="flex-1 flex flex-col justify-center rounded-xl bg-white/15 backdrop-blur-sm p-5 hover:bg-white/25 transition-colors"
+                      className="group flex-1 flex flex-col justify-end rounded-xl overflow-hidden relative transition-all"
                     >
-                      <span className="rounded-full bg-white/30 px-3 py-1 text-xs font-bold self-start mb-3">
-                        {caseStudies[0].frontmatter.industry}
-                      </span>
-                      <p className="text-base font-bold text-white leading-snug">
-                        {caseStudies[0].frontmatter.title}
-                      </p>
-                      <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
-                        {extractSection(caseStudies[0].content, "課題") || extractSection(caseStudies[0].content, "Challenge")}
-                      </p>
+                      {caseStudies[0].frontmatter.coverImage ? (
+                        <img
+                          src={caseStudies[0].frontmatter.coverImage}
+                          alt=""
+                          className="absolute inset-0 w-full h-full object-cover opacity-50 transition-opacity duration-300 group-hover:opacity-100"
+                        />
+                      ) : null}
+                      <div className="absolute inset-0 bg-black/15" />
+                      <div className="relative z-10 p-5">
+                        <p className="text-base font-bold text-white leading-snug">
+                          {caseStudies[0].frontmatter.title}
+                        </p>
+                        <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
+                          {extractSection(caseStudies[0].content, "課題") || extractSection(caseStudies[0].content, "Challenge")}
+                        </p>
+                      </div>
                     </Link>
                   )}
                 </div>
-              </HeroSideTile>
-
-              {/* #3 — Blog */}
-              <HeroSideTile eventName="hero-blog-show">
+              }
+              blogSlot={
                 <a
                   href="https://note.com/ayakasunakawa"
                   target="_blank"
@@ -178,8 +173,8 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </span>
                 </a>
-              </HeroSideTile>
-            </HeroSideTiles>
+              }
+            />
           </div>
         </section>
 

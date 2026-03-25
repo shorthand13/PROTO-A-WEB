@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getCaseStudy, getCaseStudies } from "@/lib/case-studies";
-import { getCMSCaseStudy } from "@/lib/microcms";
+import { getCMSCaseStudy, getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 import SanitizedHtml from "@/components/SanitizedHtml";
@@ -13,8 +13,13 @@ export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
 
   for (const locale of locales) {
-    const studies = getCaseStudies(locale);
-    studies.forEach((study) => {
+    const localStudies = getCaseStudies(locale);
+    localStudies.forEach((study) => {
+      params.push({ locale, slug: study.slug });
+    });
+
+    const cmsStudies = await getCMSCaseStudies(locale);
+    cmsStudies.forEach((study) => {
       params.push({ locale, slug: study.slug });
     });
   }
@@ -83,7 +88,7 @@ function CaseStudyContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary">
-            {study.content.trim().startsWith("<") ? (
+            {/<[a-z][\s\S]*>/i.test(study.content) ? (
               <SanitizedHtml html={study.content} />
             ) : (
               <MDXRemote source={study.content} />

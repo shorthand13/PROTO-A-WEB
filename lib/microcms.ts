@@ -148,14 +148,30 @@ export async function getCMSCaseStudies(
   }
 }
 
-// Fetch a single case study by ID
+// Fetch a single case study by slug (custom field) or content ID
 export async function getCMSCaseStudy(
-  id: string
+  slugOrId: string
 ): Promise<CaseStudyLocal | null> {
   try {
+    // First try to find by custom slug field
+    const list = await client.getList<CMSCaseStudy>({
+      endpoint: "case-studies",
+      queries: {
+        filters: `slug[equals]${slugOrId}`,
+        limit: 1,
+      },
+      customRequestInit: {
+        next: { revalidate: 60 },
+      },
+    });
+    if (list.contents.length > 0) {
+      return toCaseStudy(list.contents[0]);
+    }
+
+    // Fallback: try by content ID
     const data = await client.get<CMSCaseStudy>({
       endpoint: "case-studies",
-      contentId: id,
+      contentId: slugOrId,
       customRequestInit: {
         next: { revalidate: 60 },
       },

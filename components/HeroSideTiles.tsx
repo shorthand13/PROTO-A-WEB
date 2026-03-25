@@ -11,13 +11,15 @@ export function HeroSideTile({
   children: React.ReactNode;
   className?: string;
 }) {
-  const [visible, setVisible] = useState(false);
+  const alreadySeen = typeof window !== "undefined" && sessionStorage.getItem("hero-animation-seen") === "true";
+  const [visible, setVisible] = useState(alreadySeen);
 
   useEffect(() => {
+    if (visible) return;
     const handler = () => setVisible(true);
     window.addEventListener(eventName, handler);
     return () => window.removeEventListener(eventName, handler);
-  }, [eventName]);
+  }, [eventName, visible]);
 
   return (
     <div

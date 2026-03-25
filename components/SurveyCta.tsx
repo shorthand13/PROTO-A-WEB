@@ -18,7 +18,12 @@ export default function SurveyCta() {
     const isHome = pathname === "/" || /^\/[a-z]{2}\/?$/.test(pathname);
 
     if (isHome) {
-      // On homepage, wait for the hero animation to finish
+      // On homepage: show immediately if animation already seen, otherwise wait
+      const alreadySeen = sessionStorage.getItem("hero-animation-seen") === "true";
+      if (alreadySeen) {
+        const timer = setTimeout(() => setVisible(true), 500);
+        return () => clearTimeout(timer);
+      }
       let timer: ReturnType<typeof setTimeout>;
       const handler = () => { timer = setTimeout(() => setVisible(true), 1000); };
       window.addEventListener("hero-blog-show", handler);

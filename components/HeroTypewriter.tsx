@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 interface HeroTypewriterProps {
   heroLine1: string;
@@ -17,14 +17,51 @@ export default function HeroTypewriter({
   solutionTitle,
   solutionSubtitle,
 }: HeroTypewriterProps) {
-  const [phase, setPhase] = useState<Phase>("typing1");
+  const hasSeenAnimation = typeof window !== "undefined" && sessionStorage.getItem("hero-animation-seen") === "true";
+
+  const [phase, setPhase] = useState<Phase>(hasSeenAnimation ? "solution" : "typing1");
   const [char1, setChar1] = useState(0);
   const [char2, setChar2] = useState(0);
-  const [showSolution, setShowSolution] = useState(false);
-  const [showSolutionTitle, setShowSolutionTitle] = useState(false);
-  const [showSolutionSub, setShowSolutionSub] = useState(false);
+  const [showSolution, setShowSolution] = useState(hasSeenAnimation);
+  const [showSolutionTitle, setShowSolutionTitle] = useState(hasSeenAnimation);
+  const [showSolutionSub, setShowSolutionSub] = useState(hasSeenAnimation);
+  const skippedRef = useRef(hasSeenAnimation);
+
+  const skipToEnd = useCallback(() => {
+    if (skippedRef.current) return;
+    skippedRef.current = true;
+    sessionStorage.setItem("hero-animation-seen", "true");
+    setPhase("solution");
+    setChar1(heroLine1.length);
+    setChar2(heroLine2.length);
+    setShowSolution(true);
+    setShowSolutionTitle(true);
+    setShowSolutionSub(true);
+    window.dispatchEvent(new Event("hero-casestudy-show"));
+    window.dispatchEvent(new Event("hero-blog-show"));
+    window.dispatchEvent(new Event("hero-solution-shown"));
+  }, [heroLine1, heroLine2]);
+
+  // Skip animation on scroll
+  useEffect(() => {
+    if (skippedRef.current) return;
+    const handleScroll = () => skipToEnd();
+    window.addEventListener("scroll", handleScroll, { once: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [skipToEnd]);
+
+  // Fire events immediately for returning visitors
+  useEffect(() => {
+    if (hasSeenAnimation) {
+      window.dispatchEvent(new Event("hero-casestudy-show"));
+      window.dispatchEvent(new Event("hero-blog-show"));
+      window.dispatchEvent(new Event("hero-solution-shown"));
+    }
+  }, [hasSeenAnimation]);
 
   useEffect(() => {
+    if (skippedRef.current) return;
+
     let cancelled = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
     const t = (fn: () => void, ms: number) => {
@@ -33,38 +70,41 @@ export default function HeroTypewriter({
 
     let i = 0;
     const typeLine1 = () => {
-      if (cancelled) return;
+      if (cancelled || skippedRef.current) return;
       if (i <= heroLine1.length) {
         setChar1(i);
         i++;
-        // Pause at line break (after "のに、")
         const delay = heroLine1[i - 1] === "\n" ? 1500 : 120;
         timers.push(setTimeout(typeLine1, delay));
       } else {
         t(() => setPhase("hold1"), 0);
         t(() => setPhase("fade1"), 3000);
         t(() => {
+          if (skippedRef.current) return;
           setPhase("typing2");
           let j = 0;
           const typeLine2 = () => {
-            if (cancelled) return;
+            if (cancelled || skippedRef.current) return;
             if (j <= heroLine2.length) {
               setChar2(j);
               j++;
               timers.push(setTimeout(typeLine2, 120));
             } else {
               t(() => {
+                if (skippedRef.current) return;
                 setPhase("hold2");
                 window.dispatchEvent(new Event("hero-line2-done"));
               }, 0);
-              t(() => setPhase("fade2"), 1500);
+              t(() => { if (!skippedRef.current) setPhase("fade2"); }, 1500);
               t(() => {
+                if (skippedRef.current) return;
                 setPhase("solution");
                 setShowSolution(true);
-                t(() => setShowSolutionTitle(true), 1200);
-                t(() => setShowSolutionSub(true), 2550);
-                t(() => window.dispatchEvent(new Event("hero-casestudy-show")), 3300);
-                t(() => window.dispatchEvent(new Event("hero-blog-show")), 3650);
+                sessionStorage.setItem("hero-animation-seen", "true");
+                t(() => { if (!skippedRef.current) setShowSolutionTitle(true); }, 1200);
+                t(() => { if (!skippedRef.current) setShowSolutionSub(true); }, 2550);
+                t(() => { if (!skippedRef.current) window.dispatchEvent(new Event("hero-casestudy-show")); }, 3300);
+                t(() => { if (!skippedRef.current) window.dispatchEvent(new Event("hero-blog-show")); }, 3650);
               }, 2300);
             }
           };

@@ -6,7 +6,7 @@ import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
-import SanitizedHtml from "@/components/SanitizedHtml";
+
 
 export const dynamicParams = true;
 
@@ -103,7 +103,7 @@ function BlogPostContent({
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
             {/<[a-z][\s\S]*>/i.test(post.content) ? (
-              <SanitizedHtml html={post.content} />
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
             ) : (
               <MDXRemote source={post.content} />
             )}

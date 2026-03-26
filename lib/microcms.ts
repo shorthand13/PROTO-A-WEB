@@ -93,7 +93,7 @@ export async function getCMSBlogPosts(locale: string): Promise<BlogPost[]> {
         orders: "-publishedAt",
       },
       customRequestInit: {
-        next: { revalidate: 60 },
+        next: { tags: ["blogs"] },
       },
     });
     return data.contents
@@ -119,7 +119,7 @@ export async function getCMSBlogPost(id: string): Promise<BlogPost | null> {
       endpoint: "blogs",
       contentId: id,
       customRequestInit: {
-        next: { revalidate: 60 },
+        next: { tags: ["blogs"] },
       },
     });
     return toBlogPost(data);
@@ -139,7 +139,7 @@ export async function getCMSCaseStudies(
         orders: "-publishedAt",
       },
       customRequestInit: {
-        next: { revalidate: 60 },
+        next: { tags: ["case-studies"] },
       },
     });
     return data.contents
@@ -163,7 +163,7 @@ export async function getCMSCaseStudy(
         limit: 1,
       },
       customRequestInit: {
-        next: { revalidate: 60 },
+        next: { tags: ["case-studies"] },
       },
     });
     if (list.contents.length > 0) {
@@ -175,7 +175,7 @@ export async function getCMSCaseStudy(
       endpoint: "case-studies",
       contentId: slugOrId,
       customRequestInit: {
-        next: { revalidate: 60 },
+        next: { tags: ["case-studies"] },
       },
     });
     return toCaseStudy(data);

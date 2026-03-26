@@ -12,15 +12,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { api } = body;
 
-    // Revalidate based on which content type was updated
+    // Revalidate all pages that may use this content
     if (api === "case-studies") {
-      revalidatePath("/[locale]/case-studies", "page");
-      revalidatePath("/[locale]", "page"); // homepage also shows case studies
+      revalidatePath("/[locale]/case-studies", "layout");
+      revalidatePath("/[locale]", "page");
     } else if (api === "blogs") {
-      revalidatePath("/[locale]/blog", "page");
+      revalidatePath("/[locale]/blog", "layout");
       revalidatePath("/[locale]", "page");
     } else {
-      // Revalidate everything if unknown content type
       revalidatePath("/", "layout");
     }
 

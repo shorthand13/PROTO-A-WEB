@@ -9,6 +9,8 @@ import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
 
+export const revalidate = 0;
+
 export default async function HomePage({
   params,
 }: {

@@ -9,6 +9,8 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import SanitizedHtml from "@/components/SanitizedHtml";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const locales = ["ja", "en"];
   const params: { locale: string; slug: string }[] = [];

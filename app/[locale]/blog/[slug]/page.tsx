@@ -8,6 +8,8 @@ import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 import SanitizedHtml from "@/components/SanitizedHtml";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const locales = ["ja", "en"];
   const params: { locale: string; slug: string }[] = [];

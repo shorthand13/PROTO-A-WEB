@@ -11,6 +11,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import SurveyCta from "@/components/SurveyCta";
+import EventBanner from "@/components/EventBanner";
+import { getCMSNextEvent } from "@/lib/microcms";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -44,6 +46,8 @@ export default async function LocaleLayout({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const nextEvent = await getCMSNextEvent();
+
   return (
     <html
       lang={locale}
@@ -63,6 +67,7 @@ export default async function LocaleLayout({
             <Footer />
             <FeedbackWidget />
             <SurveyCta />
+            <EventBanner event={nextEvent} />
           </NextIntlClientProvider>
         </ClerkProvider>
         <Analytics />

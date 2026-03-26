@@ -93,16 +93,45 @@
   "About": {
     "title": "About Us",
     "mission": {
-      "title": "Our Mission",
-      "description": "We solve the digital challenges faced by entrepreneurs and business owners with a friendly, approachable consulting style."
+      "label": "Mission",
+      "statement": "Empowering business owners\nin Miyakojima and Japan\nto thrive on the world stage"
     },
-    "whyUs": {
-      "title": "Why ProtoA",
-      "description": "Many small businesses are falling behind in digitization. Major consulting firms offer one-size-fits-all solutions that don't fit the realities of small business. We deeply understand our clients' needs and provide support tailored to each individual business."
+    "vision": {
+      "label": "Vision",
+      "statement": "To become the #1 DX consulting\nfirm in clarity and trust"
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "who": {
+        "label": "Who We Serve",
+        "description": "Small and medium businesses in Miyakojima facing management challenges"
+      },
+      "what": {
+        "label": "What We Do",
+        "description": "One-on-one, online business improvement support specialized for regional businesses"
+      },
+      "difference": {
+        "label": "Our Difference",
+        "description": "We use local knowledge to help solve complex challenges in a friendly, easy-to-understand way"
+      }
+    },
+    "stats": {
+      "satisfaction": { "value": "96.8%", "label": "Satisfaction Rate" },
+      "companies": { "value": "67", "label": "Companies Trained" },
+      "participants": { "value": "105", "label": "Participants" },
+      "seminars": { "value": "40+", "label": "Seminars Held" }
+    },
+    "gallery": {
+      "title": "Behind the Scenes"
     },
     "team": {
       "title": "Our Team",
       "description": "A team passionate about and dedicated to supporting business growth."
+    },
+    "cta": {
+      "title": "Ready to talk?",
+      "subtitle": "Free consultations start from 30 minutes.",
+      "button": "Book a Free Consultation"
     }
   },
   "Services": {

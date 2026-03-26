@@ -5,6 +5,16 @@ import type {
   CaseStudy as CaseStudyLocal,
 } from "@/lib/types";
 
+// microCMS event type
+export type CMSEvent = {
+  title: string;
+  date: string;
+  time?: string;
+  location?: string;
+  description?: string;
+  registrationUrl?: string;
+} & MicroCMSListContent;
+
 export const client = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
   apiKey: process.env.MICROCMS_API_KEY!,
@@ -179,6 +189,28 @@ export async function getCMSCaseStudy(
       },
     });
     return toCaseStudy(data);
+  } catch {
+    return null;
+  }
+}
+
+// Fetch the next upcoming event
+export async function getCMSNextEvent(): Promise<CMSEvent | null> {
+  try {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const data = await client.getList<CMSEvent>({
+      endpoint: "events",
+      queries: {
+        filters: `date[greater_than]${yesterday.toISOString()}`,
+        orders: "date",
+        limit: 1,
+      },
+      customRequestInit: {
+        cache: "no-store",
+      },
+    });
+    return data.contents[0] ?? null;
   } catch {
     return null;
   }

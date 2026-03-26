@@ -15,6 +15,9 @@ export async function POST(request: NextRequest) {
     const { api } = body;
     console.log("API field:", api);
 
+    // Wait for MicroCMS to propagate the update before revalidating
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
     // Invalidate data cache (fetch-level) and page cache
     if (api === "case-studies") {
       revalidateTag("case-studies", { expire: 0 });

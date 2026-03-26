@@ -9,9 +9,10 @@ export function sanitizeHtml(html: string): string {
       "strong", "em", "b", "i", "u", "s",
       "a", "img",
       "blockquote", "pre", "code",
+      "figure", "figcaption",
       "table", "thead", "tbody", "tr", "th", "td",
       "div", "span",
     ],
-    ALLOWED_ATTR: ["href", "src", "alt", "title", "target", "rel", "class", "style"],
+    ALLOWED_ATTR: ["href", "src", "alt", "title", "target", "rel", "class", "style", "width", "height"],
   });
 }

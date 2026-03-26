@@ -10,17 +10,23 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
+    console.log("Webhook received:", JSON.stringify(body));
+
     const { api } = body;
+    console.log("API field:", api);
 
     // Revalidate all pages that may use this content
     if (api === "case-studies") {
       revalidatePath("/[locale]/case-studies", "layout");
       revalidatePath("/[locale]", "page");
+      console.log("Revalidated: case-studies + homepage");
     } else if (api === "blogs") {
       revalidatePath("/[locale]/blog", "layout");
       revalidatePath("/[locale]", "page");
+      console.log("Revalidated: blog + homepage");
     } else {
       revalidatePath("/", "layout");
+      console.log("Revalidated: everything (unknown api:", api, ")");
     }
 
     return NextResponse.json({

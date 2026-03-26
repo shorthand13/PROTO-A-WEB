@@ -4,7 +4,7 @@ import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function CaseStudiesPage({
   params,

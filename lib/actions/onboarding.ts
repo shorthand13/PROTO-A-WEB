@@ -57,11 +57,13 @@ export async function submitOnboarding(
   // Fetch user info for webhook and LINE notification
   let userName = "";
   let userEmail = "";
+  let provider = "email";
   try {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
     userName = user.fullName || `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() || user.username || "";
     userEmail = user.emailAddresses[0]?.emailAddress ?? "";
+    provider = user.externalAccounts?.[0]?.provider ?? "email";
   } catch (err) {
     console.error("Failed to fetch user info:", err);
   }
@@ -84,6 +86,7 @@ export async function submitOnboarding(
           dxStatus: data.dxStatus,
           dxBarriers: data.dxBarriers,
           desiredSupport: data.desiredSupport,
+          provider,
           registeredAt: new Date().toISOString(),
         }),
       });
@@ -111,6 +114,7 @@ export async function submitOnboarding(
       `DX状況: ${data.dxStatus}`,
       `DXの壁: ${data.dxBarriers}`,
       `希望する支援: ${data.desiredSupport}`,
+      `登録方法: ${provider}`,
       `登録日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
     ].join("\n");
 

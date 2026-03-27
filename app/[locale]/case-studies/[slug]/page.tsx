@@ -91,9 +91,9 @@ function CaseStudyContent({
               <Image
                 src={study.frontmatter.coverImage}
                 alt={study.frontmatter.title}
-                width={1024}
-                height={576}
-                className="w-full max-h-[480px] object-cover block"
+                width={1200}
+                height={480}
+                className="w-full object-contain block"
               />
               {/* Mobile: tag on image */}
               <div className="absolute bottom-3 right-3 sm:hidden">

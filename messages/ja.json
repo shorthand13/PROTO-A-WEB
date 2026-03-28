@@ -8,6 +8,7 @@
     "services": "サービス",
     "blog": "ブログ",
     "caseStudies": "導入事例",
+    "events": "イベント",
     "membership": "会員ページ",
     "contact": "お問い合わせ",
     "login": "ログイン",
@@ -82,7 +83,7 @@
       "title": "私たちの活動"
     },
     "partners": {
-      "title": "パートナー企業・団体"
+      "title": "ProtoAと連携する\nパートナー企業"
     },
     "cta": {
       "title": "まずは、話してみませんか？",
@@ -192,6 +193,19 @@
     "noPosts": "記事がありません。",
     "previousPage": "前のページ",
     "nextPage": "次のページ"
+  },
+  "Events": {
+    "title": "イベント・セミナー",
+    "subtitle": "DXやIT活用に関するセミナー・イベントを定期開催しています",
+    "upcoming": "開催予定",
+    "past": "過去のイベント",
+    "noUpcoming": "現在予定されているイベントはありません。",
+    "noPast": "過去のイベントはありません。",
+    "register": "申し込む",
+    "details": "詳細を見る",
+    "date": "日時",
+    "location": "会場",
+    "ended": "終了"
   },
   "CaseStudies": {
     "title": "導入事例",

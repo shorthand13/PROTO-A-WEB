@@ -1,0 +1,98 @@
+<svg width="1200" height="480" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="480" fill="#f8f6f3"/>
+
+  <!-- Laptop (center) -->
+  <rect x="370" y="60" width="460" height="300" rx="16" fill="#2d2d2d"/>
+  <rect x="384" y="74" width="432" height="272" rx="8" fill="white"/>
+  <!-- Laptop base -->
+  <path d="M330 360 L370 360 L370 370 Q370 380 380 380 L820 380 Q830 380 830 370 L830 360 L870 360 Q880 360 878 370 L860 390 Q856 396 848 396 L352 396 Q344 396 340 390 L322 370 Q320 360 330 360Z" fill="#e0e0e0"/>
+
+  <!-- Google Workspace header bar -->
+  <rect x="384" y="74" width="432" height="36" rx="8" fill="#4285f4" opacity="0.9"/>
+  <text x="600" y="97" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="white">Google Workspace for Education</text>
+
+  <!-- App grid (3x2) -->
+  <!-- Gmail -->
+  <rect x="408" y="126" width="126" height="64" rx="8" fill="#EA4335" opacity="0.12"/>
+  <rect x="430" y="138" width="28" height="20" rx="3" fill="#EA4335" opacity="0.6"/>
+  <text x="471" y="154" font-family="sans-serif" font-size="11" font-weight="bold" fill="#EA4335">Gmail</text>
+  <text x="420" y="178" font-family="sans-serif" font-size="9" fill="#999">保護者連絡</text>
+
+  <!-- Google Classroom -->
+  <rect x="546" y="126" width="126" height="64" rx="8" fill="#0F9D58" opacity="0.12"/>
+  <rect x="568" y="136" width="22" height="22" rx="4" fill="#0F9D58" opacity="0.6"/>
+  <text x="594" y="154" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F9D58">Classroom</text>
+  <text x="558" y="178" font-family="sans-serif" font-size="9" fill="#999">授業管理</text>
+
+  <!-- Google Drive -->
+  <rect x="684" y="126" width="126" height="64" rx="8" fill="#4285F4" opacity="0.12"/>
+  <path d="M706 140 L718 160 L730 140Z" fill="#4285F4" opacity="0.6"/>
+  <text x="747" y="154" font-family="sans-serif" font-size="11" font-weight="bold" fill="#4285F4">Drive</text>
+  <text x="696" y="178" font-family="sans-serif" font-size="9" fill="#999">教材共有</text>
+
+  <!-- Google Calendar -->
+  <rect x="408" y="202" width="126" height="64" rx="8" fill="#4285F4" opacity="0.12"/>
+  <rect x="430" y="214" width="20" height="20" rx="3" fill="#4285F4" opacity="0.6"/>
+  <text x="455" y="230" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">31</text>
+  <text x="458" y="230" font-family="sans-serif" font-size="11" font-weight="bold" fill="#4285F4">Calendar</text>
+  <text x="420" y="254" font-family="sans-serif" font-size="9" fill="#999">スケジュール</text>
+
+  <!-- Google Sheets -->
+  <rect x="546" y="202" width="126" height="64" rx="8" fill="#0F9D58" opacity="0.12"/>
+  <rect x="568" y="214" width="20" height="20" rx="3" fill="#0F9D58" opacity="0.6"/>
+  <text x="594" y="230" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F9D58">Sheets</text>
+  <text x="558" y="254" font-family="sans-serif" font-size="9" fill="#999">成績管理</text>
+
+  <!-- Google Meet -->
+  <rect x="684" y="202" width="126" height="64" rx="8" fill="#00832d" opacity="0.12"/>
+  <rect x="706" y="214" width="20" height="20" rx="3" fill="#00832d" opacity="0.6"/>
+  <text x="732" y="230" font-family="sans-serif" font-size="11" font-weight="bold" fill="#00832d">Meet</text>
+  <text x="696" y="254" font-family="sans-serif" font-size="9" fill="#999">オンライン授業</text>
+
+  <!-- Status bar -->
+  <rect x="408" y="280" width="398" height="50" rx="8" fill="#6b9e9e" opacity="0.08"/>
+  <text x="600" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6b9e9e">全ツール連携で業務効率化</text>
+  <text x="600" y="318" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#999">紙の管理 → クラウド一元管理</text>
+
+  <!-- Students (left) -->
+  <rect x="60" y="140" width="180" height="200" rx="14" fill="white" stroke="#ddd" stroke-width="2"/>
+  <rect x="60" y="140" width="180" height="30" rx="14" fill="#6b9e9e" opacity="0.1"/>
+  <text x="150" y="160" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6b9e9e">生徒一覧</text>
+  <!-- Student rows -->
+  <circle cx="90" cy="192" r="10" fill="#eaad63" opacity="0.3"/>
+  <rect x="108" y="186" width="100" height="10" rx="3" fill="#f0ece6"/>
+  <circle cx="90" cy="222" r="10" fill="#6b9e9e" opacity="0.3"/>
+  <rect x="108" y="216" width="80" height="10" rx="3" fill="#f0ece6"/>
+  <circle cx="90" cy="252" r="10" fill="#eaad63" opacity="0.3"/>
+  <rect x="108" y="246" width="90" height="10" rx="3" fill="#f0ece6"/>
+  <circle cx="90" cy="282" r="10" fill="#6b9e9e" opacity="0.3"/>
+  <rect x="108" y="276" width="70" height="10" rx="3" fill="#f0ece6"/>
+  <circle cx="90" cy="312" r="10" fill="#eaad63" opacity="0.3"/>
+  <rect x="108" y="306" width="95" height="10" rx="3" fill="#f0ece6"/>
+
+  <!-- Connection line students → laptop -->
+  <path d="M240 240 L370 240" stroke="#6b9e9e" stroke-width="1.5" stroke-dasharray="6 3" fill="none" opacity="0.35"/>
+
+  <!-- Analytics (right) -->
+  <rect x="960" y="120" width="180" height="220" rx="14" fill="white" stroke="#ddd" stroke-width="2"/>
+  <rect x="960" y="120" width="180" height="30" rx="14" fill="#eaad63" opacity="0.15"/>
+  <text x="1050" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eaad63">学習進捗</text>
+  <!-- Bar chart -->
+  <rect x="985" y="270" width="20" height="50" rx="3" fill="#4285F4" opacity="0.4"/>
+  <rect x="1015" y="240" width="20" height="80" rx="3" fill="#0F9D58" opacity="0.4"/>
+  <rect x="1045" y="220" width="20" height="100" rx="3" fill="#eaad63" opacity="0.4"/>
+  <rect x="1075" y="200" width="20" height="120" rx="3" fill="#6b9e9e" opacity="0.4"/>
+  <rect x="1105" y="180" width="20" height="140" rx="3" fill="#4285F4" opacity="0.4"/>
+  <!-- Trend line -->
+  <polyline points="995,260 1025,232 1055,215 1085,195 1115,175" stroke="#eaad63" stroke-width="2" fill="none"/>
+  <!-- Labels -->
+  <text x="995" y="335" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#bbb">4月</text>
+  <text x="1025" y="335" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#bbb">5月</text>
+  <text x="1055" y="335" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#bbb">6月</text>
+  <text x="1085" y="335" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#bbb">7月</text>
+  <text x="1115" y="335" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#bbb">8月</text>
+
+  <!-- Connection line laptop → analytics -->
+  <path d="M830 240 L960 240" stroke="#eaad63" stroke-width="1.5" stroke-dasharray="6 3" fill="none" opacity="0.35"/>
+</svg>

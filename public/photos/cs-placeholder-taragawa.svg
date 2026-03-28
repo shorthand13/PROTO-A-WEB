@@ -1,0 +1,110 @@
+<svg width="1200" height="480" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="480" fill="#f8f6f3"/>
+
+  <!-- Center: Training program laptop -->
+  <rect x="370" y="50" width="460" height="300" rx="16" fill="#2d2d2d"/>
+  <rect x="384" y="64" width="432" height="272" rx="8" fill="white"/>
+  <!-- Laptop base -->
+  <path d="M330 350 L370 350 L370 360 Q370 370 380 370 L820 370 Q830 370 830 360 L830 350 L870 350 Q880 350 878 360 L860 380 Q856 386 848 386 L352 386 Q344 386 340 380 L322 360 Q320 350 330 350Z" fill="#e0e0e0"/>
+
+  <!-- Header bar -->
+  <rect x="384" y="64" width="432" height="36" rx="8" fill="#6b9e9e" opacity="0.9"/>
+  <text x="600" y="87" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="white">IT・AI 研修プログラム</text>
+
+  <!-- 3-month timeline -->
+  <rect x="408" y="116" width="398" height="40" rx="8" fill="#f5f0eb"/>
+  <!-- Month markers -->
+  <rect x="420" y="124" width="110" height="24" rx="6" fill="#eaad63" opacity="0.3"/>
+  <text x="475" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eaad63">1ヶ月目</text>
+  <rect x="542" y="124" width="110" height="24" rx="6" fill="#eaad63" opacity="0.5"/>
+  <text x="597" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eaad63">2ヶ月目</text>
+  <rect x="664" y="124" width="130" height="24" rx="6" fill="#eaad63" opacity="0.8"/>
+  <text x="729" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#c8891e">3ヶ月目</text>
+
+  <!-- Training modules -->
+  <!-- Module 1: IT basics -->
+  <rect x="408" y="170" width="126" height="72" rx="8" fill="#4285F4" opacity="0.1"/>
+  <rect x="424" y="182" width="24" height="24" rx="5" fill="#4285F4" opacity="0.4"/>
+  <text x="436" y="198" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">💻</text>
+  <text x="460" y="196" font-family="sans-serif" font-size="11" font-weight="bold" fill="#4285F4">IT基礎</text>
+  <text x="420" y="224" font-family="sans-serif" font-size="9" fill="#999">クラウド・セキュリティ</text>
+
+  <!-- Module 2: AI tools -->
+  <rect x="546" y="170" width="126" height="72" rx="8" fill="#0F9D58" opacity="0.1"/>
+  <rect x="562" y="182" width="24" height="24" rx="5" fill="#0F9D58" opacity="0.4"/>
+  <text x="574" y="198" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">🤖</text>
+  <text x="598" y="196" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F9D58">AI活用</text>
+  <text x="558" y="224" font-family="sans-serif" font-size="9" fill="#999">ChatGPT・自動化</text>
+
+  <!-- Module 3: Sales DX -->
+  <rect x="684" y="170" width="126" height="72" rx="8" fill="#eaad63" opacity="0.15"/>
+  <rect x="700" y="182" width="24" height="24" rx="5" fill="#eaad63" opacity="0.5"/>
+  <text x="712" y="198" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">📊</text>
+  <text x="736" y="196" font-family="sans-serif" font-size="11" font-weight="bold" fill="#c8891e">営業DX</text>
+  <text x="696" y="224" font-family="sans-serif" font-size="9" fill="#999">データ分析・CRM</text>
+
+  <!-- Progress bar -->
+  <rect x="408" y="258" width="398" height="60" rx="8" fill="#6b9e9e" opacity="0.08"/>
+  <text x="600" y="278" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6b9e9e">営業部スキルアップ進捗</text>
+  <rect x="430" y="290" width="340" height="12" rx="6" fill="#f0ece6"/>
+  <rect x="430" y="290" width="290" height="12" rx="6" fill="#6b9e9e" opacity="0.6"/>
+  <text x="730" y="300" font-family="sans-serif" font-size="9" font-weight="bold" fill="#6b9e9e">85%</text>
+
+  <!-- Sales team (left) -->
+  <rect x="60" y="110" width="180" height="240" rx="14" fill="white" stroke="#ddd" stroke-width="2"/>
+  <rect x="60" y="110" width="180" height="30" rx="14" fill="#6b9e9e" opacity="0.1"/>
+  <text x="150" y="130" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6b9e9e">営業部メンバー</text>
+  <!-- Team members -->
+  <circle cx="90" cy="168" r="14" fill="#6b9e9e" opacity="0.2"/>
+  <text x="90" y="172" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6b9e9e">A</text>
+  <rect x="114" y="160" width="60" height="8" rx="3" fill="#f0ece6"/>
+  <rect x="114" y="174" width="80" height="6" rx="3" fill="#0F9D58" opacity="0.3"/>
+
+  <circle cx="90" cy="210" r="14" fill="#eaad63" opacity="0.2"/>
+  <text x="90" y="214" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eaad63">B</text>
+  <rect x="114" y="202" width="70" height="8" rx="3" fill="#f0ece6"/>
+  <rect x="114" y="216" width="90" height="6" rx="3" fill="#0F9D58" opacity="0.3"/>
+
+  <circle cx="90" cy="252" r="14" fill="#6b9e9e" opacity="0.2"/>
+  <text x="90" y="256" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6b9e9e">C</text>
+  <rect x="114" y="244" width="55" height="8" rx="3" fill="#f0ece6"/>
+  <rect x="114" y="258" width="70" height="6" rx="3" fill="#0F9D58" opacity="0.3"/>
+
+  <circle cx="90" cy="294" r="14" fill="#eaad63" opacity="0.2"/>
+  <text x="90" y="298" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eaad63">D</text>
+  <rect x="114" y="286" width="65" height="8" rx="3" fill="#f0ece6"/>
+  <rect x="114" y="300" width="100" height="6" rx="3" fill="#0F9D58" opacity="0.3"/>
+
+  <!-- Connection line team → laptop -->
+  <path d="M240 230 L370 230" stroke="#6b9e9e" stroke-width="1.5" stroke-dasharray="6 3" fill="none" opacity="0.35"/>
+
+  <!-- Results (right) -->
+  <rect x="960" y="100" width="180" height="260" rx="14" fill="white" stroke="#ddd" stroke-width="2"/>
+  <rect x="960" y="100" width="180" height="30" rx="14" fill="#eaad63" opacity="0.15"/>
+  <text x="1050" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eaad63">研修成果</text>
+
+  <!-- Before/After metrics -->
+  <text x="1050" y="158" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#999">IT活用スキル</text>
+  <rect x="985" y="166" width="130" height="16" rx="4" fill="#f0ece6"/>
+  <rect x="985" y="166" width="40" height="16" rx="4" fill="#ddd"/>
+  <text x="1000" y="178" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#999">前</text>
+  <rect x="985" y="188" width="130" height="16" rx="4" fill="#f0ece6"/>
+  <rect x="985" y="188" width="110" height="16" rx="4" fill="#6b9e9e" opacity="0.6"/>
+  <text x="1035" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">後</text>
+
+  <text x="1050" y="228" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#999">業務効率</text>
+  <rect x="985" y="236" width="130" height="16" rx="4" fill="#f0ece6"/>
+  <rect x="985" y="236" width="50" height="16" rx="4" fill="#ddd"/>
+  <text x="1005" y="248" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#999">前</text>
+  <rect x="985" y="258" width="130" height="16" rx="4" fill="#f0ece6"/>
+  <rect x="985" y="258" width="120" height="16" rx="4" fill="#eaad63" opacity="0.6"/>
+  <text x="1040" y="270" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">後</text>
+
+  <!-- Up arrow indicator -->
+  <text x="1050" y="310" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#6b9e9e">↑</text>
+  <text x="1050" y="334" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6b9e9e">スキル向上</text>
+
+  <!-- Connection line laptop → results -->
+  <path d="M830 230 L960 230" stroke="#eaad63" stroke-width="1.5" stroke-dasharray="6 3" fill="none" opacity="0.35"/>
+</svg>

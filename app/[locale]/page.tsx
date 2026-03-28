@@ -98,6 +98,29 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
           }))}
         />
 
+        {/* Partners (mobile) */}
+        <div className="rounded-2xl bg-white py-8 px-6">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-6 whitespace-pre-line">
+            {t("partners.title")}
+          </h2>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[
+              { src: "/logos/sigma.png", alt: "Sigma" },
+              { src: "/logos/miyanohana.png", alt: "Miyanohana" },
+              { src: "/logos/takabashira.jpg", alt: "Takabashira" },
+            ].map((logo) => (
+              <Image
+                key={logo.alt}
+                src={logo.src}
+                alt={logo.alt}
+                width={120}
+                height={45}
+                className="h-12 w-auto object-contain"
+              />
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="rounded-2xl bg-transparent text-foreground p-6 text-center">
           <h2 className="text-xl font-bold">{t("cta.title")}</h2>
@@ -181,10 +204,37 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
         </section>
 
 
-        {/* Row 4: Services */}
-        <section className="px-4 pt-6">
+        {/* Partners */}
+        <section className="px-4 pt-12 pb-6">
           <div className="mx-auto max-w-7xl">
-            <p className="text-sm font-bold text-foreground tracking-widest mb-4">
+            <div className="rounded-3xl bg-white py-10 px-8">
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground text-center mb-10">
+                {t("partners.title")}
+              </h2>
+              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+                {[
+                  { src: "/logos/sigma.png", alt: "Sigma" },
+                  { src: "/logos/miyanohana.png", alt: "Miyanohana" },
+                  { src: "/logos/takabashira.jpg", alt: "Takabashira" },
+                ].map((logo) => (
+                  <Image
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={160}
+                    height={60}
+                    className="h-16 sm:h-20 w-auto object-contain"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Row 4: Services */}
+        <section className="px-4 pt-12">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-4xl lg:text-5xl font-bold text-foreground tracking-widest mb-10 text-center">
               {ts("title")}
             </p>
             <div className="grid grid-cols-2 gap-6">
@@ -224,25 +274,12 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
         </section>
 
 
-        {/* Row 3: Partners + CTA stacked */}
+        {/* CTA */}
         <section className="px-4 py-6">
           <div className="mx-auto max-w-7xl flex flex-col gap-6">
-            <div className="rounded-3xl bg-white py-10 px-8">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-8">
-                {t("partners.title")}
-              </h2>
-              <div className="flex items-center justify-center gap-6">
-                {["Partner A", "Partner B", "Partner C", "Partner D", "Partner E"].map((name) => (
-                  <div key={name} className="h-14 w-32 rounded-lg bg-muted border border-border flex items-center justify-center text-xs text-muted-foreground font-medium">
-                    {name}
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="rounded-3xl bg-transparent text-foreground p-10 flex flex-col justify-center text-center min-h-[200px]">
-              <h2 className="text-2xl font-bold">{t("cta.title")}</h2>
-              <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">{t("cta.subtitle")}</p>
+              <h2 className="text-3xl lg:text-4xl font-bold">{t("cta.title")}</h2>
+              <p className="mt-3 text-base text-muted-foreground max-w-md mx-auto">{t("cta.subtitle")}</p>
               <Link
                 href="/contact"
                 className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors mx-auto"

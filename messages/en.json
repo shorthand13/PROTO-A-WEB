@@ -8,6 +8,7 @@
     "services": "Services",
     "blog": "Blog",
     "caseStudies": "Case Studies",
+    "events": "Events",
     "membership": "Membership",
     "contact": "Contact",
     "login": "Login",
@@ -82,7 +83,7 @@
       "title": "Behind the Scenes"
     },
     "partners": {
-      "title": "Our Partners"
+      "title": "Some of the partner organizations that work with ProtoA"
     },
     "cta": {
       "title": "Ready to talk?",
@@ -192,6 +193,19 @@
     "noPosts": "No posts found.",
     "previousPage": "Previous",
     "nextPage": "Next"
+  },
+  "Events": {
+    "title": "Events & Seminars",
+    "subtitle": "Regular seminars and events on DX and IT for business",
+    "upcoming": "Upcoming",
+    "past": "Past Events",
+    "noUpcoming": "No upcoming events at this time.",
+    "noPast": "No past events.",
+    "register": "Register",
+    "details": "View Details",
+    "date": "Date",
+    "location": "Location",
+    "ended": "Ended"
   },
   "CaseStudies": {
     "title": "Case Studies",

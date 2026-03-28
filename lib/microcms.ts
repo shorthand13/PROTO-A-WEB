@@ -194,6 +194,37 @@ export async function getCMSCaseStudy(
   }
 }
 
+// Fetch all events (upcoming first, then past)
+export async function getCMSEvents(): Promise<{ upcoming: CMSEvent[]; past: CMSEvent[] }> {
+  try {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const data = await client.getList<CMSEvent>({
+      endpoint: "events",
+      queries: {
+        orders: "date",
+        limit: 100,
+      },
+      customRequestInit: {
+        cache: "no-store",
+      },
+    });
+    const upcoming: CMSEvent[] = [];
+    const past: CMSEvent[] = [];
+    for (const event of data.contents) {
+      if (new Date(event.date) >= now) {
+        upcoming.push(event);
+      } else {
+        past.push(event);
+      }
+    }
+    past.reverse(); // most recent past events first
+    return { upcoming, past };
+  } catch {
+    return { upcoming: [], past: [] };
+  }
+}
+
 // Fetch the next upcoming event
 export async function getCMSNextEvent(): Promise<CMSEvent | null> {
   try {

@@ -4,15 +4,19 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { z } from "zod";
 
 const onboardingSchema = z.object({
+  userType: z.enum(["corporation", "sole-proprietor", "individual"]),
   lastName: z.string().min(1).max(100),
   firstName: z.string().min(1).max(100),
-  company: z.string().min(1).max(200),
-  industry: z.string().min(1),
-  companySize: z.string().min(1),
+  company: z.string().max(200).optional().default(""),
+  industry: z.string().optional().default(""),
+  companySize: z.string().optional().default(""),
   challenges: z.string().min(1),        // comma-separated, up to 3
+  challengesOther: z.string().optional().default(""),
   dxStatus: z.string().min(1),           // at least 1
   dxBarriers: z.string().min(1),         // comma-separated, top 3
+  dxBarriersOther: z.string().optional().default(""),
   desiredSupport: z.string().min(1),     // comma-separated, up to 3
+  desiredSupportOther: z.string().optional().default(""),
 });
 
 export type OnboardingState = {
@@ -28,15 +32,19 @@ export async function submitOnboarding(
   if (!userId) return { success: false, error: true };
 
   const raw = {
+    userType: formData.get("userType"),
     lastName: formData.get("lastName"),
     firstName: formData.get("firstName"),
-    company: formData.get("company"),
-    industry: formData.get("industry"),
-    companySize: formData.get("companySize"),
+    company: formData.get("company") || undefined,
+    industry: formData.get("industry") || undefined,
+    companySize: formData.get("companySize") || undefined,
     challenges: formData.get("challenges"),
+    challengesOther: formData.get("challengesOther") || undefined,
     dxStatus: formData.get("dxStatus"),
     dxBarriers: formData.get("dxBarriers"),
+    dxBarriersOther: formData.get("dxBarriersOther") || undefined,
     desiredSupport: formData.get("desiredSupport"),
+    desiredSupportOther: formData.get("desiredSupportOther") || undefined,
   };
 
   const result = onboardingSchema.safeParse(raw);
@@ -90,16 +98,20 @@ export async function submitOnboarding(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "registration",
+          userType: data.userType,
           lastName: data.lastName,
           firstName: data.firstName,
           email: userEmail,
-          company: data.company,
+          company: data.company || "",
           industry: data.industry,
           companySize: data.companySize,
           challenges: data.challenges,
+          challengesOther: data.challengesOther || "",
           dxStatus: data.dxStatus,
           dxBarriers: data.dxBarriers,
+          dxBarriersOther: data.dxBarriersOther || "",
           desiredSupport: data.desiredSupport,
+          desiredSupportOther: data.desiredSupportOther || "",
           provider,
           registeredAt: new Date().toISOString(),
         }),
@@ -117,18 +129,20 @@ export async function submitOnboarding(
       .filter(Boolean) ?? [];
 
   if (lineToken && lineUserIds.length > 0) {
+    const userTypeLabel = data.userType === "corporation" ? "法人" : data.userType === "sole-proprietor" ? "個人事業主" : "個人";
     const lineMessage = [
       "🎉 新規会員登録",
+      `種別: ${userTypeLabel}`,
       `姓: ${data.lastName || "未設定"}`,
       `名: ${data.firstName || "未設定"}`,
       `メール: ${userEmail}`,
-      `会社名: ${data.company}`,
+      `会社名: ${data.company || "なし"}`,
       `業種: ${data.industry}`,
       `従業員規模: ${data.companySize}`,
-      `経営課題: ${data.challenges}`,
+      `経営課題: ${data.challenges}${data.challengesOther ? `（その他: ${data.challengesOther}）` : ""}`,
       `DX状況: ${data.dxStatus}`,
-      `DXの壁: ${data.dxBarriers}`,
-      `希望する支援: ${data.desiredSupport}`,
+      `DXの壁: ${data.dxBarriers}${data.dxBarriersOther ? `（その他: ${data.dxBarriersOther}）` : ""}`,
+      `希望する支援: ${data.desiredSupport}${data.desiredSupportOther ? `（その他: ${data.desiredSupportOther}）` : ""}`,
       `登録方法: ${provider}`,
       `登録日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
     ].join("\n");

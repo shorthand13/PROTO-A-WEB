@@ -320,10 +320,21 @@
     "homeSubtitle": "Just 2 minutes! Get insights on your digital transformation journey."
   },
   "Onboarding": {
-    "title": "Tell Us About Your Business",
+    "title": "Tell Us About Yourself",
     "subtitle": "Help us provide better services tailored to your needs",
-    "company": "Company / Business Name",
-    "companyPlaceholder": "Acme Corp / My Shop",
+    "userTypeLabel": "Which best describes you?",
+    "userType": {
+      "corporation": "Company / Organization",
+      "soleProprietor": "Sole Proprietor / Freelancer",
+      "individual": "Individual"
+    },
+    "name": "Your Name",
+    "lastNamePlaceholder": "Last name",
+    "firstNamePlaceholder": "First name",
+    "company": "Company Name",
+    "companyPlaceholder": "Acme Corp",
+    "businessName": "Business Name",
+    "businessNamePlaceholder": "My Shop / My Design Studio",
     "industry": "Industry",
     "selectPlaceholder": "Please select",
     "industries": {
@@ -346,6 +357,7 @@
       "large": "51+"
     },
     "challengesLabel": "Current Business Challenges",
+    "interestsLabel": "Topics You're Interested In",
     "upTo3": "Select up to 3",
     "top3": "Select your top 3",
     "challenges": {
@@ -355,9 +367,15 @@
       "efficiency": "Operational efficiency (IT/Digital)",
       "training": "Staff development",
       "funding": "Cash flow management",
+      "time": "Not enough time",
+      "skillup": "Skill development",
+      "sideBusinessInterest": "Interested in side business / starting a business",
+      "learnDigital": "Want to learn digital tools",
+      "career": "Career advancement",
       "other": "Other"
     },
     "dxStatusLabel": "How far along is your business with digital transformation?",
+    "dxStatusLabelPersonal": "How much do you use digital tools?",
     "dxStatus": {
       "none": "Haven't started yet",
       "considering": "Aware of the need, but still exploring",
@@ -365,6 +383,7 @@
       "active": "Actively pursuing DX"
     },
     "dxBarriersLabel": "What are the biggest barriers to your digital transformation?",
+    "dxBarriersLabelPersonal": "What are the biggest barriers to using digital tools?",
     "dxBarriers": {
       "budget": "Lack of budget for implementation",
       "resources": "No dedicated staff or time",
@@ -387,6 +406,7 @@
       "noNeed": "Don't feel a need for support",
       "other": "Other"
     },
+    "otherPlaceholder": "Please specify",
     "submit": "Save & Get Started",
     "saving": "Saving...",
     "error": "Failed to save. Please try again.",

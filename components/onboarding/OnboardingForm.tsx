@@ -8,6 +8,8 @@ import { Building2 } from "lucide-react";
 
 const initialState: OnboardingState = { success: false, error: false };
 
+type UserType = "" | "corporation" | "sole-proprietor" | "individual";
+
 function CheckboxGroup({
   options,
   max,
@@ -93,16 +95,31 @@ export default function OnboardingForm() {
     initialState
   );
 
+  const [userType, setUserType] = useState<UserType>("");
   const [challenges, setChallenges] = useState<string[]>([]);
+  const [challengesOther, setChallengesOther] = useState("");
   const [dxStatus, setDxStatus] = useState("");
   const [dxBarriers, setDxBarriers] = useState<string[]>([]);
+  const [dxBarriersOther, setDxBarriersOther] = useState("");
   const [desiredSupport, setDesiredSupport] = useState<string[]>([]);
+  const [desiredSupportOther, setDesiredSupportOther] = useState("");
+
+  // Reset challenges when user type changes
+  useEffect(() => {
+    setChallenges([]);
+  }, [userType]);
 
   useEffect(() => {
     if (state.success) {
       router.push("/membership");
     }
   }, [state.success, router]);
+
+  const userTypeOptions = [
+    { value: "corporation", label: t("userType.corporation") },
+    { value: "sole-proprietor", label: t("userType.soleProprietor") },
+    { value: "individual", label: t("userType.individual") },
+  ];
 
   const industryOptions = [
     { value: "建設", label: t("industries.construction") },
@@ -131,6 +148,25 @@ export default function OnboardingForm() {
     { value: "業務効率化（IT・デジタル活用）", label: t("challenges.efficiency") },
     { value: "人材育成", label: t("challenges.training") },
     { value: "資金繰り", label: t("challenges.funding") },
+    { value: "その他", label: t("challenges.other") },
+  ];
+
+  const soleProprietorChallengeOptions = [
+    { value: "売上拡大", label: t("challenges.sales") },
+    { value: "集客", label: t("challenges.marketing") },
+    { value: "業務効率化（IT・デジタル活用）", label: t("challenges.efficiency") },
+    { value: "時間が足りない", label: t("challenges.time") },
+    { value: "資金繰り", label: t("challenges.funding") },
+    { value: "スキルアップ", label: t("challenges.skillup") },
+    { value: "その他", label: t("challenges.other") },
+  ];
+
+  const individualChallengeOptions = [
+    { value: "スキルアップ", label: t("challenges.skillup") },
+    { value: "副業・起業に興味", label: t("challenges.sideBusinessInterest") },
+    { value: "デジタルツールを学びたい", label: t("challenges.learnDigital") },
+    { value: "業務効率化（IT・デジタル活用）", label: t("challenges.efficiency") },
+    { value: "キャリアアップ", label: t("challenges.career") },
     { value: "その他", label: t("challenges.other") },
   ];
 
@@ -164,6 +200,15 @@ export default function OnboardingForm() {
     { value: "その他", label: t("support.other") },
   ];
 
+  const currentChallengeOptions =
+    userType === "individual"
+      ? individualChallengeOptions
+      : userType === "sole-proprietor"
+        ? soleProprietorChallengeOptions
+        : challengeOptions;
+
+  const isBusiness = userType === "corporation" || userType === "sole-proprietor";
+
   return (
     <div className="rounded-2xl border border-border bg-background p-6 sm:p-8 shadow-sm">
       <div className="text-center mb-8">
@@ -174,151 +219,204 @@ export default function OnboardingForm() {
 
       <form action={formAction} className="space-y-6">
         {/* Hidden fields for checkbox/radio state */}
+        <input type="hidden" name="userType" value={userType} />
         <input type="hidden" name="challenges" value={challenges.join(",")} />
+        <input type="hidden" name="challengesOther" value={challengesOther} />
         <input type="hidden" name="dxStatus" value={dxStatus} />
         <input type="hidden" name="dxBarriers" value={dxBarriers.join(",")} />
+        <input type="hidden" name="dxBarriersOther" value={dxBarriersOther} />
         <input type="hidden" name="desiredSupport" value={desiredSupport.join(",")} />
+        <input type="hidden" name="desiredSupportOther" value={desiredSupportOther} />
 
-        {/* Q0: Name */}
+        {/* Q0: User Type */}
         <div>
           <label className="block text-sm font-medium text-foreground mb-1">
-            {t("name")} <span className="text-accent">*</span>
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              required
-              placeholder={t("lastNamePlaceholder")}
-              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-            />
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              required
-              placeholder={t("firstNamePlaceholder")}
-              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-            />
-          </div>
-        </div>
-
-        {/* Q1: Company Name */}
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1">
-            {t("company")} <span className="text-accent">*</span>
-          </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            required
-            placeholder={t("companyPlaceholder")}
-            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-          />
-        </div>
-
-        {/* Q2: Industry */}
-        <div>
-          <label htmlFor="industry" className="block text-sm font-medium text-foreground mb-1">
-            {t("industry")} <span className="text-accent">*</span>
-          </label>
-          <select
-            id="industry"
-            name="industry"
-            required
-            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-          >
-            <option value="">{t("selectPlaceholder")}</option>
-            {industryOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Q3: Company Size */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
-            {t("companySize")} <span className="text-accent">*</span>
-          </label>
-          <select
-            name="companySize"
-            required
-            className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-          >
-            <option value="">{t("selectPlaceholder")}</option>
-            {sizeOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Q4: Business Challenges (up to 3) */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">
-            {t("challengesLabel")} <span className="text-accent">*</span>
-          </label>
-          <p className="text-xs text-muted-foreground mb-2">{t("upTo3")}</p>
-          <CheckboxGroup
-            options={challengeOptions}
-            max={3}
-            selected={challenges}
-            onChange={setChallenges}
-          />
-        </div>
-
-        {/* Q5: DX Status (choose 1) */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">
-            {t("dxStatusLabel")} <span className="text-accent">*</span>
+            {t("userTypeLabel")} <span className="text-accent">*</span>
           </label>
           <RadioGroup
-            options={dxStatusOptions}
-            selected={dxStatus}
-            onChange={setDxStatus}
+            options={userTypeOptions}
+            selected={userType}
+            onChange={(val) => setUserType(val as UserType)}
           />
         </div>
 
-        {/* Q6: DX Barriers (top 3) */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">
-            {t("dxBarriersLabel")} <span className="text-accent">*</span>
-          </label>
-          <p className="text-xs text-muted-foreground mb-2">{t("top3")}</p>
-          <CheckboxGroup
-            options={dxBarrierOptions}
-            max={3}
-            selected={dxBarriers}
-            onChange={setDxBarriers}
-          />
-        </div>
+        {userType && (
+          <>
+            {/* Q1: Name */}
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">
+                {t("name")} <span className="text-accent">*</span>
+              </label>
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  required
+                  placeholder={t("lastNamePlaceholder")}
+                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  required
+                  placeholder={t("firstNamePlaceholder")}
+                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+              </div>
+            </div>
 
-        {/* Q7: Desired Support (up to 3) */}
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">
-            {t("supportLabel")} <span className="text-accent">*</span>
-          </label>
-          <p className="text-xs text-muted-foreground mb-2">{t("upTo3")}</p>
-          <CheckboxGroup
-            options={supportOptions}
-            max={3}
-            selected={desiredSupport}
-            onChange={setDesiredSupport}
-          />
-        </div>
+            {/* Q2: Company / Business Name (corporation & sole-proprietor only) */}
+            {isBusiness && (
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1">
+                  {userType === "sole-proprietor" ? t("businessName") : t("company")} <span className="text-accent">*</span>
+                </label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  required
+                  placeholder={userType === "sole-proprietor" ? t("businessNamePlaceholder") : t("companyPlaceholder")}
+                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+              </div>
+            )}
 
-        {state.error && (
-          <p className="text-sm text-red-500">{t("error")}</p>
+            {/* Q3: Industry (corporation & sole-proprietor only) */}
+            {isBusiness && (
+              <div>
+                <label htmlFor="industry" className="block text-sm font-medium text-foreground mb-1">
+                  {t("industry")} <span className="text-accent">*</span>
+                </label>
+                <select
+                  id="industry"
+                  name="industry"
+                  required
+                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                >
+                  <option value="">{t("selectPlaceholder")}</option>
+                  {industryOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Q4: Company Size (corporation only) */}
+            {userType === "corporation" && (
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  {t("companySize")} <span className="text-accent">*</span>
+                </label>
+                <select
+                  name="companySize"
+                  required
+                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                >
+                  <option value="">{t("selectPlaceholder")}</option>
+                  {sizeOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Q5: Challenges (up to 3) */}
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">
+                {userType === "individual" ? t("interestsLabel") : t("challengesLabel")} <span className="text-accent">*</span>
+              </label>
+              <p className="text-xs text-muted-foreground mb-2">{t("upTo3")}</p>
+              <CheckboxGroup
+                options={currentChallengeOptions}
+                max={3}
+                selected={challenges}
+                onChange={setChallenges}
+              />
+              {challenges.includes("その他") && (
+                <input
+                  type="text"
+                  value={challengesOther}
+                  onChange={(e) => setChallengesOther(e.target.value)}
+                  placeholder={t("otherPlaceholder")}
+                  className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+              )}
+            </div>
+
+            {/* Q6: DX Status (choose 1) */}
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">
+                {userType === "individual" ? t("dxStatusLabelPersonal") : t("dxStatusLabel")} <span className="text-accent">*</span>
+              </label>
+              <RadioGroup
+                options={dxStatusOptions}
+                selected={dxStatus}
+                onChange={setDxStatus}
+              />
+            </div>
+
+            {/* Q7: DX Barriers (top 3) */}
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">
+                {userType === "individual" ? t("dxBarriersLabelPersonal") : t("dxBarriersLabel")} <span className="text-accent">*</span>
+              </label>
+              <p className="text-xs text-muted-foreground mb-2">{t("top3")}</p>
+              <CheckboxGroup
+                options={dxBarrierOptions}
+                max={3}
+                selected={dxBarriers}
+                onChange={setDxBarriers}
+              />
+              {dxBarriers.includes("その他") && (
+                <input
+                  type="text"
+                  value={dxBarriersOther}
+                  onChange={(e) => setDxBarriersOther(e.target.value)}
+                  placeholder={t("otherPlaceholder")}
+                  className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+              )}
+            </div>
+
+            {/* Q8: Desired Support (up to 3) */}
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">
+                {t("supportLabel")} <span className="text-accent">*</span>
+              </label>
+              <p className="text-xs text-muted-foreground mb-2">{t("upTo3")}</p>
+              <CheckboxGroup
+                options={supportOptions}
+                max={3}
+                selected={desiredSupport}
+                onChange={setDesiredSupport}
+              />
+              {desiredSupport.includes("その他") && (
+                <input
+                  type="text"
+                  value={desiredSupportOther}
+                  onChange={(e) => setDesiredSupportOther(e.target.value)}
+                  placeholder={t("otherPlaceholder")}
+                  className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                />
+              )}
+            </div>
+
+            {state.error && (
+              <p className="text-sm text-red-500">{t("error")}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={isPending || !challenges.length || !dxStatus || !dxBarriers.length || !desiredSupport.length}
+              className="w-full rounded-xl bg-primary py-3 text-sm font-medium text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isPending ? t("saving") : t("submit")}
+            </button>
+          </>
         )}
-
-        <button
-          type="submit"
-          disabled={isPending || !challenges.length || !dxStatus || !dxBarriers.length || !desiredSupport.length}
-          className="w-full rounded-xl bg-primary py-3 text-sm font-medium text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isPending ? t("saving") : t("submit")}
-        </button>
 
         <p className="text-center text-xs text-muted-foreground">
           {t("skipNote")}

@@ -4,6 +4,8 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { z } from "zod";
 
 const onboardingSchema = z.object({
+  lastName: z.string().min(1).max(100),
+  firstName: z.string().min(1).max(100),
   company: z.string().min(1).max(200),
   industry: z.string().min(1),
   companySize: z.string().min(1),
@@ -26,6 +28,8 @@ export async function submitOnboarding(
   if (!userId) return { success: false, error: true };
 
   const raw = {
+    lastName: formData.get("lastName"),
+    firstName: formData.get("firstName"),
     company: formData.get("company"),
     industry: formData.get("industry"),
     companySize: formData.get("companySize"),
@@ -43,6 +47,13 @@ export async function submitOnboarding(
   // Save to Clerk user metadata
   try {
     const client = await clerkClient();
+    // Update user's first/last name if provided via onboarding
+    if (data.firstName || data.lastName) {
+      await client.users.updateUser(userId, {
+        firstName: data.firstName || "",
+        lastName: data.lastName || "",
+      });
+    }
     await client.users.updateUserMetadata(userId, {
       publicMetadata: {
         ...data,
@@ -55,13 +66,15 @@ export async function submitOnboarding(
   }
 
   // Fetch user info for webhook and LINE notification
-  let userName = "";
+  let userName = `${data.lastName} ${data.firstName}`.trim();
   let userEmail = "";
   let provider = "email";
   try {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
-    userName = user.fullName || `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() || user.username || "";
+    if (!userName) {
+      userName = user.fullName || `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() || user.username || "";
+    }
     userEmail = user.emailAddresses[0]?.emailAddress ?? "";
     provider = user.externalAccounts?.[0]?.provider ?? "email";
   } catch (err) {
@@ -77,7 +90,8 @@ export async function submitOnboarding(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "registration",
-          name: userName || userEmail,
+          lastName: data.lastName,
+          firstName: data.firstName,
           email: userEmail,
           company: data.company,
           industry: data.industry,
@@ -105,7 +119,8 @@ export async function submitOnboarding(
   if (lineToken && lineUserIds.length > 0) {
     const lineMessage = [
       "🎉 新規会員登録",
-      `名前: ${userName || "未設定"}`,
+      `姓: ${data.lastName || "未設定"}`,
+      `名: ${data.firstName || "未設定"}`,
       `メール: ${userEmail}`,
       `会社名: ${data.company}`,
       `業種: ${data.industry}`,

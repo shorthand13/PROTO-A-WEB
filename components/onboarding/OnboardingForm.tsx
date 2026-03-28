@@ -179,6 +179,31 @@ export default function OnboardingForm() {
         <input type="hidden" name="dxBarriers" value={dxBarriers.join(",")} />
         <input type="hidden" name="desiredSupport" value={desiredSupport.join(",")} />
 
+        {/* Q0: Name */}
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">
+            {t("name")} <span className="text-accent">*</span>
+          </label>
+          <div className="grid grid-cols-2 gap-3">
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              required
+              placeholder={t("lastNamePlaceholder")}
+              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+            />
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              required
+              placeholder={t("firstNamePlaceholder")}
+              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+            />
+          </div>
+        </div>
+
         {/* Q1: Company Name */}
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1">

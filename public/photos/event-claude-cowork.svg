@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <!-- Background -->
+  <rect width="800" height="420" rx="16" fill="#f8f6f3"/>
+
+  <!-- Abstract blobs -->
+  <ellipse cx="160" cy="120" rx="180" ry="140" fill="#d4764e" opacity="0.05"/>
+  <ellipse cx="640" cy="300" rx="200" ry="160" fill="#6b9e9e" opacity="0.05"/>
+
+  <!-- Central composition: Human + AI collaboration -->
+
+  <!-- Dashed connection arc -->
+  <path d="M280 210 Q400 80 520 210" fill="none" stroke="#6b9e9e" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.15"/>
+  <path d="M280 210 Q400 340 520 210" fill="none" stroke="#d4764e" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.15"/>
+
+  <!-- Left: Human side -->
+  <circle cx="260" cy="210" r="65" fill="white" stroke="#6b9e9e" stroke-width="2.5"/>
+  <circle cx="260" cy="210" r="50" fill="#6b9e9e" opacity="0.04"/>
+  <!-- Person silhouette -->
+  <circle cx="260" cy="192" r="14" fill="#6b9e9e" opacity="0.25"/>
+  <path d="M236 228 Q260 212 284 228" stroke="#6b9e9e" stroke-width="2" fill="#6b9e9e" opacity="0.15"/>
+  <!-- Typing dots -->
+  <circle cx="248" cy="240" r="3" fill="#6b9e9e" opacity="0.3"/>
+  <circle cx="260" cy="240" r="3" fill="#6b9e9e" opacity="0.2"/>
+  <circle cx="272" cy="240" r="3" fill="#6b9e9e" opacity="0.1"/>
+
+  <!-- Right: AI/Claude side -->
+  <circle cx="540" cy="210" r="65" fill="white" stroke="#d4764e" stroke-width="2.5"/>
+  <circle cx="540" cy="210" r="50" fill="#d4764e" opacity="0.04"/>
+  <!-- Sparkle/AI symbol -->
+  <path d="M540 180 L544 195 L558 198 L544 201 L540 216 L536 201 L522 198 L536 195 Z" fill="#d4764e" opacity="0.3"/>
+  <circle cx="528" cy="226" r="3" fill="#d4764e" opacity="0.2"/>
+  <circle cx="540" cy="230" r="3" fill="#d4764e" opacity="0.15"/>
+  <circle cx="552" cy="226" r="3" fill="#d4764e" opacity="0.2"/>
+
+  <!-- Center: Shared workspace / collaboration zone -->
+  <circle cx="400" cy="210" r="40" fill="white" stroke="#eaad63" stroke-width="2"/>
+  <circle cx="400" cy="210" r="30" fill="#eaad63" opacity="0.06"/>
+  <!-- Handshake / merge symbol -->
+  <path d="M384 210 L396 204 L404 210 L396 216 Z" fill="#eaad63" opacity="0.3"/>
+  <path d="M416 210 L404 204 L396 210 L404 216 Z" fill="#6b9e9e" opacity="0.3"/>
+
+  <!-- Floating chat bubbles -->
+  <!-- Top-left bubble -->
+  <rect x="130" y="70" width="70" height="40" rx="12" fill="white" stroke="#6b9e9e" stroke-width="1.5"/>
+  <rect x="142" y="82" width="34" height="3.5" rx="1.75" fill="#6b9e9e" opacity="0.25"/>
+  <rect x="142" y="90" width="24" height="3.5" rx="1.75" fill="#6b9e9e" opacity="0.18"/>
+
+  <!-- Top-right bubble -->
+  <rect x="590" y="60" width="80" height="45" rx="12" fill="white" stroke="#d4764e" stroke-width="1.5"/>
+  <rect x="604" y="72" width="40" height="3.5" rx="1.75" fill="#d4764e" opacity="0.25"/>
+  <rect x="604" y="80" width="50" height="3.5" rx="1.75" fill="#d4764e" opacity="0.18"/>
+  <rect x="604" y="88" width="30" height="3.5" rx="1.75" fill="#d4764e" opacity="0.12"/>
+
+  <!-- Bottom-left bubble -->
+  <rect x="100" y="300" width="85" height="42" rx="12" fill="white" stroke="#6b9e9e" stroke-width="1.5"/>
+  <rect x="114" y="313" width="44" height="3.5" rx="1.75" fill="#6b9e9e" opacity="0.2"/>
+  <rect x="114" y="321" width="30" height="3.5" rx="1.75" fill="#6b9e9e" opacity="0.15"/>
+
+  <!-- Bottom-right bubble -->
+  <rect x="620" y="310" width="75" height="40" rx="12" fill="white" stroke="#d4764e" stroke-width="1.5"/>
+  <rect x="632" y="322" width="38" height="3.5" rx="1.75" fill="#d4764e" opacity="0.22"/>
+  <rect x="632" y="330" width="48" height="3.5" rx="1.75" fill="#d4764e" opacity="0.15"/>
+
+  <!-- Satellite nodes -->
+  <!-- Code block (top) -->
+  <circle cx="400" cy="80" r="28" fill="white" stroke="#6b9e9e" stroke-width="1.5"/>
+  <text x="400" y="76" text-anchor="middle" font-family="monospace" font-size="10" fill="#6b9e9e" opacity="0.5">&lt;/&gt;</text>
+  <rect x="388" y="84" width="24" height="2.5" rx="1.25" fill="#eaad63" opacity="0.35"/>
+  <line x1="400" y1="108" x2="400" y2="170" stroke="#6b9e9e" stroke-width="1" stroke-dasharray="4 4" opacity="0.12"/>
+
+  <!-- Document (bottom) -->
+  <circle cx="400" cy="345" r="28" fill="white" stroke="#eaad63" stroke-width="1.5"/>
+  <rect x="388" y="332" width="24" height="30" rx="3" fill="none" stroke="#eaad63" stroke-width="1.2" opacity="0.35"/>
+  <rect x="392" y="338" width="16" height="2.5" rx="1.25" fill="#eaad63" opacity="0.25"/>
+  <rect x="392" y="344" width="12" height="2.5" rx="1.25" fill="#eaad63" opacity="0.2"/>
+  <rect x="392" y="350" width="14" height="2.5" rx="1.25" fill="#eaad63" opacity="0.15"/>
+  <line x1="400" y1="250" x2="400" y2="317" stroke="#eaad63" stroke-width="1" stroke-dasharray="4 4" opacity="0.12"/>
+
+  <!-- Automation bolt (left) -->
+  <circle cx="140" cy="200" r="22" fill="white" stroke="#eaad63" stroke-width="1.5"/>
+  <path d="M144 190 L136 202 L142 202 L138 212 L148 198 L142 198 Z" fill="#eaad63" opacity="0.35"/>
+  <line x1="162" y1="205" x2="195" y2="210" stroke="#eaad63" stroke-width="1" stroke-dasharray="4 4" opacity="0.12"/>
+
+  <!-- Cloud (right) -->
+  <circle cx="660" cy="200" r="22" fill="white" stroke="#6b9e9e" stroke-width="1.5"/>
+  <ellipse cx="660" cy="202" rx="12" ry="7" fill="none" stroke="#6b9e9e" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="653" cy="198" r="5" fill="none" stroke="#6b9e9e" stroke-width="1.2" opacity="0.25"/>
+  <circle cx="667" cy="197" r="4" fill="none" stroke="#6b9e9e" stroke-width="1.2" opacity="0.2"/>
+  <line x1="638" y1="205" x2="605" y2="210" stroke="#6b9e9e" stroke-width="1" stroke-dasharray="4 4" opacity="0.12"/>
+
+  <!-- Small floating particles -->
+  <circle cx="320" cy="140" r="2.5" fill="#d4764e" opacity="0.25"/>
+  <circle cx="480" cy="140" r="2" fill="#6b9e9e" opacity="0.2"/>
+  <circle cx="340" cy="290" r="2.5" fill="#eaad63" opacity="0.2"/>
+  <circle cx="460" cy="280" r="2" fill="#d4764e" opacity="0.2"/>
+  <circle cx="220" cy="150" r="2" fill="#eaad63" opacity="0.15"/>
+  <circle cx="580" cy="150" r="2.5" fill="#eaad63" opacity="0.18"/>
+  <circle cx="200" cy="270" r="2" fill="#6b9e9e" opacity="0.15"/>
+  <circle cx="600" cy="270" r="2.5" fill="#d4764e" opacity="0.15"/>
+
+  <!-- Top & bottom accent lines -->
+  <rect width="800" height="4" rx="2" fill="#d4764e"/>
+  <rect y="416" width="800" height="4" rx="2" fill="#6b9e9e"/>
+</svg>

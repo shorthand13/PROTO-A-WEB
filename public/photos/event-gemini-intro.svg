@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <!-- Background -->
+  <rect width="800" height="420" rx="16" fill="#f8f6f3"/>
+
+  <!-- Abstract blobs -->
+  <ellipse cx="200" cy="330" rx="200" ry="150" fill="#4285f4" opacity="0.04"/>
+  <ellipse cx="600" cy="100" rx="180" ry="140" fill="#eaad63" opacity="0.05"/>
+
+  <!-- Central: Gemini-inspired star/sparkle constellation -->
+
+  <!-- Main sparkle (center) -->
+  <g transform="translate(400, 200)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="80" fill="#4285f4" opacity="0.04"/>
+    <circle cx="0" cy="0" r="60" fill="white" stroke="#4285f4" stroke-width="2"/>
+
+    <!-- Four-point star -->
+    <path d="M0 -35 L6 -8 L35 0 L6 8 L0 35 L-6 8 L-35 0 L-6 -8 Z" fill="#4285f4" opacity="0.15" stroke="#4285f4" stroke-width="1.5"/>
+
+    <!-- Inner sparkle -->
+    <path d="M0 -16 L3 -4 L16 0 L3 4 L0 16 L-3 4 L-16 0 L-3 -4 Z" fill="#4285f4" opacity="0.25"/>
+  </g>
+
+  <!-- Orbiting concept nodes -->
+
+  <!-- Orbit ring -->
+  <ellipse cx="400" cy="210" rx="220" ry="150" fill="none" stroke="#4285f4" stroke-width="1" stroke-dasharray="8 8" opacity="0.08"/>
+
+  <!-- Node 1: Smartphone (top-left) - "スマホ感覚で使える" -->
+  <line x1="345" y1="155" x2="250" y2="95" stroke="#4285f4" stroke-width="1" opacity="0.15"/>
+  <circle cx="238" cy="88" r="38" fill="white" stroke="#4285f4" stroke-width="2"/>
+  <rect x="225" y="68" width="26" height="42" rx="4" fill="none" stroke="#4285f4" stroke-width="1.5" opacity="0.35"/>
+  <rect x="229" y="74" width="18" height="26" rx="1" fill="#4285f4" opacity="0.08"/>
+  <circle cx="238" cy="104" r="2" fill="#4285f4" opacity="0.25"/>
+
+  <!-- Node 2: Chat/Conversation (top-right) - AI chat -->
+  <line x1="455" y1="155" x2="560" y2="90" stroke="#eaad63" stroke-width="1" opacity="0.15"/>
+  <circle cx="572" cy="82" r="38" fill="white" stroke="#eaad63" stroke-width="2"/>
+  <!-- Chat bubbles -->
+  <rect x="554" y="66" width="30" height="14" rx="7" fill="#4285f4" opacity="0.15" stroke="#4285f4" stroke-width="1"/>
+  <rect x="562" y="84" width="26" height="14" rx="7" fill="#eaad63" opacity="0.15" stroke="#eaad63" stroke-width="1"/>
+  <!-- Mini sparkle on AI reply -->
+  <path d="M592 82 L594 86 L598 88 L594 90 L592 94 L590 90 L586 88 L590 86 Z" fill="#eaad63" opacity="0.35"/>
+
+  <!-- Node 3: Search/Magnifier (right) -->
+  <line x1="460" y1="210" x2="570" y2="220" stroke="#4285f4" stroke-width="1" opacity="0.15"/>
+  <circle cx="585" cy="222" r="34" fill="white" stroke="#4285f4" stroke-width="1.8"/>
+  <circle cx="580" cy="218" r="11" fill="none" stroke="#4285f4" stroke-width="1.8" opacity="0.35"/>
+  <line x1="588" y1="226" x2="596" y2="234" stroke="#4285f4" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Node 4: Image/Creative (bottom-right) -->
+  <line x1="445" y1="260" x2="530" y2="330" stroke="#eaad63" stroke-width="1" opacity="0.15"/>
+  <circle cx="540" cy="340" r="36" fill="white" stroke="#eaad63" stroke-width="2"/>
+  <!-- Mountain/image icon -->
+  <rect x="522" y="324" width="36" height="28" rx="4" fill="none" stroke="#eaad63" stroke-width="1.5" opacity="0.35"/>
+  <polyline points="522,348 532,336 540,342 548,330 558,348" fill="#eaad63" opacity="0.1" stroke="#eaad63" stroke-width="1.2"/>
+  <circle cx="532" cy="332" r="3" fill="#eaad63" opacity="0.25"/>
+
+  <!-- Node 5: Document/Summary (bottom-left) -->
+  <line x1="350" y1="258" x2="270" y2="330" stroke="#4285f4" stroke-width="1" opacity="0.15"/>
+  <circle cx="260" cy="340" r="36" fill="white" stroke="#4285f4" stroke-width="2"/>
+  <rect x="245" y="322" width="30" height="38" rx="3" fill="none" stroke="#4285f4" stroke-width="1.5" opacity="0.3"/>
+  <rect x="250" y="329" width="20" height="2.5" rx="1.25" fill="#4285f4" opacity="0.25"/>
+  <rect x="250" y="335" width="16" height="2.5" rx="1.25" fill="#4285f4" opacity="0.2"/>
+  <rect x="250" y="341" width="18" height="2.5" rx="1.25" fill="#4285f4" opacity="0.15"/>
+  <rect x="250" y="347" width="12" height="2.5" rx="1.25" fill="#eaad63" opacity="0.2"/>
+
+  <!-- Node 6: Beginner-friendly / Lightbulb (left) -->
+  <line x1="340" y1="210" x2="230" y2="218" stroke="#eaad63" stroke-width="1" opacity="0.15"/>
+  <circle cx="215" cy="220" r="34" fill="white" stroke="#eaad63" stroke-width="1.8"/>
+  <circle cx="215" cy="212" r="11" fill="none" stroke="#eaad63" stroke-width="1.8" opacity="0.35"/>
+  <line x1="210" y1="226" x2="220" y2="226" stroke="#eaad63" stroke-width="1.8" opacity="0.25" stroke-linecap="round"/>
+  <line x1="211" y1="231" x2="219" y2="231" stroke="#eaad63" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+  <!-- Rays -->
+  <line x1="215" y1="196" x2="215" y2="191" stroke="#eaad63" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+  <line x1="203" y1="200" x2="199" y2="196" stroke="#eaad63" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+  <line x1="227" y1="200" x2="231" y2="196" stroke="#eaad63" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+
+  <!-- Scattered mini sparkles (Gemini theme) -->
+  <!-- Sparkle 1 -->
+  <path d="M150 100 L152 106 L158 108 L152 110 L150 116 L148 110 L142 108 L148 106 Z" fill="#4285f4" opacity="0.15"/>
+  <!-- Sparkle 2 -->
+  <path d="M660 150 L662 155 L667 157 L662 159 L660 164 L658 159 L653 157 L658 155 Z" fill="#eaad63" opacity="0.2"/>
+  <!-- Sparkle 3 -->
+  <path d="M130 260 L131.5 264 L136 265.5 L131.5 267 L130 271 L128.5 267 L124 265.5 L128.5 264 Z" fill="#4285f4" opacity="0.12"/>
+  <!-- Sparkle 4 -->
+  <path d="M680 280 L681.5 284 L686 285.5 L681.5 287 L680 291 L678.5 287 L674 285.5 L678.5 284 Z" fill="#eaad63" opacity="0.15"/>
+  <!-- Sparkle 5 -->
+  <path d="M350 50 L351.5 54 L356 55.5 L351.5 57 L350 61 L348.5 57 L344 55.5 L348.5 54 Z" fill="#4285f4" opacity="0.18"/>
+  <!-- Sparkle 6 -->
+  <path d="M470 370 L471.5 374 L476 375.5 L471.5 377 L470 381 L468.5 377 L464 375.5 L468.5 374 Z" fill="#eaad63" opacity="0.15"/>
+
+  <!-- Small floating dots -->
+  <circle cx="310" cy="120" r="2.5" fill="#4285f4" opacity="0.2"/>
+  <circle cx="500" cy="130" r="2" fill="#eaad63" opacity="0.2"/>
+  <circle cx="170" cy="180" r="2" fill="#eaad63" opacity="0.15"/>
+  <circle cx="630" cy="190" r="2.5" fill="#4285f4" opacity="0.15"/>
+  <circle cx="320" cy="370" r="2" fill="#4285f4" opacity="0.12"/>
+  <circle cx="490" cy="310" r="2.5" fill="#eaad63" opacity="0.18"/>
+
+  <!-- Top & bottom accent lines -->
+  <rect width="800" height="4" rx="2" fill="#4285f4"/>
+  <rect y="416" width="800" height="4" rx="2" fill="#eaad63"/>
+</svg>

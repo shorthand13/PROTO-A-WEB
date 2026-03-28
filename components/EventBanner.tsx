@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { CalendarDays, MapPin, X } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 type EventData = {
+  id: string;
   title: string;
   date: string;
   time?: string;
   location?: string;
-  registrationUrl?: string;
 };
 
 export default function EventBanner({ event }: { event: EventData | null }) {
@@ -105,17 +106,13 @@ export default function EventBanner({ event }: { event: EventData | null }) {
             </div>
           </div>
 
-          {event.registrationUrl && (
-            <a
-              href={event.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleDismiss}
-              className="mt-3 flex w-full items-center justify-center rounded-xl bg-[#eaad63] py-2.5 text-sm font-medium text-white hover:bg-[#d9993a] transition-colors"
-            >
-              申し込む
-            </a>
-          )}
+          <Link
+            href={`/events/${event.id}` as "/events"}
+            onClick={handleDismiss}
+            className="mt-3 flex w-full items-center justify-center rounded-xl bg-[#eaad63] py-2.5 text-sm font-medium text-white hover:bg-[#d9993a] transition-colors"
+          >
+            詳細を見る
+          </Link>
         </div>
       </div>
     </div>

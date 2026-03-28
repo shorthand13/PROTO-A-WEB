@@ -13,6 +13,7 @@ export type CMSEvent = {
   location?: string;
   description?: string;
   registrationUrl?: string;
+  image?: MicroCMSImage;
 } & MicroCMSListContent;
 
 export const client = createClient({
@@ -189,6 +190,22 @@ export async function getCMSCaseStudy(
       },
     });
     return toCaseStudy(data);
+  } catch {
+    return null;
+  }
+}
+
+// Fetch a single event by ID
+export async function getCMSEvent(id: string): Promise<CMSEvent | null> {
+  try {
+    const data = await client.get<CMSEvent>({
+      endpoint: "events",
+      contentId: id,
+      customRequestInit: {
+        cache: "no-store",
+      },
+    });
+    return data;
   } catch {
     return null;
   }

@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getCMSEvents, type CMSEvent } from "@/lib/microcms";
-import { CalendarDays, MapPin, ExternalLink } from "lucide-react";
+import { Link } from "@/i18n/routing";
+import { CalendarDays, MapPin } from "lucide-react";
 
 export const revalidate = 0;
 
@@ -38,10 +40,21 @@ function EventCard({
 
   return (
     <div
-      className={`rounded-2xl border border-border bg-background p-5 sm:p-6 shadow-sm transition-shadow hover:shadow-md ${
+      className={`rounded-2xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md overflow-hidden ${
         isPast ? "opacity-70" : ""
       }`}
     >
+      {event.image && (
+        <div className="relative w-full aspect-[16/7]">
+          <Image
+            src={event.image.url}
+            alt={event.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
+      <div className="p-5 sm:p-6">
       <div className="flex items-start gap-4">
         {/* Date badge */}
         <div className="hidden sm:flex flex-shrink-0 flex-col items-center justify-center rounded-xl bg-primary/10 px-3 py-2 min-w-[60px]">
@@ -88,18 +101,16 @@ function EventCard({
             </p>
           )}
 
-          {!isPast && event.registrationUrl && (
-            <a
-              href={event.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+          {!isPast && (
+            <Link
+              href={`/events/${event.id}` as "/events"}
               className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary/90 transition-colors"
             >
-              {t("register")}
-              <ExternalLink size={14} />
-            </a>
+              {t("details")}
+            </Link>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

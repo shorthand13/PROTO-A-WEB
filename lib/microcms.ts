@@ -14,6 +14,12 @@ export type CMSEvent = {
   description?: string;
   registrationUrl?: string;
   image?: MicroCMSImage;
+  targetAudience?: string;
+  learnings?: string;
+  tags?: string[];
+  price?: string;
+  eventFormat?: string;
+  requirements?: string;
 } & MicroCMSListContent;
 
 export const client = createClient({

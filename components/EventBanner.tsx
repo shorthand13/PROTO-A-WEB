@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { CalendarDays, MapPin, X } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -13,6 +14,7 @@ type EventData = {
 };
 
 export default function EventBanner({ event }: { event: EventData | null }) {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -32,6 +34,7 @@ export default function EventBanner({ event }: { event: EventData | null }) {
     if (event) sessionStorage.setItem("event-banner-dismissed", event.date);
     setVisible(false);
     setDismissed(true);
+    window.dispatchEvent(new Event("event-banner-dismissed"));
   }
 
   function handleReopen() {
@@ -41,6 +44,9 @@ export default function EventBanner({ event }: { event: EventData | null }) {
   }
 
   if (!event) return null;
+
+  // Hide banner on event pages
+  if (pathname.includes("/events/")) return null;
 
   // Show collapsed icon after dismissal
   if (dismissed && !visible) {

@@ -15,16 +15,28 @@ export default function SurveyCta() {
     const dismissed = sessionStorage.getItem("survey-cta-dismissed");
     if (dismissed) return;
 
-    const isHome = pathname === "/" || /^\/[a-z]{2}\/?$/.test(pathname);
-
-    if (isHome) {
-      // On homepage: delay enough for animation to finish (or show quickly if already seen)
-      const alreadySeen = sessionStorage.getItem("hero-animation-seen") === "true";
-      const delay = alreadySeen ? 500 : 8000;
+    function show() {
+      const isHome = pathname === "/" || /^\/[a-z]{2}\/?$/.test(pathname);
+      const delay = isHome
+        ? (sessionStorage.getItem("hero-animation-seen") === "true" ? 500 : 8000)
+        : 2000;
       const timer = setTimeout(() => setVisible(true), delay);
-      return () => clearTimeout(timer);
+      return timer;
+    }
+
+    // If event banner is active, wait for it to be dismissed
+    const eventBannerDismissed = sessionStorage.getItem("event-banner-dismissed");
+    const hasEventBanner = !eventBannerDismissed;
+
+    if (hasEventBanner) {
+      const handler = () => {
+        const timer = setTimeout(() => setVisible(true), 3000);
+        return () => clearTimeout(timer);
+      };
+      window.addEventListener("event-banner-dismissed", handler);
+      return () => window.removeEventListener("event-banner-dismissed", handler);
     } else {
-      const timer = setTimeout(() => setVisible(true), 2000);
+      const timer = show();
       return () => clearTimeout(timer);
     }
   }, [pathname]);
@@ -34,8 +46,9 @@ export default function SurveyCta() {
     setVisible(false);
   }
 
-  // Hide on the survey page itself
+  // Hide on survey and event detail pages
   if (pathname.includes("/survey")) return null;
+  if (pathname.includes("/events/")) return null;
   if (!visible) return null;
 
   return (

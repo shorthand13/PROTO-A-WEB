@@ -210,6 +210,14 @@
   "EventDetail": {
     "backToEvents": "イベント一覧に戻る",
     "about": "イベント概要",
+    "targetAudience": "対象者",
+    "learnings": "学べること",
+    "relatedTopics": "関連トピック",
+    "price": "参加費",
+    "format_onsite": "会場参加のみ",
+    "format_online": "オンラインのみ",
+    "format_hybrid": "会場参加＋オンライン配信あり",
+    "requirements": "持ち物",
     "ended": "終了",
     "registerTitle": "参加申し込み",
     "name": "お名前",
@@ -225,6 +233,9 @@
     "error": "送信に失敗しました。もう一度お試しください。",
     "registerSuccess": "お申し込みありがとうございます！",
     "registerSuccessDetail": "確認メールをお送りしますので、ご確認ください。",
+    "eventLabel": "イベント",
+    "confirmationEmailSent": "確認メールをお送りしました。メールをご確認ください。",
+    "close": "閉じる",
     "registrationClosed": "このイベントの申し込みは終了しました。",
     "surveyTitle": "アンケートにご協力ください",
     "surveyDescription": "今後のイベント改善のため、ぜひご意見をお聞かせください。",
@@ -244,6 +255,17 @@
     "thankYou": "ご回答ありがとうございます！",
     "thankYouDetail": "いただいたご意見は今後のイベント改善に活用させていただきます。",
     "backToEvents": "イベント一覧に戻る"
+  },
+  "EventCancel": {
+    "backToEvents": "イベント一覧に戻る",
+    "title": "参加登録のキャンセル",
+    "description": "以下のイベントの参加登録をキャンセルしますか？",
+    "email": "メールアドレス",
+    "confirmCancel": "キャンセルする",
+    "cancelling": "キャンセル中...",
+    "cancelledTitle": "キャンセルが完了しました",
+    "cancelledDetail": "参加登録がキャンセルされました。またのご参加をお待ちしております。",
+    "error": "キャンセルに失敗しました。もう一度お試しください。"
   },
   "CaseStudies": {
     "title": "導入事例",

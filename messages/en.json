@@ -210,6 +210,14 @@
   "EventDetail": {
     "backToEvents": "Back to Events",
     "about": "About This Event",
+    "targetAudience": "Who Is This For",
+    "learnings": "What You'll Learn",
+    "relatedTopics": "Related Topics",
+    "price": "Price",
+    "format_onsite": "In-person only",
+    "format_online": "Online only",
+    "format_hybrid": "In-person + Online streaming",
+    "requirements": "What to Bring",
     "ended": "Ended",
     "registerTitle": "Register",
     "name": "Your Name",
@@ -225,6 +233,9 @@
     "error": "Something went wrong. Please try again.",
     "registerSuccess": "Thank you for registering!",
     "registerSuccessDetail": "You will receive a confirmation email shortly.",
+    "eventLabel": "Event",
+    "confirmationEmailSent": "A confirmation email has been sent. Please check your inbox.",
+    "close": "Close",
     "registrationClosed": "Registration for this event has closed.",
     "surveyTitle": "Share Your Feedback",
     "surveyDescription": "Help us improve future events by sharing your thoughts.",
@@ -244,6 +255,17 @@
     "thankYou": "Thank you for your feedback!",
     "thankYouDetail": "Your input will help us improve future events.",
     "backToEvents": "Back to Events"
+  },
+  "EventCancel": {
+    "backToEvents": "Back to Events",
+    "title": "Cancel Registration",
+    "description": "Are you sure you want to cancel your registration for this event?",
+    "email": "Email",
+    "confirmCancel": "Cancel Registration",
+    "cancelling": "Cancelling...",
+    "cancelledTitle": "Registration Cancelled",
+    "cancelledDetail": "Your registration has been cancelled. We hope to see you at a future event.",
+    "error": "Cancellation failed. Please try again."
   },
   "CaseStudies": {
     "title": "Case Studies",

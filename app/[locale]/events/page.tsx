@@ -81,6 +81,19 @@ function EventCard({
             )}
           </div>
 
+          {event.tags && event.tags.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {event.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
           <div className="mt-2 space-y-1">
             <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <CalendarDays size={14} className="text-primary flex-shrink-0" />

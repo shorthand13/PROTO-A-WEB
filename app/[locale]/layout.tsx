@@ -10,8 +10,9 @@ import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
 import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import FeedbackWidget from "@/components/FeedbackWidget";
-import SurveyCta from "@/components/SurveyCta";
+// import SurveyCta from "@/components/SurveyCta";
 import EventPopup from "@/components/EventPopup";
+import EventBanner from "@/components/EventBanner";
 import { getCMSNextEvent } from "@/lib/microcms";
 import "../globals.css";
 
@@ -66,7 +67,8 @@ export default async function LocaleLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <FeedbackWidget />
-            <SurveyCta />
+            {/* <SurveyCta /> — disabled: no incentive for users currently */}
+            <EventBanner event={nextEvent} />
             <EventPopup event={nextEvent} />
           </NextIntlClientProvider>
         </ClerkProvider>

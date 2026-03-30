@@ -16,18 +16,11 @@ type EventData = {
 export default function EventBanner({ event }: { event: EventData | null }) {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(true);
 
   useEffect(() => {
     if (!event) return;
-    const wasDismissed = sessionStorage.getItem("event-banner-dismissed");
-    if (wasDismissed === event.date) {
-      setDismissed(true);
-      return;
-    }
-
-    const timer = setTimeout(() => setVisible(true), 3000);
-    return () => clearTimeout(timer);
+    // Start collapsed — user can tap the icon to open
   }, [event]);
 
   function handleDismiss() {

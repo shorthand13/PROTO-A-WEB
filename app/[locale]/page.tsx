@@ -8,6 +8,9 @@ import HeroSection from "@/components/HeroSection";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
+import DoubleDiamond from "@/components/DoubleDiamond";
+import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
+import HeroCarousel from "@/components/HeroCarousel";
 
 export const revalidate = 0;
 
@@ -40,16 +43,31 @@ export default async function HomePage({
 }
 
 function extractSection(content: string, heading: string): string {
-  const regex = new RegExp(`## ${heading}\\n+([\\s\\S]*?)(?=\\n## |$)`);
-  const match = content.match(regex);
-  if (!match) return "";
-  return match[1]
-    .replace(/\*\*/g, "")
-    .replace(/^- /gm, "")
-    .replace(/^\d+\.\s/gm, "")
-    .replace(/> .*/g, "")
-    .trim()
-    .slice(0, 120) + "…";
+  // Try markdown format: ## Heading
+  const mdRegex = new RegExp(`## ${heading}\\n+([\\s\\S]*?)(?=\\n## |$)`);
+  const mdMatch = content.match(mdRegex);
+  if (mdMatch) {
+    return mdMatch[1]
+      .replace(/\*\*/g, "")
+      .replace(/^- /gm, "")
+      .replace(/^\d+\.\s/gm, "")
+      .replace(/> .*/g, "")
+      .trim()
+      .slice(0, 60) + "…";
+  }
+
+  // Try HTML format: <h2...>Heading</h2>content
+  const htmlRegex = new RegExp(`<h2[^>]*>${heading}</h2>([\\s\\S]*?)(?=<h2|$)`);
+  const htmlMatch = content.match(htmlRegex);
+  if (htmlMatch) {
+    return htmlMatch[1]
+      .replace(/<[^>]*>/g, "")
+      .replace(/&nbsp;/g, " ")
+      .trim()
+      .slice(0, 60) + "…";
+  }
+
+  return "";
 }
 
 function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: CaseStudy[]; upcomingEvents: CMSEvent[]; locale: string }) {
@@ -62,15 +80,34 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
     <div className="flex flex-col flex-1 bg-white">
       {/* ===================== MOBILE ===================== */}
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
-        {/* Solution */}
-        <div className="rounded-2xl bg-primary text-white p-8">
-          <h2 className="text-[1.55rem] font-bold leading-tight whitespace-pre-line">
-            {t("solution.title")}
-          </h2>
-          <p className="mt-6 text-sm text-white/80 leading-relaxed whitespace-pre-line">
-            {t("solution.subtitle")}
-          </p>
-        </div>
+        {/* Story carousel: Problem → Solution → Logo */}
+        <HeroCarousel
+          problemLabel={t("problem.label")}
+          problemTitle={t("problem.title")}
+          problemSubtitle={t("problem.subtitle")}
+          solutionTitle={t("solution.title")}
+          solutionSubtitle={t("solution.subtitle")}
+        />
+
+        {/* Double Diamond storytelling */}
+        <DoubleDiamond
+          services={[
+            {
+              title: ts("training.title"),
+              description: ts("training.description"),
+              features: ts.raw("training.features") as string[],
+              ctaLabel: ts("cta"),
+              ctaHref: "/services",
+            },
+            {
+              title: ts("accompaniment.title"),
+              description: ts("accompaniment.description"),
+              features: ts.raw("accompaniment.features") as string[],
+              ctaLabel: ts("cta"),
+              ctaHref: "/services",
+            },
+          ]}
+        />
 
         {/* Upcoming event tile */}
         {upcomingEvents.length > 0 && (() => {
@@ -125,25 +162,14 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           );
         })()}
 
-        {/* Services + Case Studies accordion */}
+        {/* Case Studies */}
         <HomeFlipGrid
           sectionLabel=""
           viewAllLabel=""
           viewAllHref="/case-studies"
           servicesLabel={ts("title")}
           caseStudiesLabel={tc("title")}
-          services={([
-            { key: "training", icon: "training" as const, image: "/photos/service-1.svg" },
-            { key: "accompaniment", icon: "accompaniment" as const, image: "/photos/service-2.svg" },
-          ]).map((s) => ({
-            ...s,
-            title: ts(`${s.key}.title`),
-            description: ts(`${s.key}.description`),
-            features: ts.raw(`${s.key}.features`) as string[],
-            label: ts("title"),
-            ctaLabel: ts("cta"),
-            ctaHref: "/services",
-          }))}
+          services={[]}
           caseStudies={caseStudies.slice(0, 2).map((study) => ({
             slug: study.slug,
             title: study.frontmatter.title,
@@ -265,6 +291,13 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         </section>
 
 
+        {/* Double Diamond */}
+        <section className="px-4 pt-12">
+          <div className="mx-auto max-w-7xl">
+            <DoubleDiamondDesktop />
+          </div>
+        </section>
+
         {/* Partners */}
         <section className="px-4 pt-12 pb-6">
           <div className="mx-auto max-w-7xl">
@@ -333,7 +366,6 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             </div>
           </div>
         </section>
-
 
         {/* CTA */}
         <section className="px-4 py-6">

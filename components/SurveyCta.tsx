@@ -24,21 +24,8 @@ export default function SurveyCta() {
       return timer;
     }
 
-    // If event banner is active, wait for it to be dismissed
-    const eventBannerDismissed = sessionStorage.getItem("event-banner-dismissed");
-    const hasEventBanner = !eventBannerDismissed;
-
-    if (hasEventBanner) {
-      const handler = () => {
-        const timer = setTimeout(() => setVisible(true), 3000);
-        return () => clearTimeout(timer);
-      };
-      window.addEventListener("event-banner-dismissed", handler);
-      return () => window.removeEventListener("event-banner-dismissed", handler);
-    } else {
-      const timer = show();
-      return () => clearTimeout(timer);
-    }
+    const timer = show();
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   function handleDismiss() {

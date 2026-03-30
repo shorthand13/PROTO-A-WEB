@@ -12,6 +12,7 @@ const eventRegistrationSchema = z.object({
   eventTitle: z.string().min(1),
   name: z.string().min(1).max(200),
   email: z.string().email(),
+  phone: z.string().max(20).optional().default(""),
   company: z.string().max(200).optional().default(""),
   message: z.string().max(1000).optional().default(""),
 });
@@ -35,6 +36,7 @@ export async function submitEventRegistration(
     eventTitle: formData.get("eventTitle"),
     name: formData.get("name"),
     email: formData.get("email"),
+    phone: formData.get("phone") || undefined,
     company: formData.get("company") || undefined,
     message: formData.get("message") || undefined,
   };
@@ -57,6 +59,7 @@ export async function submitEventRegistration(
       `イベント: ${data.eventTitle}`,
       `名前: ${data.name}`,
       `メール: ${data.email}`,
+      `電話番号: ${data.phone || "未記入"}`,
       `会社名: ${data.company || "未記入"}`,
       `メッセージ: ${data.message || "なし"}`,
       `申込日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
@@ -96,6 +99,7 @@ export async function submitEventRegistration(
           eventTitle: data.eventTitle,
           name: data.name,
           email: data.email,
+          phone: data.phone,
           company: data.company,
           message: data.message,
           submittedAt: new Date().toISOString(),

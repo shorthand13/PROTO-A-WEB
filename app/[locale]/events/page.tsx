@@ -71,7 +71,7 @@ function EventCard({
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-base sm:text-lg font-bold text-foreground">
+            <h3 className="text-lg sm:text-lg font-bold text-foreground">
               {event.title}
             </h3>
             {isPast && (
@@ -86,7 +86,7 @@ function EventCard({
               {event.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary"
+                  className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary"
                 >
                   {tag}
                 </span>
@@ -117,7 +117,7 @@ function EventCard({
           {!isPast && (
             <Link
               href={`/events/${event.id}` as "/events"}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary/90 transition-colors"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
             >
               {t("details")}
             </Link>

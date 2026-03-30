@@ -2,11 +2,11 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { GraduationCap, Handshake } from "lucide-react";
+import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin } from "lucide-react";
 import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
 import { getCaseStudies } from "@/lib/case-studies";
-import { getCMSCaseStudies } from "@/lib/microcms";
+import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
 
 export const revalidate = 0;
@@ -28,7 +28,15 @@ export default async function HomePage({
   }
   const caseStudies = [...cmsStudies, ...localStudies].slice(0, 4);
 
-  return <HomeContent caseStudies={caseStudies} />;
+  let upcomingEvents: CMSEvent[] = [];
+  try {
+    const { upcoming } = await getCMSEvents();
+    upcomingEvents = upcoming;
+  } catch {
+    // CMS unavailable
+  }
+
+  return <HomeContent caseStudies={caseStudies} upcomingEvents={upcomingEvents} locale={locale} />;
 }
 
 function extractSection(content: string, heading: string): string {
@@ -44,7 +52,7 @@ function extractSection(content: string, heading: string): string {
     .slice(0, 120) + "…";
 }
 
-function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
+function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: CaseStudy[]; upcomingEvents: CMSEvent[]; locale: string }) {
   const t = useTranslations("Home");
   const ts = useTranslations("Services");
   const tc = useTranslations("CaseStudies");
@@ -63,6 +71,59 @@ function HomeContent({ caseStudies }: { caseStudies: CaseStudy[] }) {
             {t("solution.subtitle")}
           </p>
         </div>
+
+        {/* Upcoming event tile */}
+        {upcomingEvents.length > 0 && (() => {
+          const nextEvent = upcomingEvents[0];
+          return (
+            <Link
+              href={`/events/${nextEvent.id}` as "/events"}
+              className="rounded-2xl bg-white border border-border shadow-sm p-5 flex flex-col gap-3 group hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center justify-between">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  開催予定イベント
+                </span>
+                <ChevronRight size={16} className="text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
+              </div>
+
+              <h3 className="text-base font-bold text-foreground leading-snug">
+                {nextEvent.title}
+              </h3>
+
+              {nextEvent.tags && nextEvent.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {nextEvent.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium text-primary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <CalendarDays size={13} className="text-primary" />
+                  {new Date(nextEvent.date).toLocaleDateString(locale === "ja" ? "ja-JP" : "en-US", {
+                    month: "long",
+                    day: "numeric",
+                    weekday: "short",
+                  })}
+                </span>
+                {nextEvent.location && (
+                  <span className="flex items-center gap-1">
+                    <MapPin size={13} className="text-primary" />
+                    {nextEvent.location}
+                  </span>
+                )}
+              </div>
+            </Link>
+          );
+        })()}
 
         {/* Services + Case Studies accordion */}
         <HomeFlipGrid

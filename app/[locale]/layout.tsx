@@ -11,7 +11,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import SurveyCta from "@/components/SurveyCta";
-import EventBanner from "@/components/EventBanner";
+import EventPopup from "@/components/EventPopup";
 import { getCMSNextEvent } from "@/lib/microcms";
 import "../globals.css";
 
@@ -67,7 +67,7 @@ export default async function LocaleLayout({
             <Footer />
             <FeedbackWidget />
             <SurveyCta />
-            <EventBanner event={nextEvent} />
+            <EventPopup event={nextEvent} />
           </NextIntlClientProvider>
         </ClerkProvider>
         <Analytics />

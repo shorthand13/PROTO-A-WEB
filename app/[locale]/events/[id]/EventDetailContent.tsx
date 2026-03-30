@@ -260,6 +260,19 @@ export default function EventDetailContent({
                       </div>
 
                       <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
+                          {t("phone")}
+                        </label>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder={t("phonePlaceholder")}
+                          className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                        />
+                      </div>
+
+                      <div>
                         <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1">
                           {t("company")}
                         </label>
@@ -396,6 +409,19 @@ export default function EventDetailContent({
                     type="email"
                     required
                     placeholder={t("emailPlaceholder")}
+                    className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="mobile-phone" className="block text-sm font-medium text-foreground mb-1">
+                    {t("phone")}
+                  </label>
+                  <input
+                    id="mobile-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder={t("phonePlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                   />
                 </div>

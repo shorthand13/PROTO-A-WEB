@@ -142,9 +142,9 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                 </div>
               )}
 
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <CalendarDays size={13} className="text-primary" />
+              <div className="flex flex-col gap-1.5 text-sm text-muted-foreground">
+                <span className="flex items-start gap-1.5">
+                  <CalendarDays size={14} className="text-primary flex-shrink-0 mt-[3px]" />
                   {new Date(nextEvent.date).toLocaleDateString(locale === "ja" ? "ja-JP" : "en-US", {
                     month: "long",
                     day: "numeric",
@@ -152,8 +152,8 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                   })}
                 </span>
                 {nextEvent.location && (
-                  <span className="flex items-center gap-1">
-                    <MapPin size={13} className="text-primary" />
+                  <span className="flex items-start gap-1.5">
+                    <MapPin size={14} className="text-primary flex-shrink-0 mt-[3px]" />
                     {nextEvent.location}
                   </span>
                 )}

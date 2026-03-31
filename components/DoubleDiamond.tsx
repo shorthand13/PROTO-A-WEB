@@ -217,8 +217,8 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
                     : "bg-white border-primary/10"
                 }`}
               >
-                <span className={`absolute top-2.5 right-2.5 text-xs transition-transform duration-300 ${
-                  isActive ? "text-white/50 rotate-90" : "text-primary/40"
+                <span className={`absolute top-2 right-2.5 text-sm font-medium transition-transform duration-300 ${
+                  isActive ? "text-white/70 rotate-90" : "text-primary/60"
                 }`}>↗</span>
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 mx-auto ${
                   isActive ? "bg-white/20" : "bg-primary/10"

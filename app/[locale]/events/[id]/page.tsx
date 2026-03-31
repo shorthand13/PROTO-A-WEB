@@ -5,6 +5,16 @@ import EventDetailContent from "./EventDetailContent";
 
 export const revalidate = 0;
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; id: string }> }) {
+  const { id } = await params;
+  const event = await getCMSEvent(id);
+  if (!event) return {};
+  return {
+    title: event.title,
+    description: event.description?.slice(0, 160) || event.title,
+  };
+}
+
 export default async function EventDetailPage({
   params,
 }: {

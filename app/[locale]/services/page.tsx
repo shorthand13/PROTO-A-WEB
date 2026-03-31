@@ -1,7 +1,16 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { GraduationCap, Handshake, Monitor, Settings, Workflow } from "lucide-react";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Services" });
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
 const flagshipServices = [
   { key: "training", icon: GraduationCap, tag: { ja: "研修", en: "Training" } },

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getCaseStudies } from "@/lib/case-studies";
+import { getCMSEvents } from "@/lib/microcms";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proto-a.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locales = ["ja", "en"];
   const staticPages = [
     "",
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/case-studies",
     "/contact",
+    "/events",
   ];
 
   const entries: MetadataRoute.Sitemap = [];
@@ -35,6 +37,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}/${locale}/case-studies/${study.slug}`,
         lastModified: new Date(study.frontmatter.date),
         changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
+  // Events
+  const { upcoming, past } = await getCMSEvents();
+  const allEvents = [...upcoming, ...past];
+  for (const event of allEvents) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}/events/${event.id}`,
+        lastModified: new Date(event.date),
+        changeFrequency: "weekly",
         priority: 0.6,
       });
     }

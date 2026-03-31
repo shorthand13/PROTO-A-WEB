@@ -1,11 +1,20 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { CalendarDays, MapPin } from "lucide-react";
 
 export const revalidate = 0;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Events" });
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
 export default async function EventsPage({
   params,

@@ -1,9 +1,18 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Clock, MessageCircle } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
 import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC } from "@/lib/social-links";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Contact" });
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
 export default async function ContactPage({
   params,

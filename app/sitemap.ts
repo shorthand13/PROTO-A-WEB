@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSEvents } from "@/lib/microcms";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proto-a.com";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://protoa.digital";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const locales = ["ja", "en"];

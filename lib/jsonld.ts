@@ -5,7 +5,7 @@ export function organizationJsonLd() {
     name: "ProtoA",
     description:
       "中小企業向けDXコンサルティング。親しみやすいアプローチでデジタル化を支援します。",
-    url: "https://proto-a.com",
+    url: "https://protoa.digital",
   };
 }
 
@@ -51,7 +51,7 @@ export function eventJsonLd({
     organizer: {
       "@type": "Organization",
       name: "ProtoA",
-      url: "https://proto-a.com",
+      url: "https://protoa.digital",
     },
     url,
   };

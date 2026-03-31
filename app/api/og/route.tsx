@@ -108,7 +108,7 @@ export async function GET(req: NextRequest) {
             fontWeight: 600,
           }}
         >
-          proto-a.com
+          protoa.digital
         </div>
       </div>
     ),

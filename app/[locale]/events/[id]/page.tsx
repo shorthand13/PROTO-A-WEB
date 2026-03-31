@@ -32,7 +32,7 @@ export default async function EventDetailPage({
   if (!event) notFound();
 
   const isPast = new Date(event.date) < new Date(new Date().toDateString());
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proto-a.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://protoa.digital";
 
   return (
     <>

@@ -331,7 +331,11 @@
     "clientVoice": "お客様の声",
     "industry": "業種",
     "readMore": "詳細を見る",
-    "noCases": "導入事例はまだありません。"
+    "noCases": "導入事例はまだありません。",
+    "ctaHeading": "同じような課題をお持ちですか？",
+    "ctaDescription": "まずはお気軽にご相談ください。貴社に合ったDX推進の進め方をご提案します。",
+    "ctaButton": "無料相談を申し込む",
+    "ctaBackToList": "他の事例も見る"
   },
   "Membership": {
     "title": "会員ページ",

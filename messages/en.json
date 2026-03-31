@@ -331,7 +331,11 @@
     "clientVoice": "Client Testimonial",
     "industry": "Industry",
     "readMore": "Read more",
-    "noCases": "No case studies yet."
+    "noCases": "No case studies yet.",
+    "ctaHeading": "Facing a similar challenge?",
+    "ctaDescription": "Let's talk about how we can help your business with DX. Schedule a free consultation.",
+    "ctaButton": "Book a free consultation",
+    "ctaBackToList": "View more case studies"
   },
   "Membership": {
     "title": "Membership",

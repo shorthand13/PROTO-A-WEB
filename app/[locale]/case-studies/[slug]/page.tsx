@@ -5,7 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getCaseStudy, getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudy, getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 
@@ -140,6 +140,35 @@ function CaseStudyContent({
               <MDXRemote source={study.content} />
             )}
           </article>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-4 pb-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/15 p-8 sm:p-12 text-center">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+              {t("ctaHeading")}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-lg mx-auto">
+              {t("ctaDescription")}
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
+              >
+                {t("ctaButton")}
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/case-studies"
+                className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+              >
+                {t("ctaBackToList")}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

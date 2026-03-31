@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin } from "lucide-react";
-import HomeFlipGrid from "@/components/HomeFlipGrid";
+import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText } from "lucide-react";
+// import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
@@ -162,28 +162,19 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           );
         })()}
 
-        {/* Case Studies */}
-        <HomeFlipGrid
-          sectionLabel=""
-          viewAllLabel=""
-          viewAllHref="/case-studies"
-          servicesLabel={ts("title")}
-          caseStudiesLabel={tc("title")}
-          services={[]}
-          caseStudies={caseStudies.slice(0, 2).map((study) => ({
-            slug: study.slug,
-            title: study.frontmatter.title,
-            excerpt: study.frontmatter.excerpt,
-            industry: study.frontmatter.industry,
-            tags: study.frontmatter.tags ?? [],
-            challengeLabel: tc("challenge"),
-            solutionLabel: tc("solution"),
-            challenge: extractSection(study.content, "課題") || extractSection(study.content, "Challenge"),
-            solution: extractSection(study.content, "解決策") || extractSection(study.content, "Solution"),
-            ctaLabel: tc("readMore"),
-            ctaHref: `/case-studies/${study.slug}`,
-          }))}
-        />
+        {/* Case Studies link */}
+        <Link
+          href="/case-studies"
+          className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/15 p-5 flex items-center gap-4 group"
+        >
+          <div className="flex-1 min-w-0">
+            <p className="text-base font-bold text-foreground">{tc("title")}</p>
+            {caseStudies[0] && (
+              <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">{caseStudies[0].frontmatter.title}</p>
+            )}
+          </div>
+          <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
+        </Link>
 
         {/* Partners (mobile) */}
         <div className="rounded-2xl bg-white py-8 px-6">
@@ -295,6 +286,51 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         <section className="px-4 pt-12">
           <div className="mx-auto max-w-7xl">
             <DoubleDiamondDesktop />
+          </div>
+        </section>
+
+        {/* Events & Case Studies entry */}
+        <section className="px-4 pt-12">
+          <div className="mx-auto max-w-7xl">
+            <div className="rounded-3xl overflow-hidden border border-border">
+              <div className="grid grid-cols-2 divide-x divide-border">
+                <Link
+                  href="/events"
+                  className="p-10 bg-gradient-to-br from-[#eaad63]/10 to-[#eaad63]/5 flex items-center gap-6 group hover:from-[#eaad63]/20 transition-all"
+                >
+                  <div className="h-14 w-14 rounded-full bg-[#eaad63]/20 flex items-center justify-center flex-shrink-0">
+                    <CalendarDays size={26} className="text-[#eaad63]" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-foreground">イベント</h3>
+                    {upcomingEvents[0] ? (
+                      <p className="mt-1 text-sm text-muted-foreground line-clamp-1">{upcomingEvents[0].title}</p>
+                    ) : (
+                      <p className="mt-1 text-sm text-muted-foreground">一覧を見る</p>
+                    )}
+                  </div>
+                  <ArrowRight size={20} className="text-muted-foreground group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                </Link>
+
+                <Link
+                  href="/case-studies"
+                  className="p-10 bg-gradient-to-br from-primary/5 to-primary/10 flex items-center gap-6 group hover:from-primary/15 transition-all"
+                >
+                  <div className="h-14 w-14 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                    <FileText size={26} className="text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-foreground">{tc("title")}</h3>
+                    {caseStudies[0] ? (
+                      <p className="mt-1 text-sm text-muted-foreground line-clamp-1">{caseStudies[0].frontmatter.title}</p>
+                    ) : (
+                      <p className="mt-1 text-sm text-muted-foreground">事例を見る</p>
+                    )}
+                  </div>
+                  <ArrowRight size={20} className="text-muted-foreground group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

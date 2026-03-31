@@ -34,11 +34,21 @@ export function generatePageMetadata({
       siteName: "ProtoA",
       locale: locale === "ja" ? "ja_JP" : "en_US",
       type: "website",
+      images: [
+        {
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [
+        `${baseUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      ],
     },
   };
 }

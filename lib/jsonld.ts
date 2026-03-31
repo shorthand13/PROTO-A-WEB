@@ -22,6 +22,69 @@ export function localBusinessJsonLd() {
   };
 }
 
+export function eventJsonLd({
+  name,
+  description,
+  startDate,
+  location,
+  url,
+}: {
+  name: string;
+  description?: string;
+  startDate: string;
+  location?: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name,
+    description: description || name,
+    startDate,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    ...(location && {
+      location: {
+        "@type": "Place",
+        name: location,
+      },
+    }),
+    organizer: {
+      "@type": "Organization",
+      name: "ProtoA",
+      url: "https://proto-a.com",
+    },
+    url,
+  };
+}
+
+export function caseStudyJsonLd({
+  title,
+  description,
+  date,
+  url,
+  industry,
+}: {
+  title: string;
+  description: string;
+  date?: string;
+  url: string;
+  industry?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    ...(date && { datePublished: date }),
+    ...(industry && { about: industry }),
+    publisher: {
+      "@type": "Organization",
+      name: "ProtoA",
+    },
+    url,
+  };
+}
+
 export function blogPostingJsonLd({
   title,
   description,

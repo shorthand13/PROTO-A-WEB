@@ -24,6 +24,8 @@ const mPlus1p = M_PLUS_1p({
   preload: true,
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proto-a.com";
+
 export const metadata: Metadata = {
   title: {
     template: "%s | ProtoA",
@@ -31,6 +33,20 @@ export const metadata: Metadata = {
   },
   description:
     "中小企業向けDXコンサルティング。親しみやすいアプローチでデジタル化を支援します。",
+  openGraph: {
+    siteName: "ProtoA",
+    type: "website",
+    images: [
+      {
+        url: `${baseUrl}/api/og?title=${encodeURIComponent("ProtoA — DXコンサルティング")}&description=${encodeURIComponent("中小企業向けDXコンサルティング")}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export function generateStaticParams() {

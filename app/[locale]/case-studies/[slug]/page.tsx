@@ -7,7 +7,8 @@ import { getCMSCaseStudy, getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
-
+import JsonLd from "@/components/seo/JsonLd";
+import { caseStudyJsonLd } from "@/lib/jsonld";
 
 export const dynamicParams = true;
 export const revalidate = 0;
@@ -57,7 +58,22 @@ export default async function CaseStudyPage({
   const study = getCaseStudy(locale, slug) ?? (await getCMSCaseStudy(slug));
   if (!study) notFound();
 
-  return <CaseStudyContent study={study} />;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proto-a.com";
+
+  return (
+    <>
+      <JsonLd
+        data={caseStudyJsonLd({
+          title: study.frontmatter.title,
+          description: study.frontmatter.excerpt,
+          date: study.frontmatter.date,
+          url: `${baseUrl}/${locale}/case-studies/${slug}`,
+          industry: study.frontmatter.industry,
+        })}
+      />
+      <CaseStudyContent study={study} />
+    </>
+  );
 }
 
 function CaseStudyContent({

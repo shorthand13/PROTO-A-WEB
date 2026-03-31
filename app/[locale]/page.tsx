@@ -78,6 +78,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
 
   return (
     <div className="flex flex-col flex-1 bg-white">
+      <h1 className="sr-only">ProtoA — DXコンサルティング</h1>
       {/* ===================== MOBILE ===================== */}
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
         {/* Story carousel: Problem → Solution → Logo */}

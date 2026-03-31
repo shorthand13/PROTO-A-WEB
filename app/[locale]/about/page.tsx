@@ -153,9 +153,9 @@ function AboutContent() {
               <span className="relative z-10 rounded-full bg-white/30 backdrop-blur-sm px-4 py-1.5 text-xs font-bold self-start">
                 {t("mission.label")}
               </span>
-              <h1 className="relative z-10 mt-6 text-3xl lg:text-4xl font-bold leading-tight whitespace-pre-line">
+              <h2 className="relative z-10 mt-6 text-3xl lg:text-4xl font-bold leading-tight whitespace-pre-line">
                 {t("mission.statement")}
-              </h1>
+              </h2>
             </div>
 
             {/* Vision — side panel */}

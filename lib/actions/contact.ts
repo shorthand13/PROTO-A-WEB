@@ -97,8 +97,48 @@ export async function submitContact(
     }
   }
 
-  if (!lineToken && !lineUserIds.length && !webhookUrl) {
-    // No notification channel configured — silently succeed
+  // Create Asana task
+  const asanaToken = process.env.ASANA_ACCESS_TOKEN;
+  const asanaProjectGid = process.env.ASANA_PROJECT_GID;
+
+  if (asanaToken && asanaProjectGid) {
+    const taskName = `お問い合わせ: ${name}${company ? ` (${company})` : ""}`;
+    const taskNotes = [
+      `名前: ${name}`,
+      company ? `会社: ${company}` : null,
+      phone ? `電話: ${phone}` : null,
+      `メール: ${email}`,
+      ``,
+      `メッセージ:`,
+      message,
+      ``,
+      `送信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
+    ]
+      .filter((line) => line !== null)
+      .join("\n");
+
+    try {
+      const res = await fetch("https://app.asana.com/api/1.0/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${asanaToken}`,
+        },
+        body: JSON.stringify({
+          data: {
+            name: taskName,
+            notes: taskNotes,
+            projects: [asanaProjectGid],
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        console.error("Asana task creation failed:", res.status, await res.text());
+      }
+    } catch (err) {
+      console.error("Asana task creation error:", err);
+    }
   }
 
   return { success: true, error: false };

@@ -4,14 +4,17 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Clock, MessageCircle } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
 import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC } from "@/lib/social-links";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact" });
-  return {
+  return generatePageMetadata({
+    locale,
     title: t("title"),
     description: t("subtitle"),
-  };
+    path: "/contact",
+  });
 }
 
 export default async function ContactPage({

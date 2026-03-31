@@ -4,14 +4,17 @@ import { Users, MapPin, Handshake } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import PhotoGallery from "@/components/PhotoGallery";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About" });
-  return {
+  return generatePageMetadata({
+    locale,
     title: t("title"),
     description: "ProtoAのチーム紹介とミッション。宮古島を拠点に中小企業のDX推進を支援しています。",
-  };
+    path: "/about",
+  });
 }
 
 export default async function AboutPage({

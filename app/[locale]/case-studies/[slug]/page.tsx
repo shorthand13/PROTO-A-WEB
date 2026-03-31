@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import JsonLd from "@/components/seo/JsonLd";
 import { caseStudyJsonLd } from "@/lib/jsonld";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const dynamicParams = true;
 export const revalidate = 0;
@@ -41,10 +42,12 @@ export async function generateMetadata({
   const study = getCaseStudy(locale, slug) ?? (await getCMSCaseStudy(slug));
   if (!study) return {};
 
-  return {
+  return generatePageMetadata({
+    locale,
     title: study.frontmatter.title,
     description: study.frontmatter.excerpt,
-  };
+    path: `/case-studies/${slug}`,
+  });
 }
 
 export default async function CaseStudyPage({

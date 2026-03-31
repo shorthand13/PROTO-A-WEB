@@ -4,17 +4,20 @@ import { notFound } from "next/navigation";
 import EventDetailContent from "./EventDetailContent";
 import JsonLd from "@/components/seo/JsonLd";
 import { eventJsonLd } from "@/lib/jsonld";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; id: string }> }) {
-  const { id } = await params;
+  const { locale, id } = await params;
   const event = await getCMSEvent(id);
   if (!event) return {};
-  return {
+  return generatePageMetadata({
+    locale,
     title: event.title,
     description: event.description?.slice(0, 160) || event.title,
-  };
+    path: `/events/${id}`,
+  });
 }
 
 export default async function EventDetailPage({

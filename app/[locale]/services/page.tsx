@@ -2,14 +2,17 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { GraduationCap, Handshake, Monitor, Settings, Workflow } from "lucide-react";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Services" });
-  return {
+  return generatePageMetadata({
+    locale,
     title: t("title"),
     description: t("subtitle"),
-  };
+    path: "/services",
+  });
 }
 
 const flagshipServices = [

@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getCMSEvent } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import { generateCancelToken } from "@/lib/actions/event-cancel";
 import EventCancelContent from "./EventCancelContent";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function EventCancelPage({
   params,

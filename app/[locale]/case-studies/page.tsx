@@ -3,16 +3,19 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "CaseStudies" });
-  return {
+  return generatePageMetadata({
+    locale,
     title: t("title"),
     description: t("subtitle"),
-  };
+    path: "/case-studies",
+  });
 }
 
 export default async function CaseStudiesPage({

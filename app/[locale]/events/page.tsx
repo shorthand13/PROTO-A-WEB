@@ -4,16 +4,19 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { CalendarDays, MapPin } from "lucide-react";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Events" });
-  return {
+  return generatePageMetadata({
+    locale,
     title: t("title"),
     description: t("subtitle"),
-  };
+    path: "/events",
+  });
 }
 
 export default async function EventsPage({

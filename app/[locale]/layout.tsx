@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   },
   description:
     "中小企業向けDXコンサルティング。親しみやすいアプローチでデジタル化を支援します。",
+  verification: {
+    google: "G93VGR0JMn4E1WZSvu8-RsGGQWirXcxFk3uA5zj4TzY",
+  },
   openGraph: {
     siteName: "ProtoA",
     type: "website",

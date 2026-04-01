@@ -141,10 +141,14 @@ export async function submitContact(
     }
   }
 
-  // Create HubSpot contact
+  // Create HubSpot contact and deal
   const hubspotToken = process.env.HUBSPOT_ACCESS_TOKEN;
+  const hubspotPipelineId = process.env.HUBSPOT_PIPELINE_ID || "default";
+  const hubspotStageId = process.env.HUBSPOT_STAGE_ID;
 
   if (hubspotToken) {
+    let contactId: string | undefined;
+
     try {
       const res = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
         method: "POST",
@@ -166,7 +170,7 @@ export async function submitContact(
       if (res.status === 409) {
         // Contact already exists — update instead
         const existing = await res.json();
-        const contactId = existing.message?.match(/ID: (\d+)/)?.[1];
+        contactId = existing.message?.match(/ID: (\d+)/)?.[1];
         if (contactId) {
           await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
             method: "PATCH",
@@ -182,11 +186,53 @@ export async function submitContact(
             }),
           });
         }
-      } else if (!res.ok) {
+      } else if (res.ok) {
+        const created = await res.json();
+        contactId = created.id;
+      } else {
         console.error("HubSpot contact creation failed:", res.status, await res.text());
       }
     } catch (err) {
       console.error("HubSpot contact creation error:", err);
+    }
+
+    // Create a deal and associate with the contact
+    if (contactId) {
+      try {
+        const dealName = `お問い合わせ: ${name}${company ? ` (${company})` : ""}`;
+        const dealRes = await fetch("https://api.hubapi.com/crm/v3/objects/deals", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${hubspotToken}`,
+          },
+          body: JSON.stringify({
+            properties: {
+              dealname: dealName,
+              pipeline: hubspotPipelineId,
+              ...(hubspotStageId ? { dealstage: hubspotStageId } : {}),
+              description: message,
+            },
+            associations: [
+              {
+                to: { id: contactId },
+                types: [
+                  {
+                    associationCategory: "HUBSPOT_DEFINED",
+                    associationTypeId: 3,
+                  },
+                ],
+              },
+            ],
+          }),
+        });
+
+        if (!dealRes.ok) {
+          console.error("HubSpot deal creation failed:", dealRes.status, await dealRes.text());
+        }
+      } catch (err) {
+        console.error("HubSpot deal creation error:", err);
+      }
     }
   }
 

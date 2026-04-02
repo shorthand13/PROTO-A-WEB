@@ -90,6 +90,11 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           solutionSubtitle={t("solution.subtitle")}
         />
 
+        {/* Miyakojima origin tagline */}
+        <p className="text-xs text-muted-foreground text-center tracking-wide">
+          — 宮古島発のDX支援会社 —
+        </p>
+
         {/* Double Diamond storytelling */}
         <DoubleDiamond
           services={[

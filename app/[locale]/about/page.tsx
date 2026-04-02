@@ -108,19 +108,19 @@ function AboutContent() {
           <div className="flex flex-col gap-3">
             {teamMembers.map((member) => (
               <div
-                key={member.name}
+                key={member.key}
                 className="rounded-2xl bg-muted p-5 flex items-center gap-4"
               >
                 <Image
                   src={member.photo}
-                  alt={member.name}
+                  alt={t(`team.members.${member.key}`)}
                   width={96}
                   height={96}
                   className="h-16 w-16 rounded-full object-cover shrink-0"
                 />
                 <div>
-                  <p className="font-bold text-foreground text-sm">{member.name}</p>
-                  <p className="text-xs text-muted-foreground">{member.roles}</p>
+                  <p className="font-bold text-foreground text-sm">{t(`team.members.${member.key}`)}</p>
+                  <p className="text-xs text-muted-foreground">{t(`team.roles.${member.key}`)}</p>
                 </div>
               </div>
             ))}
@@ -242,18 +242,18 @@ function AboutContent() {
             <div className="grid grid-cols-3 gap-6">
               {teamMembers.map((member) => (
                 <div
-                  key={member.name}
+                  key={member.key}
                   className="rounded-3xl bg-muted p-6 flex flex-col items-center text-center"
                 >
                   <Image
                     src={member.photo}
-                    alt={member.name}
+                    alt={t(`team.members.${member.key}`)}
                     width={96}
                     height={96}
                     className="h-24 w-24 rounded-full object-cover"
                   />
-                  <p className="mt-4 font-bold text-foreground">{member.name}</p>
-                  <p className="text-sm text-muted-foreground">{member.roles}</p>
+                  <p className="mt-4 font-bold text-foreground">{t(`team.members.${member.key}`)}</p>
+                  <p className="text-sm text-muted-foreground">{t(`team.roles.${member.key}`)}</p>
                 </div>
               ))}
             </div>
@@ -279,19 +279,7 @@ function AboutContent() {
 }
 
 const teamMembers = [
-  {
-    name: "Ayaka Sunakawa",
-    roles: "Chief Executive / Chief Sales",
-    photo: "/photos/ayaka.jpg",
-  },
-  {
-    name: "Genki Kurihara",
-    roles: "Project Manager",
-    photo: "/photos/genki.jpg",
-  },
-  {
-    name: "Genryu Nema",
-    roles: "Main Consultant",
-    photo: "/photos/nema.jpg",
-  },
+  { key: "ayaka", photo: "/photos/ayaka.jpg" },
+  { key: "genki", photo: "/photos/genki.jpg" },
+  { key: "nema", photo: "/photos/nema.jpg" },
 ];

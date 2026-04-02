@@ -154,7 +154,17 @@
     },
     "team": {
       "title": "Our Team",
-      "description": "A team passionate about and dedicated to supporting business growth."
+      "description": "A team passionate about and dedicated to supporting business growth.",
+      "members": {
+        "ayaka": "Ayaka Sunakawa",
+        "genki": "Genki Kurihara",
+        "nema": "Genryu Nema"
+      },
+      "roles": {
+        "ayaka": "Instructor / DX Support Coach",
+        "genki": "DX Support Coach / Project Manager",
+        "nema": "Main Consultant"
+      }
     },
     "cta": {
       "title": "Ready to talk?",

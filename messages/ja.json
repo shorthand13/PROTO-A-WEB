@@ -122,11 +122,11 @@
     "title": "会社概要",
     "mission": {
       "label": "ミッション",
-      "statement": "宮古島、そして日本の経営者が\n世界を舞台に\n活躍できるために"
+      "statement": "宮古島、そして日本の\n経営者が世界を舞台に\n活躍できるために"
     },
     "vision": {
       "label": "ビジョン",
-      "statement": "「分かりやすさ」と\n「信頼度」\n#1 の DX コンサル会社に"
+      "statement": "「分かりやすさ」と「信頼度」\n#1のDX支援会社に"
     },
     "whatWeDo": {
       "title": "私たちについて",
@@ -154,7 +154,17 @@
     },
     "team": {
       "title": "チーム紹介",
-      "description": "ビジネスの成長を支援する情熱を持ったメンバーが揃っています。"
+      "description": "ビジネスの成長を支援する情熱を持ったメンバーが揃っています。",
+      "members": {
+        "ayaka": "砂川綾香",
+        "genki": "栗原元気",
+        "nema": "根間玄隆"
+      },
+      "roles": {
+        "ayaka": "講師 / DX支援コーチ",
+        "genki": "DX支援コーチ / プロジェクトマネージャー",
+        "nema": "メインコンサルタント"
+      }
     },
     "cta": {
       "title": "まずは、話してみませんか？",
@@ -421,7 +431,7 @@
     "cta": "会員ページへ"
   },
   "Footer": {
-    "description": "中小企業向けDXコンサルティング",
+    "description": "中小企業向けDX支援",
     "quickLinks": "クイックリンク",
     "followUs": "フォローする",
     "copyright": "© 2026 ProtoA. All rights reserved.",

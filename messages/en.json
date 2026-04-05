@@ -410,6 +410,11 @@
       "addFriend": "Add Friend",
       "qrAlt": "LINE Official Account QR code"
     },
+    "meeting": {
+      "title": "Book a Free Consultation",
+      "description": "Pick a time that works for you directly from the calendar and book an online meeting.",
+      "button": "Open Booking Page"
+    },
     "hours": {
       "title": "Business Hours",
       "weekdays": "Mon-Fri: 9:00 AM - 6:00 PM",

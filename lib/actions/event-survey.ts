@@ -5,8 +5,8 @@ import { z } from "zod";
 const eventSurveySchema = z.object({
   eventId: z.string().min(1),
   eventTitle: z.string().min(1),
-  name: z.string().max(200).optional().default(""),
-  email: z.string().email().optional().or(z.literal("")),
+  name: z.string().min(1).max(200),
+  email: z.string().email(),
   rating: z.string().min(1),
   instructorRating: z.string().min(1),
   wouldRefer: z.string().optional().default(""),
@@ -126,6 +126,35 @@ export async function submitEventSurvey(
       });
     } catch (err) {
       console.error("Event survey webhook error:", err);
+    }
+  }
+
+  // Create HubSpot contact
+  const hubspotToken = process.env.HUBSPOT_ACCESS_TOKEN;
+  if (hubspotToken && data.email) {
+    try {
+      const res = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${hubspotToken}`,
+        },
+        body: JSON.stringify({
+          properties: {
+            firstname: data.name,
+            email: data.email,
+            hs_lead_status: "NEW",
+          },
+        }),
+      });
+
+      if (res.status === 409) {
+        // Contact already exists — no update needed for survey
+      } else if (!res.ok) {
+        console.error("HubSpot contact creation failed:", res.status, await res.text());
+      }
+    } catch (err) {
+      console.error("HubSpot contact creation error:", err);
     }
   }
 

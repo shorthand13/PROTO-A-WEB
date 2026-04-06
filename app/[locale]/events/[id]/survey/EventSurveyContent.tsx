@@ -114,12 +114,13 @@ export default function EventSurveyContent({ event }: { event: CMSEvent }) {
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
-                    {t("nameLabel")}
+                    {t("nameLabel")} <span className="text-accent">*</span>
                   </label>
                   <input
                     id="name"
                     name="name"
                     type="text"
+                    required
                     placeholder={t("namePlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                   />
@@ -128,12 +129,13 @@ export default function EventSurveyContent({ event }: { event: CMSEvent }) {
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-                    {t("emailLabel")}
+                    {t("emailLabel")} <span className="text-accent">*</span>
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
+                    required
                     placeholder={t("emailPlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                   />

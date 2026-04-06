@@ -35,7 +35,7 @@ function ContactContent() {
   return (
     <div>
       {/* Page Header */}
-      <section className="border-b border-border bg-background px-4 py-16 sm:py-20 text-foreground">
+      <section className="border-b border-border bg-background px-4 py-6 sm:py-20 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold">{t("title")}</h1>
           <p className="mt-4 text-lg text-muted-foreground">{t("subtitle")}</p>
@@ -43,7 +43,7 @@ function ContactContent() {
       </section>
 
       {/* Meeting booking (embedded calendar) */}
-      <section className="py-16 px-4 border-b border-border bg-muted/30">
+      <section className="py-6 sm:py-16 px-4 border-b border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-3">
             <CalendarDays className="h-6 w-6 text-primary" />

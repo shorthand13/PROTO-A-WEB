@@ -41,7 +41,8 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
-    "memberVideos": "Video Library"
+    "memberVideos": "Video Library",
+    "contentPlanner": "Content Planner"
   },
   "Home": {
     "problem": {
@@ -597,5 +598,43 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "learnMore": "Learn more"
+  },
+  "ContentPlanner": {
+    "title": "Content Planner",
+    "subtitle": "Capture ideas and plan your blog posts, Instagram content, and more.",
+    "addIdea": "Add Idea",
+    "addIdeaTitle": "New Content Idea",
+    "form": {
+      "title": "Title",
+      "titlePlaceholder": "e.g. 5 tips for better Instagram captions",
+      "platform": "Platform",
+      "plannedDate": "Planned Date",
+      "notes": "Notes",
+      "notesPlaceholder": "Key points, references, inspiration...",
+      "add": "Add Idea",
+      "cancel": "Cancel"
+    },
+    "platforms": {
+      "blog": "Blog",
+      "instagram": "Instagram",
+      "note": "Note",
+      "other": "Other"
+    },
+    "statuses": {
+      "idea": "Ideas",
+      "inProgress": "In Progress",
+      "ready": "Ready to Publish",
+      "published": "Published"
+    },
+    "filter": {
+      "all": "All",
+      "label": "Filter by platform"
+    },
+    "empty": "No ideas here yet.",
+    "delete": "Delete",
+    "move": "Move to",
+    "noDate": "No date set",
+    "totalIdeas": "Total ideas",
+    "exportTitle": "Content Ideas Export"
   }
 }

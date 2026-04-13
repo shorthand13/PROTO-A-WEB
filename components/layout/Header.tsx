@@ -14,6 +14,7 @@ const navItems = [
   { key: "caseStudies", href: "/case-studies" },
   { key: "events", href: "/events" },
   { key: "contact", href: "/contact" },
+  { key: "contentPlanner", href: "/content-planner" },
 ] as const;
 
 export default function Header() {

@@ -41,7 +41,8 @@
     "login": "ログイン",
     "register": "新規登録",
     "logout": "ログアウト",
-    "memberVideos": "動画ライブラリ"
+    "memberVideos": "動画ライブラリ",
+    "contentPlanner": "コンテンツプランナー"
   },
   "Home": {
     "problem": {
@@ -597,5 +598,43 @@
     "loading": "読み込み中...",
     "error": "エラーが発生しました",
     "learnMore": "詳しく見る"
+  },
+  "ContentPlanner": {
+    "title": "コンテンツプランナー",
+    "subtitle": "ブログ、Instagram投稿などのアイデアを記録・管理しましょう。",
+    "addIdea": "アイデアを追加",
+    "addIdeaTitle": "新しいコンテンツアイデア",
+    "form": {
+      "title": "タイトル",
+      "titlePlaceholder": "例：Instagramキャプション改善5つのコツ",
+      "platform": "プラットフォーム",
+      "plannedDate": "予定日",
+      "notes": "メモ",
+      "notesPlaceholder": "ポイント、参考資料、インスピレーションなど...",
+      "add": "追加する",
+      "cancel": "キャンセル"
+    },
+    "platforms": {
+      "blog": "ブログ",
+      "instagram": "Instagram",
+      "note": "Note",
+      "other": "その他"
+    },
+    "statuses": {
+      "idea": "アイデア",
+      "inProgress": "作成中",
+      "ready": "公開準備完了",
+      "published": "公開済み"
+    },
+    "filter": {
+      "all": "すべて",
+      "label": "プラットフォームで絞り込み"
+    },
+    "empty": "まだアイデアがありません。",
+    "delete": "削除",
+    "move": "移動",
+    "noDate": "日付未設定",
+    "totalIdeas": "アイデア合計",
+    "exportTitle": "コンテンツアイデア一覧"
   }
 }

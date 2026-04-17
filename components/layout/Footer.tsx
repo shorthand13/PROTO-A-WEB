@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -10,6 +13,7 @@ import {
 import LogoLink from "./LogoLink";
 
 export default function Footer() {
+  const [showNewsletter, setShowNewsletter] = useState(false);
   const t = useTranslations("Footer");
   const tNav = useTranslations("Navigation");
 
@@ -131,10 +135,60 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8 text-center">
+        {/* Newsletter CTA */}
+        <div className="mt-10 border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+          <p className="text-sm text-muted-foreground">
+            {t("newsletterDescription")}
+          </p>
+          <button
+            onClick={() => setShowNewsletter(true)}
+            className="shrink-0 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
+          >
+            {t("newsletterTitle")}
+          </button>
+        </div>
+
+        <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">{t("copyright")}</p>
         </div>
       </div>
+      {showNewsletter && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          onClick={() => setShowNewsletter(false)}
+        >
+          <div
+            className="relative mx-4 w-full max-w-[580px] rounded-xl bg-background p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowNewsletter(false)}
+              className="absolute right-3 top-3 text-muted-foreground hover:text-foreground text-xl leading-none"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h3 className="text-lg font-bold text-foreground">
+              {t("newsletterTitle")}
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {t("newsletterDescription")}
+            </p>
+            <div className="mt-4">
+              <iframe
+                width="100%"
+                height="450"
+                src="https://7d21e189.sibforms.com/serve/MUIFALKbTJHOvGbTe__YxdR8a31vXs_unuOI1lCyqXaTIuC2Fz2RinJKzu2e21PwPZ8OjdNcaKeqxaKiEsroclSUcat2RLNrjdQFlcigqSItM3c_CrsbJU-gLvgcrhmQIU9UaOWgHhwuMPuJ2q116wdccRPBA0PdPZv58vq7sReaq_E2jv6E-wgOLNBUOKwP6AKkBttFZkgoPeCjtw=="
+                frameBorder="0"
+                scrolling="no"
+                allowFullScreen
+                style={{ display: "block", maxWidth: "100%", border: "none" }}
+                title={t("newsletterTitle")}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

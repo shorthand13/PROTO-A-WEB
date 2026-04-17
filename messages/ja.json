@@ -445,7 +445,9 @@
     "note": "note",
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード",
-    "noteQrAlt": "noteのQRコード"
+    "noteQrAlt": "noteのQRコード",
+    "newsletterTitle": "ニュースレター",
+    "newsletterDescription": "DXに関する最新情報やお役立ち情報をお届けします。"
   },
   "Survey": {
     "title": "DXに関するアンケート",

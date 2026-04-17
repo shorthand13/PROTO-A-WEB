@@ -445,7 +445,9 @@
     "note": "note",
     "lineQrAlt": "LINE Official Account QR code",
     "instagramQrAlt": "Instagram QR code",
-    "noteQrAlt": "note QR code"
+    "noteQrAlt": "note QR code",
+    "newsletterTitle": "Newsletter",
+    "newsletterDescription": "Get the latest DX insights and updates delivered to your inbox."
   },
   "Survey": {
     "title": "DX Survey",

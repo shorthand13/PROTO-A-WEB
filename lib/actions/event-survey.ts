@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { createBrevoContact } from "@/lib/brevo";
 
 const eventSurveySchema = z.object({
   eventId: z.string().min(1),
@@ -128,6 +129,10 @@ export async function submitEventSurvey(
       console.error("Event survey webhook error:", err);
     }
   }
+
+  await createBrevoContact(data.email, {
+    FIRSTNAME: data.name,
+  }, [10]);
 
   return { success: true, error: false };
 }

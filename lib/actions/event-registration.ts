@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { Resend } from "resend";
+import { createBrevoContact } from "@/lib/brevo";
 import { getCMSEvent } from "@/lib/microcms";
 import { generateCancelToken } from "@/lib/actions/event-cancel";
 
@@ -109,6 +110,12 @@ export async function submitEventRegistration(
       console.error("Event registration webhook error:", err);
     }
   }
+
+  await createBrevoContact(data.email, {
+    FIRSTNAME: data.name,
+    PHONE: data.phone || undefined,
+    COMPANY: data.company || undefined,
+  }, [8]);
 
   // Fetch full event details for email
   const event = await getCMSEvent(data.eventId);

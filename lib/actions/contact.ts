@@ -1,6 +1,7 @@
 "use server";
 
 import { contactSchema } from "@/lib/validations/contact";
+import { createBrevoContact } from "@/lib/brevo";
 
 export type ContactState = {
   success: boolean;
@@ -96,6 +97,12 @@ export async function submitContact(
       console.error("Webhook error:", err);
     }
   }
+
+  await createBrevoContact(email, {
+    FIRSTNAME: name,
+    COMPANY: company || undefined,
+    PHONE: phone || undefined,
+  }, [7]);
 
   return { success: true, error: false };
 }

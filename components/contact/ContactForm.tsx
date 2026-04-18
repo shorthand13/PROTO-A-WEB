@@ -32,6 +32,7 @@ export default function ContactForm() {
           id="name"
           name="name"
           type="text"
+          defaultValue={state.values?.name}
           placeholder={t("form.namePlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
         />
@@ -51,6 +52,7 @@ export default function ContactForm() {
           id="company"
           name="company"
           type="text"
+          defaultValue={state.values?.company}
           placeholder={t("form.companyPlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
         />
@@ -65,6 +67,7 @@ export default function ContactForm() {
           id="phone"
           name="phone"
           type="tel"
+          defaultValue={state.values?.phone}
           placeholder={t("form.phonePlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
         />
@@ -79,6 +82,7 @@ export default function ContactForm() {
           id="email"
           name="email"
           type="email"
+          defaultValue={state.values?.email}
           placeholder={t("form.emailPlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
         />
@@ -98,6 +102,7 @@ export default function ContactForm() {
           id="message"
           name="message"
           rows={5}
+          defaultValue={state.values?.message}
           placeholder={t("form.messagePlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-y"
         />

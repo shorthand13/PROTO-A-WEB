@@ -7,6 +7,7 @@ export type ContactState = {
   success: boolean;
   error: boolean;
   fieldErrors?: Record<string, string[]>;
+  values?: Record<string, string>;
 };
 
 export async function submitContact(
@@ -23,11 +24,20 @@ export async function submitContact(
 
   const result = contactSchema.safeParse(raw);
 
+  const values = {
+    name: String(raw.name || ""),
+    company: String(raw.company || ""),
+    phone: String(raw.phone || ""),
+    email: String(raw.email || ""),
+    message: String(raw.message || ""),
+  };
+
   if (!result.success) {
     return {
       success: false,
       error: true,
       fieldErrors: result.error.flatten().fieldErrors as Record<string, string[]>,
+      values,
     };
   }
 

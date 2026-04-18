@@ -109,52 +109,5 @@ export async function submitSurvey(
     }
   }
 
-  // Create HubSpot contact
-  const hubspotToken = process.env.HUBSPOT_ACCESS_TOKEN;
-  if (hubspotToken) {
-    try {
-      const res = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${hubspotToken}`,
-        },
-        body: JSON.stringify({
-          properties: {
-            firstname: data.name,
-            email: data.email,
-            company: data.company,
-            industry: data.industry,
-            hs_lead_status: "NEW",
-          },
-        }),
-      });
-
-      if (res.status === 409) {
-        const existing = await res.json();
-        const contactId = existing.message?.match(/ID: (\d+)/)?.[1];
-        if (contactId) {
-          await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${hubspotToken}`,
-            },
-            body: JSON.stringify({
-              properties: {
-                company: data.company,
-                industry: data.industry,
-              },
-            }),
-          });
-        }
-      } else if (!res.ok) {
-        console.error("HubSpot contact creation failed:", res.status, await res.text());
-      }
-    } catch (err) {
-      console.error("HubSpot contact creation error:", err);
-    }
-  }
-
   return { success: true, error: false };
 }

@@ -129,34 +129,5 @@ export async function submitEventSurvey(
     }
   }
 
-  // Create HubSpot contact
-  const hubspotToken = process.env.HUBSPOT_ACCESS_TOKEN;
-  if (hubspotToken && data.email) {
-    try {
-      const res = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${hubspotToken}`,
-        },
-        body: JSON.stringify({
-          properties: {
-            firstname: data.name,
-            email: data.email,
-            hs_lead_status: "NEW",
-          },
-        }),
-      });
-
-      if (res.status === 409) {
-        // Contact already exists — no update needed for survey
-      } else if (!res.ok) {
-        console.error("HubSpot contact creation failed:", res.status, await res.text());
-      }
-    } catch (err) {
-      console.error("HubSpot contact creation error:", err);
-    }
-  }
-
   return { success: true, error: false };
 }

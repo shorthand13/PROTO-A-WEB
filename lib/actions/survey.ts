@@ -112,7 +112,7 @@ export async function submitSurvey(
 
   await createBrevoContact(data.email, {
     FIRSTNAME: data.name,
-    COMPANY: data.company,
+    COMPANY_NAME: data.company,
   }, [9]);
 
   return { success: true, error: false };

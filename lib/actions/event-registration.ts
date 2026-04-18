@@ -113,8 +113,8 @@ export async function submitEventRegistration(
 
   await createBrevoContact(data.email, {
     FIRSTNAME: data.name,
-    PHONE: data.phone || undefined,
-    COMPANY: data.company || undefined,
+    COMPANY_NAME: data.company || undefined,
+    PHONE_NUMBER: data.phone || undefined,
   }, [8]);
 
   // Fetch full event details for email

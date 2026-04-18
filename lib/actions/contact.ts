@@ -100,8 +100,8 @@ export async function submitContact(
 
   await createBrevoContact(email, {
     FIRSTNAME: name,
-    COMPANY: company || undefined,
-    PHONE: phone || undefined,
+    COMPANY_NAME: company || undefined,
+    PHONE_NUMBER: phone || undefined,
   }, [7]);
 
   return { success: true, error: false };

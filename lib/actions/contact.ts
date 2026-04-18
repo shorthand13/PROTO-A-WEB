@@ -112,6 +112,7 @@ export async function submitContact(
     FIRSTNAME: name,
     COMPANY_NAME: company || undefined,
     PHONE_NUMBER: phone || undefined,
+    MESSAGE: message,
   }, [7]);
 
   return { success: true, error: false };

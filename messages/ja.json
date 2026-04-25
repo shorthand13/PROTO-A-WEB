@@ -18,7 +18,7 @@
       "description": "2つのアプローチで解決策を形にします。",
       "training": "社員研修",
       "trainingDesc": "ワークショップ形式でITスキルとノウハウを身につける",
-      "coaching": "伴走型IT・AI活用支援",
+      "coaching": "DX 伴走支援",
       "coachingDesc": "現場に寄り添い、一緒に課題解決に取り組む"
     },
     "deliver": {
@@ -188,7 +188,7 @@
     },
     "accompaniment": {
       "badge": "主力サービス",
-      "title": "伴走型IT・AI活用支援",
+      "title": "DX 伴走支援",
       "description": "現状分析から戦略策定、ツール導入、運用定着まで一貫してサポートします。お客様のペースに合わせて、DXの「最初の一歩」から「定着」まで伴走します。",
       "features": [
         "現状分析と課題の明確化",

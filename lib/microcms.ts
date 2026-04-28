@@ -136,7 +136,7 @@ export async function getCMSBlogPost(id: string): Promise<BlogPost | null> {
       endpoint: "blogs",
       contentId: id,
       customRequestInit: {
-        cache: "no-store",
+        next: { revalidate: 60 },
       },
     });
     return toBlogPost(data);

@@ -1,27 +1,13 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getBlogPost } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 
 
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const locales = ["ja", "en"];
-  const params: { locale: string; slug: string }[] = [];
-
-  for (const locale of locales) {
-    const posts = getBlogPosts(locale);
-    posts.forEach((post) => {
-      params.push({ locale, slug: post.slug });
-    });
-  }
-
-  return params;
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

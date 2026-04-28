@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { getBlogPost, getBlogPosts } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
@@ -102,11 +101,7 @@ function BlogPostContent({
       <section className="py-12 px-4">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
-            {/<[a-z][\s\S]*>/i.test(post.content) ? (
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            ) : (
-              <MDXRemote source={post.content} />
-            )}
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
         </div>
       </section>

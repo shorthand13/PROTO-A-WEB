@@ -112,7 +112,7 @@ function BlogPostContent({
 
           {/* Content */}
           <div className="px-6 sm:px-12 lg:px-36 py-10 sm:py-14">
-            <div className="prose max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground text-base sm:text-lg lg:text-xl [&_p]:text-base sm:[&_p]:text-lg lg:[&_p]:text-xl [&_li]:text-base sm:[&_li]:text-lg lg:[&_li]:text-xl [&_p]:leading-loose sm:[&_p]:leading-loose [&_p]:mb-6 sm:[&_p]:mb-8">
+            <div className="prose max-w-none prose-headings:text-foreground prose-p:text-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground text-base sm:text-lg lg:text-xl [&_p]:text-base sm:[&_p]:text-lg lg:[&_p]:text-xl [&_li]:text-base sm:[&_li]:text-lg lg:[&_li]:text-xl [&_p]:leading-loose sm:[&_p]:leading-loose [&_p]:mb-6 sm:[&_p]:mb-8">
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
           </div>

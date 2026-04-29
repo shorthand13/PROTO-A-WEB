@@ -42,33 +42,6 @@ export default async function HomePage({
   return <HomeContent caseStudies={caseStudies} upcomingEvents={upcomingEvents} locale={locale} />;
 }
 
-function extractSection(content: string, heading: string): string {
-  // Try markdown format: ## Heading
-  const mdRegex = new RegExp(`## ${heading}\\n+([\\s\\S]*?)(?=\\n## |$)`);
-  const mdMatch = content.match(mdRegex);
-  if (mdMatch) {
-    return mdMatch[1]
-      .replace(/\*\*/g, "")
-      .replace(/^- /gm, "")
-      .replace(/^\d+\.\s/gm, "")
-      .replace(/> .*/g, "")
-      .trim()
-      .slice(0, 60) + "…";
-  }
-
-  // Try HTML format: <h2...>Heading</h2>content
-  const htmlRegex = new RegExp(`<h2[^>]*>${heading}</h2>([\\s\\S]*?)(?=<h2|$)`);
-  const htmlMatch = content.match(htmlRegex);
-  if (htmlMatch) {
-    return htmlMatch[1]
-      .replace(/<[^>]*>/g, "")
-      .replace(/&nbsp;/g, " ")
-      .trim()
-      .slice(0, 60) + "…";
-  }
-
-  return "";
-}
 
 function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: CaseStudy[]; upcomingEvents: CMSEvent[]; locale: string }) {
   const t = useTranslations("Home");
@@ -272,9 +245,6 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                       <div className="relative z-10 p-5">
                         <p className="text-base font-bold text-white leading-snug">
                           {caseStudies[0].frontmatter.title}
-                        </p>
-                        <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
-                          {extractSection(caseStudies[0].content, "課題") || extractSection(caseStudies[0].content, "Challenge")}
                         </p>
                       </div>
                     </Link>

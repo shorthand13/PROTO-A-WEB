@@ -4,8 +4,9 @@ import { useTranslations } from "next-intl";
 import { getBlogPost } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
-import { ArrowLeft } from "lucide-react";
+import { Clock, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import ShareBar from "@/components/blog/ShareBar";
 
 
 export const dynamic = "force-dynamic";
@@ -49,71 +50,76 @@ function BlogPostContent({
   const t = useTranslations("Blog");
 
   return (
-    <div>
-      {/* Header */}
-      <section className="border-b border-border bg-background px-4 py-16 sm:py-20 text-foreground">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            {t("title")}
-          </Link>
-          <div className="flex justify-end mb-4">
-            <span className="text-sm text-muted-foreground">
-              {new Date(post.frontmatter.date).toLocaleDateString("ja-JP", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.frontmatter.tags?.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-primary/25 bg-primary/10 px-3 py-0.5 text-xs font-medium text-primary"
-              >
-                {tag}
+    <div className="bg-[#f8f6f3] min-h-screen">
+      {/* Back link */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-2">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <ArrowLeft size={16} />
+          {t("title")}
+        </Link>
+      </div>
+
+      {/* White Card Container */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+        <article className="rounded-2xl bg-background shadow-sm border border-border overflow-hidden">
+          <div className="px-6 sm:px-12 lg:px-36 pt-6 sm:pt-8">
+            {/* Tags + Date */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-wrap gap-2">
+                {post.frontmatter.tags?.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs sm:text-sm text-primary font-medium rounded-full border border-primary/30 px-3 py-0.5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
+                <Clock size={12} className="sm:w-3.5 sm:h-3.5" />
+                {new Date(post.frontmatter.date).toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </span>
-            ))}
-          </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-            {post.frontmatter.title}
-          </h1>
-          <div className="mt-4 text-sm text-muted-foreground">
-            <span>{post.frontmatter.author}</span>
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Cover Image */}
-      {post.frontmatter.coverImage && (
-        <section className="py-8 px-4">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <Image
-              src={post.frontmatter.coverImage}
-              alt={post.frontmatter.title}
-              width={800}
-              height={450}
-              className="w-full rounded-lg object-cover"
-              priority
-            />
+            {/* Title */}
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug text-foreground">
+              {post.frontmatter.title}
+            </h1>
           </div>
-        </section>
-      )}
 
-      {/* Content */}
-      <section className="py-12 px-4">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </article>
-        </div>
-      </section>
+          {/* Cover Image */}
+          {post.frontmatter.coverImage && (
+            <div className="mt-8 sm:mt-10 px-6 sm:px-12 lg:px-36">
+              <Image
+                src={post.frontmatter.coverImage}
+                alt={post.frontmatter.title}
+                width={800}
+                height={450}
+                className="w-full rounded-lg object-cover"
+                priority
+              />
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="px-6 sm:px-12 lg:px-36 py-10 sm:py-14">
+            <div className="prose max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground text-base sm:text-lg lg:text-xl [&_p]:text-base sm:[&_p]:text-lg lg:[&_p]:text-xl [&_li]:text-base sm:[&_li]:text-lg lg:[&_li]:text-xl [&_p]:leading-loose sm:[&_p]:leading-loose [&_p]:mb-6 sm:[&_p]:mb-8">
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <ShareBar title={post.frontmatter.title} />
     </div>
   );
 }

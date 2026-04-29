@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getBlogPosts, getAllTags, getPaginatedPosts } from "@/lib/blog";
 import { getCMSBlogPosts, getCMSAllTags } from "@/lib/microcms";
 import BlogCard from "@/components/blog/BlogCard";
-import TagFilter from "@/components/blog/TagFilter";
+// import TagFilter from "@/components/blog/TagFilter";
 import { Link } from "@/i18n/routing";
 
 export default async function BlogPage({
@@ -56,21 +56,21 @@ function BlogContent({
   const t = useTranslations("Blog");
 
   return (
-    <div>
+    <div className="bg-[#f8f6f3] min-h-screen">
       {/* Page Header */}
-      <section className="border-b border-border bg-background px-4 py-16 sm:py-20 text-foreground">
+      <section className="px-4 pt-8 pb-4 sm:pt-20 sm:pb-6 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl font-bold">{t("title")}</h1>
-          <p className="mt-4 text-lg text-muted-foreground">{t("subtitle")}</p>
+          <h1 className="text-2xl sm:text-4xl font-bold">{t("title")}</h1>
+          <p className="mt-1 sm:mt-4 text-sm sm:text-lg text-muted-foreground">{t("subtitle")}</p>
         </div>
       </section>
 
-      <section className="py-12 px-4">
+      <section className="py-4 sm:py-8 px-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Tag Filter */}
-          <div className="mb-8">
+          {/* Tag Filter — hidden until more posts exist */}
+          {/* <div className="mb-8">
             <TagFilter tags={tags} />
-          </div>
+          </div> */}
 
           {/* Posts Grid */}
           {posts.length > 0 ? (

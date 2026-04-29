@@ -9,7 +9,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
 import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
-import FeedbackWidget from "@/components/FeedbackWidget";
+// import FeedbackWidget from "@/components/FeedbackWidget";
 // import SurveyCta from "@/components/SurveyCta";
 import EventPopup from "@/components/EventPopup";
 import EventBanner from "@/components/EventBanner";
@@ -85,7 +85,7 @@ export default async function LocaleLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
-            <FeedbackWidget />
+            {/* <FeedbackWidget /> — disabled: overlaps with blog share bar */}
             {/* <SurveyCta /> — disabled: no incentive for users currently */}
             <EventBanner event={nextEvent} />
             <EventPopup event={nextEvent} />

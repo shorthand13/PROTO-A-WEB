@@ -1,17 +1,29 @@
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import type { BlogPost } from "@/lib/types";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block rounded-2xl border border-border bg-background p-6 shadow-sm hover:shadow-md transition-shadow"
+      className="group block rounded-2xl border border-border bg-background overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+
     >
+      {post.frontmatter.coverImage && (
+        <Image
+          src={post.frontmatter.coverImage}
+          alt={post.frontmatter.title}
+          width={600}
+          height={340}
+          className="w-full h-48 object-cover"
+        />
+      )}
+      <div className="p-6">
       <div className="flex flex-wrap gap-2 mb-3">
         {post.frontmatter.tags?.map((tag) => (
           <span
             key={tag}
-            className="rounded-full bg-primary-light/20 px-3 py-0.5 text-xs font-medium text-primary"
+            className="rounded-full border border-primary/30 px-3 py-0.5 text-xs font-medium text-primary"
           >
             {tag}
           </span>
@@ -24,8 +36,15 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         {post.frontmatter.excerpt}
       </p>
       <p className="mt-4 text-xs text-muted-foreground">
-        {post.frontmatter.date}
+        {new Date(post.frontmatter.date).toLocaleDateString("ja-JP", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
       </p>
+      </div>
     </Link>
   );
 }

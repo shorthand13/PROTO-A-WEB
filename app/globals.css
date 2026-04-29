@@ -114,6 +114,13 @@ h3 {
   }
 }
 
+/* microCMS custom highlight class */
+.highlight {
+  background-color: #d4eded;
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+}
+
 /* Hide scrollbar for horizontal scroll sections */
 .scrollbar-hide {
   -ms-overflow-style: none;

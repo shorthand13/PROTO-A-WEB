@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* ライトのみ（ダークモード対応なし）。最背面は常に白 */
 html {

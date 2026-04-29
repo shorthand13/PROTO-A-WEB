@@ -60,6 +60,17 @@ function BlogPostContent({
             <ArrowLeft size={16} />
             {t("title")}
           </Link>
+          <div className="flex justify-end mb-4">
+            <span className="text-sm text-muted-foreground">
+              {new Date(post.frontmatter.date).toLocaleDateString("ja-JP", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </span>
+          </div>
           <div className="flex flex-wrap gap-2 mb-4">
             {post.frontmatter.tags?.map((tag) => (
               <span
@@ -73,13 +84,8 @@ function BlogPostContent({
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
             {post.frontmatter.title}
           </h1>
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span>
-              {t("author")}: {post.frontmatter.author}
-            </span>
-            <span>
-              {t("publishedAt")}: {post.frontmatter.date}
-            </span>
+          <div className="mt-4 text-sm text-muted-foreground">
+            <span>{post.frontmatter.author}</span>
           </div>
         </div>
       </section>

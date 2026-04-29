@@ -5,6 +5,7 @@ import { getBlogPost } from "@/lib/blog";
 import { getCMSBlogPost } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 
 export const dynamic = "force-dynamic";
@@ -82,6 +83,22 @@ function BlogPostContent({
           </div>
         </div>
       </section>
+
+      {/* Cover Image */}
+      {post.frontmatter.coverImage && (
+        <section className="py-8 px-4">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <Image
+              src={post.frontmatter.coverImage}
+              alt={post.frontmatter.title}
+              width={800}
+              height={450}
+              className="w-full rounded-lg object-cover"
+              priority
+            />
+          </div>
+        </section>
+      )}
 
       {/* Content */}
       <section className="py-12 px-4">

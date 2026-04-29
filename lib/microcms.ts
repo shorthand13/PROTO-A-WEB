@@ -64,7 +64,7 @@ function toBlogPost(cms: CMSBlog): BlogPost {
     slug: cms.id,
     frontmatter: {
       title: cms.title,
-      date: cms.publishedAt?.split("T")[0] ?? cms.createdAt.split("T")[0],
+      date: cms.publishedAt ?? cms.createdAt,
       author: cms.author,
       tags: cms.tags ?? [],
       locale: getLocale(cms.locale),

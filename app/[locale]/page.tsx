@@ -182,6 +182,17 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </Link>
 
+        {/* Blog link */}
+        <Link
+          href="/blog"
+          className="rounded-2xl bg-[#f0e6d3] border border-[#e6d5bd] p-5 flex items-center gap-4 group"
+        >
+          <div className="flex-1 min-w-0">
+            <p className="text-base font-bold text-foreground">{t("blog.moreLabel")}</p>
+          </div>
+          <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
+        </Link>
+
         {/* Partners (mobile) */}
         <div className="rounded-2xl bg-white py-8 px-6">
           <h2 className="text-2xl font-bold text-foreground text-center mb-6 whitespace-pre-line">
@@ -271,17 +282,15 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                 </div>
               }
               blogSlot={
-                <a
-                  href="https://note.com/ayakasunakawa"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/blog"
                   className="rounded-3xl bg-[#f0e6d3] p-5 flex items-center justify-center group hover:shadow-md transition-shadow min-h-[160px]"
                 >
                   <span className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-foreground shadow-sm flex items-center gap-3">
                     {t("blog.moreLabel")}
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </span>
-                </a>
+                </Link>
               }
             />
           </div>

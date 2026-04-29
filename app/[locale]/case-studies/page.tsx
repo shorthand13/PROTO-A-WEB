@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies } from "@/lib/microcms";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 0;
@@ -104,8 +105,18 @@ function CaseStudiesContent({
                 <Link
                   key={study.slug}
                   href={`/case-studies/${study.slug}`}
-                  className="group block rounded-xl sm:rounded-2xl border border-border bg-background p-4 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
+                  className="group block rounded-xl sm:rounded-2xl border border-border bg-background overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
+                  {study.frontmatter.coverImage && (
+                    <Image
+                      src={study.frontmatter.coverImage}
+                      alt={study.frontmatter.title}
+                      width={600}
+                      height={340}
+                      className="w-full h-48 object-cover"
+                    />
+                  )}
+                  <div className="p-4 sm:p-8">
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2.5 sm:mb-4">
                     <span className="inline-block rounded-full bg-cta/10 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium text-cta">
                       {study.frontmatter.industry}
@@ -122,12 +133,10 @@ function CaseStudiesContent({
                   <h3 className="text-base sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {study.frontmatter.title}
                   </h3>
-                  <p className="mt-2 sm:mt-3 text-xs sm:text-base text-muted-foreground line-clamp-3">
-                    {study.frontmatter.excerpt}
-                  </p>
                   <span className="mt-3 sm:mt-4 inline-flex items-center text-xs sm:text-sm font-medium text-primary">
                     {t("readMore")} →
                   </span>
+                  </div>
                 </Link>
               ))}
             </div>

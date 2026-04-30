@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCaseStudies } from "@/lib/case-studies";
+import { getCMSBlogPosts } from "@/lib/microcms";
 import { getCMSEvents } from "@/lib/microcms";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://protoa.digital";
@@ -13,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/case-studies",
     "/contact",
     "/events",
+    "/blog",
   ];
 
   const entries: MetadataRoute.Sitemap = [];
@@ -36,6 +38,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       entries.push({
         url: `${baseUrl}/${locale}/case-studies/${study.slug}`,
         lastModified: new Date(study.frontmatter.date),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
+  // Blog posts
+  for (const locale of locales) {
+    const posts = await getCMSBlogPosts(locale);
+    for (const post of posts) {
+      entries.push({
+        url: `${baseUrl}/${locale}/blog/${post.slug}`,
+        lastModified: new Date(post.frontmatter.date),
         changeFrequency: "monthly",
         priority: 0.6,
       });

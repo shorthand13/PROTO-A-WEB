@@ -8,7 +8,6 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/jsonld";
 import { Analytics } from "@vercel/analytics/next";
-import { ClerkProvider } from "@clerk/nextjs";
 // import FeedbackWidget from "@/components/FeedbackWidget";
 // import SurveyCta from "@/components/SurveyCta";
 import EventPopup from "@/components/EventPopup";
@@ -93,7 +92,6 @@ export default async function LocaleLayout({
       <body
         className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
       >
-        <ClerkProvider>
           <NextIntlClientProvider>
             <Header newItems={hasNewBlog ? ["blog"] : []} />
             <main className="flex-1">{children}</main>
@@ -103,7 +101,6 @@ export default async function LocaleLayout({
             <EventBanner event={nextEvent} />
             <EventPopup event={nextEvent} />
           </NextIntlClientProvider>
-        </ClerkProvider>
         <Analytics />
       </body>
     </html>

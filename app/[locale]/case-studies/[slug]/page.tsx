@@ -114,18 +114,6 @@ function CaseStudyContent({
                 height={480}
                 className="w-full object-contain block"
               />
-              {/* Mobile: tag on image */}
-              <div className="absolute bottom-3 right-3 sm:hidden">
-                <span className="inline-block rounded-full border border-white/30 bg-white/15 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white">
-                  {study.frontmatter.industry}
-                </span>
-              </div>
-            </div>
-            {/* Desktop: tag under image */}
-            <div className="hidden sm:flex justify-end mx-auto max-w-5xl px-6 lg:px-8 mt-4">
-              <span className="inline-block rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                {study.frontmatter.industry}
-              </span>
             </div>
           </div>
         </section>
@@ -139,9 +127,6 @@ function CaseStudyContent({
               <ArrowLeft size={16} />
               {t("title")}
             </Link>
-            <span className="inline-block rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-4">
-              {study.frontmatter.industry}
-            </span>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               {study.frontmatter.title}
             </h1>

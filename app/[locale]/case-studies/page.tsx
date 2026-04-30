@@ -117,19 +117,6 @@ function CaseStudiesContent({
                     />
                   )}
                   <div className="p-4 sm:p-8">
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2.5 sm:mb-4">
-                    <span className="inline-block rounded-full bg-cta/10 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium text-cta">
-                      {study.frontmatter.industry}
-                    </span>
-                    {study.frontmatter.tags?.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium text-primary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                   <h3 className="text-base sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {study.frontmatter.title}
                   </h3>

@@ -54,7 +54,7 @@
   "Home": {
     "problem": {
       "label": "The Reality of Small Business",
-      "title": "Business is growing,\nbut operations are still on paper.",
+      "title": "Business is growing, but operations are still on paper",
       "subtitle": "As digitization accelerates,\nmany small businesses are falling behind the wave."
     },
     "painPoints": {
@@ -68,7 +68,8 @@
     },
     "solution": {
       "label": "The Solution",
-      "title": "ProtoA walks with you\nthrough the very first step\nof your digital journey.",
+      "titleBrand": "ProtoA",
+      "title": " walks with you,\ntaking each step together.",
       "subtitle": "A DX consultant who truly understands your business.\nNo jargon. We move at your pace, together."
     },
     "services": {

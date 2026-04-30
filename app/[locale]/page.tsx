@@ -56,11 +56,9 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
         {/* Story carousel: Problem → Solution → Logo */}
         <HeroCarousel
-          problemLabel={t("problem.label")}
-          problemTitle={t("problem.title")}
-          problemSubtitle={t("problem.subtitle")}
+          solutionBrand={t("solution.titleBrand")}
           solutionTitle={t("solution.title")}
-          solutionSubtitle={t("solution.subtitle")}
+          solutionSubtitle=""
         />
 
         {/* Upcoming event tile */}

@@ -1,20 +1,27 @@
 {
   "DoubleDiamond": {
     "label": "私たちのアプローチ",
+    "title1": "課題発見",
+    "titleMid": "から",
+    "title2": "成果実現",
+    "titleEnd": "まで",
     "title": "課題発見から成果実現まで",
     "subtitle": "ダブルダイヤモンドのフレームワークで、お客様と一緒に課題を見つけ、解決策を形にします。",
     "problemSpace": "課題の発見・定義",
     "solutionSpace": "解決策の開発・実現",
     "discover": {
-      "title": "Discover — 課題の発見",
+      "title": "課題の",
+      "titleEmphasis": "発見",
       "description": "ヒアリングや業務観察を通じて、現状を深く理解します。見えていない課題を明らかにします。"
     },
     "define": {
-      "title": "Define — 課題の定義",
+      "title": "課題の",
+      "titleEmphasis": "定義",
       "description": "発見した課題を整理し、本当に解決すべき問題を明確にします。"
     },
     "develop": {
-      "title": "Develop — 解決策の開発",
+      "title": "解決策の",
+      "titleEmphasis": "開発",
       "description": "2つのアプローチで解決策を形にします。",
       "training": "社員研修",
       "trainingDesc": "ワークショップ形式でITスキルとノウハウを身につける",
@@ -22,7 +29,8 @@
       "coachingDesc": "現場に寄り添い、一緒に課題解決に取り組む"
     },
     "deliver": {
-      "title": "Deliver — 成果の実現",
+      "title": "成果の",
+      "titleEmphasis": "実現",
       "description": "導入・定着まで伴走し、持続的な成果につなげます。"
     }
   },

@@ -63,31 +63,6 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           solutionSubtitle={t("solution.subtitle")}
         />
 
-        {/* Miyakojima origin tagline */}
-        <p className="text-xs text-muted-foreground text-center tracking-wide">
-          — 宮古島発のDX支援会社 —
-        </p>
-
-        {/* Double Diamond storytelling */}
-        <DoubleDiamond
-          services={[
-            {
-              title: ts("training.title"),
-              description: ts("training.description"),
-              features: ts.raw("training.features") as string[],
-              ctaLabel: ts("cta"),
-              ctaHref: "/services",
-            },
-            {
-              title: ts("accompaniment.title"),
-              description: ts("accompaniment.description"),
-              features: ts.raw("accompaniment.features") as string[],
-              ctaLabel: ts("cta"),
-              ctaHref: "/services",
-            },
-          ]}
-        />
-
         {/* Upcoming event tile */}
         {upcomingEvents.length > 0 && (() => {
           const nextEvent = upcomingEvents[0];
@@ -148,9 +123,6 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         >
           <div className="flex-1 min-w-0">
             <p className="text-base font-bold text-foreground">{tc("title")}</p>
-            {caseStudies[0] && (
-              <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">{caseStudies[0].frontmatter.title}</p>
-            )}
           </div>
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </Link>
@@ -165,6 +137,26 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           </div>
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </Link>
+
+        {/* Double Diamond storytelling */}
+        <DoubleDiamond
+          services={[
+            {
+              title: ts("training.title"),
+              description: ts("training.description"),
+              features: ts.raw("training.features") as string[],
+              ctaLabel: ts("cta"),
+              ctaHref: "/services",
+            },
+            {
+              title: ts("accompaniment.title"),
+              description: ts("accompaniment.description"),
+              features: ts.raw("accompaniment.features") as string[],
+              ctaLabel: ts("cta"),
+              ctaHref: "/services",
+            },
+          ]}
+        />
 
         {/* Partners (mobile) */}
         <div className="rounded-2xl bg-white py-8 px-6">

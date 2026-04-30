@@ -1,20 +1,27 @@
 {
   "DoubleDiamond": {
     "label": "Our Approach",
+    "title1": "Discovery",
+    "titleMid": " to ",
+    "title2": "Delivery",
+    "titleEnd": "",
     "title": "From Discovery to Delivery",
     "subtitle": "Using the Double Diamond framework, we work alongside you to uncover challenges and build solutions.",
     "problemSpace": "Problem Space",
     "solutionSpace": "Solution Space",
     "discover": {
-      "title": "Discover — Find the Problem",
+      "title": "Find the ",
+      "titleEmphasis": "Problem",
       "description": "Through interviews and observation, we deeply understand your current situation and uncover hidden challenges."
     },
     "define": {
-      "title": "Define — Clarify the Problem",
+      "title": "Clarify the ",
+      "titleEmphasis": "Problem",
       "description": "We organize findings and pinpoint the real problem that needs solving."
     },
     "develop": {
-      "title": "Develop — Build Solutions",
+      "title": "Build ",
+      "titleEmphasis": "Solutions",
       "description": "Two approaches to bring solutions to life.",
       "training": "Training",
       "trainingDesc": "Workshop-style learning to build IT skills and know-how",
@@ -22,7 +29,8 @@
       "coachingDesc": "Working side by side to solve challenges together"
     },
     "deliver": {
-      "title": "Deliver — Realize Results",
+      "title": "Realize ",
+      "titleEmphasis": "Results",
       "description": "We stay with you through implementation and adoption for lasting results."
     }
   },

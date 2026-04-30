@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Search, Target, Lightbulb, Rocket, GraduationCap, Handshake } from "lucide-react";
+import { Search, Target, Lightbulb, Rocket, GraduationCap, Handshake, Flag, MapPin } from "lucide-react";
 
 function SlideIn({ children, direction }: { children: ReactNode; direction: "left" | "right" }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -83,17 +83,24 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
   }
 
   return (
-    <div className="rounded-2xl bg-white p-6 overflow-hidden">
+    <div className="rounded-2xl bg-white p-6 pt-12 overflow-hidden">
       {/* Header */}
-      <p className="text-xs font-bold text-primary tracking-widest uppercase mb-1 text-center">
-        {t("label")}
-      </p>
-      <h2 className="text-lg font-bold text-foreground leading-snug text-center">
-        {t("title")}
-      </h2>
-      <p className="mt-2 text-sm text-muted-foreground leading-relaxed text-center">
-        {t("subtitle")}
-      </p>
+      <div className="mb-24">
+        <p className="text-3xl font-bold text-foreground text-left">
+          <span className="rounded-full bg-[#5a8a8a] px-4 py-1.5 text-4xl text-white">{t("title1")}</span>
+          {t("titleMid")}
+        </p>
+        <div className="flex justify-center py-6">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="text-primary">
+              <line x1="12" y1="3" x2="12" y2="18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              <path d="M5 14 L12 21 L19 14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+        </div>
+        <p className="text-3xl font-bold text-foreground text-right">
+          <span className="rounded-full bg-[#5a8a8a] px-4 py-1.5 text-4xl text-white">{t("title2")}</span>
+          {t("titleEnd")}
+        </p>
+      </div>
 
       {/* Phase flow */}
       <div className="mt-8 relative" ref={containerRef}>
@@ -120,82 +127,65 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
 
         <div className="flex flex-col items-center gap-0">
 
-          {/* Problem Space label */}
-          <div className="relative z-10 mb-6" data-node>
-            <div className="relative w-10 h-10 mx-auto flex items-center justify-center">
-              <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping" style={{ animationDuration: "2.5s" }} />
-              <div className="relative w-10 h-10 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-primary/60" />
-              </div>
-            </div>
-            <p className="mt-2 text-xs font-bold text-primary/60 tracking-widest uppercase text-center">{t("problemSpace")}</p>
+          {/* Starting point */}
+          <div className="relative z-10 -mt-11 mb-6 flex justify-center" data-node>
+            <MapPin size={38} className="text-primary" />
           </div>
 
           {/* Discover — LEFT */}
-          <div className="relative z-10 mb-8 w-full flex items-start gap-5" data-node>
+          <div className="relative z-10 mb-8 w-full flex items-center gap-5" data-node>
             <SlideIn direction="left">
               <div className="text-right pr-3">
-                <h3 className="text-base font-bold text-foreground">{t("discover.title")}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{t("discover.description")}</p>
+                <h3 className="text-base font-bold text-foreground flex items-center justify-end gap-1.5"><Search size={28} className="text-primary" />{t("discover.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("discover.titleEmphasis")}</span></h3>
               </div>
             </SlideIn>
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center">
-              <Search size={20} className="text-primary" />
-            </div>
+            <div className="flex-shrink-0 w-0 h-0" />
             <div className="flex-1 min-w-[40px]" />
           </div>
 
           {/* Define — RIGHT */}
-          <div className="relative z-10 mb-8 w-full flex items-start gap-5" data-node>
+          <div className="relative z-10 mb-8 w-full flex items-center gap-5" data-node>
             <div className="flex-1 min-w-[40px]" />
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center">
-              <Target size={20} className="text-primary" />
-            </div>
+            <div className="flex-shrink-0 w-0 h-0" />
             <SlideIn direction="right">
               <div className="text-left pl-3">
-                <h3 className="text-base font-bold text-foreground">{t("define.title")}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{t("define.description")}</p>
+                <h3 className="text-base font-bold text-foreground flex items-center gap-1.5"><Target size={28} className="text-primary" />{t("define.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("define.titleEmphasis")}</span></h3>
               </div>
             </SlideIn>
           </div>
 
-          {/* Midpoint - Solution Space */}
+          {/* Midpoint */}
           <div className="relative z-10 mb-6" data-node>
-            <div className="relative w-12 h-12 mx-auto flex items-center justify-center">
-              <span className="absolute inset-0 rounded-full bg-primary/30 animate-ping" style={{ animationDuration: "2.5s", animationDelay: "1.2s" }} />
-              <div className="relative w-12 h-12 rounded-full bg-primary border-2 border-primary/30 flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-white" />
-              </div>
-            </div>
-            <p className="mt-2 text-xs font-bold text-primary tracking-widest uppercase text-center">{t("solutionSpace")}</p>
+            <div className="w-0 h-0 mx-auto" />
           </div>
 
           {/* Develop — LEFT */}
-          <div className="relative z-10 mb-8 w-full flex items-start gap-5" data-node>
+          <div className="relative z-10 mb-8 w-full flex items-center gap-5" data-node>
             <SlideIn direction="left">
               <div className="text-right pr-3">
-                <h3 className="text-base font-bold text-foreground">{t("develop.title")}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{t("develop.description")}</p>
+                <h3 className="text-base font-bold text-foreground flex items-center justify-end gap-1.5"><Lightbulb size={28} className="text-primary" />{t("develop.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("develop.titleEmphasis")}</span></h3>
               </div>
             </SlideIn>
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center">
-              <Lightbulb size={20} className="text-primary" />
-            </div>
+            <div className="flex-shrink-0 w-0 h-0" />
             <div className="flex-1 min-w-[40px]" />
           </div>
 
           {/* Deliver — RIGHT */}
-          <div className="relative z-10 w-full flex items-start gap-5" data-node>
+          <div className="relative z-10 mb-8 w-full flex items-center gap-5" data-node>
             <div className="flex-1 min-w-[40px]" />
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 border-2 border-primary/30 flex items-center justify-center">
-              <Rocket size={20} className="text-primary" />
-            </div>
+            <div className="flex-shrink-0 w-0 h-0" />
             <SlideIn direction="right">
               <div className="text-left pl-3">
-                <h3 className="text-base font-bold text-foreground">{t("deliver.title")}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{t("deliver.description")}</p>
+                <h3 className="text-base font-bold text-foreground flex items-center gap-1.5"><Rocket size={28} className="text-primary" />{t("deliver.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("deliver.titleEmphasis")}</span></h3>
               </div>
             </SlideIn>
+          </div>
+
+          {/* Goal flag */}
+          <div className="relative z-10 mt-32 flex justify-center" data-node>
+            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+              <Flag size={48} className="text-primary" />
+            </div>
           </div>
 
         </div>

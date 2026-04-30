@@ -13,7 +13,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 // import SurveyCta from "@/components/SurveyCta";
 import EventPopup from "@/components/EventPopup";
 import EventBanner from "@/components/EventBanner";
-import { getCMSNextEvent } from "@/lib/microcms";
+import { getCMSNextEvent, getCMSBlogPosts } from "@/lib/microcms";
 import "../globals.css";
 
 const mPlus1p = M_PLUS_1p({
@@ -68,6 +68,19 @@ export default async function LocaleLayout({
 
   const nextEvent = await getCMSNextEvent();
 
+  let hasNewBlog = false;
+  try {
+    const posts = await getCMSBlogPosts(locale);
+    if (posts.length > 0) {
+      const latestDate = new Date(posts[0].frontmatter.date);
+      const sevenDaysAgo = new Date();
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      hasNewBlog = latestDate >= sevenDaysAgo;
+    }
+  } catch {
+    // CMS unavailable
+  }
+
   return (
     <html
       lang={locale}
@@ -82,7 +95,7 @@ export default async function LocaleLayout({
       >
         <ClerkProvider>
           <NextIntlClientProvider>
-            <Header />
+            <Header newItems={hasNewBlog ? ["blog"] : []} />
             <main className="flex-1">{children}</main>
             <Footer />
             {/* <FeedbackWidget /> — disabled: overlaps with blog share bar */}

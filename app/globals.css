@@ -114,6 +114,11 @@ h3 {
   }
 }
 
+@keyframes scale-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
 /* microCMS custom highlight class */
 .highlight {
   background-color: #e2ebec;

@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 interface HeroSectionProps {
   heroLine1: string;
   heroLine2: string;
+  solutionBrand: string;
   solutionTitle: string;
   solutionSubtitle: string;
   casestudySlot: React.ReactNode;
@@ -16,6 +17,7 @@ type Phase = "typing1" | "hold1" | "fade1" | "typing2" | "hold2" | "fade2" | "so
 export default function HeroSection({
   heroLine1,
   heroLine2,
+  solutionBrand,
   solutionTitle,
   solutionSubtitle,
   casestudySlot,
@@ -203,7 +205,7 @@ export default function HeroSection({
                       className="flex flex-col items-start -space-y-3 transition-opacity duration-700 ease-in-out"
                       style={{ opacity: showSolutionTitle ? 1 : 0 }}
                     >
-                      {solutionTitle.replace("一歩」を", "一歩」を\n").split("\n").filter(Boolean).map((line, i) => (
+                      {(solutionBrand + solutionTitle).replace("一歩を", "一歩を\n").split("\n").filter(Boolean).map((line, i) => (
                         <span
                           key={i}
                           className="inline-block bg-white text-foreground text-2xl lg:text-3xl xl:text-4xl font-bold rounded-xl px-5 py-2 shadow-sm"

@@ -206,6 +206,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             <HeroSection
               heroLine1={t("problem.title")}
               heroLine2={t("problem.subtitle")}
+              solutionBrand={t("solution.titleBrand")}
               solutionTitle={t("solution.title")}
               solutionSubtitle={t("solution.subtitle")}
               casestudySlot={

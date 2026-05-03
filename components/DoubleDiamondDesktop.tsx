@@ -125,7 +125,7 @@ export default function DoubleDiamondDesktop() {
           <div className="relative z-10 mb-20 w-full flex items-start gap-8" data-node>
             <SlideIn direction="left">
               <div className="text-right pr-4">
-                <h3 className="text-lg font-bold text-foreground">{t("discover.title")}</h3>
+                <h3 className="text-lg font-bold text-foreground">{t("discover.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("discover.titleEmphasis")}</span></h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t("discover.description")}</p>
               </div>
             </SlideIn>
@@ -143,7 +143,7 @@ export default function DoubleDiamondDesktop() {
             </div>
             <SlideIn direction="right">
               <div className="text-left pl-4">
-                <h3 className="text-lg font-bold text-foreground">{t("define.title")}</h3>
+                <h3 className="text-lg font-bold text-foreground">{t("define.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("define.titleEmphasis")}</span></h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t("define.description")}</p>
               </div>
             </SlideIn>
@@ -161,7 +161,7 @@ export default function DoubleDiamondDesktop() {
           <div className="relative z-10 mb-20 w-full flex items-start gap-8" data-node>
             <SlideIn direction="left">
               <div className="text-right pr-4">
-                <h3 className="text-lg font-bold text-foreground">{t("develop.title")}</h3>
+                <h3 className="text-lg font-bold text-foreground">{t("develop.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("develop.titleEmphasis")}</span></h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t("develop.description")}</p>
               </div>
             </SlideIn>
@@ -179,7 +179,7 @@ export default function DoubleDiamondDesktop() {
             </div>
             <SlideIn direction="right">
               <div className="text-left pl-4">
-                <h3 className="text-lg font-bold text-foreground">{t("deliver.title")}</h3>
+                <h3 className="text-lg font-bold text-foreground">{t("deliver.title")}<span className="text-2xl text-[#5a8a8a] underline decoration-[5px] decoration-[#6b9e9e]/30 underline-offset-1">{t("deliver.titleEmphasis")}</span></h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t("deliver.description")}</p>
               </div>
             </SlideIn>

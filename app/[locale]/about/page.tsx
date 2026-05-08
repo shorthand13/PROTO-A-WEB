@@ -151,9 +151,6 @@ function AboutContent() {
               height={300}
               className="w-full max-w-xs rounded-xl mt-3 object-cover object-top"
             />
-            <p className="text-xs text-muted-foreground mt-3 text-center">
-              {t("media.miyakoshinpo.description")}
-            </p>
           </a>
         </div>
 
@@ -315,9 +312,6 @@ function AboutContent() {
                 height={225}
                 className="w-full rounded-lg mt-3 object-cover object-top"
               />
-              <p className="text-xs text-muted-foreground mt-3 text-center">
-                {t("media.miyakoshinpo.description")}
-              </p>
             </a>
           </div>
         </section>

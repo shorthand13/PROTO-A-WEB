@@ -127,6 +127,36 @@ function AboutContent() {
           </div>
         </div>
 
+        {/* Media */}
+        <div className="mt-2">
+          <h2 className="text-lg font-bold text-foreground mb-4 px-1">
+            {t("media.title")}
+          </h2>
+          <a
+            href="https://miyakoshinpo.com/2024/10/04/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5"
+          >
+            <p className="font-bold text-foreground text-sm">
+              {t("media.miyakoshinpo.source")}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {t("media.miyakoshinpo.date")}
+            </p>
+            <Image
+              src="/photos/award_shinpo.png"
+              alt={t("media.miyakoshinpo.source")}
+              width={400}
+              height={300}
+              className="w-full max-w-xs rounded-xl mt-3 object-cover object-top"
+            />
+            <p className="text-xs text-muted-foreground mt-3 text-center">
+              {t("media.miyakoshinpo.description")}
+            </p>
+          </a>
+        </div>
+
         {/* CTA */}
         <div className="rounded-2xl bg-transparent text-foreground p-6 text-center">
           <h2 className="text-xl font-bold">{t("cta.title")}</h2>
@@ -257,6 +287,38 @@ function AboutContent() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Media */}
+        <section className="px-4 pt-6">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-2xl font-bold text-foreground mb-6 px-1">
+              {t("media.title")}
+            </h2>
+            <a
+              href="https://miyakoshinpo.com/2024/10/04/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5 max-w-xs"
+            >
+              <p className="text-sm font-bold text-foreground">
+                {t("media.miyakoshinpo.source")}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {t("media.miyakoshinpo.date")}
+              </p>
+              <Image
+                src="/photos/award_shinpo.png"
+                alt={t("media.miyakoshinpo.source")}
+                width={300}
+                height={225}
+                className="w-full rounded-lg mt-3 object-cover object-top"
+              />
+              <p className="text-xs text-muted-foreground mt-3 text-center">
+                {t("media.miyakoshinpo.description")}
+              </p>
+            </a>
           </div>
         </section>
 

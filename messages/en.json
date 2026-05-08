@@ -175,6 +175,15 @@
         "nema": "Main Consultant"
       }
     },
+    "media": {
+      "title": "Media Coverage",
+      "miyakoshinpo": {
+        "source": "Miyako Shinpo",
+        "date": "October 4, 2024",
+        "description": "ProtoA representative Ayaka Sunakawa was featured in Miyako Shinpo.",
+        "link": "Read article"
+      }
+    },
     "cta": {
       "title": "Ready to talk?",
       "subtitle": "Free consultations start from 30 minutes.",

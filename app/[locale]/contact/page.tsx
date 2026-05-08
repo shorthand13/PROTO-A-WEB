@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Clock, MessageCircle, MapPin } from "lucide-react";
+import { MessageCircle, MapPin } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
 import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC, GOOGLE_PROFILE_URL } from "@/lib/social-links";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -85,21 +85,6 @@ function ContactContent() {
                 >
                   {t("line.addFriend")}
                 </a>
-              </div>
-
-              {/* Business Hours */}
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Clock className="h-6 w-6 text-primary" />
-                  <h3 className="text-lg font-bold text-foreground">
-                    {t("hours.title")}
-                  </h3>
-                </div>
-                <div className="space-y-2 text-muted-foreground">
-                  <p>{t("hours.weekdays")}</p>
-                  <p>{t("hours.weekend")}</p>
-                  <p className="text-sm mt-4">{t("hours.note")}</p>
-                </div>
               </div>
 
               {/* Google Business Profile */}

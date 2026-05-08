@@ -429,6 +429,11 @@
       "weekdays": "月〜金: 9:00 - 18:00",
       "weekend": "土日祝: 休業",
       "note": "※オンライン相談は事前予約で時間外も対応可能"
+    },
+    "google": {
+      "title": "所在地",
+      "description": "沖縄県宮古島市を拠点に活動しています。詳しくはお気軽にお問い合わせください。",
+      "button": "Googleマップで見る"
     }
   },
   "Login": {
@@ -455,6 +460,7 @@
     "lineQrAlt": "LINE公式アカウントのQRコード",
     "instagramQrAlt": "InstagramのQRコード",
     "noteQrAlt": "noteのQRコード",
+    "google": "Googleビジネスプロフィール",
     "newsletterTitle": "ニュースレター",
     "newsletterDescription": "DXに関する最新情報やお役立ち情報をお届けします。"
   },

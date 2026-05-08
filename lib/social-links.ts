@@ -6,3 +6,4 @@ export const LINE_QR_CACHE_KEY = "yic4wqe1";
 export const LINE_QR_IMAGE_SRC =
   `/line-qr.png?v=${LINE_QR_CACHE_KEY}` as const;
 export const INSTAGRAM_QR_IMAGE_SRC = "/instagram-qr.png" as const;
+export const GOOGLE_PROFILE_URL = "https://share.google/buRutXBsZhuScojm9";

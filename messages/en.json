@@ -429,6 +429,11 @@
       "weekdays": "Mon-Fri: 9:00 AM - 6:00 PM",
       "weekend": "Sat, Sun & Holidays: Closed",
       "note": "* Online consultations available outside business hours by appointment"
+    },
+    "google": {
+      "title": "Location",
+      "description": "We are based in Miyakojima, Okinawa. Please feel free to reach out for more details.",
+      "button": "View on Google Maps"
     }
   },
   "Login": {
@@ -455,6 +460,7 @@
     "lineQrAlt": "LINE Official Account QR code",
     "instagramQrAlt": "Instagram QR code",
     "noteQrAlt": "note QR code",
+    "google": "Google Business Profile",
     "newsletterTitle": "Newsletter",
     "newsletterDescription": "Get the latest DX insights and updates delivered to your inbox."
   },

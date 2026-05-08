@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Clock, MessageCircle } from "lucide-react";
+import { Clock, MessageCircle, MapPin } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
-import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC } from "@/lib/social-links";
+import { LINE_ADD_FRIEND_URL, LINE_QR_IMAGE_SRC, GOOGLE_PROFILE_URL } from "@/lib/social-links";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -100,6 +100,27 @@ function ContactContent() {
                   <p>{t("hours.weekend")}</p>
                   <p className="text-sm mt-4">{t("hours.note")}</p>
                 </div>
+              </div>
+
+              {/* Google Business Profile */}
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  <h3 className="text-lg font-bold text-foreground">
+                    {t("google.title")}
+                  </h3>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  {t("google.description")}
+                </p>
+                <a
+                  href={GOOGLE_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
+                >
+                  {t("google.button")}
+                </a>
               </div>
             </div>
           </div>

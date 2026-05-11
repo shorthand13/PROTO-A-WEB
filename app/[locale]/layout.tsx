@@ -67,6 +67,8 @@ export default async function LocaleLayout({
 
   const nextEvent = await getCMSNextEvent();
 
+  const hasUpcomingEvent = !!nextEvent;
+
   let hasNewBlog = false;
   try {
     const posts = await getCMSBlogPosts(locale);
@@ -93,7 +95,7 @@ export default async function LocaleLayout({
         className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
       >
           <NextIntlClientProvider>
-            <Header newItems={hasNewBlog ? ["blog"] : []} />
+            <Header newItems={[...(hasNewBlog ? ["blog"] : []), ...(hasUpcomingEvent ? ["events"] : [])]} />
             <main className="flex-1">{children}</main>
             <Footer />
             {/* <FeedbackWidget /> — disabled: overlaps with blog share bar */}

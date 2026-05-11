@@ -51,6 +51,13 @@ function EventCard({
   });
 
   return (
+    <div className="relative">
+      {!isPast && (
+        <span className="absolute -top-3 -right-3 z-10 flex h-14 w-14 items-center justify-center">
+          <span className="absolute inset-0 rounded-full bg-[#bc441a] shadow-lg heartbeat" />
+          <span className="relative text-xs font-bold uppercase tracking-wider text-white">NEW</span>
+        </span>
+      )}
     <div
       className={`rounded-2xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md overflow-hidden ${
         isPast ? "opacity-70" : ""
@@ -136,6 +143,7 @@ function EventCard({
         </div>
       </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function EventBanner({ event }: { event: EventData | null }) {
   if (!event) return null;
 
   // Hide banner on event pages
-  if (pathname.includes("/events/")) return null;
+  if (pathname.includes("/events")) return null;
 
   // Show collapsed icon after dismissal
   if (dismissed && !visible) {

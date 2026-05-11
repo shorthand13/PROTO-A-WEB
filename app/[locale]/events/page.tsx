@@ -57,14 +57,13 @@ function EventCard({
       }`}
     >
       {event.image && (
-        <div className="relative w-full aspect-[16/7]">
-          <Image
-            src={event.image.url}
-            alt={event.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+        <Image
+          src={event.image.url}
+          alt={event.title}
+          width={800}
+          height={600}
+          className="w-full"
+        />
       )}
       <div className="p-5 sm:p-6">
       <div className="flex items-start gap-4">
@@ -171,7 +170,7 @@ function EventsContent({
             {t("upcoming")}
           </h2>
           {upcoming.length > 0 ? (
-            <div className="space-y-4">
+            <div className="space-y-12">
               {upcoming.map((event) => (
                 <EventCard key={event.id} event={event} locale={locale} />
               ))}
@@ -191,7 +190,7 @@ function EventsContent({
             <h2 className="text-lg sm:text-xl font-bold text-muted-foreground mb-4 sm:mb-6">
               {t("past")}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-12">
               {past.map((event) => (
                 <EventCard key={event.id} event={event} isPast locale={locale} />
               ))}

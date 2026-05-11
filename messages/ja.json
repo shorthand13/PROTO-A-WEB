@@ -458,6 +458,10 @@
     "redirecting": "3秒後に会員ページへ移動します...",
     "cta": "会員ページへ"
   },
+  "Gallery": {
+    "title": "宮古島ギャラリー",
+    "credit": "撮影: Yano"
+  },
   "Footer": {
     "description": "中小企業向けDX支援",
     "quickLinks": "クイックリンク",
@@ -470,6 +474,7 @@
     "instagramQrAlt": "InstagramのQRコード",
     "noteQrAlt": "noteのQRコード",
     "google": "Googleビジネスプロフィール",
+    "gallery": "ギャラリー",
     "newsletterTitle": "ニュースレター",
     "newsletterDescription": "DXに関する最新情報やお役立ち情報をお届けします。"
   },

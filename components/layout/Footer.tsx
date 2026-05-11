@@ -51,6 +51,12 @@ export default function Footer() {
               >
                 {tNav("contact")}
               </Link>
+              <Link
+                href="/gallery"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t("gallery")}
+              </Link>
             </nav>
           </div>
 

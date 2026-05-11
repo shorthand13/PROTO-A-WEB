@@ -458,6 +458,10 @@
     "redirecting": "Redirecting to membership page in 3 seconds...",
     "cta": "Go to Membership"
   },
+  "Gallery": {
+    "title": "Miyakojima Gallery",
+    "credit": "Photo: Yano"
+  },
   "Footer": {
     "description": "DX consulting for small businesses",
     "quickLinks": "Quick Links",
@@ -470,6 +474,7 @@
     "instagramQrAlt": "Instagram QR code",
     "noteQrAlt": "note QR code",
     "google": "Google Business Profile",
+    "gallery": "Gallery",
     "newsletterTitle": "Newsletter",
     "newsletterDescription": "Get the latest DX insights and updates delivered to your inbox."
   },

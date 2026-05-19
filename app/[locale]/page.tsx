@@ -134,15 +134,10 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         <DoubleDiamond />
 
         {/* Free Workshop CTA */}
-        <a
-          href={WORKSHOP_BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/services"
           className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/25 p-5 flex flex-col items-center gap-3 group hover:shadow-md transition-shadow"
         >
-          <span className="rounded-full bg-[#e3a454] px-4 py-1 text-sm font-bold text-white">
-            {tw("badge")}
-          </span>
           <h3 className="text-2xl font-bold text-foreground leading-snug text-center" style={{ letterSpacing: "0.1em" }}>
             {tw.rich("homeTile.title", {
               emphasis: (chunks) => <span className="text-primary underline decoration-primary decoration-2 underline-offset-4">{chunks}</span>,
@@ -154,7 +149,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           <span className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white">
             {tw("homeTile.cta")}
           </span>
-        </a>
+        </Link>
 
         {/* Partners (mobile) */}
         <div className="rounded-2xl bg-white py-8 px-6">

@@ -192,8 +192,48 @@
     }
   },
   "Services": {
-    "title": "Our Services",
+    "title": "ProtoA Services",
     "subtitle": "Comprehensive digital transformation support",
+    "brandTitle": "Local roots, hands-on style",
+    "brandValues": {
+      "island": "Island",
+      "kindness": "Kindness",
+      "accompaniment": "Hands-on"
+    },
+    "processTitle": "4 steps to solve your challenges",
+    "process": {
+      "discover": {
+        "step": "1",
+        "title": "Discover challenges",
+        "description": "Through interviews and observation, we deeply understand your current situation and uncover hidden challenges."
+      },
+      "define": {
+        "step": "2",
+        "title": "Define the problem",
+        "description": "We organize the discovered challenges and clarify the real problems that need solving."
+      },
+      "develop": {
+        "step": "3",
+        "title": "Develop solutions",
+        "description": "Together, we design solutions that fit your workplace and test them step by step."
+      },
+      "deliver": {
+        "step": "4",
+        "title": "Deliver results",
+        "description": "We implement tool adoption and workflow changes, walking alongside you until they stick."
+      }
+    },
+    "workshopSection": {
+      "title": "Challenge Discovery Workshop",
+      "subtitle": "Recommended if you",
+      "features": [
+        "Struggle to put your company's challenges into words",
+        "Have a rough direction but can't move forward"
+      ],
+      "cta": "Sign up",
+      "note": "Still unsure? Feel free to reach out\nwith any questions.",
+      "noteLink": "Contact us"
+    },
     "training": {
       "badge": "Flagship Service",
       "title": "Training",

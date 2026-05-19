@@ -192,8 +192,48 @@
     }
   },
   "Services": {
-    "title": "サービス一覧",
+    "title": "ProtoAのサービス",
     "subtitle": "ビジネスのデジタル化をトータルサポート",
+    "brandTitle": "地元密着・伴走スタイル",
+    "brandValues": {
+      "island": "島",
+      "kindness": "優しさ",
+      "accompaniment": "伴走"
+    },
+    "processTitle": "4つのプロセスで課題を解決",
+    "process": {
+      "discover": {
+        "step": "1",
+        "title": "課題の発見",
+        "description": "ヒアリングや業務観察を通じて、現状を深く理解します。見えていない課題を明らかにします。"
+      },
+      "define": {
+        "step": "2",
+        "title": "課題の定義",
+        "description": "発見した課題を整理し、本当に解決すべき問題を明確にします。"
+      },
+      "develop": {
+        "step": "3",
+        "title": "解決策の開発",
+        "description": "現場に合った解決策を一緒に考え、小さく試しながら形にしていきます。"
+      },
+      "deliver": {
+        "step": "4",
+        "title": "成果の実現",
+        "description": "ツール導入や業務フローの変更を実施し、定着するまで伴走します。"
+      }
+    },
+    "workshopSection": {
+      "title": "課題発見ワークショップ",
+      "subtitle": "こんな方におすすめ",
+      "features": [
+        "自社の課題を言語化できなくて悩んでいる方",
+        "大まかな方針はあるが前に進まない方"
+      ],
+      "cta": "申し込みする",
+      "note": "まだ迷っている方はお気軽に\n質問をお寄せください。",
+      "noteLink": "問い合わせをする"
+    },
     "training": {
       "badge": "主力サービス",
       "title": "社員研修",

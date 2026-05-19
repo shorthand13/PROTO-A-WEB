@@ -1,8 +1,9 @@
 {
   "DoubleDiamond": {
     "label": "Our Approach",
+    "sectionTitle": "The ProtoA Way",
     "title1": "Discovery",
-    "titleMid": " to ",
+    "titleMid": "Start with ",
     "title2": "Delivery",
     "titleEnd": "",
     "title": "From Discovery to Delivery",
@@ -621,6 +622,31 @@
     "unstable": "This website is currently under development and may be unstable.",
     "wip": "The services listed are a work in progress and subject to change.",
     "accept": "Got it"
+  },
+  "Workshop": {
+    "badge": "Free",
+    "title": "Free Workshop",
+    "subtitle": "SWOT Analysis × Business Model Canvas",
+    "description": "A hands-on workshop to identify your strengths, weaknesses, opportunities, and threats, and to visualize your business model. Take the first step in DX by understanding where your business stands today.",
+    "features": [
+      "SWOT analysis to objectively assess your strengths and weaknesses",
+      "Business Model Canvas to visualize your business structure",
+      "Free to attend, one-time session (approx. 90 min)",
+      "Small group format — relaxed and approachable"
+    ],
+    "cta": "Book a Free Workshop",
+    "flow": {
+      "step0": "Free Workshop",
+      "step0desc": "Know your business",
+      "step1": "See the challenges",
+      "step2": "Ongoing support"
+    },
+    "homeTile": {
+      "label": "Start here",
+      "title": "Start with <emphasis>challenge</emphasis> discovery",
+      "subtitle": "Join our free SWOT and Business Model Canvas workshop to map your strengths and challenges together.",
+      "cta": "Learn more & book"
+    }
   },
   "Common": {
     "language": "Language",

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText } from "lucide-react";
 // import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
+import { WORKSHOP_BOOKING_URL } from "@/lib/social-links";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
@@ -47,6 +48,8 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
   const t = useTranslations("Home");
   const ts = useTranslations("Services");
   const tc = useTranslations("CaseStudies");
+  const tw = useTranslations("Workshop");
+  const td = useTranslations("DoubleDiamond");
 
 
   return (
@@ -67,35 +70,22 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           return (
             <Link
               href={`/events/${nextEvent.id}` as "/events"}
-              className="rounded-2xl bg-white border border-border shadow-sm p-5 flex flex-col gap-3 group hover:shadow-md transition-shadow"
+              className="relative rounded-2xl bg-gradient-to-br from-[#eaad63]/10 to-[#eaad63]/20 border border-[#eaad63]/25 p-5 flex items-center gap-4 group hover:shadow-md transition-shadow"
             >
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                  開催予定イベント
-                </span>
-                <ChevronRight size={16} className="text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
-              </div>
-
-              <h3 className="text-base font-bold text-foreground leading-snug">
-                {nextEvent.title}
-              </h3>
-
-              {nextEvent.tags && nextEvent.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {nextEvent.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium text-primary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <div className="flex flex-col gap-1.5 text-sm text-muted-foreground">
-                <span className="flex items-start gap-1.5">
+              <span className="absolute -top-3 -right-3 z-10 flex h-14 w-14 items-center justify-center">
+                <span className="absolute inset-0 rounded-full bg-[#bc441a] shadow-lg heartbeat" />
+                <span className="relative text-xs font-bold uppercase tracking-wider text-white">NEW</span>
+              </span>
+              <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                <h3 className="text-lg font-bold text-foreground leading-snug">
+                  {nextEvent.title}
+                </h3>
+                {nextEvent.description && (
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                    {nextEvent.description}
+                  </p>
+                )}
+                <span className="flex items-start gap-1.5 text-sm text-muted-foreground mt-2">
                   <CalendarDays size={14} className="text-primary flex-shrink-0 mt-[3px]" />
                   {new Date(nextEvent.date).toLocaleDateString(locale === "ja" ? "ja-JP" : "en-US", {
                     month: "long",
@@ -104,12 +94,13 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                   })}
                 </span>
                 {nextEvent.location && (
-                  <span className="flex items-start gap-1.5">
+                  <span className="flex items-start gap-1.5 text-sm text-muted-foreground">
                     <MapPin size={14} className="text-primary flex-shrink-0 mt-[3px]" />
                     {nextEvent.location}
                   </span>
                 )}
               </div>
+              <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
             </Link>
           );
         })()}
@@ -137,24 +128,33 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         </Link>
 
         {/* Double Diamond storytelling */}
-        <DoubleDiamond
-          services={[
-            {
-              title: ts("training.title"),
-              description: ts("training.description"),
-              features: ts.raw("training.features") as string[],
-              ctaLabel: ts("cta"),
-              ctaHref: "/services",
-            },
-            {
-              title: ts("accompaniment.title"),
-              description: ts("accompaniment.description"),
-              features: ts.raw("accompaniment.features") as string[],
-              ctaLabel: ts("cta"),
-              ctaHref: "/services",
-            },
-          ]}
-        />
+        <p className="text-4xl font-bold text-foreground py-6 text-center">
+          {td("sectionTitle")}
+        </p>
+        <DoubleDiamond />
+
+        {/* Free Workshop CTA */}
+        <a
+          href={WORKSHOP_BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/25 p-5 flex flex-col items-center gap-3 group hover:shadow-md transition-shadow"
+        >
+          <span className="rounded-full bg-[#e3a454] px-4 py-1 text-sm font-bold text-white">
+            {tw("badge")}
+          </span>
+          <h3 className="text-2xl font-bold text-foreground leading-snug text-center" style={{ letterSpacing: "0.1em" }}>
+            {tw.rich("homeTile.title", {
+              emphasis: (chunks) => <span className="text-primary underline decoration-primary decoration-2 underline-offset-4">{chunks}</span>,
+            })}
+          </h3>
+          <p className="text-xs text-muted-foreground leading-relaxed text-center">
+            {tw("homeTile.subtitle")}
+          </p>
+          <span className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white">
+            {tw("homeTile.cta")}
+          </span>
+        </a>
 
         {/* Partners (mobile) */}
         <div className="rounded-2xl bg-white py-8 px-6">
@@ -262,6 +262,56 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         <section className="px-4 pt-12">
           <div className="mx-auto max-w-7xl">
             <DoubleDiamondDesktop />
+          </div>
+        </section>
+
+        {/* Free Workshop Gateway */}
+        <section className="px-4 pt-12">
+          <div className="mx-auto max-w-7xl">
+            <div className="rounded-3xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/20 p-10 flex flex-col sm:flex-row items-center gap-8">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">
+                    {tw("badge")}
+                  </span>
+                  <span className="text-sm font-medium text-primary">
+                    {tw("homeTile.label")}
+                  </span>
+                </div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-foreground">
+                  {tw.rich("homeTile.title", {
+                    emphasis: (chunks) => <span className="text-primary">{chunks}</span>,
+                  })}
+                </h2>
+                <p className="mt-3 text-base text-muted-foreground max-w-lg">
+                  {tw("homeTile.subtitle")}
+                </p>
+                <a
+                  href={WORKSHOP_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
+                >
+                  {tw("homeTile.cta")}
+                </a>
+              </div>
+              <div className="flex flex-col gap-3 text-sm">
+                <div className="flex items-center gap-3">
+                  <span className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">0</span>
+                  <span className="font-bold text-foreground">{tw("flow.step0")}</span>
+                </div>
+                <div className="ml-4 h-6 border-l-2 border-primary/30" />
+                <div className="flex items-center gap-3">
+                  <span className="h-8 w-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs font-bold">1</span>
+                  <span className="text-muted-foreground">{tw("flow.step1")}</span>
+                </div>
+                <div className="ml-4 h-6 border-l-2 border-primary/30" />
+                <div className="flex items-center gap-3">
+                  <span className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">2</span>
+                  <span className="text-muted-foreground">{tw("flow.step2")}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

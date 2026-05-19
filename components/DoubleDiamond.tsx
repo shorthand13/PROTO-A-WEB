@@ -83,25 +83,7 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
   }
 
   return (
-    <div className="rounded-2xl bg-white p-6 pt-12 overflow-hidden">
-      {/* Header */}
-      <div className="mb-24">
-        <p className="text-3xl font-bold text-foreground text-left">
-          <span className="rounded-full bg-[#5a8a8a] px-4 py-1.5 text-4xl text-white">{t("title1")}</span>
-          {t("titleMid")}
-        </p>
-        <div className="flex justify-center py-6">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="text-primary">
-              <line x1="12" y1="3" x2="12" y2="18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              <path d="M5 14 L12 21 L19 14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        </div>
-        <p className="text-3xl font-bold text-foreground text-right">
-          <span className="rounded-full bg-[#5a8a8a] px-4 py-1.5 text-4xl text-white">{t("title2")}</span>
-          {t("titleEnd")}
-        </p>
-      </div>
-
+    <div className="rounded-2xl bg-white p-6 pt-6 overflow-hidden">
       {/* Phase flow */}
       <div className="mt-8 relative" ref={containerRef}>
 
@@ -191,86 +173,6 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
         </div>
       </div>
 
-      {/* Services — compact cards with slide-in detail */}
-      <div className="mt-8">
-        <div className="grid grid-cols-2 gap-3">
-          {(services ?? []).map((svc, i) => {
-            const Icon = i === 0 ? GraduationCap : Handshake;
-            const isActive = activeService === i;
-            return (
-              <button
-                key={i}
-                onClick={() => setActiveService(isActive ? null : i)}
-                className={`rounded-xl p-4 border text-center transition-all duration-300 relative ${
-                  isActive
-                    ? "bg-primary text-white border-primary shadow-md"
-                    : "bg-white border-primary/10"
-                }`}
-              >
-                <span className={`absolute top-2 right-2.5 text-sm font-medium transition-transform duration-300 ${
-                  isActive ? "text-white/70 rotate-90" : "text-primary/60"
-                }`}>↗</span>
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 mx-auto ${
-                  isActive ? "bg-white/20" : "bg-primary/10"
-                }`}>
-                  <Icon size={16} className={isActive ? "text-white" : "text-primary"} />
-                </div>
-                <p className="text-sm font-bold">{svc.title}</p>
-                <p className={`mt-1 text-xs leading-relaxed ${isActive ? "text-white/70" : "text-muted-foreground"}`}>
-                  {i === 0 ? t("develop.trainingDesc") : t("develop.coachingDesc")}
-                </p>
-              </button>
-            );
-          })}
-          {!services && (
-            <>
-              <div className="rounded-xl bg-white p-4 border border-primary/10">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-2 mx-auto">
-                  <GraduationCap size={16} className="text-primary" />
-                </div>
-                <p className="text-sm font-bold text-foreground text-center">{t("develop.training")}</p>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed text-center">{t("develop.trainingDesc")}</p>
-              </div>
-              <div className="rounded-xl bg-white p-4 border border-primary/10">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-2 mx-auto">
-                  <Handshake size={16} className="text-primary" />
-                </div>
-                <p className="text-sm font-bold text-foreground text-center">{t("develop.coaching")}</p>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed text-center">{t("develop.coachingDesc")}</p>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Slide-in detail panel */}
-        <div
-          className="overflow-hidden transition-all duration-500 ease-in-out"
-          style={{
-            maxHeight: activeService !== null ? "400px" : "0px",
-            opacity: activeService !== null ? 1 : 0,
-          }}
-        >
-          {services && activeService !== null && (() => {
-            const svc = services[activeService];
-            return (
-              <div
-                key={activeService}
-                className="mt-3 rounded-xl bg-white p-5 border border-primary/10 animate-[slideInRight_0.4s_ease-out]"
-              >
-                <p className="text-sm text-muted-foreground leading-relaxed">{svc.description}</p>
-                <ul className="mt-3 space-y-1.5">
-                  {svc.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-primary/40 flex-shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })()}
-        </div>
-      </div>
     </div>
   );
 }

@@ -51,7 +51,7 @@ function ServicesContent() {
       {/* Hero Image */}
       <section className="px-4 pt-4 sm:pt-8">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+          <div className="relative w-full sm:max-w-[500px] sm:mx-auto aspect-[16/9] rounded-xl overflow-hidden">
             <Image
               src="/photos/service-pointing.png"
               alt=""
@@ -84,7 +84,7 @@ function ServicesContent() {
           <h2 className="text-xl sm:text-2xl font-bold text-foreground text-center mb-8">
             {t("processTitle")}
           </h2>
-          <div className="flex flex-col gap-10 sm:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
             {processSteps.map(({ key, image }) => (
               <div key={key} className="flex flex-col gap-3">
                 <h3 className="text-lg sm:text-xl font-bold text-foreground">

@@ -11,7 +11,6 @@ import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
 import DoubleDiamond from "@/components/DoubleDiamond";
 import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
-import HeroCarousel from "@/components/HeroCarousel";
 
 export const revalidate = 0;
 
@@ -57,12 +56,22 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
       <h1 className="sr-only">ProtoA — DXコンサルティング</h1>
       {/* ===================== MOBILE ===================== */}
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
-        {/* Story carousel: Problem → Solution → Logo */}
-        <HeroCarousel
-          solutionBrand={t("solution.titleBrand")}
-          solutionTitle={t("solution.title")}
-          solutionSubtitle=""
-        />
+        {/* Hero */}
+        <div className="rounded-2xl bg-primary text-white p-8">
+          <h3 className="text-3xl font-bold leading-snug whitespace-pre">
+            {t("solution.title")}
+          </h3>
+        </div>
+
+        {/* Logo + Taglines */}
+        <Image src="/logo_mark.svg" alt="ProtoA" width={48} height={48} className="h-12 w-12 mx-auto mt-4" />
+        <ul className="flex flex-col gap-1 text-center py-4">
+          {(t.raw("taglines") as string[]).map((line: string, i: number) => (
+            <li key={i} className="text-lg font-bold text-foreground">
+              {line}
+            </li>
+          ))}
+        </ul>
 
         {/* Upcoming event tile */}
         {upcomingEvents.length > 0 && (() => {

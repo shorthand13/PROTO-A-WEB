@@ -31,8 +31,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-foreground">{t("quickLinks")}</h3>
-            <nav className="mt-3 flex flex-col gap-2">
+            <nav className="flex flex-col gap-2">
               <Link
                 href="/about"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -62,14 +61,13 @@ export default function Footer() {
 
           {/* Social / LINE & Instagram */}
           <div>
-            <h3 className="font-bold text-foreground">{t("followUs")}</h3>
-            <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-10">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-10">
               <div className="flex flex-col gap-2">
                 <a
                   href={LINE_ADD_FRIEND_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {t("lineOfficial")}
                 </a>
@@ -94,7 +92,7 @@ export default function Footer() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {t("instagram")}
                 </a>
@@ -118,7 +116,7 @@ export default function Footer() {
                   href="https://note.com/ayakasunakawa"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {t("note")}
                 </a>

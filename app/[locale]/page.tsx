@@ -5,7 +5,6 @@ import Image from "next/image";
 import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText } from "lucide-react";
 // import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
-import { WORKSHOP_BOOKING_URL } from "@/lib/social-links";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
@@ -290,14 +289,12 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                 <p className="mt-3 text-base text-muted-foreground max-w-lg">
                   {tw("homeTile.subtitle")}
                 </p>
-                <a
-                  href={WORKSHOP_BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/services"
                   className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
                 >
                   {tw("homeTile.cta")}
-                </a>
+                </Link>
               </div>
               <div className="flex flex-col gap-3 text-sm">
                 <div className="flex items-center gap-3">

@@ -12,6 +12,7 @@ import { Analytics } from "@vercel/analytics/next";
 // import SurveyCta from "@/components/SurveyCta";
 import EventPopup from "@/components/EventPopup";
 import EventBanner from "@/components/EventBanner";
+import BrevoChat from "@/components/BrevoChat";
 import { getCMSNextEvent, getCMSBlogPosts } from "@/lib/microcms";
 import "../globals.css";
 
@@ -102,6 +103,7 @@ export default async function LocaleLayout({
             {/* <SurveyCta /> — disabled: no incentive for users currently */}
             <EventBanner event={nextEvent} />
             <EventPopup event={nextEvent} />
+            <BrevoChat />
           </NextIntlClientProvider>
         <Analytics />
       </body>

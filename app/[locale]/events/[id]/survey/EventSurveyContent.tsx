@@ -53,7 +53,6 @@ function StarRating({
 }
 
 const SERVICE_OPTIONS = [
-  "itIntroduction",
   "itSupport",
   "workshop",
   "dxTraining",
@@ -229,6 +228,11 @@ export default function EventSurveyContent({ event }: { event: CMSEvent }) {
                     placeholder={t("improvementsPlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
                   />
+                </div>
+
+                {/* Service section divider */}
+                <div className="border-t border-border pt-6">
+                  <h2 className="text-base font-bold text-foreground">{t("serviceSectionTitle")}</h2>
                 </div>
 
                 {/* Service interest */}

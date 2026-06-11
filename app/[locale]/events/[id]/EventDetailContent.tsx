@@ -286,6 +286,29 @@ export default function EventDetailContent({
                       </div>
 
                       <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">
+                          {t("attendanceFormat")} <span className="text-accent">*</span>
+                        </label>
+                        <div className="flex gap-3">
+                          {(["onsite", "remote"] as const).map((option) => (
+                            <label
+                              key={option}
+                              className="flex-1 flex items-center justify-center rounded-xl border border-border px-4 py-2.5 text-sm font-medium cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/10 has-[:checked]:text-primary hover:border-primary/50 whitespace-nowrap"
+                            >
+                              <input
+                                type="radio"
+                                name="attendanceFormat"
+                                value={option}
+                                required
+                                className="sr-only"
+                              />
+                              {t(`attendanceFormat_${option}`)}
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
                         <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
                           {t("message")}
                         </label>
@@ -437,6 +460,29 @@ export default function EventDetailContent({
                     placeholder={t("companyPlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    {t("attendanceFormat")} <span className="text-accent">*</span>
+                  </label>
+                  <div className="flex gap-3">
+                    {(["onsite", "remote"] as const).map((option) => (
+                      <label
+                        key={option}
+                        className="flex-1 flex items-center justify-center rounded-xl border border-border px-4 py-2.5 text-sm font-medium cursor-pointer transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/10 has-[:checked]:text-primary hover:border-primary/50 whitespace-nowrap"
+                      >
+                        <input
+                          type="radio"
+                          name="attendanceFormat"
+                          value={option}
+                          required
+                          className="sr-only"
+                        />
+                        {t(`attendanceFormat_${option}`)}
+                      </label>
+                    ))}
+                  </div>
                 </div>
 
                 <div>

@@ -15,6 +15,7 @@ const eventRegistrationSchema = z.object({
   email: z.string().email(),
   phone: z.string().max(20).optional().default(""),
   company: z.string().max(200).optional().default(""),
+  attendanceFormat: z.enum(["onsite", "remote"]),
   message: z.string().max(1000).optional().default(""),
 });
 
@@ -39,6 +40,7 @@ export async function submitEventRegistration(
     email: formData.get("email"),
     phone: formData.get("phone") || undefined,
     company: formData.get("company") || undefined,
+    attendanceFormat: formData.get("attendanceFormat"),
     message: formData.get("message") || undefined,
   };
 
@@ -62,6 +64,7 @@ export async function submitEventRegistration(
       `メール: ${data.email}`,
       `電話番号: ${data.phone || "未記入"}`,
       `会社名: ${data.company || "未記入"}`,
+      `参加方法: ${data.attendanceFormat === "onsite" ? "会場参加" : "オンライン参加"}`,
       `メッセージ: ${data.message || "なし"}`,
       `申込日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
     ].join("\n");
@@ -102,6 +105,7 @@ export async function submitEventRegistration(
           email: data.email,
           phone: data.phone,
           company: data.company,
+          attendanceFormat: data.attendanceFormat,
           message: data.message,
           submittedAt: new Date().toISOString(),
         }),

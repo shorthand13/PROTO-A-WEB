@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   const formData = await req.formData();
   const from = formData.get("From") as string;
   const callStatus = formData.get("CallStatus") as string;
-  const recordingUrl = formData.get("RecordingUrl") as string | null;
+  const recordingSid = formData.get("RecordingSid") as string | null;
 
   console.log(`[Twilio Status] Call from ${from}, status: ${callStatus}`);
 
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       "📞 着信あり（不在転送）",
       `発信者: ${from}`,
       `ステータス: ${callStatus}`,
-      recordingUrl ? `録音: ${recordingUrl}` : "録音: なし",
+      recordingSid ? `録音: https://protoa.digital/api/twilio/recording?sid=${recordingSid}&token=${process.env.TWILIO_RECORDING_TOKEN}` : "録音: なし",
       `日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
       "",
       "→ SMSで予約リンクを送信済み",

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   twiml.say(
     { language: "ja-JP", voice: "Polly.Mizuki" },
-    "お電話ありがとうございます。泡盛と沖縄料理、郷家です。ただいま電話に出ることができません。のちほどSMSにてご連絡いたします。"
+    "お電話ありがとうございます。泡盛と沖縄料理、ごうやです。ただいま電話に出ることができません。のちほどSMSにてご連絡いたします。"
   );
 
   twiml.pause({ length: 1 });

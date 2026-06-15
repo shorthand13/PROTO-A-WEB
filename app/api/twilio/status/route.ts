@@ -22,18 +22,10 @@ export async function POST(req: Request) {
       to: from,
       from: process.env.TWILIO_PHONE_NUMBER!,
       body: [
-        "郷家にお電話ありがとうございます。お手数ですが、以下リンクよりご予約くださいませ。",
-        "",
-        "「郷家」ご予約はこちらから:",
-        "https://zumi-goya.com/contact/",
-        "",
-        "「はなれ」",
-        "https://zumi-goya.com/hanare/#hanare_form",
-        "",
-        "折り返しご連絡いたしますので、少々お待ちください。",
-        "",
-        "郷家 | 泡盛と沖縄料理",
-        "0980-74-2358",
+        "郷家にお電話ありがとうございます。",
+        "ご予約: https://zumi-goya.com/contact/",
+        "はなれ: https://zumi-goya.com/hanare/#hanare_form",
+        "郷家 0980-74-2358",
       ].join("\n"),
     });
     console.log(`[Twilio SMS] Sent reservation link to ${from}`);

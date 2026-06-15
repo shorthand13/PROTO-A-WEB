@@ -10,14 +10,14 @@ export async function POST(req: Request) {
   const twiml = new VoiceResponse();
 
   twiml.say(
-    { language: "ja-JP", voice: "Polly.Mizuki" },
-    "お電話ありがとうございます。プロトエーです。ただいま電話に出ることができません。のちほどSMSにてご連絡いたします。"
+    { language: "ja-JP", voice: "Polly.Kazuha" as unknown as "Polly.Mizuki" },
+    "お電話ありがとうございます。泡盛と沖縄料理、郷家です。ただいま電話に出ることができません。のちほどSMSにてご連絡いたします。"
   );
 
   twiml.pause({ length: 1 });
 
   twiml.say(
-    { language: "ja-JP", voice: "Polly.Mizuki" },
+    { language: "ja-JP", voice: "Polly.Kazuha" as unknown as "Polly.Mizuki" },
     "発信音のあとにメッセージをお残しください。"
   );
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import twilio from "twilio";
 
-const RESERVATION_URL = "https://meet.brevo.com/protoa-digital/kadai-haken";
+
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -22,15 +22,18 @@ export async function POST(req: Request) {
       to: from,
       from: process.env.TWILIO_PHONE_NUMBER!,
       body: [
-        "ProtoAにお電話ありがとうございます。",
+        "郷家にお電話ありがとうございます。お手数ですが、以下リンクよりご予約くださいませ。",
         "",
-        "サービスのご予約・ご相談はこちらから:",
-        RESERVATION_URL,
+        "「郷家」ご予約はこちらから:",
+        "https://zumi-goya.com/contact/",
+        "",
+        "「はなれ」",
+        "https://zumi-goya.com/hanare/#hanare_form",
         "",
         "折り返しご連絡いたしますので、少々お待ちください。",
         "",
-        "ProtoA | DX支援",
-        "https://protoa.digital",
+        "郷家 | 泡盛と沖縄料理",
+        "0980-74-2358",
       ].join("\n"),
     });
     console.log(`[Twilio SMS] Sent reservation link to ${from}`);

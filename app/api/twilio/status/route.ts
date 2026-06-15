@@ -5,6 +5,9 @@ import twilio from "twilio";
 
 export async function POST(req: Request) {
   const formData = await req.formData();
+  const allParams = Object.fromEntries(formData.entries());
+  console.log(`[Twilio Status] All params:`, JSON.stringify(allParams, null, 2));
+
   const from = formData.get("From") as string;
   const callStatus = formData.get("CallStatus") as string;
   const recordingSid = formData.get("RecordingSid") as string | null;

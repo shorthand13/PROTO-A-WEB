@@ -17,11 +17,8 @@ export async function POST(req: Request) {
   const conversationRelay = connect.conversationRelay({
     url: WS_URL,
     language: "ja-JP",
-    ttsProvider: "Amazon",
-    voice: "Mizuki",
     welcomeGreeting:
-      "お電話ありがとうございます。泡盛と沖縄料理、ゴーヤです。ご予約やお問い合わせなど、お気軽にどうぞ。",
-    interruptible: "speech",
+      "お電話ありがとうございます。ゴーヤです。ご予約やお問い合わせ、お気軽にどうぞ。",
   });
 
   return new NextResponse(twiml.toString(), {

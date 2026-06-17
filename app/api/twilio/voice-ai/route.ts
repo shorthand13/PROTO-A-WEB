@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     url: WS_URL,
     language: "ja-JP",
     welcomeGreeting:
-      "お電話ありがとうございます。ゴーヤです。ご予約やお問い合わせ、お気軽にどうぞ。",
+      "お電話ありがとうございます。ゴーヤです。只今電話に出ることができません。ご予約の方は人数と来店時間を教えてください。",
   });
 
   return new NextResponse(twiml.toString(), {

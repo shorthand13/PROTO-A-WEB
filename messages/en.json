@@ -121,6 +121,10 @@
     "blog": {
       "moreLabel": "View Blog"
     },
+    "sunny": {
+      "cta": "Meet Sunny",
+      "badge": "Prototype"
+    },
     "gallery": {
       "title": "Behind the Scenes"
     },

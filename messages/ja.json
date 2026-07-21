@@ -1,7 +1,7 @@
 {
   "DoubleDiamond": {
     "label": "私たちのアプローチ",
-    "sectionTitle": "ProtoA のやり方",
+    "sectionTitle": "私たちのやり方",
     "title1": "課題発見",
     "titleMid": "まずは",
     "title2": "成果実現",
@@ -122,7 +122,8 @@
       "moreLabel": "ブログを見る"
     },
     "sunny": {
-      "cta": "サニーに会ってみる"
+      "cta": "サニーに会ってみる",
+      "badge": "プロトタイプ"
     },
     "gallery": {
       "title": "私たちの活動"

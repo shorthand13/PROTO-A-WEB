@@ -142,8 +142,11 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           href={SUNNY_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-2xl bg-primary/10 border border-primary/20 p-5 flex items-center gap-4 group"
+          className="relative rounded-2xl bg-primary/10 border border-primary/20 p-5 flex items-center gap-4 group"
         >
+          <span className="absolute -top-2 -right-2 z-10 rounded-full bg-gray-700 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
+            {t("sunny.badge")}
+          </span>
           <div className="flex-1 min-w-0 flex items-center gap-2.5">
             <PawPrint size={18} className="text-primary flex-shrink-0" />
             <p className="text-base font-bold text-foreground">{t("sunny.cta")}</p>
@@ -269,7 +272,10 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </span>
                   </Link>
-                  <a href={SUNNY_URL} target="_blank" rel="noopener noreferrer" className="group">
+                  <a href={SUNNY_URL} target="_blank" rel="noopener noreferrer" className="group relative">
+                    <span className="absolute -top-2 -right-2 z-10 rounded-full bg-gray-700 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
+                      {t("sunny.badge")}
+                    </span>
                     <span className="rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm flex items-center gap-3 hover:bg-primary-dark hover:shadow-md transition-all">
                       <PawPrint size={16} />
                       {t("sunny.cta")}

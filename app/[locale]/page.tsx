@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText } from "lucide-react";
+import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText, PawPrint } from "lucide-react";
 // import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
 import { getCaseStudies } from "@/lib/case-studies";
@@ -12,6 +12,8 @@ import DoubleDiamond from "@/components/DoubleDiamond";
 import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
 
 export const revalidate = 0;
+
+const SUNNY_URL = "https://sunny-roan-pi.vercel.app/cat-3d.html";
 
 export default async function HomePage({
   params,
@@ -135,6 +137,20 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </Link>
 
+        {/* Sunny link */}
+        <a
+          href={SUNNY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-2xl bg-primary/10 border border-primary/20 p-5 flex items-center gap-4 group"
+        >
+          <div className="flex-1 min-w-0 flex items-center gap-2.5">
+            <PawPrint size={18} className="text-primary flex-shrink-0" />
+            <p className="text-base font-bold text-foreground">{t("sunny.cta")}</p>
+          </div>
+          <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
+        </a>
+
         {/* Double Diamond storytelling */}
         <p className="text-4xl font-bold text-foreground py-6 text-center">
           {td("sectionTitle")}
@@ -246,15 +262,21 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                 </div>
               }
               blogSlot={
-                <Link
-                  href="/blog"
-                  className="rounded-3xl bg-[#f0e6d3] p-5 flex items-center justify-center group hover:shadow-md transition-shadow min-h-[160px]"
-                >
-                  <span className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-foreground shadow-sm flex items-center gap-3">
-                    {t("blog.moreLabel")}
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </span>
-                </Link>
+                <div className="rounded-3xl bg-[#f0e6d3] p-5 flex flex-col items-center justify-center gap-3 min-h-[160px]">
+                  <Link href="/blog" className="group">
+                    <span className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-foreground shadow-sm flex items-center gap-3 hover:shadow-md transition-shadow">
+                      {t("blog.moreLabel")}
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+                  <a href={SUNNY_URL} target="_blank" rel="noopener noreferrer" className="group">
+                    <span className="rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm flex items-center gap-3 hover:bg-primary-dark hover:shadow-md transition-all">
+                      <PawPrint size={16} />
+                      {t("sunny.cta")}
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </a>
+                </div>
               }
             />
           </div>

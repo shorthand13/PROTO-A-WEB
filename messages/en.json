@@ -53,10 +53,19 @@
     "memberVideos": "Video Library"
   },
   "Home": {
+    "hero": {
+      "tagline": "Empowering business owners in Miyakojima and across Japan to thrive on the world stage"
+    },
     "problem": {
       "label": "The Reality of Small Business",
       "title": "Business is growing, but operations are still on paper",
       "subtitle": "As digitization accelerates,\nmany small businesses are falling behind the wave."
+    },
+    "solution": {
+      "label": "The Solution",
+      "titleBrand": "ProtoA",
+      "title": " walks with you,\ntaking each step together.",
+      "subtitle": "A DX consultant who truly understands your business.\nNo jargon. We move at your pace, together."
     },
     "painPoints": {
       "title": "Sound familiar?",
@@ -66,12 +75,6 @@
         { "icon": "📱", "text": "Want to use social media, but don't know where to start." },
         { "icon": "💸", "text": "No budget for IT. Hard to see the return on investment." }
       ]
-    },
-    "solution": {
-      "label": "The Solution",
-      "titleBrand": "ProtoA",
-      "title": " walks with you,\ntaking each step together.",
-      "subtitle": "A DX consultant who truly understands your business.\nNo jargon. We move at your pace, together."
     },
     "taglines": [
       "Your IT & DX partner in Miyakojima",

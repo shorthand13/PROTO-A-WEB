@@ -57,11 +57,23 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
       <h1 className="sr-only">ProtoA — DXコンサルティング</h1>
       {/* ===================== MOBILE ===================== */}
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
-        {/* Hero */}
-        <div className="rounded-2xl bg-primary text-white p-8">
-          <h3 className="text-3xl font-bold leading-snug whitespace-pre">
-            {t("solution.title")}
-          </h3>
+        {/* Hero video */}
+        <div className="relative rounded-2xl overflow-hidden aspect-[9/16]">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/videos/hero-mobile.mp4"
+            poster="/protoa-hero.jpeg"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
+          <div className="relative z-10 flex flex-col justify-center h-full p-6">
+            <p className="text-xl font-medium text-white leading-relaxed whitespace-pre-line">
+              {t("hero.tagline")}
+            </p>
+          </div>
         </div>
 
         {/* Logo + Taglines */}
@@ -148,9 +160,15 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             {t("sunny.badge")}
           </span>
           <div className="flex-1 min-w-0 flex items-center gap-2.5">
-            <PawPrint size={18} className="text-primary flex-shrink-0" />
             <p className="text-base font-bold text-foreground">{t("sunny.cta")}</p>
           </div>
+          <Image
+            src="/images/sunny-face.png"
+            alt=""
+            width={48}
+            height={48}
+            className="h-12 w-12 rounded-full border-2 border-white shadow-sm flex-shrink-0 object-cover"
+          />
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </a>
 

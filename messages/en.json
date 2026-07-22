@@ -2,6 +2,7 @@
   "DoubleDiamond": {
     "label": "Our Approach",
     "sectionTitle": "The ProtoA Way",
+    "frameworkLabel": "Double Diamond Framework",
     "title1": "Discovery",
     "titleMid": "Start with ",
     "title2": "Delivery",
@@ -66,6 +67,39 @@
       "titleBrand": "ProtoA",
       "title": " walks with you,\ntaking each step together.",
       "subtitle": "A DX consultant who truly understands your business.\nNo jargon. We move at your pace, together."
+    },
+    "team": {
+      "label": "Meet the Team",
+      "members": [
+        {
+          "name": "Ayaka Sunakawa",
+          "role": "Lead Instructor",
+          "tagline": "Clear explanations, close to the customer",
+          "bio": "After working in web production and marketing, she returned to Miyakojima after chairing the island's winter festival committee. She now works with the team on Google Workspace rollouts and everything downstream, solving the challenges local business owners face.",
+          "photo": "/images/team/ayaka.png"
+        },
+        {
+          "name": "Genki Kurihara",
+          "role": "Solutions Architect",
+          "tagline": "Bold yet careful in the face of change",
+          "bio": "Captivated by Miyakojima, he relocated in spring 2026, wanting to break free from the rigid ways of a large company. Though not naturally outgoing, he found himself settling in naturally among the island's warm community, and hopes to help local businesses build organizations resilient to change.",
+          "photo": "/images/team/genki.png"
+        },
+        {
+          "name": "Genryu Nema",
+          "role": "Management Advisor",
+          "tagline": "Keep challenging yourself, every single day",
+          "bio": "After university he worked at a night high school in Osaka, where he encountered students in a completely different environment from his own and became deeply interested in the issue of educational inequality. He now runs Root Inc. while also advising business owners, drawing on his experience in education.",
+          "photo": "/images/team/genryu.png"
+        },
+        {
+          "name": "Sunny",
+          "role": "Unofficial Mascot (AI)",
+          "tagline": "Ask me anything (chit-chat only)",
+          "bio": "Looks like a cat, runs on AI. No real job duties yet, but talk to her and she'll meow back with surprising enthusiasm. Special skills: napping, blinking, and the occasional unexpectedly deep comment. Still working on the DX strategy part.",
+          "photo": "/images/team/sunny.png"
+        }
+      ]
     },
     "painPoints": {
       "title": "Sound familiar?",

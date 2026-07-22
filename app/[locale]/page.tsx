@@ -56,13 +56,12 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
     <div className="flex flex-col flex-1 bg-white">
       <h1 className="sr-only">ProtoA — DXコンサルティング</h1>
       {/* ===================== MOBILE ===================== */}
-      <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
+      <div className="sm:hidden px-4 py-6 flex flex-col gap-4 bg-muted">
         {/* Hero video */}
         <div className="relative rounded-2xl overflow-hidden aspect-[9/16]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             src="/videos/hero-mobile.mp4"
-            poster="/protoa-hero.jpeg"
             autoPlay
             muted
             loop
@@ -172,10 +171,53 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </a>
 
+        {/* Team (mobile) */}
+        <div className="rounded-2xl bg-white py-8 px-6">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-6">
+            {t("team.label")}
+          </h2>
+          <div className="flex flex-col gap-6">
+            {(t.raw("team.members") as { name: string; role: string; tagline: string; bio: string; photo: string }[]).map((member, i) => {
+              const colors = ["#e9f0f0", "#e9f0f0", "#e9f0f0", "#e9f0f0"];
+              return (
+                <div key={member.name} className="flex items-stretch">
+                  <div
+                    className="relative -ml-20 -mr-8 w-56 flex-shrink-0 overflow-hidden rounded-r-2xl z-0"
+                    style={{ backgroundColor: colors[i % colors.length] }}
+                  >
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      className="object-contain object-bottom"
+                    />
+                  </div>
+                  <div className="relative z-10 flex-1 min-w-0 py-1 pl-4">
+                    <p className="text-base font-bold text-foreground">{member.name}</p>
+                    <p className="text-xs text-primary font-bold">{member.role}</p>
+                    <p className="mt-1.5 text-sm font-bold text-foreground leading-snug whitespace-pre-line underline decoration-1 decoration-foreground/40 underline-offset-2">{member.tagline}</p>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Double Diamond storytelling */}
-        <p className="text-4xl font-bold text-foreground py-6 text-center">
-          {td("sectionTitle")}
-        </p>
+        <div className="pt-6 pb-2 text-center">
+          <p className="text-2xl font-bold text-foreground">
+            {td("sectionTitle")}
+          </p>
+          <a
+            href="https://www.designcouncil.org.uk/our-resources/the-double-diamond/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-block text-xs text-muted-foreground underline decoration-muted-foreground/40 underline-offset-2"
+          >
+            {td("frameworkLabel")}
+          </a>
+        </div>
         <DoubleDiamond />
 
         {/* Free Workshop CTA */}
@@ -195,41 +237,6 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             {tw("homeTile.cta")}
           </span>
         </Link>
-
-        {/* Partners (mobile) */}
-        <div className="rounded-2xl bg-white py-8 px-6">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-6 whitespace-pre-line">
-            {t("partners.title")}
-          </h2>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {[
-              { src: "/logos/sigma.png", alt: "Sigma" },
-              { src: "/logos/miyanohana.png", alt: "Miyanohana" },
-              { src: "/logos/takabashira.jpg", alt: "Takabashira" },
-            ].map((logo) => (
-              <Image
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                width={120}
-                height={45}
-                className="h-12 w-auto object-contain"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="rounded-2xl bg-transparent text-foreground p-6 text-center">
-          <h2 className="text-xl font-bold">{t("cta.title")}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">{t("cta.subtitle")}</p>
-          <Link
-            href="/contact"
-            className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
-          >
-            {t("cta.button")}
-          </Link>
-        </div>
       </div>
 
       {/* ===================== DESKTOP (sm+) ===================== */}

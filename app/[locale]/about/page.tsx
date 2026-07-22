@@ -30,6 +30,7 @@ export default async function AboutPage({
 
 function AboutContent() {
   const t = useTranslations("About");
+  const th = useTranslations("Home");
 
   return (
     <div>
@@ -90,6 +91,29 @@ function AboutContent() {
               </div>
             );
           })}
+        </div>
+
+        {/* Partners */}
+        <div className="rounded-2xl bg-white py-8 px-6">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-6 whitespace-pre-line">
+            {th("partners.title")}
+          </h2>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[
+              { src: "/logos/sigma.png", alt: "Sigma" },
+              { src: "/logos/miyanohana.png", alt: "Miyanohana" },
+              { src: "/logos/takabashira.jpg", alt: "Takabashira" },
+            ].map((logo) => (
+              <Image
+                key={logo.alt}
+                src={logo.src}
+                alt={logo.alt}
+                width={120}
+                height={45}
+                className="h-12 w-auto object-contain"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Gallery */}

@@ -124,33 +124,6 @@ function AboutContent() {
           <PhotoGallery />
         </div>
 
-        {/* Team */}
-        <div className="mt-2">
-          <h2 className="text-lg font-bold text-foreground mb-4 px-1">
-            {t("team.title")}
-          </h2>
-          <div className="flex flex-col gap-3">
-            {teamMembers.map((member) => (
-              <div
-                key={member.key}
-                className="rounded-2xl bg-muted p-5 flex items-center gap-4"
-              >
-                <Image
-                  src={member.photo}
-                  alt={t(`team.members.${member.key}`)}
-                  width={96}
-                  height={96}
-                  className="h-16 w-16 rounded-full object-cover shrink-0"
-                />
-                <div>
-                  <p className="font-bold text-foreground text-sm">{t(`team.members.${member.key}`)}</p>
-                  <p className="text-xs text-muted-foreground">{t(`team.roles.${member.key}`)}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Media */}
         <div className="mt-2">
           <h2 className="text-lg font-bold text-foreground mb-4 px-1">

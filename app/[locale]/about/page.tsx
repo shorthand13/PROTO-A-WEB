@@ -36,6 +36,39 @@ function AboutContent() {
     <div>
       {/* ===================== MOBILE ===================== */}
       <div className="sm:hidden px-4 py-6 flex flex-col gap-3">
+        {/* Team */}
+        <div className="rounded-2xl bg-white py-8 px-6">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-6">
+            {th("team.label")}
+          </h2>
+          <div className="flex flex-col gap-6">
+            {(th.raw("team.members") as { name: string; role: string; tagline: string; bio: string; photo: string }[]).map((member, i) => {
+              const colors = ["#e9f0f0", "#e9f0f0", "#e9f0f0", "#e9f0f0"];
+              return (
+                <div key={member.name} className="flex items-stretch">
+                  <div
+                    className="relative -ml-20 -mr-8 w-56 flex-shrink-0 overflow-hidden rounded-r-2xl z-0"
+                    style={{ backgroundColor: colors[i % colors.length] }}
+                  >
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      className="object-contain object-bottom"
+                    />
+                  </div>
+                  <div className="relative z-10 flex-1 min-w-0 py-1 pl-4">
+                    <p className="text-base font-bold text-foreground">{member.name}</p>
+                    <p className="text-xs text-primary font-bold">{member.role}</p>
+                    <p className="mt-1.5 text-sm font-bold text-foreground leading-snug whitespace-pre-line underline decoration-1 decoration-foreground/40 underline-offset-2">{member.tagline}</p>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Mission */}
         <div className="rounded-2xl bg-[#eaad63] text-white p-8">
           <span className="rounded-full bg-white/30 backdrop-blur-sm px-3 py-1.5 text-xs font-bold">
@@ -166,6 +199,33 @@ function AboutContent() {
 
       {/* ===================== DESKTOP (sm+) ===================== */}
       <div className="hidden sm:flex flex-col">
+        {/* Team */}
+        <section className="px-4 pt-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-2xl font-bold text-foreground mb-6 px-1">
+              {t("team.title")}
+            </h2>
+            <div className="grid grid-cols-3 gap-6">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.key}
+                  className="rounded-3xl bg-muted p-6 flex flex-col items-center text-center"
+                >
+                  <Image
+                    src={member.photo}
+                    alt={t(`team.members.${member.key}`)}
+                    width={96}
+                    height={96}
+                    className="h-24 w-24 rounded-full object-cover"
+                  />
+                  <p className="mt-4 font-bold text-foreground">{t(`team.members.${member.key}`)}</p>
+                  <p className="text-sm text-muted-foreground">{t(`team.roles.${member.key}`)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Mission + Vision row */}
         <section className="px-4 pt-8">
           <div className="mx-auto max-w-7xl grid grid-cols-7 gap-6">
@@ -254,33 +314,6 @@ function AboutContent() {
               {t("gallery.title")}
             </h2>
             <PhotoGallery />
-          </div>
-        </section>
-
-        {/* Team */}
-        <section className="px-4 pt-6">
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-2xl font-bold text-foreground mb-6 px-1">
-              {t("team.title")}
-            </h2>
-            <div className="grid grid-cols-3 gap-6">
-              {teamMembers.map((member) => (
-                <div
-                  key={member.key}
-                  className="rounded-3xl bg-muted p-6 flex flex-col items-center text-center"
-                >
-                  <Image
-                    src={member.photo}
-                    alt={t(`team.members.${member.key}`)}
-                    width={96}
-                    height={96}
-                    className="h-24 w-24 rounded-full object-cover"
-                  />
-                  <p className="mt-4 font-bold text-foreground">{t(`team.members.${member.key}`)}</p>
-                  <p className="text-sm text-muted-foreground">{t(`team.roles.${member.key}`)}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

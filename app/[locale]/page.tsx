@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { Yomogi } from "next/font/google";
 import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText, PawPrint } from "lucide-react";
 // import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
@@ -12,6 +13,8 @@ import DoubleDiamond from "@/components/DoubleDiamond";
 import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
 
 export const revalidate = 0;
+
+const yomogi = Yomogi({ weight: "400", subsets: ["latin"], display: "swap" });
 
 const SUNNY_URL = "https://sunny-roan-pi.vercel.app/cat-3d.html";
 
@@ -75,15 +78,50 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           </div>
         </div>
 
-        {/* Logo + Taglines */}
-        <Image src="/logo_mark.svg" alt="ProtoA" width={48} height={48} className="h-12 w-12 mx-auto mt-4" />
-        <ul className="flex flex-col gap-1 text-center py-4">
-          {(t.raw("taglines") as string[]).map((line: string, i: number) => (
-            <li key={i} className="text-lg font-bold text-foreground">
-              {line}
-            </li>
-          ))}
-        </ul>
+        {/* Story */}
+        <div className="rounded-2xl bg-white py-8 px-6">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-6">
+            {t("story.label")}
+          </h2>
+
+          {/* Ayaka's story */}
+          <div>
+            <div className="mb-6">
+              <div className="relative float-left mr-1 mb-2 h-44 w-44 overflow-hidden rounded-2xl">
+                <div className="absolute left-2 top-2 h-28 w-28 rounded-[42%_58%_63%_37%/45%_42%_58%_55%] bg-[#eaad63] rotate-[8deg]" />
+                <div className="absolute left-0 bottom-0 h-16 w-16 rounded-full bg-[#eaad63]/50" />
+                <Image src={t("story.ayaka.photos.child")} alt="" fill className="object-contain object-right-top -translate-x-3" />
+              </div>
+              <p className="text-sm text-muted-foreground leading-[1.8] whitespace-pre-line">
+                {t("story.ayaka.bio")}
+              </p>
+            </div>
+            <div className="clear-both flex flex-col">
+              {(t.raw("story.ayaka.milestones") as { date: string; text: string }[]).map((m, i, arr) => (
+                <div key={m.date} className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <span className="h-2.5 w-2.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                    {i < arr.length - 1 && <span className="w-px flex-1 bg-primary/20" />}
+                  </div>
+                  <div className="pb-4">
+                    <p className="text-xs font-bold text-primary">{m.date}</p>
+                    <p className="text-sm text-foreground">{m.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-stretch justify-end min-h-[220px]">
+              <p className={`${yomogi.className} flex-1 min-w-0 self-end pb-16 text-right text-lg text-foreground whitespace-nowrap`}>
+                {t("story.ayaka.motto")}
+              </p>
+              <div className="relative -mr-10 ml-auto w-80 flex-shrink-0 z-0">
+                <div className="absolute right-4 top-2 h-44 w-44 rounded-[58%_42%_37%_63%/55%_58%_42%_45%] bg-[#eaad63] -rotate-[10deg]" />
+                <div className="absolute right-0 bottom-6 h-20 w-20 rounded-full bg-[#eaad63]/50" />
+                <Image src={t("story.ayaka.photos.adult")} alt="" fill className="object-contain object-right-bottom" />
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Upcoming event tile */}
         {upcomingEvents.length > 0 && (() => {
@@ -125,6 +163,40 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             </Link>
           );
         })()}
+
+        {/* Double Diamond storytelling */}
+        <div className="pt-6 pb-2 text-center">
+          <p className="text-2xl font-bold text-foreground">
+            {td("sectionTitle")}
+          </p>
+          <a
+            href="https://www.designcouncil.org.uk/our-resources/the-double-diamond/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-block text-xs text-muted-foreground underline decoration-muted-foreground/40 underline-offset-2"
+          >
+            {td("frameworkLabel")}
+          </a>
+        </div>
+        <DoubleDiamond />
+
+        {/* Free Workshop CTA */}
+        <Link
+          href="/services"
+          className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/25 p-5 flex flex-col items-center gap-3 group hover:shadow-md transition-shadow"
+        >
+          <h3 className="text-2xl font-bold text-foreground leading-snug text-center" style={{ letterSpacing: "0.1em" }}>
+            {tw.rich("homeTile.title", {
+              emphasis: (chunks) => <span className="text-primary underline decoration-primary decoration-2 underline-offset-4">{chunks}</span>,
+            })}
+          </h3>
+          <p className="text-xs text-muted-foreground leading-relaxed text-center">
+            {tw("homeTile.subtitle")}
+          </p>
+          <span className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white">
+            {tw("homeTile.cta")}
+          </span>
+        </Link>
 
         {/* Case Studies link */}
         <Link
@@ -171,72 +243,15 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           <ChevronRight size={18} className="text-primary/40 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
         </a>
 
-        {/* Team (mobile) */}
-        <div className="rounded-2xl bg-white py-8 px-6">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-6">
-            {t("team.label")}
-          </h2>
-          <div className="flex flex-col gap-6">
-            {(t.raw("team.members") as { name: string; role: string; tagline: string; bio: string; photo: string }[]).map((member, i) => {
-              const colors = ["#e9f0f0", "#e9f0f0", "#e9f0f0", "#e9f0f0"];
-              return (
-                <div key={member.name} className="flex items-stretch">
-                  <div
-                    className="relative -ml-20 -mr-8 w-56 flex-shrink-0 overflow-hidden rounded-r-2xl z-0"
-                    style={{ backgroundColor: colors[i % colors.length] }}
-                  >
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      className="object-contain object-bottom"
-                    />
-                  </div>
-                  <div className="relative z-10 flex-1 min-w-0 py-1 pl-4">
-                    <p className="text-base font-bold text-foreground">{member.name}</p>
-                    <p className="text-xs text-primary font-bold">{member.role}</p>
-                    <p className="mt-1.5 text-sm font-bold text-foreground leading-snug whitespace-pre-line underline decoration-1 decoration-foreground/40 underline-offset-2">{member.tagline}</p>
-                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Double Diamond storytelling */}
-        <div className="pt-6 pb-2 text-center">
-          <p className="text-2xl font-bold text-foreground">
-            {td("sectionTitle")}
-          </p>
-          <a
-            href="https://www.designcouncil.org.uk/our-resources/the-double-diamond/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-1 inline-block text-xs text-muted-foreground underline decoration-muted-foreground/40 underline-offset-2"
-          >
-            {td("frameworkLabel")}
-          </a>
-        </div>
-        <DoubleDiamond />
-
-        {/* Free Workshop CTA */}
-        <Link
-          href="/services"
-          className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/25 p-5 flex flex-col items-center gap-3 group hover:shadow-md transition-shadow"
-        >
-          <h3 className="text-2xl font-bold text-foreground leading-snug text-center" style={{ letterSpacing: "0.1em" }}>
-            {tw.rich("homeTile.title", {
-              emphasis: (chunks) => <span className="text-primary underline decoration-primary decoration-2 underline-offset-4">{chunks}</span>,
-            })}
-          </h3>
-          <p className="text-xs text-muted-foreground leading-relaxed text-center">
-            {tw("homeTile.subtitle")}
-          </p>
-          <span className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white">
-            {tw("homeTile.cta")}
-          </span>
-        </Link>
+        {/* Logo + Taglines */}
+        <Image src="/logo_mark.svg" alt="ProtoA" width={48} height={48} className="h-12 w-12 mx-auto mt-4" />
+        <ul className="flex flex-col gap-1 text-center py-4">
+          {(t.raw("taglines") as string[]).map((line: string, i: number) => (
+            <li key={i} className="text-lg font-bold text-foreground">
+              {line}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* ===================== DESKTOP (sm+) ===================== */}
@@ -313,6 +328,50 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           </div>
         </section>
 
+        {/* Story */}
+        <section className="px-4 pt-12">
+          <div className="mx-auto max-w-7xl">
+            <div className="rounded-3xl bg-white p-10 lg:p-14">
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground text-center mb-10">
+                {t("story.label")}
+              </h2>
+
+              {/* Ayaka's story */}
+              <div className="mx-auto max-w-5xl">
+                <div className="flex flex-col sm:flex-row gap-10">
+                  <div className="flex sm:flex-col items-center gap-4 flex-shrink-0">
+                    <div className="relative h-32 w-32 rounded-2xl overflow-hidden bg-[#e9f0f0]">
+                      <Image src={t("story.ayaka.photos.child")} alt="" fill sizes="128px" className="object-cover object-top" />
+                    </div>
+                    <div className="relative h-32 w-32 rounded-2xl overflow-hidden bg-[#e9f0f0]">
+                      <Image src={t("story.ayaka.photos.adult")} alt="" fill sizes="128px" className="object-cover object-top" />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-foreground">{t("story.ayaka.label")}</h3>
+                    <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+                      {t("story.ayaka.bio")}
+                    </p>
+                    <div className="mt-6 flex flex-col">
+                      {(t.raw("story.ayaka.milestones") as { date: string; text: string }[]).map((m, i, arr) => (
+                        <div key={m.date} className="flex gap-4">
+                          <div className="flex flex-col items-center">
+                            <span className="h-2.5 w-2.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                            {i < arr.length - 1 && <span className="w-px flex-1 bg-primary/20" />}
+                          </div>
+                          <div className="pb-5">
+                            <p className="text-sm font-bold text-primary">{m.date}</p>
+                            <p className="text-base text-foreground">{m.text}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Double Diamond */}
         <section className="px-4 pt-12">

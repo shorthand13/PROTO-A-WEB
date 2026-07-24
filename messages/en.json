@@ -101,6 +101,25 @@
         }
       ]
     },
+    "story": {
+      "label": "The Road to ProtoA",
+      "ayaka": {
+        "label": "Ayaka's Story",
+        "bio": "Born on Miyakojima in May 1996. After graduating from university in Tokyo, she worked in web production and marketing. In April 2023, chairing Miyakojima's winter festival committee brought her back to the island for good. In October 2024, she co-founded a DX Gakko franchise with Genryu Nema, creating a place for local business owners to learn. In March 2026, the ProtoA website officially launched. Above all, she values clear, jargon-free explanations that keep her close to the people she works with.",
+        "photos": {
+          "adult": "/photos/ayaka_adult.png",
+          "child": "/photos/ayaka_child.png"
+        },
+        "milestones": [
+          { "date": "May 1996", "text": "Born on Miyakojima" },
+          { "date": "Mar 2020", "text": "Graduated university in Tokyo" },
+          { "date": "Apr 2023", "text": "Returned to Miyakojima" },
+          { "date": "Oct 2024", "text": "Co-founded a DX Gakko franchise with Genryu Nema" },
+          { "date": "Mar 2026", "text": "ProtoA website launched" }
+        ],
+        "motto": "Everyone dies eventually!"
+      }
+    },
     "painPoints": {
       "title": "Sound familiar?",
       "items": [

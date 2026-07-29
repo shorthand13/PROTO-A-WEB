@@ -259,6 +259,44 @@
   "Services": {
     "title": "ProtoAのサービス",
     "subtitle": "ビジネスのデジタル化をトータルサポート",
+    "heroQuote": "宮古島は私にとって掛け替えのない存在です。 ProtoA を通して、地元の子供たちが宮古島に住み続けられるように貢献したいと思っています。そして彼らが世界で活躍できる人材になってもらいたい。",
+    "threeServices": {
+      "title": "3つのプラン",
+      "subtitle": {
+        "quotes": ["非効率なやり方を見直したい", "AIやITをもっと会社で活用したい"],
+        "lead": "これらの悩みを\nデジタルとAIで改善したい方へ"
+      },
+      "supportLine": "3つのプランで\nProtoA がサポートします",
+      "contentLabel": "含まれるもの",
+      "priceNote": "金額は依頼内容によって変わります。",
+      "ribbon": "今だけ見積もり無料",
+      "items": {
+        "pmo": {
+          "title": "プロジェクト推進支援プラン",
+          "price": "相談ベース",
+          "tagline": "課題発見、タスク整理、優先順位付けを支援します。",
+          "forWho": ["計画は立てたが実行が進まない", "優先順位がわからない"],
+          "content": ["社内プロジェクト推進支援", "業務フロー整理", "引き継ぎ支援", "マニュアル作成など"]
+        },
+        "agency": {
+          "title": "業務代行プラン",
+          "price": "¥5万〜",
+          "priceUnit": "/月",
+          "altPrice": "¥50万〜",
+          "altPriceUnit": "/年",
+          "tagline": "経理・会計・書類整理など、日々の事務作業を代行します。",
+          "forWho": ["事務員が足りない・辞めてしまった", "今の時代にあった業務プロセスに変えたい"],
+          "content": ["請求書処理", "台帳管理", "日報入力など"]
+        },
+        "training": {
+          "title": "研修プラン",
+          "price": "相談ベース",
+          "tagline": "AI活用・デジタルツールの社内研修を提供します。",
+          "forWho": ["AI活用を何から始めればいいかわからない", "社員で最低限の理解度をそろえたい"],
+          "content": ["生成AI活用研修", "Google Workspace導入研修", "IT担当者育成研修など"]
+        }
+      }
+    },
     "brandTitle": "地元密着・伴走スタイル",
     "brandValues": {
       "island": "島",
@@ -297,7 +335,64 @@
       ],
       "cta": "申し込みする",
       "note": "まだ迷っている方はお気軽に\n質問をお寄せください。",
-      "noteLink": "問い合わせをする"
+      "noteLink": "問い合わせをする",
+      "testimonials": {
+        "title": "ワークショップ受講者の声",
+        "comingSoon": "詳しい内容は近日公開予定です。",
+        "commenterPlaceholderName": "ご担当者様",
+        "commenterPlaceholderRole": "スタッフ",
+        "items": {
+          "goya": {
+            "name": "株式会社郷家",
+            "caption": "郷家様での様子",
+            "captionLinked": "郷家様",
+            "captionRest": "での様子",
+            "photo": "/photos/goya_kadai.jpg",
+            "commenterPhoto": "/photos/goya_owner.png",
+            "commenterName": "奥平 幸司（おくひら こうじ）",
+            "commenterRole": "代表取締役",
+            "founded": "創業年：2003年",
+            "industry": "業界：飲食",
+            "employees": "従業員数：9名",
+            "rating": 3,
+            "quote": "これまで漠然としていた課題感が明確になりました。ワークショップはやって良かった！",
+            "siteUrl": "https://zumi-goya.com/",
+            "siteLabel": "郷家様のサイトを見る"
+          },
+          "kohagura": {
+            "name": "株式会社古波蔵組",
+            "caption": "古波蔵組様での様子",
+            "captionLinked": "古波蔵組様",
+            "captionRest": "での様子",
+            "siteUrl": "https://kohagura-gumi.com/",
+            "photo": "/photos/kohagura_kadai.JPG",
+            "commenterPhoto": "/photos/kohaguragumi_owner.png",
+            "commenterName": "古波蔵 太志（こはぐら たいし）",
+            "commenterRole": "代表取締役社長",
+            "founded": "創業年：1956年",
+            "industry": "業界：建設",
+            "employees": "従業員数：43名",
+            "rating": 3,
+            "quote": "うちの工事部メンバーとやったワークショップを引き続きやってほしいです！さらに今後うちのDX推進企画課とコラボしてDXの「仕組化・標準化」を一緒に目指していきたいなと。"
+          },
+          "sakishima": {
+            "name": "先嶋建設株式会社",
+            "caption": "先嶋建設様での様子",
+            "captionLinked": "先嶋建設様",
+            "captionRest": "での様子",
+            "siteUrl": "https://www.sakishimakensetsu.jp/company.php",
+            "photo": "/photos/sakishima_kadai.jpg",
+            "commenterPhoto": "/photos/sakishima_owner.jpg",
+            "commenterName": "友利 博明（ともり ひろあき）",
+            "commenterRole": "常務取締役（総務担当）",
+            "founded": "創業年：1966年",
+            "industry": "業界：建設",
+            "employees": "従業員数：94名",
+            "rating": 3,
+            "quote": "綾香さんのセミナーに参加したことをきっかけに、社内の事務メンバーともワークショップをしてほしいと依頼しました。これまで孤立していた業務が見える化できました。"
+          }
+        }
+      }
     },
     "training": {
       "badge": "主力サービス",
@@ -752,7 +847,7 @@
     "homeTile": {
       "label": "まずはここから",
       "title": "まずは<emphasis>課題</emphasis>発見から",
-      "subtitle": "SWOT分析とビジネスモデルキャンバスで、あなたのビジネスの強みと課題を一緒に整理します。",
+      "subtitle": "SWOT分析とビジネスモデルキャンバスで、\nあなたのビジネスの強みと課題を一緒に整理します。",
       "cta": "詳しく見る・予約する"
     }
   },

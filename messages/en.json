@@ -259,6 +259,44 @@
   "Services": {
     "title": "ProtoA Services",
     "subtitle": "Comprehensive digital transformation support",
+    "heroQuote": "Miyakojima is irreplaceable to me. Through ProtoA, I want to help local children be able to keep living on Miyakojima — and grow into people who can thrive on the world stage.",
+    "threeServices": {
+      "title": "Our 3 Core Plans",
+      "subtitle": {
+        "quotes": ["Fix inefficient processes", "Put AI and IT to real use"],
+        "lead": "For those who want to solve these challenges with digital tools and AI"
+      },
+      "supportLine": "ProtoA supports you with 3 plans",
+      "contentLabel": "What's included",
+      "priceNote": "Pricing varies by request.",
+      "ribbon": "Free quote, limited time",
+      "items": {
+        "pmo": {
+          "title": "Project Management Plan",
+          "price": "Custom quote",
+          "tagline": "We help you surface issues, organize tasks, and set priorities.",
+          "forWho": ["You have a plan but can't get it moving", "You're not sure what to prioritize"],
+          "content": ["Internal project support", "Workflow mapping", "Handover support", "Manual creation, and more"]
+        },
+        "agency": {
+          "title": "Back-Office Support Plan",
+          "price": "¥50,000〜",
+          "priceUnit": "/mo",
+          "altPrice": "¥500,000〜",
+          "altPriceUnit": "/yr",
+          "tagline": "We handle day-to-day admin work like bookkeeping and paperwork.",
+          "forWho": ["You're short-staffed or lost your office admin", "You want to modernize your workflows"],
+          "content": ["Invoice processing", "Ledger management", "Daily report entry, and more"]
+        },
+        "training": {
+          "title": "Training Plan",
+          "price": "Custom quote",
+          "tagline": "We provide in-house training on AI and digital tools.",
+          "forWho": ["You don't know where to start with AI", "You want your team on the same baseline"],
+          "content": ["Generative AI workshops", "Google Workspace rollout training", "IT lead development, and more"]
+        }
+      }
+    },
     "brandTitle": "Local roots, hands-on style",
     "brandValues": {
       "island": "Island",
@@ -297,7 +335,64 @@
       ],
       "cta": "Sign up",
       "note": "Still unsure? Feel free to reach out\nwith any questions.",
-      "noteLink": "Contact us"
+      "noteLink": "Contact us",
+      "testimonials": {
+        "title": "What Workshop Attendees Say",
+        "comingSoon": "Full details coming soon.",
+        "commenterPlaceholderName": "Team Member",
+        "commenterPlaceholderRole": "Staff",
+        "items": {
+          "goya": {
+            "name": "Goya Co., Ltd.",
+            "caption": "At Goya's workshop",
+            "captionLinked": "Goya",
+            "captionRest": "'s workshop",
+            "photo": "/photos/goya_kadai.jpg",
+            "commenterPhoto": "/photos/goya_owner.png",
+            "commenterName": "Koji Okudaira",
+            "commenterRole": "Representative Director",
+            "founded": "Founded: 2003",
+            "industry": "Industry: Food service",
+            "employees": "Employees: 9",
+            "rating": 3,
+            "quote": "The challenges we'd only vaguely sensed became clear. I'm glad we did the workshop!",
+            "siteUrl": "https://zumi-goya.com/",
+            "siteLabel": "Visit Goya's website"
+          },
+          "kohagura": {
+            "name": "Kohagura-gumi Co., Ltd.",
+            "caption": "At Kohagura-gumi's workshop",
+            "captionLinked": "Kohagura-gumi",
+            "captionRest": "'s workshop",
+            "siteUrl": "https://kohagura-gumi.com/",
+            "photo": "/photos/kohagura_kadai.JPG",
+            "commenterPhoto": "/photos/kohaguragumi_owner.png",
+            "commenterName": "Taishi Kohagura",
+            "commenterRole": "President & Representative Director",
+            "founded": "Founded: 1956",
+            "industry": "Industry: Construction",
+            "employees": "Employees: 43",
+            "rating": 3,
+            "quote": "We'd love for you to keep running workshops with our construction team. Going forward, I'd like our DX Promotion Planning section to collaborate on making DX itself more systematic and standardized."
+          },
+          "sakishima": {
+            "name": "Sakishima Construction Co., Ltd.",
+            "caption": "At Sakishima Construction's workshop",
+            "captionLinked": "Sakishima Construction",
+            "captionRest": "'s workshop",
+            "siteUrl": "https://www.sakishimakensetsu.jp/company.php",
+            "photo": "/photos/sakishima_kadai.jpg",
+            "commenterPhoto": "/photos/sakishima_owner.jpg",
+            "commenterName": "Hiroaki Tomori",
+            "commenterRole": "Managing Director (General Affairs)",
+            "founded": "Founded: 1966",
+            "industry": "Industry: Construction",
+            "employees": "Employees: 94",
+            "rating": 3,
+            "quote": "After attending Ayaka's seminar, I asked her to run a workshop with our office staff too. Work that used to be siloed is now visible."
+          }
+        }
+      }
     },
     "training": {
       "badge": "Flagship Service",

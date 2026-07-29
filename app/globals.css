@@ -13,10 +13,33 @@
   animation: heartbeat 2.5s ease-in-out infinite;
 }
 
+@keyframes float-bubble {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -12px) rotate(2deg); }
+  50% { transform: translate(-4px, -20px) rotate(-1.5deg); }
+  75% { transform: translate(-7px, -8px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.float-bubble {
+  animation: float-bubble 6s ease-in-out infinite;
+}
+
+.float-bubble-delay {
+  animation: float-bubble 7.5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
 /* ライトのみ（ダークモード対応なし）。最背面は常に白 */
 html {
   background-color: #ffffff;
   color-scheme: only light;
+  overflow-anchor: none;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 :root {

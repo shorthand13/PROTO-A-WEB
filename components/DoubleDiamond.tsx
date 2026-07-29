@@ -164,7 +164,7 @@ export default function DoubleDiamond({ services }: { services?: [ServiceDetail,
           </div>
 
           {/* Goal flag */}
-          <div className="relative z-10 mt-32 flex justify-center" data-node>
+          <div className="relative z-10 mt-20 flex justify-center" data-node>
             <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
               <Flag size={48} className="text-primary" />
             </div>

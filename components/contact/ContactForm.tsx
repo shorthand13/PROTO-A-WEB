@@ -101,7 +101,7 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
-          rows={5}
+          rows={3}
           defaultValue={state.values?.message}
           placeholder={t("form.messagePlaceholder")}
           className="mt-1 block w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-y"

@@ -34,14 +34,13 @@ function ContactContent() {
   return (
     <div>
       {/* Page Header */}
-      <section className="border-b border-border bg-background px-4 py-6 sm:py-20 text-foreground">
+      <section className="bg-background px-4 pt-6 pb-0 sm:pt-20 sm:pb-2 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold">{t("title")}</h1>
-          <p className="mt-4 text-lg text-muted-foreground">{t("subtitle")}</p>
         </div>
       </section>
 
-      <section className="py-20 px-4">
+      <section className="pt-6 pb-20 px-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Form */}

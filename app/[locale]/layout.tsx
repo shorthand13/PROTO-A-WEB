@@ -13,6 +13,7 @@ import { Analytics } from "@vercel/analytics/next";
 import EventPopup from "@/components/EventPopup";
 import EventBanner from "@/components/EventBanner";
 import BrevoChat from "@/components/BrevoChat";
+import ScrollToTop from "@/components/ScrollToTop";
 import { getCMSNextEvent, getCMSBlogPosts } from "@/lib/microcms";
 import "../globals.css";
 
@@ -96,6 +97,7 @@ export default async function LocaleLayout({
         className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
       >
           <NextIntlClientProvider>
+            <ScrollToTop />
             <Header newItems={[...(hasNewBlog ? ["blog"] : []), ...(hasUpcomingEvent ? ["events"] : [])]} />
             <main className="flex-1">{children}</main>
             <Footer />

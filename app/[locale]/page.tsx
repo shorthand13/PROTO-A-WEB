@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Yomogi } from "next/font/google";
 import { GraduationCap, Handshake, CalendarDays, ChevronRight, MapPin, ArrowRight, FileText, PawPrint } from "lucide-react";
 // import HomeFlipGrid from "@/components/HomeFlipGrid";
 import HeroSection from "@/components/HeroSection";
@@ -13,8 +12,6 @@ import DoubleDiamond from "@/components/DoubleDiamond";
 import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
 
 export const revalidate = 0;
-
-const yomogi = Yomogi({ weight: "400", subsets: ["latin"], display: "swap" });
 
 const SUNNY_URL = "https://sunny-roan-pi.vercel.app/cat-3d.html";
 
@@ -79,11 +76,12 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
         </div>
 
         {/* Story */}
-        <div className="rounded-2xl bg-white py-8 px-6">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-6">
+        <div className="pt-6 pb-2 text-center">
+          <p className="text-2xl font-bold text-foreground">
             {t("story.label")}
-          </h2>
-
+          </p>
+        </div>
+        <div className="rounded-2xl bg-white py-8 px-6">
           {/* Ayaka's story */}
           <div>
             <div className="mb-6">
@@ -96,27 +94,24 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                 {t("story.ayaka.bio")}
               </p>
             </div>
-            <div className="clear-both flex flex-col">
-              {(t.raw("story.ayaka.milestones") as { date: string; text: string }[]).map((m, i, arr) => (
-                <div key={m.date} className="flex gap-3">
-                  <div className="flex flex-col items-center">
-                    <span className="h-2.5 w-2.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
-                    {i < arr.length - 1 && <span className="w-px flex-1 bg-primary/20" />}
+            <div className="clear-both relative z-0">
+              <div className="flex flex-col">
+                {(t.raw("story.ayaka.milestones") as { date: string; text: string }[]).map((m, i, arr) => (
+                  <div key={m.date} className="flex gap-3">
+                    <div className="flex flex-col items-center">
+                      <span className="h-2.5 w-2.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                      {i < arr.length - 1 && <span className="w-px flex-1 bg-primary/20" />}
+                    </div>
+                    <div className={i < arr.length - 1 ? "pb-7" : ""}>
+                      <p className="text-xs font-bold text-primary">{m.date}</p>
+                      <p className="text-sm text-foreground">{m.text}</p>
+                    </div>
                   </div>
-                  <div className="pb-4">
-                    <p className="text-xs font-bold text-primary">{m.date}</p>
-                    <p className="text-sm text-foreground">{m.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex items-stretch justify-end min-h-[220px]">
-              <p className={`${yomogi.className} flex-1 min-w-0 self-end pb-16 text-right text-lg text-foreground whitespace-nowrap`}>
-                {t("story.ayaka.motto")}
-              </p>
-              <div className="relative -mr-10 ml-auto w-80 flex-shrink-0 z-0">
-                <div className="absolute right-4 top-2 h-44 w-44 rounded-[58%_42%_37%_63%/55%_58%_42%_45%] bg-[#eaad63] -rotate-[10deg]" />
-                <div className="absolute right-0 bottom-6 h-20 w-20 rounded-full bg-[#eaad63]/50" />
+                ))}
+              </div>
+              <div className="absolute right-0 -top-4 -z-10 w-52 h-44">
+                <div className="absolute right-0 bottom-0 h-36 w-36 rounded-[58%_42%_37%_63%/55%_58%_42%_45%] bg-[#eaad63] -rotate-[10deg]" />
+                <div className="absolute right-0 bottom-0 h-20 w-20 rounded-full bg-[#eaad63]/50" />
                 <Image src={t("story.ayaka.photos.adult")} alt="" fill className="object-contain object-right-bottom" />
               </div>
             </div>
@@ -182,7 +177,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
 
         {/* Free Workshop CTA */}
         <Link
-          href="/services"
+          href="/services#workshop"
           className="rounded-2xl bg-gradient-to-br from-primary/5 to-primary/15 border border-primary/25 p-5 flex flex-col items-center gap-3 group hover:shadow-md transition-shadow"
         >
           <h3 className="text-2xl font-bold text-foreground leading-snug text-center" style={{ letterSpacing: "0.1em" }}>
@@ -190,7 +185,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
               emphasis: (chunks) => <span className="text-primary underline decoration-primary decoration-2 underline-offset-4">{chunks}</span>,
             })}
           </h3>
-          <p className="text-xs text-muted-foreground leading-relaxed text-center">
+          <p className="text-xs text-muted-foreground leading-relaxed text-center whitespace-pre-line">
             {tw("homeTile.subtitle")}
           </p>
           <span className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white">
@@ -402,7 +397,7 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
                   {tw("homeTile.subtitle")}
                 </p>
                 <Link
-                  href="/services"
+                  href="/services#workshop"
                   className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
                 >
                   {tw("homeTile.cta")}

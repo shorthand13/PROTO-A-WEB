@@ -30,6 +30,9 @@ export default function EventPopup({ event }: { event: EventData | null }) {
     // Don't show on event detail pages — user is already looking at events
     if (pathname.includes("/events/")) return;
 
+    // Don't compete with an explicit chat CTA (e.g. email links with ?chat=open)
+    if (new URLSearchParams(window.location.search).get("chat") === "open") return;
+
     const timer = setTimeout(() => setVisible(true), 3000);
     return () => clearTimeout(timer);
   }, [event, pathname]);

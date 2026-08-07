@@ -21,6 +21,11 @@ export default function BrevoChat() {
     s.async = true;
     s.src = "https://conversations-widget.brevo.com/brevo-conversations.js";
     document.head.appendChild(s);
+
+    if (new URLSearchParams(window.location.search).get("chat") === "open") {
+      window.BrevoConversations("openChat", true);
+    }
+
     return () => {
       s.remove();
     };

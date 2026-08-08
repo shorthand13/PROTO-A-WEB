@@ -72,12 +72,12 @@ export default function EventDetailContent({
           )}
 
           {event.image && (
-            <div className="mt-6 relative w-full aspect-[16/7] rounded-2xl overflow-hidden">
+            <div className="mt-6 relative w-full aspect-[3/2] rounded-2xl overflow-hidden bg-muted">
               <Image
                 src={event.image.url}
                 alt={event.title}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           )}

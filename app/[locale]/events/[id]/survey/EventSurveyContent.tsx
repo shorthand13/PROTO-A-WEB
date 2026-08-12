@@ -52,13 +52,6 @@ function StarRating({
   );
 }
 
-const SERVICE_OPTIONS = [
-  "itSupport",
-  "workshop",
-  "dxTraining",
-  "none",
-] as const;
-
 export default function EventSurveyContent({ event }: { event: CMSEvent }) {
   const t = useTranslations("EventSurvey");
   const [state, formAction, isPending] = useActionState(
@@ -228,81 +221,6 @@ export default function EventSurveyContent({ event }: { event: CMSEvent }) {
                     placeholder={t("improvementsPlaceholder")}
                     className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
                   />
-                </div>
-
-                {/* Service section divider */}
-                <div className="border-t border-border pt-6">
-                  <h2 className="text-base font-bold text-foreground">{t("serviceSectionTitle")}</h2>
-                </div>
-
-                {/* Service interest */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    {t("serviceInterestLabel")}
-                  </label>
-                  <div className="space-y-2">
-                    {SERVICE_OPTIONS.map((key) => (
-                      <label
-                        key={key}
-                        className="flex items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                      >
-                        <input
-                          type="checkbox"
-                          name="serviceInterest"
-                          value={key}
-                          className="rounded border-border text-primary focus:ring-primary"
-                        />
-                        <span className="text-foreground">{t(`service_${key}`)}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Want service info */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    {t("wantInfoLabel")}
-                  </label>
-                  <div className="space-y-2">
-                    {(["yes", "no"] as const).map((option) => (
-                      <label
-                        key={option}
-                        className="flex items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                      >
-                        <input
-                          type="radio"
-                          name="wantInfo"
-                          value={option}
-                          className="border-border text-primary focus:ring-primary"
-                        />
-                        <span className="text-foreground">{t(`wantInfo_${option}`)}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Free consultation */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
-                    {t("consultationLabel")}
-                  </label>
-                  <p className="text-xs text-muted-foreground mb-2">{t("consultationHint")}</p>
-                  <div className="space-y-2">
-                    {(["yes", "considering", "no"] as const).map((option) => (
-                      <label
-                        key={option}
-                        className="flex items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                      >
-                        <input
-                          type="radio"
-                          name="consultation"
-                          value={option}
-                          className="border-border text-primary focus:ring-primary"
-                        />
-                        <span className="text-foreground">{t(`consultation_${option}`)}</span>
-                      </label>
-                    ))}
-                  </div>
                 </div>
 
                 {state.error && (

@@ -79,13 +79,6 @@
           "photo": "/images/team/ayaka.png"
         },
         {
-          "name": "Genki Kurihara",
-          "role": "Solutions Architect",
-          "tagline": "Bold yet careful in the face of change",
-          "bio": "Captivated by Miyakojima, he relocated in spring 2026, wanting to break free from the rigid ways of a large company. Though not naturally outgoing, he found himself settling in naturally among the island's warm community, and hopes to help local businesses build organizations resilient to change.",
-          "photo": "/images/team/genki.png"
-        },
-        {
           "name": "Genryu Nema",
           "role": "Management Advisor",
           "tagline": "Keep challenging yourself, every single day",
@@ -232,12 +225,10 @@
       "description": "A team passionate about and dedicated to supporting business growth.",
       "members": {
         "ayaka": "Ayaka Sunakawa",
-        "genki": "Genki Kurihara",
         "nema": "Genryu Nema"
       },
       "roles": {
         "ayaka": "Instructor / DX Support Coach",
-        "genki": "DX Support Coach / Project Manager",
         "nema": "Main Consultant"
       }
     },

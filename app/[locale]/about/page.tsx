@@ -366,6 +366,5 @@ function AboutContent() {
 
 const teamMembers = [
   { key: "ayaka", photo: "/photos/ayaka.jpg" },
-  { key: "genki", photo: "/photos/genki.png" },
   { key: "nema", photo: "/photos/nema.jpg" },
 ];

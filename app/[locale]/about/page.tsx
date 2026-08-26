@@ -162,11 +162,26 @@ function AboutContent() {
           <h2 className="text-lg font-bold text-foreground mb-4 px-1">
             {t("media.title")}
           </h2>
+          <div className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center p-5">
+            <p className="font-bold text-foreground text-sm">
+              {t("media.miyakomainichi.source")}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {t("media.miyakomainichi.date")}
+            </p>
+            <Image
+              src="/photos/award_mainichi.jpeg"
+              alt={t("media.miyakomainichi.source")}
+              width={400}
+              height={300}
+              className="w-full max-w-xs rounded-xl mt-3 object-cover object-top"
+            />
+          </div>
           <a
             href="https://miyakoshinpo.com/2024/10/04/"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5"
+            className="mt-4 rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5"
           >
             <p className="font-bold text-foreground text-sm">
               {t("media.miyakoshinpo.source")}
@@ -323,26 +338,43 @@ function AboutContent() {
             <h2 className="text-2xl font-bold text-foreground mb-6 px-1">
               {t("media.title")}
             </h2>
-            <a
-              href="https://miyakoshinpo.com/2024/10/04/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5 max-w-xs"
-            >
-              <p className="text-sm font-bold text-foreground">
-                {t("media.miyakoshinpo.source")}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {t("media.miyakoshinpo.date")}
-              </p>
-              <Image
-                src="/photos/award_shinpo.png"
-                alt={t("media.miyakoshinpo.source")}
-                width={300}
-                height={225}
-                className="w-full rounded-lg mt-3 object-cover object-top"
-              />
-            </a>
+            <div className="flex flex-wrap gap-6">
+              <div className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center p-5 max-w-xs">
+                <p className="text-sm font-bold text-foreground">
+                  {t("media.miyakomainichi.source")}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {t("media.miyakomainichi.date")}
+                </p>
+                <Image
+                  src="/photos/award_mainichi.jpeg"
+                  alt={t("media.miyakomainichi.source")}
+                  width={300}
+                  height={225}
+                  className="w-full rounded-lg mt-3 object-cover object-top"
+                />
+              </div>
+              <a
+                href="https://miyakoshinpo.com/2024/10/04/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl bg-muted overflow-hidden flex flex-col items-center hover:bg-muted/80 transition-colors p-5 max-w-xs"
+              >
+                <p className="text-sm font-bold text-foreground">
+                  {t("media.miyakoshinpo.source")}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {t("media.miyakoshinpo.date")}
+                </p>
+                <Image
+                  src="/photos/award_shinpo.png"
+                  alt={t("media.miyakoshinpo.source")}
+                  width={300}
+                  height={225}
+                  className="w-full rounded-lg mt-3 object-cover object-top"
+                />
+              </a>
+            </div>
           </div>
         </section>
 

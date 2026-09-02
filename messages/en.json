@@ -27,7 +27,7 @@
       "description": "Two approaches to bring solutions to life.",
       "training": "Training",
       "trainingDesc": "Workshop-style learning to build IT skills and know-how",
-      "coaching": "Coaching Support",
+      "coaching": "DX PMO",
       "coachingDesc": "Working side by side to solve challenges together"
     },
     "deliver": {
@@ -403,7 +403,7 @@
     },
     "accompaniment": {
       "badge": "Flagship Service",
-      "title": "Hands-on DX Support",
+      "title": "DX PMO",
       "description": "End-to-end support from analysis and strategy to tool implementation and adoption. We walk alongside you at your pace — from the very first step to full integration.",
       "features": [
         "Current situation analysis and challenge identification",
@@ -763,7 +763,7 @@
     "support": {
       "consultation": "Easy-access expert consultation",
       "seminar": "Seminars/workshops to identify challenges",
-      "handson": "Hands-on support for tool adoption & process improvement",
+      "handson": "PMO support for tool adoption & process improvement",
       "subsidy": "Subsidy/grant information & application support",
       "training": "Digital training programs for staff",
       "cases": "Learning from other companies' success stories",
@@ -824,7 +824,7 @@
       "step0": "Free Workshop",
       "step0desc": "Know your business",
       "step1": "See the challenges",
-      "step2": "Ongoing support"
+      "step2": "PMO"
     },
     "homeTile": {
       "label": "Start here",

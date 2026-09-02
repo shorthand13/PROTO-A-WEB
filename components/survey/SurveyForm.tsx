@@ -159,7 +159,7 @@ export default function SurveyForm() {
   const supportOptions = [
     { value: "気軽に相談できる窓口（専門家への相談）", label: tQ("support.consultation") },
     { value: "自社の課題を整理するセミナー・ワークショップ", label: tQ("support.seminar") },
-    { value: "ツール導入や業務改善を一緒に進める伴走支援", label: tQ("support.handson") },
+    { value: "ツール導入や業務改善を一緒に進めるPMO支援", label: tQ("support.handson") },
     { value: "補助金・助成金の情報や申請サポート", label: tQ("support.subsidy") },
     { value: "社員向けのデジタル研修・講座", label: tQ("support.training") },
     { value: "他の企業の事例を学べる機会", label: tQ("support.cases") },

@@ -44,9 +44,10 @@ type CMSCaseStudy = {
   slug?: string;
   industry: string;
   tags?: string[];
-  challenge: string;
-  solution: string;
-  result: string;
+  content?: string;
+  challenge?: string;
+  solution?: string;
+  result?: string;
   testimonial?: string;
   thumbnail?: MicroCMSImage;
   locale: string | string[];
@@ -78,6 +79,24 @@ function toBlogPost(cms: CMSBlog): BlogPost {
 
 // Convert microCMS case study to local CaseStudy format
 function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
+  const content = cms.content
+    ? [
+        cms.content,
+        cms.testimonial ? `<blockquote>${cms.testimonial}</blockquote>` : "",
+      ]
+        .filter(Boolean)
+        .join("\n\n")
+    : [
+        `<h2 class="cms-section-heading cms-heading-challenge">課題</h2>${cms.challenge}`,
+        `<h2 class="cms-section-heading cms-heading-solution">解決策</h2>${cms.solution}`,
+        `<h2 class="cms-section-heading cms-heading-solution">成果</h2>${cms.result}`,
+        cms.testimonial ? `<blockquote>${cms.testimonial}</blockquote>` : "",
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
+  const excerptSource = cms.content ?? cms.challenge ?? "";
+
   return {
     slug: cms.slug || cms.id,
     frontmatter: {
@@ -86,18 +105,11 @@ function toCaseStudy(cms: CMSCaseStudy): CaseStudyLocal {
       industry: cms.industry,
       tags: cms.tags ?? [],
       locale: getLocale(cms.locale),
-      excerpt: cms.challenge.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
+      excerpt: excerptSource.replace(/<[^>]*>/g, "").slice(0, 120) + "...",
       coverImage: cms.thumbnail?.url,
       published: true,
     },
-    content: [
-      `<h2 class="cms-section-heading cms-heading-challenge">課題</h2>${cms.challenge}`,
-      `<h2 class="cms-section-heading cms-heading-solution">解決策</h2>${cms.solution}`,
-      `<h2 class="cms-section-heading cms-heading-solution">成果</h2>${cms.result}`,
-      cms.testimonial ? `<blockquote>${cms.testimonial}</blockquote>` : "",
-    ]
-      .filter(Boolean)
-      .join("\n\n"),
+    content,
   };
 }
 

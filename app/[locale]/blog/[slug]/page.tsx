@@ -66,18 +66,8 @@ function BlogPostContent({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
         <article className="rounded-2xl bg-background shadow-sm border border-border overflow-hidden">
           <div className="px-6 sm:px-12 lg:px-36 pt-6 sm:pt-8">
-            {/* Tags + Date */}
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex flex-wrap gap-2">
-                {post.frontmatter.tags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs sm:text-sm text-primary font-medium rounded-full border border-primary/30 px-3 py-0.5"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            {/* Date */}
+            <div className="mb-8">
               <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
                 <Clock size={12} className="sm:w-3.5 sm:h-3.5" />
                 {new Date(post.frontmatter.date).toLocaleDateString("ja-JP", {

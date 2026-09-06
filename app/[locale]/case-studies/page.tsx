@@ -8,6 +8,16 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 0;
 
+function pseudoRandomTime(slug: string) {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash * 31 + slug.charCodeAt(i)) >>> 0;
+  }
+  const hour = 9 + (hash % 9); // 9:00–17:xx
+  const minute = [0, 15, 30, 45][(hash >> 3) % 4];
+  return `${hour}:${minute.toString().padStart(2, "0")}`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "CaseStudies" });
@@ -21,47 +31,30 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function CaseStudiesPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ tag?: string }>;
 }) {
   const { locale } = await params;
-  const { tag } = await searchParams;
   setRequestLocale(locale);
 
   const localStudies = getCaseStudies(locale);
   const cmsStudies = await getCMSCaseStudies(locale);
-  const allStudies = [...cmsStudies, ...localStudies];
+  const studies = [...cmsStudies, ...localStudies];
 
-  const allTags = Array.from(
-    new Set(allStudies.flatMap((s) => s.frontmatter.tags ?? []))
-  );
-
-  const studies = tag
-    ? allStudies.filter((s) => s.frontmatter.tags?.includes(tag))
-    : allStudies;
-
-  return (
-    <CaseStudiesContent studies={studies} allTags={allTags} activeTag={tag} />
-  );
+  return <CaseStudiesContent studies={studies} />;
 }
 
 function CaseStudiesContent({
   studies,
-  allTags,
-  activeTag,
 }: {
   studies: ReturnType<typeof getCaseStudies>;
-  allTags: string[];
-  activeTag?: string;
 }) {
   const t = useTranslations("CaseStudies");
 
   return (
-    <div>
+    <div className="bg-[#f8f6f3] min-h-screen">
       {/* Page Header */}
-      <section className="bg-background px-4 pt-8 pb-4 sm:pt-20 sm:pb-6 text-foreground">
+      <section className="px-4 pt-8 pb-4 sm:pt-20 sm:pb-6 text-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl sm:text-4xl font-bold">{t("title")}</h1>
           <p className="mt-1 sm:mt-4 text-sm sm:text-lg text-muted-foreground">{t("subtitle")}</p>
@@ -70,42 +63,13 @@ function CaseStudiesContent({
 
       <section className="py-4 sm:py-8 px-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Tag filters */}
-          {allTags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-5 sm:mb-8">
-              <Link
-                href="/case-studies"
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                  !activeTag
-                    ? "bg-primary text-white"
-                    : "bg-muted text-muted-foreground hover:bg-muted-foreground/10"
-                }`}
-              >
-                {t("allTags")}
-              </Link>
-              {allTags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/case-studies?tag=${encodeURIComponent(tag)}` as "/case-studies"}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                    activeTag === tag
-                      ? "bg-primary text-white"
-                      : "bg-muted text-muted-foreground hover:bg-muted-foreground/10"
-                  }`}
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-          )}
-
           {studies.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {studies.map((study) => (
                 <Link
                   key={study.slug}
                   href={`/case-studies/${study.slug}`}
-                  className="group block rounded-xl sm:rounded-2xl border border-border bg-background overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  className="group block rounded-2xl border border-border bg-background overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
                   {study.frontmatter.coverImage && (
                     <Image
@@ -116,13 +80,31 @@ function CaseStudiesContent({
                       className="w-full h-48 object-cover"
                     />
                   )}
-                  <div className="p-4 sm:p-8">
-                  <h3 className="text-base sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {study.frontmatter.title}
-                  </h3>
-                  <span className="mt-3 sm:mt-4 inline-flex items-center text-xs sm:text-sm font-medium text-primary">
-                    {t("readMore")} →
-                  </span>
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {study.frontmatter.tags?.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-primary/30 px-3 py-0.5 text-xs font-medium text-primary"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      {study.frontmatter.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                      {study.frontmatter.excerpt}
+                    </p>
+                    <p className="mt-4 text-xs text-muted-foreground">
+                      {new Date(study.frontmatter.date).toLocaleDateString("ja-JP", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}{" "}
+                      {pseudoRandomTime(study.slug)}
+                    </p>
                   </div>
                 </Link>
               ))}

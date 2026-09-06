@@ -10,6 +10,7 @@ import Image from "next/image";
 import JsonLd from "@/components/seo/JsonLd";
 import { caseStudyJsonLd } from "@/lib/jsonld";
 import { generatePageMetadata } from "@/lib/metadata";
+import ShareBar from "@/components/blog/ShareBar";
 
 export const dynamicParams = true;
 export const revalidate = 0;
@@ -106,14 +107,16 @@ function CaseStudyContent({
                 {study.frontmatter.title}
               </h1>
             </div>
-            <div className="relative overflow-hidden">
-              <Image
-                src={study.frontmatter.coverImage}
-                alt={study.frontmatter.title}
-                width={1200}
-                height={480}
-                className="w-full object-contain block"
-              />
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+              <div className="relative overflow-hidden rounded-lg">
+                <Image
+                  src={study.frontmatter.coverImage}
+                  alt={study.frontmatter.title}
+                  width={1600}
+                  height={900}
+                  className="w-full object-cover block"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -175,6 +178,8 @@ function CaseStudyContent({
           </div>
         </div>
       </section>
+
+      <ShareBar title={study.frontmatter.title} />
     </div>
   );
 }

@@ -19,16 +19,6 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         />
       )}
       <div className="p-6">
-      <div className="flex flex-wrap gap-2 mb-3">
-        {post.frontmatter.tags?.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border border-primary/30 px-3 py-0.5 text-xs font-medium text-primary"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
       <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
         {post.frontmatter.title}
       </h3>

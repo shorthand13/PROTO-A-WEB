@@ -1,19 +1,7 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import createIntlMiddleware from "next-intl/middleware";
+import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 
-const intlMiddleware = createIntlMiddleware(routing);
-
-const isProtectedRoute = createRouteMatcher([
-  "/(ja|en)/membership/videos(.*)",
-]);
-
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
-  }
-  return intlMiddleware(req);
-});
+export default createMiddleware(routing);
 
 export const config = {
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],

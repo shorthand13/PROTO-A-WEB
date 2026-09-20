@@ -177,6 +177,10 @@
     "gallery": {
       "title": "Behind the Scenes"
     },
+    "videoGallery": {
+      "title": "Free Seminar Videos",
+      "close": "Close"
+    },
     "partners": {
       "title": "Our Customers"
     },
@@ -637,6 +641,10 @@
     "googleLogin": "Sign in with Google",
     "lineLogin": "Sign in with LINE",
     "description": "Sign in to access the video library and other exclusive member content."
+  },
+  "Register": {
+    "title": "Register",
+    "description": "Register to access the video library and other exclusive member content."
   },
   "LoginSuccess": {
     "title": "Login Successful",

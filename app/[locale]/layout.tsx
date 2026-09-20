@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { M_PLUS_1p } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { jaJP, enUS } from "@clerk/localizations";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -85,30 +87,38 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html
-      lang={locale}
-      className={`${mPlus1p.variable} h-full bg-white antialiased`}
+    <ClerkProvider
+      localization={locale === "ja" ? jaJP : enUS}
+      signInUrl={`/${locale}/login`}
+      signUpUrl={`/${locale}/register`}
+      signInFallbackRedirectUrl={`/${locale}/membership`}
+      signUpFallbackRedirectUrl={`/${locale}/onboarding`}
     >
-      <head>
-        <JsonLd data={organizationJsonLd()} />
-        <JsonLd data={localBusinessJsonLd()} />
-      </head>
-      <body
-        className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
+      <html
+        lang={locale}
+        className={`${mPlus1p.variable} h-full bg-white antialiased`}
       >
-          <NextIntlClientProvider>
-            <ScrollToTop />
-            <Header newItems={[...(hasNewBlog ? ["blog"] : []), ...(hasUpcomingEvent ? ["events"] : [])]} />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            {/* <FeedbackWidget /> — disabled: overlaps with blog share bar */}
-            {/* <SurveyCta /> — disabled: no incentive for users currently */}
-            <EventBanner event={nextEvent} />
-            <EventPopup event={nextEvent} />
-            <BrevoChat />
-          </NextIntlClientProvider>
-        <Analytics />
-      </body>
-    </html>
+        <head>
+          <JsonLd data={organizationJsonLd()} />
+          <JsonLd data={localBusinessJsonLd()} />
+        </head>
+        <body
+          className={`min-h-full flex flex-col bg-white text-foreground ${mPlus1p.className}`}
+        >
+            <NextIntlClientProvider>
+              <ScrollToTop />
+              <Header newItems={[...(hasNewBlog ? ["blog"] : []), ...(hasUpcomingEvent ? ["events"] : [])]} />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              {/* <FeedbackWidget /> — disabled: overlaps with blog share bar */}
+              {/* <SurveyCta /> — disabled: no incentive for users currently */}
+              <EventBanner event={nextEvent} />
+              <EventPopup event={nextEvent} />
+              <BrevoChat />
+            </NextIntlClientProvider>
+          <Analytics />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

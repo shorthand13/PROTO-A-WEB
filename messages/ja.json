@@ -177,6 +177,10 @@
     "gallery": {
       "title": "私たちの活動"
     },
+    "videoGallery": {
+      "title": "無料 セミナー動画",
+      "close": "閉じる"
+    },
     "partners": {
       "title": "セミナー受講企業・団体"
     },
@@ -637,6 +641,10 @@
     "googleLogin": "Googleでログイン",
     "lineLogin": "LINEでログイン",
     "description": "ログインすると、動画ライブラリなどの会員限定コンテンツをご利用いただけます。"
+  },
+  "Register": {
+    "title": "新規登録",
+    "description": "会員登録すると、動画ライブラリなどの会員限定コンテンツをご利用いただけます。"
   },
   "LoginSuccess": {
     "title": "ログインしました",

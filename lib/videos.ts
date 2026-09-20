@@ -3,6 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import type { VideoMeta, VideoFrontmatter } from "./types";
 
+export { getYouTubeVideoId, getYouTubeEmbedUrl, getVideoThumbnail, canViewVideo } from "./video-utils";
+
 const contentDir = path.join(process.cwd(), "content/videos");
 
 export function getVideos(): VideoMeta[] {
@@ -53,4 +55,15 @@ export function getVideoCategories(): string[] {
   const cats = new Set<string>();
   videos.forEach((v) => cats.add(v.frontmatter.category));
   return Array.from(cats).sort();
+}
+
+/** Videos for a given locale, filtered to those visible with no sign-in at all. */
+export function getPublicVideos(locale: string): VideoMeta[] {
+  return getVideos().filter(
+    (v) => v.frontmatter.locale === locale && !v.frontmatter.memberOnly
+  );
+}
+
+export function getVideosForLocale(locale: string): VideoMeta[] {
+  return getVideos().filter((v) => v.frontmatter.locale === locale);
 }

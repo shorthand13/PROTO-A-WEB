@@ -10,6 +10,9 @@ import { getCMSCaseStudies, getCMSEvents, type CMSEvent } from "@/lib/microcms";
 import type { CaseStudy } from "@/lib/types";
 import DoubleDiamond from "@/components/DoubleDiamond";
 import DoubleDiamondDesktop from "@/components/DoubleDiamondDesktop";
+import PublicVideoGallery from "@/components/video/PublicVideoGallery";
+import { getPublicVideos } from "@/lib/videos";
+import type { VideoMeta } from "@/lib/types";
 
 export const revalidate = 0;
 
@@ -22,6 +25,8 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const publicVideos = getPublicVideos(locale);
 
   const localStudies = getCaseStudies(locale);
   let cmsStudies: CaseStudy[] = [];
@@ -40,11 +45,28 @@ export default async function HomePage({
     // CMS unavailable
   }
 
-  return <HomeContent caseStudies={caseStudies} upcomingEvents={upcomingEvents} locale={locale} />;
+  return (
+    <HomeContent
+      caseStudies={caseStudies}
+      upcomingEvents={upcomingEvents}
+      locale={locale}
+      publicVideos={publicVideos}
+    />
+  );
 }
 
 
-function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: CaseStudy[]; upcomingEvents: CMSEvent[]; locale: string }) {
+function HomeContent({
+  caseStudies,
+  upcomingEvents,
+  locale,
+  publicVideos,
+}: {
+  caseStudies: CaseStudy[];
+  upcomingEvents: CMSEvent[];
+  locale: string;
+  publicVideos: VideoMeta[];
+}) {
   const t = useTranslations("Home");
   const ts = useTranslations("Services");
   const tc = useTranslations("CaseStudies");
@@ -174,6 +196,16 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
           </a>
         </div>
         <DoubleDiamond />
+
+        {/* Video Gallery */}
+        {publicVideos.length > 0 && (
+          <div className="pt-6">
+            <div className="pb-2 text-center">
+              <p className="text-2xl font-bold text-foreground">{t("videoGallery.title")}</p>
+            </div>
+            <PublicVideoGallery videos={publicVideos} />
+          </div>
+        )}
 
         {/* Free Workshop CTA */}
         <Link
@@ -467,6 +499,20 @@ function HomeContent({ caseStudies, upcomingEvents, locale }: { caseStudies: Cas
             </div>
           </div>
         </section>
+
+        {/* Video Gallery */}
+        {publicVideos.length > 0 && (
+          <section className="px-4 pt-12">
+            <div className="mx-auto max-w-7xl">
+              <div className="rounded-3xl bg-white p-10">
+                <div className="mb-8 text-center">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-foreground">{t("videoGallery.title")}</h2>
+                </div>
+                <PublicVideoGallery videos={publicVideos} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Partners */}
         <section className="px-4 pt-12 pb-6">

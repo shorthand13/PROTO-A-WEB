@@ -42,6 +42,8 @@ export interface VideoFrontmatter {
   thumbnailUrl?: string;
   duration: string;
   publishedAt: string;
+  // Lower values appear first in the public video gallery.
+  order?: number;
   // false = visible to everyone (e.g. homepage). true = requires sign-in.
   memberOnly: boolean;
   // Only meaningful when memberOnly is true. If present, only these emails

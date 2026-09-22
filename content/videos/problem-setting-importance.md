@@ -7,6 +7,7 @@ locale: "ja"
 videoUrl: "https://youtu.be/Cx-MZKzc4c8"
 duration: "23:40"
 publishedAt: "2026-09-21"
+order: 5
 memberOnly: false
 ---
 

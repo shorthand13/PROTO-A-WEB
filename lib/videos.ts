@@ -59,9 +59,20 @@ export function getVideoCategories(): string[] {
 
 /** Videos for a given locale, filtered to those visible with no sign-in at all. */
 export function getPublicVideos(locale: string): VideoMeta[] {
-  return getVideos().filter(
-    (v) => v.frontmatter.locale === locale && !v.frontmatter.memberOnly
-  );
+  return getVideos()
+    .filter((v) => v.frontmatter.locale === locale && !v.frontmatter.memberOnly)
+    .sort((a, b) => {
+      const orderDifference =
+        (a.frontmatter.order ?? Number.MAX_SAFE_INTEGER) -
+        (b.frontmatter.order ?? Number.MAX_SAFE_INTEGER);
+
+      if (orderDifference !== 0) return orderDifference;
+
+      return (
+        new Date(b.frontmatter.publishedAt).getTime() -
+        new Date(a.frontmatter.publishedAt).getTime()
+      );
+    });
 }
 
 export function getVideosForLocale(locale: string): VideoMeta[] {
